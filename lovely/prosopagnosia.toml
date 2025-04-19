@@ -10,7 +10,7 @@ face_proso = 'context.other_card:is_face() and next(SMODS.find_card("j_manifold_
 # get_straight
 [[patches]]
 [patches.pattern]
-target = "main.lua"
+target = '=[SMODS _ "src/overrides.lua"]'
 pattern = "min_length = min_length or 5"
 position = "before"
 match_indent = true
@@ -20,17 +20,17 @@ if next(SMODS.find_card("j_pareidolia")) and {{lovely:proso}} then return {} end
 
 [[patches]]
 [patches.pattern]
-target = "main.lua"
+target = '=[SMODS _ "src/overrides.lua"]'
 pattern = "for _,v in ipairs(rank.next) do"
 position = "at"
 match_indent = true
 payload = '''
-for _,v in ipairs(next(SMODS.find_card("j_manifold_prosopagnosia") and PROSO.next[key] or rank.next)) do
+for _,v in ipairs({{lovely:proso}} and PROSO.next[key] or rank.next) do
 '''
 
 [[patches]]
 [patches.pattern]
-target = "main.lua"
+target = '=[SMODS _ "src/overrides.lua"]'
 pattern = "for _,w in ipairs(SMODS.Ranks[v].next) do"
 position = "at"
 match_indent = true
