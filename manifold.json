@@ -1,0 +1,15 @@
+{
+  "id": "manifold",
+  "name": "Manifold",
+  "display_name": "Manifold",
+  "author": ["ouiiskey"],
+  "description": "A Balatro mod.",
+  "prefix": "manifold",
+  "main_file": "src/manifold.lua",
+  "priority": 0,
+  "badge_colour": "f96932",
+  "version": "0.0.0",
+  "dependencies": [
+    "Steamodded (>=1.0.0~BETA-0410b)"
+  ]
+}
