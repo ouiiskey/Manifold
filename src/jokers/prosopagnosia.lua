@@ -47,13 +47,6 @@ end
 
 SMODS.Joker {
     key = "prosopagnosia",
-    loc_txt = {
-        name = "Prosopagnosia",
-        text = {
-            "{C:attention}Face{} cards count",
-            "as the same rank."
-        }
-    },
     rarity = 2,
     atlas = "jokers",
     pos = {
