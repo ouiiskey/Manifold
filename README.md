@@ -17,10 +17,3 @@ This mod is intended to preserve vanilla balance and follow [LocalThunk's design
 Because this mod contains bespoke code, you may encounter compatibility issues with other mods.
 #### Known compatible mods:
 #### Known incompatible mods:
-#### Specific compatibility:
-* Prosopagnosia
-  * compatible with modded ranks
-  * compatible with modded hands that use vanilla hand checking functions (like `get_X_same` or `get_straight`)
-  * not automatically compatible with some modded hands
-  * not automatically compatible with modded cards that check for specific face ranks
-  * see `prosopagnosia.toml` if you wish to make your mod compatible
