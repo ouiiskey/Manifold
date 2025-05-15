@@ -43,16 +43,6 @@ for _,w in ipairs({{lovely:proso}} and PROSO.next[v] or SMODS.Ranks[v].next) do
 [[patches]]
 [patches.pattern]
 target = "functions/misc_functions.lua"
-pattern = "for i=#hand, 1, -1 do"
-position = "before"
-match_indent = true
-payload = '''
-if {{lovely:proso}} then vals[SMODS.Rank.max_id.value + 1] = {} end
-'''
-
-[[patches]]
-[patches.pattern]
-target = "functions/misc_functions.lua"
 pattern = "if hand[i]:get_id() == hand[j]:get_id() and i ~= j then"
 position = "at"
 match_indent = true
@@ -67,7 +57,7 @@ pattern = "vals[curr[1]:get_id()] = curr"
 position = "at"
 match_indent = true
 payload = '''
-    vals[{{lovely:proso}} and SMODS.Rank.max_id.value + 1 or curr[1]:get_id()] = curr
+vals[{{lovely:proso}} and curr[1]:is_face() and 13 or curr[1]:get_id()] = curr
 '''
 
 # Raised Fist
@@ -89,6 +79,17 @@ position = "at"
 match_indent = true
 payload = '''
 temp_ID = {{lovely:proso_id}}
+'''
+
+# The Idol
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "context.other_card:get_id() == G.GAME.current_round.idol_card.id and"
+position = "at"
+match_indent = true
+payload = '''
+(context.other_card:get_id() == G.GAME.current_round.idol_card.id or {{lovely:face_proso}} and SMODS.Ranks[G.GAME.current_round.idol_card.rank].face) and
 '''
 
 # Hit the Road
