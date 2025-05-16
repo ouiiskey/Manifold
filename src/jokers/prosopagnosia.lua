@@ -2,13 +2,17 @@
 PROSO = {
     faces = {},
     after_face = {},
-    next = {}
+    next = {},
+    rank = -1
 }
 
 -- For compatibility purposes, we hook Game.main_menu
 local old = Game.main_menu
 Game.main_menu = function(change_context)
     for k, v in pairs(SMODS.Ranks) do
+        if PROSO.rank < v.id then
+            PROSO.rank = v.id
+        end
         if v.face then
             table.insert(PROSO.faces, k)
             for _, key in ipairs(v.next) do

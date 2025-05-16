@@ -6,7 +6,7 @@ priority = 0
 [vars]
 proso = 'next(SMODS.find_card("j_manifold_prosopagnosia"))'
 face_proso = 'context.other_card:is_face() and next(SMODS.find_card("j_manifold_prosopagnosia"))'
-proso_id = 'G.hand.cards[i]:is_face() and next(SMODS.find_card("j_manifold_prosopagnosia")) and 13 or G.hand.cards[i].base.id'
+proso_id = 'G.hand.cards[i]:is_face() and next(SMODS.find_card("j_manifold_prosopagnosia")) and PROSO.rank or G.hand.cards[i].base.id'
 
 # get_straight
 [[patches]]
@@ -57,7 +57,7 @@ pattern = "vals[curr[1]:get_id()] = curr"
 position = "at"
 match_indent = true
 payload = '''
-vals[{{lovely:proso}} and curr[1]:is_face() and 13 or curr[1]:get_id()] = curr
+vals[{{lovely:proso}} and curr[1]:is_face() and PROSO.rank or curr[1]:get_id()] = curr
 '''
 
 # Raised Fist
@@ -89,7 +89,7 @@ pattern = "context.other_card:get_id() == G.GAME.current_round.idol_card.id and"
 position = "at"
 match_indent = true
 payload = '''
-(context.other_card:get_id() == G.GAME.current_round.idol_card.id or {{lovely:face_proso}} and SMODS.Ranks[G.GAME.current_round.idol_card.rank].face) and
+(context.other_card:get_id() == G.GAME.current_round.idol_card.id or {{lovely:face_proso}} and (SMODS.Ranks[G.GAME.current_round.idol_card.rank].face or next(SMODS.find_card("j_pareidolia")))) and
 '''
 
 # Hit the Road

@@ -1,4 +1,4 @@
-A Balatro mod.
+A vanilla-style Balatro mod.
 
 ## About
 This mod is intended to preserve vanilla balance and follow [LocalThunk's design guidelines](https://www.reddit.com/r/balatro/comments/1czo9g0/guidelines_for_joker_design/). I recommend you play on either a copy of your vanilla profile or a fresh profile without using unlock all. For more information, see the [wiki](Add link to wiki).
