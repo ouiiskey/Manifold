@@ -53,10 +53,7 @@ SMODS.Joker {
     key = "prosopagnosia",
     rarity = 2,
     atlas = "jokers",
-    pos = {
-        x = 0,
-        y = 0
-    },
+    pos = {x = 0, y = 0},
     cost = 5
 }
 

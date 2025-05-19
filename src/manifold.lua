@@ -6,5 +6,5 @@ SMODS.Atlas {
     py = 34
 }
 
--- Load jokers
+-- Jokers
 SMODS.load_file("src/jokers/jokers.lua")()
