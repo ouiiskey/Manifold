@@ -45,6 +45,14 @@ return {
                     "{C:attention}+2{} {C:planet}Planet{} slots"
                 }
             },
+        },
+        Edition = {
+            e_negative_planet = {
+                name = "Negative",
+                text = {
+                    "{C:dark_edition}+#1#{} {C:planet}Planet{} slot",
+                }
+            }
         }
     }
 }

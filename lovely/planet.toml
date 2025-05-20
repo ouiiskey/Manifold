@@ -190,6 +190,100 @@ payload = '''
 local t = {G.jokers, G.consumeables, G.planets, G.vouchers}
 '''
 
-# DebugPlus
+# Negative
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "badges[#badges + 1] = 'negative_consumable'"
+position = "at"
+match_indent = true
+payload = '''
+badges[#badges + 1] = self.config.center.set == "Planet" and "negative_planet" or "negative_consumable"
+'''
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "if v == 'negative_consumable' or v == 'negative_playing_card' then v = 'negative' end"
+position = "at"
+match_indent = true
+payload = '''
+if v == 'negative_consumable' or 'negative_planet' or v == 'negative_playing_card' then v = 'negative' end
+'''
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/overrides.lua"]'
+pattern = "G.consumeables.config.card_limit = G.consumeables.config.card_limit + v"
+position = "at"
+match_indent = true
+payload = '''
+if self.config.center.set == "Planet" then
+    G.planets.config.card_limit = G.planets.config.card_limit + v
+else
+    G.consumeables.config.card_limit = G.consumeables.config.card_limit + v
+end
+'''
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "G.consumeables.config.card_limit = G.consumeables.config.card_limit + self.edition.card_limit"
+position = "at"
+match_indent = true
+payload = '''
+if self.config.center.set == "Planet" then
+    G.planets.config.card_limit = G.planets.config.card_limit + self.edition.card_limit
+else
+    G.consumeables.config.card_limit = G.consumeables.config.card_limit + self.edition.card_limit
+end
+'''
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "G.consumeables.config.card_limit = G.consumeables.config.card_limit - self.edition.card_limit"
+times = 2
+position = "at"
+match_indent = true
+payload = '''
+if self.config.center.set == "Planet" then
+    G.planets.config.card_limit = G.planets.config.card_limit - self.edition.card_limit
+else
+    G.consumeables.config.card_limit = G.consumeables.config.card_limit - self.edition.card_limit
+end
+'''
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/overrides.lua"]'
+pattern = "elseif self.ability.set == 'Joker' and self.area == G.jokers then"
+position = "before"
+match_indent = true
+payload = '''
+elseif self.ability.consumeable and self.area == G.planets then
+    G.planets.config.card_limit = G.planets.config.card_limit - self.edition.card_limit
+'''
+
+# Debug
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "local _area = G.P_CENTERS[joker].consumeable and G.consumeables or G.jokers"
+position = "at"
+match_indent = true
+payload = '''
+local _area = G.P_CENTERS[joker].consumeable and (G.P_CENTERS[joker].set == "Planet" and G.planets or G.consumeables) or G.jokers
+'''
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "elseif G.consumeables then G.consumeables:emplace(card) end"
+position = "at"
+match_indent = true
+payload = '''
+elseif G.consumeables then if card.config.center.set == "Planet" then G.planets:emplace(card) else G.consumeables:emplace(card) end end
+'''
 
 # Multiplayer
