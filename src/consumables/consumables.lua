@@ -1,0 +1,1 @@
+SMODS.load_file("src/consumables/high_priestess.lua")()

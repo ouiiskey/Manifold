@@ -16,6 +16,35 @@ return {
                     "{C:inactive}#3#",
                 }
             }
+        },
+        Tarot = {
+            c_fool = {
+                text = {
+                    "Creates the last",
+                    "{C:tarot}Tarot{} card used",
+                    "during this run",
+                    "{s:0.8,C:tarot}The Fool{s:0.8} excluded"
+                }
+            },
+            c_high_priestess = {
+                text = {
+                    "Creates the last",
+                    "{C:planet}Planet{} card used",
+                    "during this run"
+                }
+            }
+        },
+        Voucher = {
+            v_tarot_tycoon = {
+                text = {
+                    "{C:attention}+2{} consumable slots"
+                }
+            },
+            v_planet_tycoon = {
+                text = {
+                    "{C:attention}+2{} {C:planet}Planet{} slots"
+                }
+            },
         }
     }
 }

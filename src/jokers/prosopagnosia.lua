@@ -7,7 +7,7 @@ PROSO = {
 }
 
 -- For compatibility purposes, we hook Game.main_menu
-local old = Game.main_menu
+local _old = Game.main_menu
 Game.main_menu = function(change_context)
     for k, v in pairs(SMODS.Ranks) do
         if PROSO.rank < v.id then
@@ -27,14 +27,14 @@ Game.main_menu = function(change_context)
         if v.face then
             PROSO.next[k] = PROSO.after_face
         else
-            local before_face = false
+            local _before_face = false
             for _, key in ipairs(v.next) do
                 if SMODS.Ranks[key].face then
-                    before_face = true
+                    _before_face = true
                     break
                 end
             end
-            if before_face then
+            if _before_face then
                 PROSO.next[k] = SMODS.shallow_copy(PROSO.faces)
                 for _, key in ipairs(v.next) do
                     if not SMODS.Ranks[key].face then
@@ -46,7 +46,7 @@ Game.main_menu = function(change_context)
             end
         end
     end
-    old(change_context)
+    _old(change_context)
 end
 
 SMODS.Joker {
