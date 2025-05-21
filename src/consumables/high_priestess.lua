@@ -1,4 +1,4 @@
--- The High Priestess
+-- The High Priestess, see also planet.toml
 SMODS.Consumable:take_ownership("high_priestess", {
     loc_vars = function(self, info_queue, center)
         local _priest_c = G.GAME.last_planet and G.P_CENTERS[G.GAME.last_planet] or nil
@@ -18,7 +18,7 @@ SMODS.Consumable:take_ownership("high_priestess", {
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
             if G.planets.config.card_limit > #G.planets.cards then
                 play_sound('timpani')
-                local _card = create_card('Planet', G.planets, nil, nil, nil, nil, G.GAME.last_planet, 'fool')
+                local _card = create_card('Planet', G.planets, nil, nil, nil, nil, G.GAME.last_planet, 'priest')
                 _card:add_to_deck()
                 G.planets:emplace(_card)
                 _card:juice_up(0.3, 0.5)

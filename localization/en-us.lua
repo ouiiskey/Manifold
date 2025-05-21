@@ -28,6 +28,30 @@ return {
                 }
             }
         },
+        Spectral = {
+            c_incantation = {
+                text = {
+                    "Add {C:dark_edition}Negative{} to",
+                    "{C:attention}1{} random card",
+                    "in your hand"
+                }
+            },
+            c_familiar = {
+                text = {
+                    "Creates the last",
+                    "{C:spectral}Spectral{} card used",
+                    "during this run",
+                    "{s:0.8,C:spectral}Familiar{s:0.8} excluded"
+                }
+            },
+            c_grim = {
+                text = {
+                    "Add a {C:black}Black Seal{}",
+                    "to {C:attention}1{} selected",
+                    "card in your hand"
+                }
+            }
+        },
         Tarot = {
             c_fool = {
                 text = {
@@ -56,6 +80,14 @@ return {
                     "{C:attention}+2{} {C:planet}Planet{} slots"
                 }
             },
+            v_observatory = {
+                text = {
+                    "{C:planet}Planet{} cards in your",
+                    "{C:planet}Planet{} area give",
+                    "{X:red,C:white} X#1# {} Mult for their",
+                    "specified {C:attention}poker hand"
+                }
+            }
         },
         Edition = {
             e_negative_planet = {
