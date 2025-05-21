@@ -1,4 +1,4 @@
--- Prosopagnosia. See also prosopagnosia.toml
+-- Prosopagnosia, see also prosopagnosia.toml
 PROSO = {
     faces = {},
     after_face = {},

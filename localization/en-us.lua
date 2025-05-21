@@ -17,6 +17,17 @@ return {
                 }
             }
         },
+        Other = {
+            manifold_black_seal = {
+                name = "Black Seal",
+                text = {
+                    "Creates up to {C:attention}#1#",
+                    "random {C:spectral}Spectral{} cards",
+                    "when destroyed",
+                    "{C:inactive}(Must have room)"
+                }
+            }
+        },
         Tarot = {
             c_fool = {
                 text = {
@@ -53,6 +64,11 @@ return {
                     "{C:dark_edition}+#1#{} {C:planet}Planet{} slot",
                 }
             }
+        }
+    },
+    misc = {
+        labels = {
+            manifold_black_seal = "Black Seal"
         }
     }
 }

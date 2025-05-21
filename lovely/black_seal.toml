@@ -1,0 +1,24 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if self.ability.joker_added_to_deck_but_debuffed then"
+position = "before"
+match_indent = true
+payload = '''
+if not self.debuff and self.seal == "manifold_black" then
+    for i = 1, math.min(self.ability.seal.extra.spectrals, G.consumeables.config.card_limit - #G.consumeables.cards) do
+        G.E_MANAGER:add_event(Event({trigger = "before", delay = 0.0, func = function()
+            if G.consumeables.config.card_limit > #G.consumeables.cards then
+                local spectral = create_card("Spectral", G.consumeables, nil, nil, nil, nil, nil, "sixth")
+                spectral:add_to_deck()
+                G.consumeables:emplace(spectral)
+            end
+        return true end }))
+    end
+end
+'''

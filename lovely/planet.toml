@@ -208,7 +208,7 @@ pattern = "if v == 'negative_consumable' or v == 'negative_playing_card' then v 
 position = "at"
 match_indent = true
 payload = '''
-if v == 'negative_consumable' or 'negative_planet' or v == 'negative_playing_card' then v = 'negative' end
+if v == 'negative_consumable' or v == 'negative_planet' or v == 'negative_playing_card' then v = 'negative' end
 '''
 
 [[patches]]
