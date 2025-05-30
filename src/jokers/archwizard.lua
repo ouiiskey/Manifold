@@ -16,7 +16,7 @@ SMODS.Joker {
             card.ability.extra.every,
             localize{
                 type = "variable",
-                key = card.ability.archwizard_remaining == 0 and 'loyalty_active' or 'loyalty_inactive',
+                key = card.ability.archwizard_remaining == 0 and "loyalty_active" or "loyalty_inactive",
                 vars = {card.ability.archwizard_remaining}
             }
         }}
@@ -30,7 +30,7 @@ SMODS.Joker {
         elseif context.joker_main then
             if card.ability.archwizard_remaining == 0 then
                 return {
-                    message = localize{type = 'variable', key = 'a_mult', vars = {card.ability.extra.mult}},
+                    message = localize{type = "variable", key = "a_mult", vars = {card.ability.extra.mult}},
                     mult_mod = card.ability.extra.mult
                 }
             end

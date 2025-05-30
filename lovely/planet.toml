@@ -142,7 +142,7 @@ pattern = "local card = create_card('Tarot_Planet', G.consumeables, nil, nil, ni
 position = "at"
 match_indent = true
 payload = '''
-local card = create_card("Tarot", G.consumeables, nil, nil, nil, nil, G.GAME.last_tarot, 'fool')
+local card = create_card("Tarot", G.consumeables, nil, nil, nil, nil, G.GAME.last_tarot, "fool")
 '''
 
 [[patches]]
@@ -152,7 +152,7 @@ pattern = "and G.GAME.last_tarot_planet and G.GAME.last_tarot_planet ~= 'c_fool'
 position = "at"
 match_indent = true
 payload = '''
-and G.GAME.last_tarot and G.GAME.last_tarot ~= 'c_fool' then return true end
+and G.GAME.last_tarot and G.GAME.last_tarot ~= "c_fool" then return true end
 '''
 
 [[patches]]
@@ -208,7 +208,7 @@ pattern = "if v == 'negative_consumable' or v == 'negative_playing_card' then v 
 position = "at"
 match_indent = true
 payload = '''
-if v == 'negative_consumable' or v == 'negative_planet' or v == 'negative_playing_card' then v = 'negative' end
+if v == "negative_consumable" or v == "negative_planet" or v == "negative_playing_card" then v = "negative" end
 '''
 
 [[patches]]

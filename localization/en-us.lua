@@ -31,16 +31,16 @@ return {
         Spectral = {
             c_incantation = {
                 text = {
-                    "Add {C:dark_edition}Negative{} to",
-                    "{C:attention}1{} random card",
-                    "in your hand"
+                    "Add a random {C:dark_edition}Negative{}",
+                    "playing card to your deck,",
+                    "{C:red}-2{} hand size"
                 }
             },
             c_familiar = {
                 text = {
-                    "Creates the last",
-                    "{C:spectral}Spectral{} card used",
-                    "during this run",
+                    "Fill your consumable",
+                    "area with copies of",
+                    "a random card in it",
                     "{s:0.8,C:spectral}Familiar{s:0.8} excluded"
                 }
             },
