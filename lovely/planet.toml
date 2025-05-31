@@ -113,10 +113,14 @@ if self.seal == "Blue" and #G.planets.cards + G.GAME.planet_buffer < G.planets.c
 [[patches]]
 [patches.pattern]
 target = "card.lua"
-pattern = "G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1"
+pattern = '''
+local card_type = 'Planet'
+G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+'''
 position = "at"
 match_indent = true
 payload = '''
+local card_type = "Planet"
 G.GAME.planet_buffer = G.GAME.planet_buffer + 1
 '''
 
@@ -124,12 +128,16 @@ G.GAME.planet_buffer = G.GAME.planet_buffer + 1
 [patches.pattern]
 target = "card.lua"
 pattern = '''
+local card = create_card(card_type,G.consumeables, nil, nil, nil, nil, _planet, 'blusl')
+card:add_to_deck()
 G.consumeables:emplace(card)
 G.GAME.consumeable_buffer = 0
 '''
 position = "at"
 match_indent = true
 payload = '''
+local card = create_card(card_type,G.consumeables, nil, nil, nil, nil, _planet, "blusl")
+card:add_to_deck()
 G.planets:emplace(card)
 G.GAME.planet_buffer = 0
 '''

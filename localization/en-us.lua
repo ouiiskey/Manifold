@@ -5,7 +5,7 @@ return {
                 name = "Prosopagnosia",
                 text = {
                     "{C:attention}Face{} cards count",
-                    "as the same rank."
+                    "as the same rank"
                 }
             },
             j_manifold_archwizard = {
@@ -14,6 +14,14 @@ return {
                     "{C:mult}+#1#{} Mult every",
                     "{C:attention}#2#{} hands played",
                     "{C:inactive}#3#",
+                }
+            },
+            j_manifold_black_knight = {
+                name = "Black Knight",
+                text = {
+                    "All played {C:attention}Steel Cards",
+                    "gain a {C:black}Black Seal",
+                    "when scored"
                 }
             }
         },
@@ -31,7 +39,7 @@ return {
         Spectral = {
             c_incantation = {
                 text = {
-                    "Add a random {C:dark_edition}Negative{}",
+                    "Add a random {C:dark_edition}Negative",
                     "playing card to your deck,",
                     "{C:red}-2{} hand size"
                 }
@@ -46,7 +54,7 @@ return {
             },
             c_grim = {
                 text = {
-                    "Add a {C:black}Black Seal{}",
+                    "Add a {C:black}Black Seal",
                     "to {C:attention}1{} selected",
                     "card in your hand"
                 }
@@ -101,6 +109,9 @@ return {
     misc = {
         labels = {
             manifold_black_seal = "Black Seal"
+        },
+        dictionary = {
+            manifold_black = "Black"
         }
     }
 }
