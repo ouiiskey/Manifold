@@ -18,6 +18,8 @@ This mod is intended to preserve vanilla balance and follow [LocalThunk's design
 ## Compatibility
 Because this mod contains bespoke code, you may encounter compatibility issues with other mods.
 #### Known compatible mods:
-* [DebugPlus](https://github.com/WilsontheWolf/DebugPlus)
-  * Note: Copied planets emplace in the consumable slots, spawn the planets instead. 
+* [Banner](https://github.com/SylviBlossom/Banner)
+* [Too Many Jokers](https://github.com/cg-223/toomanyjokers)
 #### Known incompatible mods:
+* [DebugPlus](https://github.com/WilsontheWolf/DebugPlus)
+  * Copied planets emplace in the consumable slots, spawn the planets instead. 

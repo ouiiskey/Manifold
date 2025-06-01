@@ -23,6 +23,14 @@ return {
                     "gain a {C:black}Black Seal",
                     "when scored"
                 }
+            },
+            j_manifold_bob = {
+                name = "Bob",
+                text = {
+                    "{C:spectral}Spectral{} cards in your",
+                    "{C:attention}consumable{} area give",
+                    "{X:red,C:white} X#1# {} Mult and then break"
+                }
             }
         },
         Other = {
