@@ -31,6 +31,14 @@ return {
                     "{C:attention}consumable{} area give",
                     "{X:red,C:white} X#1# {} Mult and then break"
                 }
+            },
+            j_manifold_alice = {
+                name = "Alice",
+                text = {
+                    "Played {C:attention}Aces{} create",
+                    "a {C:spectral,T:c_hex}Hex{} card when scored",
+                    "{C:inactive}(Must have room)"
+                }
             }
         },
         Other = {
@@ -119,7 +127,9 @@ return {
             manifold_black_seal = "Black Seal"
         },
         dictionary = {
-            manifold_black = "Black"
+            manifold_boom = "BOOM!",
+            manifold_black = "Black",
+            manifold_a = "A"
         }
     }
 }

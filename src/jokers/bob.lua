@@ -23,7 +23,7 @@ SMODS.Joker {
         return next(SMODS.find_card("j_manifold_alice"))
     end,
     calculate = function(self, card, context)
-        if context.other_consumeable and context.other_consumeable.ability.set == "Spectral" then
+        if context.other_consumeable and not context.blueprint and context.other_consumeable.ability.set == "Spectral" then
             return {
                 x_mult = card.ability.extra.Xmult,
                 message_card = context.other_consumeable,

@@ -1,7 +1,7 @@
 -- Incantation
 SMODS.Consumable:take_ownership("incantation", {
     loc_vars = function(self, info_queue, card)
-        info_queue[#info_queue + 1] = {key = "e_negative_playing_card", set = "Edition", config = {extra = G.P_CENTERS["e_negative"].config.card_limit}}
+        info_queue[#info_queue + 1] = {key = "e_negative_playing_card", set = "Edition", config = {extra = G.P_CENTERS.e_negative.config.card_limit}}
     end,
     use = function(self, card, area, copier)
         G.E_MANAGER:add_event(Event({trigger = "after", delay = 0.4, func = function()

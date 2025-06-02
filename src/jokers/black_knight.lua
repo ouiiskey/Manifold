@@ -26,9 +26,7 @@ SMODS.Joker {
                     G.E_MANAGER:add_event(Event({
                         func = function()
                             v:juice_up()
-                            return true
-                        end
-                    }))
+                            return true end }))
                 end
             end
             if _sealed then

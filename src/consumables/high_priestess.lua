@@ -2,7 +2,7 @@
 SMODS.Consumable:take_ownership("high_priestess", {
     loc_vars = function(self, info_queue, center)
         local _priest_c = G.GAME.last_planet and G.P_CENTERS[G.GAME.last_planet] or nil
-        local _last_planet = _priest_c and localize{ type = "name_text", key = _priest_c.key, set = _priest_c.set} or localize("k_none")
+        local _last_planet = _priest_c and localize{type = "name_text", key = _priest_c.key, set = _priest_c.set} or localize("k_none")
         if _priest_c then
             info_queue[#info_queue+1] = _priest_c
         end

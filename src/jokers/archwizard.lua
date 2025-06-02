@@ -30,7 +30,7 @@ SMODS.Joker {
         elseif context.joker_main then
             if card.ability.archwizard_remaining == 0 then
                 return {
-                    message = localize{type = "variable", key = "a_mult", vars = {card.ability.extra.mult}},
+                    message = localize("manifold_boom"),
                     mult_mod = card.ability.extra.mult
                 }
             end
