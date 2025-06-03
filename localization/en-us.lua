@@ -39,6 +39,12 @@ return {
                     "a {C:spectral,T:c_hex}Hex{} card when scored",
                     "{C:inactive}(Must have room)"
                 }
+            },
+            j_manifold_space_patrol = {
+                name = "Space Patrol",
+                text = {
+                    "{C:attention}+#1#{} {C:planet}Planet{} slots",
+                },
             }
         },
         Other = {

@@ -12,12 +12,6 @@ SMODS.Joker {
     loc_vars = function(self, info_queue, card)
         return {vars = {card.ability.extra.Xmult}}
     end,
-    add_to_deck = function(self, card, from_debuff)
-        if not from_debuff then
-            card.ability.extra.id = G.GAME.bob_count or 0
-            G.GAME.bob_count = card.ability.extra.id + 1
-        end
-    end,
     in_pool = function(self, args)
         for k, v in ipairs(G.consumeables.cards) do
             if v.config.center.set == "Spectral" then
@@ -36,25 +30,33 @@ SMODS.Joker {
         end
         return false
     end,
+    add_to_deck = function(self, card, from_debuff)
+        if not from_debuff then
+            card.ability.extra.id = G.GAME.bob_count or 0
+            G.GAME.bob_count = card.ability.extra.id + 1
+        end
+    end,
     calculate = function(self, card, context)
-        if context.before and not G.GAME.main_bob then
-            G.GAME.main_bob = card.ability.extra.id
-        elseif context.other_consumeable and not context.blueprint and G.GAME.main_bob == card.ability.extra.id and context.other_consumeable.ability.set == "Spectral" then
-            return {
-                x_mult = card.ability.extra.Xmult,
-                message_card = context.other_consumeable,
-                func = function()
-                    G.E_MANAGER:add_event(Event({func = function()
-                        if SMODS.shatters(context.other_consumeable) then
-                            context.other_consumeable:shatter()
-                        else
-                            context.other_consumeable:start_dissolve()
-                        end
-                        return true end }))
-                end
-            }
-        elseif context.after then
-            G.GAME.main_bob = false
+        if not context.blueprint then
+            if context.before and not G.GAME.main_bob then
+                G.GAME.main_bob = card.ability.extra.id
+            elseif context.other_consumeable and G.GAME.main_bob == card.ability.extra.id and context.other_consumeable.ability.set == "Spectral" then
+                return {
+                    x_mult = card.ability.extra.Xmult,
+                    message_card = context.other_consumeable,
+                    func = function()
+                        G.E_MANAGER:add_event(Event({func = function()
+                            if SMODS.shatters(context.other_consumeable) then
+                                context.other_consumeable:shatter()
+                            else
+                                context.other_consumeable:start_dissolve()
+                            end
+                            return true end }))
+                    end
+                }
+            elseif context.after then
+                G.GAME.main_bob = false
+            end
         end
     end
 }
