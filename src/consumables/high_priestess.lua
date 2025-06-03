@@ -9,7 +9,7 @@ SMODS.Consumable:take_ownership("high_priestess", {
         return {main_end = {
             {n = G.UIT.C, config = {align = "bm", padding = 0.02}, nodes = {
                 { n = G.UIT.C, config = { align = "m", colour = not _priest_c and G.C.RED or G.C.GREEN, r = 0.05, padding = 0.05}, nodes = {
-                    {n = G.UIT.T, config = { text = " ".. _last_planet .." ", colour = G.C.UI.TEXT_LIGHT, scale = 0.3, shadow = true}},
+                    {n = G.UIT.T, config = { text = " " .. _last_planet .. " ", colour = G.C.UI.TEXT_LIGHT, scale = 0.3, shadow = true}},
                 }}
             }}
         }}
@@ -18,9 +18,7 @@ SMODS.Consumable:take_ownership("high_priestess", {
         G.E_MANAGER:add_event(Event({trigger = "after", delay = 0.4, func = function()
             if G.planets.config.card_limit > #G.planets.cards then
                 play_sound("timpani")
-                local _card = create_card("Planet", G.planets, nil, nil, nil, nil, G.GAME.last_planet, "priest")
-                _card:add_to_deck()
-                G.planets:emplace(_card)
+                SMODS.add_card{set = "Planet", area = G.planets, key = G.GAME.last_planet, key_append = "priest"}
                 card:juice_up(0.3, 0.5)
             end
             return true end }))

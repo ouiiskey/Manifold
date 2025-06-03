@@ -1,5 +1,5 @@
 -- Prosopagnosia, see also prosopagnosia.toml
-PROSO = {
+MANIF.PROSO = {
     faces = {},
     after_face = {},
     next = {},
@@ -10,14 +10,14 @@ PROSO = {
 local _old = Game.main_menu
 Game.main_menu = function(change_context)
     for k, v in pairs(SMODS.Ranks) do
-        if PROSO.rank < v.id then
-            PROSO.rank = v.id
-        end
         if v.face then
-            table.insert(PROSO.faces, k)
+            if MANIF.PROSO.rank < v.id then
+                MANIF.PROSO.rank = v.id
+            end
+            table.insert(MANIF.PROSO.faces, k)
             for _, key in ipairs(v.next) do
                 if not SMODS.Ranks[key].face then
-                    table.insert(PROSO.after_face, key)
+                    table.insert(MANIF.PROSO.after_face, key)
                 end
             end
         end
@@ -25,7 +25,7 @@ Game.main_menu = function(change_context)
 
     for k, v in pairs(SMODS.Ranks) do
         if v.face then
-            PROSO.next[k] = PROSO.after_face
+            MANIF.PROSO.next[k] = MANIF.PROSO.after_face
         else
             local _before_face = false
             for _, key in ipairs(v.next) do
@@ -35,14 +35,14 @@ Game.main_menu = function(change_context)
                 end
             end
             if _before_face then
-                PROSO.next[k] = SMODS.shallow_copy(PROSO.faces)
+                MANIF.PROSO.next[k] = SMODS.shallow_copy(MANIF.PROSO.faces)
                 for _, key in ipairs(v.next) do
                     if not SMODS.Ranks[key].face then
-                        table.insert(PROSO.next[k], key)
+                        table.insert(MANIF.PROSO.next[k], key)
                     end
                 end
             else
-                PROSO.next[k] = v.next
+                MANIF.PROSO.next[k] = v.next
             end
         end
     end

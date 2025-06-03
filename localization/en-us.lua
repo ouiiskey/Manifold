@@ -129,7 +129,7 @@ return {
         dictionary = {
             manifold_boom = "BOOM!",
             manifold_black = "Black",
-            manifold_a = "A"
+            manifold_ace = "A"
         }
     }
 }

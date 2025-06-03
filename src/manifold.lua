@@ -1,3 +1,5 @@
+MANIF = {}
+
 -- Mod icon
 SMODS.Atlas {
     key = "modicon",

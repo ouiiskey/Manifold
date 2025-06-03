@@ -136,9 +136,7 @@ G.GAME.consumeable_buffer = 0
 position = "at"
 match_indent = true
 payload = '''
-local card = create_card(card_type,G.consumeables, nil, nil, nil, nil, _planet, "blusl")
-card:add_to_deck()
-G.planets:emplace(card)
+SMODS.add_card{set = card_type, area = G.planets, key = _planet, key_append = "blusl"}
 G.GAME.planet_buffer = 0
 '''
 
@@ -150,7 +148,7 @@ pattern = "local card = create_card('Tarot_Planet', G.consumeables, nil, nil, ni
 position = "at"
 match_indent = true
 payload = '''
-local card = create_card("Tarot", G.consumeables, nil, nil, nil, nil, G.GAME.last_tarot, "fool")
+local card = SMODS.create_card{set = "Tarot", area = G.consumeables, key = G.GAME.last_tarot, key_append = "fool"}
 '''
 
 [[patches]]

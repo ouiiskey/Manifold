@@ -1,3 +1,4 @@
+-- Alice
 SMODS.Joker{
     key = "alice",
     rarity = 1,
@@ -9,24 +10,21 @@ SMODS.Joker{
         info_queue[#info_queue + 1] = G.P_CENTERS.c_hex
     end,
     calculate = function(self, card, context)
-        if context.individual and context.cardarea == G.play and context.other_card:get_id() == 14 and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
-            return {
-                message = localize("manifold_a"),
-                message_card = context.blueprint and context.blueprint_card or card,
-                colour = G.C.SECONDARY_SET.Spectral,
-                func = function()
-                    G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
-                    G.E_MANAGER:add_event(Event({
-                        trigger = "before",
-                        delay = 0.0,
-                        func = (function()
-                            local _hex = create_card("Spectral", G.consumeables, nil, nil, nil, nil, "c_hex", "alice")
-                            _hex:add_to_deck()
-                            G.consumeables:emplace(_hex)
-                            G.GAME.consumeable_buffer = 0
-                            return true end )}))
+        if context.before and context.cardarea == G.jokers then
+            local _message = ""
+            for k, v in ipairs(context.scoring_hand) do
+                if v:get_id() == 14 and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+                    _message = _message .. localize("manifold_ace")
+                    SMODS.add_card{key = "Spectral", area = G.consumeables, key = "c_hex", key_append = "alice"}
+                    -- The card must be added immediately rather than with an event to synergize with Bob
                 end
-            }
+            end
+            if _message ~= "" then
+                return {
+                    message = _message,
+                    colour = G.C.SECONDARY_SET.Spectral
+                }
+            end
         end
     end
 }
