@@ -5,7 +5,6 @@ priority = 0
 
 [vars]
 proso = 'next(SMODS.find_card("j_manifold_prosopagnosia"))'
-face_proso = 'context.other_card:is_face() and next(SMODS.find_card("j_manifold_prosopagnosia"))'
 proso_id = 'G.hand.cards[i]:is_face() and next(SMODS.find_card("j_manifold_prosopagnosia")) and MANIF.PROSO.rank or G.hand.cards[i].base.id'
 
 # get_straight
@@ -47,7 +46,7 @@ pattern = "if hand[i]:get_id() == hand[j]:get_id() and i ~= j then"
 position = "at"
 match_indent = true
 payload = '''
-if (hand[i]:get_id() == hand[j]:get_id() or hand[i]:is_face() and hand[j]:is_face() and {{lovely:proso}}) and i ~= j then
+if hand[i]:is_rank(hand[j]:get_id()) and i ~= j then
 '''
 
 [[patches]]
@@ -89,7 +88,7 @@ pattern = "context.other_card:get_id() == G.GAME.current_round.idol_card.id and"
 position = "at"
 match_indent = true
 payload = '''
-(context.other_card:get_id() == G.GAME.current_round.idol_card.id or {{lovely:face_proso}} and (SMODS.Ranks[G.GAME.current_round.idol_card.rank].face or next(SMODS.find_card("j_pareidolia")))) and
+context.other_card:is_rank(G.GAME.current_round.idol_card.id) and
 '''
 
 # Hit the Road
@@ -100,7 +99,7 @@ pattern = "context.other_card:get_id() == 11 and not context.blueprint then"
 position = "at"
 match_indent = true
 payload = '''
-(context.other_card:get_id() == 11 or {{lovely:face_proso}}) and not context.blueprint then
+context.other_card:is_rank(11) and not context.blueprint then
 '''
 
 # Shoot the Moon
@@ -111,7 +110,7 @@ pattern = "context.other_card:get_id() == 12 then"
 position = "at"
 match_indent = true
 payload = '''
-(context.other_card:get_id() == 12 or {{lovely:face_proso}}) then
+context.other_card:is_rank(12) then
 '''
 
 # Triboulet
@@ -122,7 +121,7 @@ pattern = "(context.other_card:get_id() == 12 or context.other_card:get_id() == 
 position = "at"
 match_indent = true
 payload = '''
-(context.other_card:get_id() == 12 or context.other_card:get_id() == 13 or {{lovely:face_proso}}) then
+(context.other_card:is_rank(12) or context.other_card:is_rank(13)) then
 '''
 
 # Baron
@@ -133,5 +132,5 @@ pattern = "context.other_card:get_id() == 13 then"
 position = "at"
 match_indent = true
 payload = '''
-(context.other_card:get_id() == 13 or {{lovely:face_proso}}) then
+context.other_card:is_rank(13) then
 '''

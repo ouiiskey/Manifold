@@ -1,3 +1,4 @@
+-- Tarot Tycoon
 SMODS.Voucher:take_ownership("tarot_tycoon", {
     redeem = function(self, card)
         G.E_MANAGER:add_event(Event({func = function()
@@ -6,6 +7,7 @@ SMODS.Voucher:take_ownership("tarot_tycoon", {
     end
 }, true)
 
+-- Planet Tycoon
 SMODS.Voucher:take_ownership("planet_tycoon", {
     redeem = function(self, card)
         G.E_MANAGER:add_event(Event({func = function()

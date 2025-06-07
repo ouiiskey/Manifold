@@ -80,7 +80,7 @@ end
 [patches.pattern]
 target = "functions/button_callbacks.lua"
 pattern =  '''
-not (card.ability.consumeable and #G.consumeables.cards < G.consumeables.config.card_limit + ((card.edition and card.edition.negative) and 1 or 0)) then
+not (card.ability.consumeable and #G.consumeables.cards < G.consumeables.config.card_limit + (card.edition and card.edition.card_limit or 0)) then
     alert_no_space(card, card.ability.consumeable and G.consumeables or G.jokers)
 '''
 position = "at"
@@ -220,14 +220,14 @@ if v == "negative_consumable" or v == "negative_planet" or v == "negative_playin
 [[patches]]
 [patches.pattern]
 target = '=[SMODS _ "src/overrides.lua"]'
-pattern = "G.consumeables.config.card_limit = G.consumeables.config.card_limit + v"
+pattern = "G.consumeables.config.card_limit = G.consumeables.config.card_limit + self.edition.card_limit"
 position = "at"
 match_indent = true
 payload = '''
 if self.config.center.set == "Planet" then
-    G.planets.config.card_limit = G.planets.config.card_limit + v
+    G.planets.config.card_limit = G.planets.config.card_limit + self.edition.card_limit
 else
-    G.consumeables.config.card_limit = G.consumeables.config.card_limit + v
+    G.consumeables.config.card_limit = G.consumeables.config.card_limit + self.edition.card_limit
 end
 '''
 
@@ -292,4 +292,58 @@ payload = '''
 elseif G.consumeables then if card.config.center.set == "Planet" then G.planets:emplace(card) else G.consumeables:emplace(card) end end
 '''
 
-# Multiplayer
+# Perkeo
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if G.consumeables.cards[1] then"
+position = "at"
+match_indent = true
+payload = '''
+local _pool = {}
+for _, v in ipairs(G.consumeables.cards) do
+    table.insert(_pool, v)
+end
+for _, v in ipairs(G.planets.cards) do
+    table.insert(_pool, v)
+end
+if _pool[1] then
+'''
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+local card = copy_card(pseudorandom_element(G.consumeables.cards, pseudoseed('perkeo')), nil)
+card:set_edition({negative = true}, true)
+card:add_to_deck()
+G.consumeables:emplace(card)
+'''
+position = "at"
+match_indent = true
+payload = '''
+local _card = copy_card(pseudorandom_element(_pool, pseudoseed("perkeo")), nil)
+_card:set_edition({negative = true}, true)
+_card:add_to_deck()
+if _card.config.center.set == "Planet" then
+    G.planets:emplace(_card)
+else
+    G.consumeables:emplace(_card)
+end
+'''
+
+# Gift Card
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "for k, v in ipairs(G.consumeables.cards) do"
+position = "before"
+match_indent = true
+payload = '''
+for k, v in ipairs(G.planets.cards) do
+    if v.set_cost then
+        v.ability.extra_value = (v.ability.extra_value or 0) + self.ability.extra
+        v:set_cost()
+    end
+end
+'''

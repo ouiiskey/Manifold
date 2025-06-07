@@ -1,0 +1,37 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# ease_ante
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "G.GAME.round_resets.ante = G.GAME.round_resets.ante + mod"
+position = "after"
+match_indent = true
+payload = '''
+check_for_unlock{type = "ease_ante", ante = G.GAME.round_resets.ante}
+'''
+
+# card_eval_status_text
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "offset = {x = 0, y = y_off}"
+position = "before"
+match_indent = true
+payload = '''
+font = extra and extra.font,
+'''
+
+# attention_text
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "{n=G.UIT.O, config={draw_layer = 1, object = DynaText({scale = args.scale, string = args.text, maxw = args.maxw, colours = {args.colour},float = true, shadow = true, silent = not args.noisy, args.scale, pop_in = 0, pop_in_rate = 6, rotate = args.rotate or nil})}},"
+position = "at"
+match_indent = true
+payload = '''
+{n=G.UIT.O, config={draw_layer = 1, object = DynaText({scale = args.scale, string = _text or args.text, maxw = args.maxw, colours = {args.colour},float = true, shadow = true, silent = not args.noisy, args.scale, pop_in = 0, pop_in_rate = 6, rotate = args.rotate or nil, font = args.font})}},
+'''

@@ -45,6 +45,18 @@ return {
                 text = {
                     "{C:attention}+#1#{} {C:planet}Planet{} slots",
                 },
+            },
+            j_manifold_clay_tablet = {
+                name = "Clay Tablet",
+                text = {
+                    "{C:attention}Stone{} cards gain",
+                    "{C:dark_edition}Foil{} when played",
+                    "to the right of a {C:attention}6"
+                },
+                unlock = {
+                    "Reach Ante",
+                    "level {E:1,C:attention}#1#",
+                }
             }
         },
         Other = {
@@ -133,9 +145,10 @@ return {
             manifold_black_seal = "Black Seal"
         },
         dictionary = {
-            manifold_boom = "BOOM!",
+            manifold_ace = "A",
             manifold_black = "Black",
-            manifold_ace = "A"
+            manifold_boom = "BOOM!",
+            manifold_cuneiform_foil = "𒃻𒊏"
         }
     }
 }

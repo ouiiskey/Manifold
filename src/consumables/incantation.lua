@@ -9,6 +9,7 @@ SMODS.Consumable:take_ownership("incantation", {
                 front = pseudorandom_element(G.P_CARDS, pseudoseed("inc_fr")),
                 center = G.P_CENTERS.c_base}, G.deck, nil, nil, {G.C.SECONDARY_SET.Edition})
             _card:set_edition({negative = true}, true)
+            _card:add_to_deck()
             G.hand:change_size(-2)
             card:juice_up(0.3, 0.5)
             return true end }))

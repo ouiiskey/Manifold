@@ -8,7 +8,7 @@ SMODS.Joker {
     atlas = "jokers",
     pos = {x = 3, y = 0},
     cost = 4,
-    config = {extra = {Xmult = 4, id = 0}},
+    config = {extra = {Xmult = 3, id = 0}},
     loc_vars = function(self, info_queue, card)
         return {vars = {card.ability.extra.Xmult}}
     end,

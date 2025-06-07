@@ -22,10 +22,9 @@ SMODS.Joker {
             for k, v in ipairs(context.scoring_hand) do
                 if not v.seal and SMODS.has_enhancement(v, "m_steel") then
                     _sealed = true
-                    v:set_seal("manifold_black", nil, true)
                     G.E_MANAGER:add_event(Event({
                         func = function()
-                            v:juice_up()
+                            v:set_seal("manifold_black", true)
                             return true end }))
                 end
             end
