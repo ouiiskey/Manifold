@@ -1,0 +1,207 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Sixth Sense
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if self.ability.name == 'Sixth Sense' and #context.full_hand == 1 and context.full_hand[1]:get_id() == 6 and G.GAME.current_round.hands_played == 0 then"
+position = "at"
+match_indent = true
+payload = '''
+if self.ability.name == "Sixth Sense" and #context.full_hand == 1 and context.full_hand[1]:is_rank(6) and G.GAME.current_round.hands_played == 0 then
+'''
+
+# Mail in Rebate
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "context.other_card:get_id() == G.GAME.current_round.mail_card.id then"
+position = "at"
+match_indent = true
+payload = '''
+context.other_card:is_rank(G.GAME.current_round.mail_card.id) then
+'''
+
+# Hit the Road
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "context.other_card:get_id() == 11 and not context.blueprint then"
+position = "at"
+match_indent = true
+payload = '''
+context.other_card:is_rank(11) and not context.blueprint then
+'''
+
+# Wee Joker
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "context.other_card:get_id() == 2 and not context.blueprint then"
+position = "at"
+match_indent = true
+payload = '''
+context.other_card:is_rank(2) and not context.blueprint then
+'''
+
+# 8 Ball
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if (context.other_card:get_id() == 8) and (pseudorandom('8ball') < G.GAME.probabilities.normal/self.ability.extra) then"
+position = "at"
+match_indent = true
+payload = '''
+if (context.other_card:is_rank(8)) and (pseudorandom("8ball") < G.GAME.probabilities.normal / self.ability.extra) then
+'''
+
+# The Idol
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "context.other_card:get_id() == G.GAME.current_round.idol_card.id and"
+position = "at"
+match_indent = true
+payload = '''
+context.other_card:is_rank(G.GAME.current_round.idol_card.id) and
+'''
+
+# Scholar
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "context.other_card:get_id() == 14 then"
+position = "at"
+match_indent = true
+payload = '''
+context.other_card:is_rank(14) then
+'''
+
+# Walkie Talkie
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "(context.other_card:get_id() == 10 or context.other_card:get_id() == 4) then"
+position = "at"
+match_indent = true
+payload = '''
+(context.other_card:is_rank(10) or context.other_card:is_rank(4)) then
+'''
+
+# Fibonacci
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+context.other_card:get_id() == 2 or
+    context.other_card:get_id() == 3 or
+    context.other_card:get_id() == 5 or
+    context.other_card:get_id() == 8 or
+    context.other_card:get_id() == 14) then
+'''
+position = "at"
+match_indent = true
+payload = '''
+context.other_card:is_rank(2) or
+    context.other_card:is_rank(3) or
+    context.other_card:is_rank(5) or
+    context.other_card:is_rank(8) or
+    context.other_card:is_rank(14)) then
+'''
+
+# Triboulet
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "(context.other_card:get_id() == 12 or context.other_card:get_id() == 13) then"
+position = "at"
+match_indent = true
+payload = '''
+(context.other_card:is_rank(12) or context.other_card:is_rank(13)) then
+'''
+
+# Shoot the Moon
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "context.other_card:get_id() == 12 then"
+position = "at"
+match_indent = true
+payload = '''
+context.other_card:is_rank(12) then
+'''
+
+# Baron
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "context.other_card:get_id() == 13 then"
+position = "at"
+match_indent = true
+payload = '''
+context.other_card:is_rank(13) then
+'''
+
+# Hack
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+context.other_card:get_id() == 2 or
+    context.other_card:get_id() == 3 or
+    context.other_card:get_id() == 4 or
+    context.other_card:get_id() == 5) then
+'''
+position = "at"
+match_indent = true
+payload = '''
+context.other_card:is_rank(2) or
+    context.other_card:is_rank(3) or
+    context.other_card:is_rank(4) or
+    context.other_card:is_rank(5)) then
+'''
+
+# Cloud 9
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if v:get_id() == 9 then self.ability.nine_tally = self.ability.nine_tally+1 end"
+position = "at"
+match_indent = true
+payload = '''
+if v:is_rank(9) then self.ability.nine_tally = self.ability.nine_tally + 1 end
+'''
+
+# Even Steven
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+context.other_card:get_id() <= 10 and
+context.other_card:get_id() >= 0 and
+context.other_card:get_id()%2 == 0
+'''
+position = "at"
+match_indent = true
+payload = '''
+context.other_card:is_even()
+'''
+
+# Odd Todd
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+((context.other_card:get_id() <= 10 and
+    context.other_card:get_id() >= 0 and
+    context.other_card:get_id()%2 == 1) or
+    (context.other_card:get_id() == 14))
+'''
+position = "at"
+match_indent = true
+payload = '''
+context.other_card:is_odd()
+'''

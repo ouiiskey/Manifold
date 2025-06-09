@@ -57,6 +57,14 @@ return {
                     "Reach Ante",
                     "level {E:1,C:attention}#1#",
                 }
+            },
+            j_manifold_orange_juice = {
+                name = "Orange Juice",
+                text = {
+                    "100% all {C:attention}listed{} {C:green,E:1,S:1.1}probabilities",
+                    "until a {C:attention}Lucky{} card is scored",
+                    "{C:inactive}(ex: {C:green}1 in 15{C:inactive} -> {C:green}1 in 1{C:inactive})"
+                }
             }
         },
         Other = {
@@ -73,8 +81,9 @@ return {
         Spectral = {
             c_incantation = {
                 text = {
-                    "Add a random {C:dark_edition}Negative",
-                    "playing card to your deck,",
+                    "Add a random",
+                    "{C:dark_edition}Negative{} playing card",
+                    "to your deck,",
                     "{C:red}-2{} hand size"
                 }
             },

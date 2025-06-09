@@ -8,6 +8,9 @@ SMODS.Atlas {
     py = 34
 }
 
+-- Utils
+SMODS.load_file("src/utils.lua")()
+
 -- Fonts
 SMODS.load_file("src/fonts.lua")()
 
@@ -26,6 +29,3 @@ SMODS.load_file("src/jokers/jokers.lua")()
 -- Backs
 
 -- Challenges
-
--- Utils
-SMODS.load_file("src/utils.lua")()
