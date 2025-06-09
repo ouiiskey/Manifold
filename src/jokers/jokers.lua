@@ -13,6 +13,7 @@ SMODS.load_file("src/jokers/alice.lua")()
 SMODS.load_file("src/jokers/space_patrol.lua")()
 SMODS.load_file("src/jokers/clay_tablet.lua")()
 SMODS.load_file("src/jokers/orange_juice.lua")()
+SMODS.load_file("src/jokers/pudding.lua")()
 
 -- Vanilla
 SMODS.load_file("src/jokers/seance.lua")()

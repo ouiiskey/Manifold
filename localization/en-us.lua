@@ -65,6 +65,14 @@ return {
                     "until a {C:attention}Lucky{} card is scored",
                     "{C:inactive}(ex: {C:green}1 in 15{C:inactive} -> {C:green}1 in 1{C:inactive})"
                 }
+            },
+            j_manifold_pudding = {
+                name = "Pudding",
+                text = {
+                    "Scored {C:attention}Bonus Cards",
+                    "give {C:mult}+#1#{} Mult",
+                    "the next {C:attention}#2#{} times",
+                }
             }
         },
         Other = {

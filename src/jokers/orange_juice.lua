@@ -43,10 +43,8 @@ SMODS.Joker{
                 return {
                     message_card = card,
                     message = localize("k_drank_ex"),
-                    colour = G.C.FILTER,
-                    func = function()
-                        card:eat()
-                    end
+                    colour = G.C.ORANGE,
+                    func = function() card:eat() end
                 }
             end
         end
