@@ -73,6 +73,14 @@ return {
                     "give {C:mult}+#1#{} Mult",
                     "the next {C:attention}#2#{} times",
                 }
+            },
+            j_manifold_cookie_dough = {
+                name = "Cookie Dough",
+                text = {
+                    "Adds {C:mult}Mult{} to {C:chips}Chips",
+                    "Destroy this card",
+                    "if flames ignite"
+                }
             }
         },
         Other = {
@@ -163,6 +171,7 @@ return {
         },
         dictionary = {
             manifold_ace = "A",
+            manifold_baked = "Baked!",
             manifold_black = "Black",
             manifold_boom = "BOOM!",
             manifold_cuneiform_foil = "𒃻𒊏"
