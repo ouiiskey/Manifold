@@ -77,6 +77,14 @@ return {
             j_manifold_cookie_dough = {
                 name = "Cookie Dough",
                 text = {
+                    "Adds {C:chips}Chips{} to {C:mult}Mult",
+                    "Destroy this card",
+                    "if flames ignite"
+                }
+            },
+            j_manifold_cookie = {
+                name = "Cookie",
+                text = {
                     "Adds {C:mult}Mult{} to {C:chips}Chips",
                     "Destroy this card",
                     "if flames ignite"
@@ -174,6 +182,7 @@ return {
             manifold_baked = "Baked!",
             manifold_black = "Black",
             manifold_boom = "BOOM!",
+            manifold_burnt = "Burnt!",
             manifold_cuneiform_foil = "𒃻𒊏"
         }
     }

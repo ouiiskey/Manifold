@@ -35,5 +35,6 @@ SMODS.Joker{
                 mult = card.ability.extra.mult
             }
         end
-    end
+    end,
+    eternal_compat = false
 }
