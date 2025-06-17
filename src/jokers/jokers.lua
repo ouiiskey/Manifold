@@ -16,6 +16,7 @@ SMODS.load_file("src/jokers/orange_juice.lua")()
 SMODS.load_file("src/jokers/pudding.lua")()
 SMODS.load_file("src/jokers/cookie_dough.lua")()
 SMODS.load_file("src/jokers/cookie.lua")()
+SMODS.load_file("src/jokers/baked_potato.lua")()
 
 -- Vanilla
 SMODS.load_file("src/jokers/seance.lua")()

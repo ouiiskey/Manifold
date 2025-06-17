@@ -1,5 +1,10 @@
 MANIF = {}
 
+SMODS.current_mod.optional_features = {
+    post_trigger = true,
+    retrigger_joker = true
+}
+
 -- Mod icon
 SMODS.Atlas {
     key = "modicon",

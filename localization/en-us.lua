@@ -61,7 +61,7 @@ return {
             j_manifold_orange_juice = {
                 name = "Orange Juice",
                 text = {
-                    "100% all {C:attention}listed{} {C:green,E:1,S:1.1}probabilities",
+                    "{X:green,C:white} 100% {} all {C:attention}listed{} {C:green,E:1,S:1.1}probabilities",
                     "until a {C:attention}Lucky{} card is scored",
                     "{C:inactive}(ex: {C:green}1 in 15{C:inactive} -> {C:green}1 in 1{C:inactive})"
                 }
@@ -77,17 +77,26 @@ return {
             j_manifold_cookie_dough = {
                 name = "Cookie Dough",
                 text = {
-                    "Adds {C:chips}Chips{} to {C:mult}Mult",
+                    "Adds Chips to Mult",
                     "Destroy this card",
-                    "if flames ignite"
+                    "if {C:attention}flames ignite"
                 }
             },
             j_manifold_cookie = {
                 name = "Cookie",
                 text = {
-                    "Adds {C:mult}Mult{} to {C:chips}Chips",
+                    "Adds Mult to Chips",
                     "Destroy this card",
-                    "if flames ignite"
+                    "if {C:attention}flames ignite"
+                }
+            },
+            j_manifold_baked_potato = {
+                name = "Baked Potato",
+                text = {
+                    "{C:chips}+#1#{} Chips",
+                    "Retrigger this card",
+                    "until {C:attention}flames ignite",
+                    "{C:inactive}({C:attention}#2#{C:inactive} triggers remaining)"
                 }
             }
         },
