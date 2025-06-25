@@ -98,6 +98,15 @@ return {
                     "until {C:attention}flames ignite",
                     "{C:inactive}({C:attention}#2#{C:inactive} triggers remaining)"
                 }
+            },
+            j_manifold_hot_potato = {
+                name = "Hot Potato",
+                text = {
+                    "{C:chips}+#1#{} Chips",
+                    "Die if any {C:attention}#2#{} is",
+                    "held in hand, rank",
+                    "changes every round"
+                }
             }
         },
         Other = {
