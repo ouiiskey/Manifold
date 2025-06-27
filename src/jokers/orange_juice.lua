@@ -1,5 +1,5 @@
 -- Orange Juice, see also orange_juice.toml
-local _mod = 1024
+local operand = 1024
 
 SMODS.Joker{
     key = "orange_juice",
@@ -13,13 +13,13 @@ SMODS.Joker{
     end,
     add_to_deck = function(self, card, from_debuff)
         for k, v in pairs(G.GAME.probabilities) do
-            G.GAME.probabilities[k] = v * _mod
+            G.GAME.probabilities[k] = v * operand
         end
     end,
     remove_from_deck = function(self, card, from_debuff)
         if card.ability.extra.on_remove then
             for k, v in pairs(G.GAME.probabilities) do
-                G.GAME.probabilities[k] = v / _mod
+                G.GAME.probabilities[k] = v / operand
             end
         end
     end,
@@ -29,7 +29,7 @@ SMODS.Joker{
                 for k, v in ipairs(context.scoring_hand) do
                     if SMODS.has_enhancement(v, "m_lucky") then
                         for kk, vv in pairs(G.GAME.probabilities) do
-                            G.GAME.probabilities[kk] = vv / _mod
+                            G.GAME.probabilities[kk] = vv / operand
                         end
                         card.ability.extra.on_remove = false
                         v.guaranteed_mult = true

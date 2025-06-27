@@ -20,6 +20,7 @@ Because this mod contains bespoke code, you may encounter compatibility issues w
 #### Known compatible mods:
 * [Banner](https://github.com/SylviBlossom/Banner)
 * [Too Many Jokers](https://github.com/cg-223/toomanyjokers)
+* [Talisman](https://github.com/SpectralPack/Talisman)
 #### Known incompatible mods:
 * [DebugPlus](https://github.com/WilsontheWolf/DebugPlus)
   * Copied planets emplace in the consumable slots, spawn the planets instead. 

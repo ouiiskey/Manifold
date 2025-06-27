@@ -18,17 +18,17 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.before and context.main_eval and not context.blueprint then
-            local _sealed = false
+            local sealed = false
             for k, v in ipairs(context.scoring_hand) do
                 if not v.seal and SMODS.has_enhancement(v, "m_steel") then
-                    _sealed = true
+                    sealed = true
                     G.E_MANAGER:add_event(Event({
                         func = function()
                             v:set_seal("manifold_black", true)
                             return true end }))
                 end
             end
-            if _sealed then
+            if sealed then
                 return {
                     message = localize("manifold_black"),
                     colour = G.C.BLACK

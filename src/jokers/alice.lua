@@ -11,17 +11,17 @@ SMODS.Joker{
     end,
     calculate = function(self, card, context)
         if context.before and context.main_eval then
-            local _message = ""
+            local message = ""
             for k, v in ipairs(context.scoring_hand) do
                 if v:is_rank(14) and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
-                    _message = _message .. localize("manifold_ace")
+                    message = message .. localize("manifold_ace")
                     SMODS.add_card{key = "Spectral", area = G.consumeables, key = "c_hex", key_append = "alice"}
                     -- The card must be added immediately rather than with an event to synergize with Bob
                 end
             end
-            if _message ~= "" then
+            if message ~= "" then
                 return {
-                    message = _message,
+                    message = message,
                     colour = G.C.SECONDARY_SET.Spectral
                 }
             end

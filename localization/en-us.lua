@@ -20,7 +20,7 @@ return {
                 name = "Black Knight",
                 text = {
                     "All played {C:attention}Steel Cards",
-                    "gain a {C:black}Black Seal",
+                    "gain a {C:manifold_black}Black Seal",
                     "when scored"
                 }
             },
@@ -107,6 +107,12 @@ return {
                     "held in hand, rank",
                     "changes every round"
                 }
+            },
+            j_manifold_digi_carrot = {
+                name = "Digi-Carrot",
+                text = {
+                    "{X:mult,C:white} ^#1# {} Mult"
+                }
             }
         },
         Other = {
@@ -139,7 +145,7 @@ return {
             },
             c_grim = {
                 text = {
-                    "Add a {C:black}Black Seal",
+                    "Add a {C:manifold_black}Black Seal",
                     "to {C:attention}1{} selected",
                     "card in your hand"
                 }

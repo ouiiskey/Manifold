@@ -1,18 +1,18 @@
 -- Familiar
 SMODS.Consumable:take_ownership("familiar", {
     use = function(self, card, area, copier)
-        local _pool = {}
+        local pool = {}
         for k, v in ipairs(G.consumeables.cards) do
             if v.config.center_key ~= "c_familiar" then
-                table.insert(_pool, v)
+                table.insert(pool, v)
             end
         end
-        local _target = pseudorandom_element(_pool, pseudoseed("random_consumable"))
+        local target = pseudorandom_element(pool, pseudoseed("random_consumable"))
         for i = 1, G.consumeables.config.card_limit - #G.consumeables.cards do
             G.E_MANAGER:add_event(Event({trigger = "after", delay = 0.4, func = function()
                 if G.consumeables.config.card_limit > #G.consumeables.cards then
                     play_sound("timpani")
-                    local _copy = copy_card(_target, nil, nil, G.playing_card, true)
+                    local _copy = copy_card(target, nil, nil, nil, true)
                     _copy:add_to_deck()
                     G.consumeables:emplace(_copy)
                     card:juice_up(0.3, 0.5)

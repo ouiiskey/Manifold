@@ -3,6 +3,7 @@ version = "1.0.0"
 dump_lua = true
 priority = 0
 
+# Functionality
 [[patches]]
 [patches.pattern]
 target = "card.lua"
@@ -19,4 +20,15 @@ if (self.area == G.hand or self.area == G.play) and not self.debuff and self.sea
         return true end }))
     end
 end
+'''
+
+# Color
+[[patches]]
+[patches.pattern]
+target = "functions/misc_functions.lua"
+pattern = "red = G.C.RED,"
+position = "before"
+match_indent = true
+payload = '''
+manifold_black = G.C.BLACK,
 '''

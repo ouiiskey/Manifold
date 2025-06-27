@@ -1,5 +1,5 @@
 -- Clay Tablet, see also clay_tablet.toml
-local _ante = 0
+local ante = 0
 
 SMODS.Joker{
     key = "clay_tablet",
@@ -9,10 +9,10 @@ SMODS.Joker{
     cost = 5,
     unlocked = false,
     locked_loc_vars = function(self, info_queue, card)
-        return {vars = _ante}
+        return {vars = ante }
     end,
     check_for_unlock = function(self, args)
-        return args.type == "ease_ante" and args.ante == _ante
+        return args.type == "ease_ante" and args.ante == ante
     end,
     in_pool = function(self, args)
         for k, v in ipairs(G.playing_cards) do
@@ -24,10 +24,10 @@ SMODS.Joker{
     end,
     calculate = function(self, card, context)
         if context.before and context.main_eval and not context.blueprint then
-            local _foiled = false
+            local foiled = false
             for i = 2, #context.full_hand do
                 if not context.full_hand[i].edition and SMODS.has_enhancement(context.full_hand[i], "m_stone") and context.full_hand[i-1]:is_rank(6) then
-                    _foiled = true
+                    foiled = true
                     -- Card scores as foil but shader doesn't come early
                     context.full_hand[i]:set_edition({foil = true}, true, true)
                     context.full_hand[i].edition.foil = false
@@ -39,7 +39,7 @@ SMODS.Joker{
                             return true end }))
                 end
             end
-            if _foiled then
+            if foiled then
                 return {
                     message = localize("manifold_cuneiform_foil"),
                     font = SMODS.Fonts["manifold_cuneiform"],

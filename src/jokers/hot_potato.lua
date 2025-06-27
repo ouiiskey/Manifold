@@ -1,16 +1,16 @@
 -- Hot Potato
 SMODS.current_mod.reset_game_globals = function()
     G.GAME.current_round.hot_card = {rank = "Ace"}
-    local _heatable_cards = {}
+    local heatable_cards = {}
     for k, v in ipairs(G.playing_cards) do
         if v.ability.effect ~= 'Stone Card' then
-            _heatable_cards[#_heatable_cards+1] = v
+            heatable_cards[#heatable_cards +1] = v
         end
     end
-    if _heatable_cards[1] then
-        local _hot_card = pseudorandom_element(_heatable_cards, pseudoseed("manif_hot" .. G.GAME.round_resets.ante))
-        G.GAME.current_round.hot_card.rank = _hot_card.base.value
-        G.GAME.current_round.hot_card.id = _hot_card.base.id
+    if heatable_cards[1] then
+        local hot_card = pseudorandom_element(heatable_cards, pseudoseed("manif_hot" .. G.GAME.round_resets.ante))
+        G.GAME.current_round.hot_card.rank = hot_card.base.value
+        G.GAME.current_round.hot_card.id = hot_card.base.id
     end
 end
 
@@ -32,20 +32,20 @@ SMODS.Joker{
                 chips = card.ability.extra.chips
             }
         elseif context.individual and context.cardarea == G.hand and not context.end_of_round and not context.blueprint and context.other_card:is_rank(G.GAME.current_round.hot_card.id) then
-            local _bones = SMODS.find_card("j_mr_bones")
-            if next(_bones) and (G.GAME.chips + _G.mult * _G.hand_chips) / G.GAME.blind.chips >= 0.25 then
+            local bones = SMODS.find_card("j_mr_bones")
+            if next(bones) and (G.GAME.chips + _G.mult * _G.hand_chips) / G.GAME.blind.chips >= 0.25 then
                 G.E_MANAGER:add_event(Event({
                     func = function()
                         G.hand_text_area.blind_chips:juice_up()
                         G.hand_text_area.game_chips:juice_up()
                         play_sound("tarot1")
-                        _bones[1]:start_dissolve()
+                        bones[1]:start_dissolve()
                         return true
                     end
                 }))
                 return {
                     message = localize("k_saved_ex"),
-                    message_card = _bones[1],
+                    message_card = bones[1],
                     colour = G.C.RED
                 }
             else

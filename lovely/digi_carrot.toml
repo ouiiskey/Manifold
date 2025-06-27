@@ -1,0 +1,60 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# e_mult
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "elseif eval_type == 'swap' then "
+position = "before"
+match_indent = true
+payload = '''
+elseif eval_type == "e_mult" then
+    sound = "multhit2"
+    volume = 0.7
+    amt = amt
+    text = "^" .. amt .. " " .. localize("k_mult")
+    colour = G.C.XMULT
+    config.type = "fade"
+    config.scale = 0.7
+'''
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "if effects[ii].message then"
+position = "before"
+match_indent = true
+payload = '''
+if effects[ii].e_mult then
+	mod_percent = true
+	mult = mod_mult(mult ^ effects[ii].e_mult)
+	update_hand_text({delay = 0}, {mult = mult})
+	card_eval_status_text(G.hand.cards[i], "e_mult", effects[ii].e_mult, percent)
+end
+'''
+
+# Cavendish
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''
+j_cavendish=        {order = 61,  unlocked = true, discovered = false, blueprint_compat = true, perishable_compat = true, eternal_compat = false, rarity = 1, cost = 4, name = "Cavendish", pos = {x=5,y=11}, set = "Joker", cost_mult = 1.0, config = {extra = {odds = 1000, Xmult = 3}}, yes_pool_flag = 'gros_michel_extinct'},
+'''
+position = "at"
+match_indent = true
+payload = '''
+j_cavendish = {order = 61, unlocked = true, discovered = false, blueprint_compat = true, perishable_compat = true, eternal_compat = false, rarity = 1, cost = 4, name = "Cavendish", pos = {x = 5, y = 11}, set = "Joker", cost_mult = 1.0, config = {extra = {odds = 1000, Xmult = 3}}, yes_pool_flag = "gros_michel_extinct", no_pool_flag = "cavendish_extinct"},
+'''
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if self.ability.name == 'Gros Michel' then G.GAME.pool_flags.gros_michel_extinct = true end"
+position = "after"
+match_indent = true
+payload = '''
+if self.ability.name == "Cavendish" then G.GAME.pool_flags.cavendish_extinct = true end
+'''
