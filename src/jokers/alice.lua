@@ -1,5 +1,5 @@
 -- Alice
-SMODS.Joker{
+SMODS.Joker {
     key = "alice",
     rarity = 1,
     atlas = "jokers",

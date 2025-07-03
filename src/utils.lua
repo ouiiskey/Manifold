@@ -1,3 +1,4 @@
+-- See also is_rank.toml
 function Card:is_rank(rank)
     if self:get_id() == rank then return true end
     if next(SMODS.find_card("j_manifold_prosopagnosia")) then

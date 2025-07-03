@@ -113,6 +113,16 @@ return {
                 text = {
                     "{X:mult,C:white} ^#1# {} Mult"
                 }
+            },
+            j_manifold_extraterrestrial={
+                name = "Extraterrestrial",
+                text = {
+                    "Retrigger base",
+                    "Chips and Mult"
+                },
+                unlock = {
+                    "Discover {E:1,C:planet}Planet X"
+                }
             }
         },
         Other = {

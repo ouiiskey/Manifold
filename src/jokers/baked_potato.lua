@@ -1,5 +1,5 @@
 -- Baked Potato
-SMODS.Joker{
+SMODS.Joker {
     key = "baked_potato",
     rarity = 1,
     atlas = "jokers",
@@ -19,7 +19,7 @@ SMODS.Joker{
             return {
                 chips = card.ability.extra.chips
             }
-        elseif not context.blueprint and context.retrigger_joker_check and context.other_card == card and (_G.mult + (card.edition and card.edition.mult or 0)) * (_G.hand_chips + card.ability.extra.chips + (card.edition and card.edition.chips or 0)) < G.GAME.blind.chips and card.ability.extra.chips > 0 then
+        elseif not context.blueprint and context.retrigger_joker_check and context.other_card == card and (to_big(_G.mult) + (card.edition and card.edition.mult or 0)) * (_G.hand_chips + card.ability.extra.chips + (card.edition and card.edition.chips or 0)) < to_big(G.GAME.blind.chips) and card.ability.extra.chips > 0 then
             return {
                 message = localize("k_again_ex"),
                 repetitions = math.min(math.ceil((G.GAME.blind.chips / (_G.mult + (card.edition and card.edition.mult or 0)) - _G.hand_chips - (card.edition and card.edition.chips or 0)) / card.ability.extra.chips) - 1, card.ability.extra.triggers),

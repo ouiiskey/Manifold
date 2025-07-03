@@ -300,14 +300,14 @@ pattern = "if G.consumeables.cards[1] then"
 position = "at"
 match_indent = true
 payload = '''
-local _pool = {}
-for _, v in ipairs(G.consumeables.cards) do
-    table.insert(_pool, v)
+local pool = {}
+for k, v in ipairs(G.consumeables.cards) do
+    table.insert(pool, v)
 end
-for _, v in ipairs(G.planets.cards) do
-    table.insert(_pool, v)
+for k, v in ipairs(G.planets.cards) do
+    table.insert(pool, v)
 end
-if _pool[1] then
+if pool[1] then
 '''
 
 [[patches]]
@@ -322,13 +322,13 @@ G.consumeables:emplace(card)
 position = "at"
 match_indent = true
 payload = '''
-local _card = copy_card(pseudorandom_element(_pool, pseudoseed("perkeo")), nil)
-_card:set_edition({negative = true}, true)
-_card:add_to_deck()
-if _card.config.center.set == "Planet" then
-    G.planets:emplace(_card)
+local card = copy_card(pseudorandom_element(pool, pseudoseed("perkeo")), nil)
+card:set_edition({negative = true}, true)
+card:add_to_deck()
+if card.config.center.set == "Planet" then
+    G.planets:emplace(card)
 else
-    G.consumeables:emplace(_card)
+    G.consumeables:emplace(card)
 end
 '''
 

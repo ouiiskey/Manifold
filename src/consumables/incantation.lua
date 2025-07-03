@@ -5,11 +5,11 @@ SMODS.Consumable:take_ownership("incantation", {
     end,
     use = function(self, card, area, copier)
         G.E_MANAGER:add_event(Event({trigger = "after", delay = 0.4, func = function()
-            local _card = create_playing_card({
+            local card = create_playing_card({
                 front = pseudorandom_element(G.P_CARDS, pseudoseed("inc_fr")),
                 center = G.P_CENTERS.c_base}, G.deck, nil, nil, {G.C.SECONDARY_SET.Edition})
-            _card:set_edition({negative = true}, true)
-            _card:add_to_deck()
+            card:set_edition({ negative = true}, true)
+            card:add_to_deck()
             G.hand:change_size(-2)
             card:juice_up(0.3, 0.5)
             return true end }))

@@ -21,21 +21,6 @@ elseif eval_type == "e_mult" then
     config.scale = 0.7
 '''
 
-[[patches]]
-[patches.pattern]
-target = "functions/state_events.lua"
-pattern = "if effects[ii].message then"
-position = "before"
-match_indent = true
-payload = '''
-if effects[ii].e_mult then
-	mod_percent = true
-	mult = mod_mult(mult ^ effects[ii].e_mult)
-	update_hand_text({delay = 0}, {mult = mult})
-	card_eval_status_text(G.hand.cards[i], "e_mult", effects[ii].e_mult, percent)
-end
-'''
-
 # Cavendish
 [[patches]]
 [patches.pattern]

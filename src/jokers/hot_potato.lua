@@ -33,7 +33,7 @@ SMODS.Joker{
             }
         elseif context.individual and context.cardarea == G.hand and not context.end_of_round and not context.blueprint and context.other_card:is_rank(G.GAME.current_round.hot_card.id) then
             local bones = SMODS.find_card("j_mr_bones")
-            if next(bones) and (G.GAME.chips + _G.mult * _G.hand_chips) / G.GAME.blind.chips >= 0.25 then
+            if next(bones) and (to_big(G.GAME.chips) + _G.mult * _G.hand_chips) / G.GAME.blind.chips >= to_big(0.25) then
                 G.E_MANAGER:add_event(Event({
                     func = function()
                         G.hand_text_area.blind_chips:juice_up()

@@ -34,3 +34,18 @@ SMODS.load_file("src/jokers/jokers.lua")()
 -- Backs
 
 -- Challenges
+
+-- Compatibility
+SMODS.load_file("src/compat.lua")()
+
+-- Final startup
+SMODS.load_file("src/final.lua")()
+local startup = true
+local old = Game.main_menu
+Game.main_menu = function(change_context)
+    if startup then
+        MANIF.menu()
+    end
+    startup = false
+    old(change_context)
+end

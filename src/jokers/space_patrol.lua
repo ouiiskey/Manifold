@@ -1,5 +1,5 @@
 -- Space Patrol
-SMODS.Joker{
+SMODS.Joker {
     key = "space_patrol",
     rarity = 1,
     atlas = "jokers",

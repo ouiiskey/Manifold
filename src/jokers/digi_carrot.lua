@@ -1,26 +1,5 @@
--- Digi-Carrot
-local hook = true
-for k, v in pairs(SMODS.calculation_keys) do
-    if v == "e_mult" then
-        hook = false
-        break
-    end
-end
-if hook then
-    table.insert(SMODS.calculation_keys, "e_mult")
-    local old = SMODS.calculate_individual_effect
-    SMODS.calculate_individual_effect = function(effect, scored_card, key, amount, from_edition)
-        if key == "e_mult" and amount ~= 1 then
-            mult = mod_mult(mult ^ amount)
-            update_hand_text({delay = 0}, {chips = hand_chips, mult = mult})
-            card_eval_status_text(scored_card, "e_mult", amount, percent)
-            return true
-        end
-        return old(effect, scored_card, key, amount, from_edition)
-    end
-end
-
-SMODS.Joker{
+-- Digi-Carrot, see also digi_carrot.toml and inject.lua
+SMODS.Joker {
     key = "digi_carrot",
     rarity = 1,
     atlas = "jokers",
@@ -28,7 +7,7 @@ SMODS.Joker{
     cost = 4,
     blueprint_compat = true,
     yes_pool_flag = "cavendish_extinct",
-    config = {extra = {e_mult = 1.2, increment = 0.1}},
+    config = {extra = {e_mult = 1.25, increment = 0.05}},
     loc_vars = function(self, info_queue, card)
         return {vars = {card.ability.extra.e_mult}}
     end,

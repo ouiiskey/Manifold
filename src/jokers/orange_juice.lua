@@ -1,7 +1,7 @@
 -- Orange Juice, see also orange_juice.toml
 local operand = 1024
 
-SMODS.Joker{
+SMODS.Joker {
     key = "orange_juice",
     rarity = 2,
     atlas = "jokers",

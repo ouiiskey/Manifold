@@ -1,7 +1,7 @@
 -- Clay Tablet, see also clay_tablet.toml
 local ante = 0
 
-SMODS.Joker{
+SMODS.Joker {
     key = "clay_tablet",
     rarity = 1,
     atlas = "jokers",

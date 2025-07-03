@@ -19,6 +19,7 @@ SMODS.load_file("src/jokers/cookie.lua")()
 SMODS.load_file("src/jokers/baked_potato.lua")()
 SMODS.load_file("src/jokers/hot_potato.lua")()
 SMODS.load_file("src/jokers/digi_carrot.lua")()
+SMODS.load_file("src/jokers/extraterrestrial.lua")()
 
 -- Vanilla
 SMODS.load_file("src/jokers/seance.lua")()
