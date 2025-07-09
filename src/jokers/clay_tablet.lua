@@ -9,7 +9,7 @@ SMODS.Joker {
     cost = 5,
     unlocked = false,
     locked_loc_vars = function(self, info_queue, card)
-        return {vars = ante }
+        return {vars = {ante}}
     end,
     check_for_unlock = function(self, args)
         return args.type == "ease_ante" and args.ante == ante

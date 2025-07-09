@@ -7,8 +7,11 @@ SMODS.Joker {
     cost = 6,
     blueprint_compat = true,
     unlocked = false,
+    locked_loc_vars = function(self, info_queue, card)
+        return {vars = {localize{type = "name_text", set = "Planet", key = MANIF.home}}}
+    end,
     check_for_unlock = function(self, args)
-        return args.type == "discover_amount" and G.P_CENTERS.c_planet_x.discovered
+        return args.type == "discover_amount" and G.P_CENTERS[MANIF.home].discovered
     end,
     calculate = function(self, card, context)
         if context.joker_main then

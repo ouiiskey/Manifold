@@ -1,0 +1,52 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+[vars]
+unknown = 'next(SMODS.find_card("j_manifold_cthugha")) and localize ("manifold_unknown") or'
+unknown_total = 'next(SMODS.find_card("j_manifold_cthugha")) and localize ("manifold_unknown_total") or'
+
+# Round score
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "G.GAME.chips_text = new_chips_text"
+position = "at"
+match_indent = true
+payload = '''
+G.GAME.chips_text = {{lovely:unknown_total}} new_chips_text
+'''
+
+# Mult
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "G.GAME.current_round.current_hand.mult_text = new_mult_text"
+position = "at"
+match_indent = true
+payload = '''
+G.GAME.current_round.current_hand.mult_text = {{lovely:unknown}} new_mult_text
+'''
+
+# Chips
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "G.GAME.current_round.current_hand.chip_text = new_chip_text"
+position = "at"
+match_indent = true
+payload = '''
+G.GAME.current_round.current_hand.chip_text = {{lovely:unknown}} new_chip_text
+'''
+
+# Chip total
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "G.GAME.current_round.current_hand.chip_total_text = new_chip_total_text"
+position = "at"
+match_indent = true
+payload = '''
+G.GAME.current_round.current_hand.chip_total_text = {{lovely:unknown_total}} new_chip_total_text
+'''

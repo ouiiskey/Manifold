@@ -5,6 +5,8 @@ SMODS.Atlas {
     py = 95
 }
 
+MANIF.home = "c_planet_x" -- Aliens' homeworld
+
 SMODS.load_file("src/jokers/prosopagnosia.lua")()
 SMODS.load_file("src/jokers/archwizard.lua")()
 SMODS.load_file("src/jokers/black_knight.lua")()
@@ -20,6 +22,7 @@ SMODS.load_file("src/jokers/baked_potato.lua")()
 SMODS.load_file("src/jokers/hot_potato.lua")()
 SMODS.load_file("src/jokers/digi_carrot.lua")()
 SMODS.load_file("src/jokers/extraterrestrial.lua")()
+SMODS.load_file("src/jokers/cthugha.lua")()
 
 -- Vanilla
 SMODS.load_file("src/jokers/seance.lua")()

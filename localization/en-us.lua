@@ -20,7 +20,7 @@ return {
                 name = "Black Knight",
                 text = {
                     "All played {C:attention}Steel Cards",
-                    "gain a {C:manifold_black}Black Seal",
+                    "gain a {V:1}Black Seal",
                     "when scored"
                 }
             },
@@ -114,14 +114,25 @@ return {
                     "{X:mult,C:white} ^#1# {} Mult"
                 }
             },
-            j_manifold_extraterrestrial={
+            j_manifold_extraterrestrial = {
                 name = "Extraterrestrial",
                 text = {
                     "Retrigger base",
                     "Chips and Mult"
                 },
                 unlock = {
-                    "Discover {E:1,C:planet}Planet X"
+                    "Discover {E:1,C:planet}#1#"
+                }
+            },
+            j_manifold_cthugha = {
+                name = "Cthugha",
+                text = {
+                    "{C:mult}+#1#{} Mult",
+                    "Your score",
+                    "is hidden"
+                },
+                unlock = {
+                    "Sacrifice {C:attention}#1#"
                 }
             }
         },
@@ -155,7 +166,7 @@ return {
             },
             c_grim = {
                 text = {
-                    "Add a {C:manifold_black}Black Seal",
+                    "Add a {V:1}Black Seal",
                     "to {C:attention}1{} selected",
                     "card in your hand"
                 }
@@ -217,7 +228,9 @@ return {
             manifold_black = "Black",
             manifold_boom = "BOOM!",
             manifold_burnt = "Burnt!",
-            manifold_cuneiform_foil = "𒃻𒊏"
+            manifold_cuneiform_foil = "𒃻𒊏",
+            manifold_unknown = "?",
+            manifold_unknown_total = "????"
         }
     }
 }

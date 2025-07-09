@@ -2,6 +2,7 @@
 SMODS.Consumable:take_ownership("grim", {
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = SMODS.Seals["manifold_black"]
+        return {vars = {colours = {G.C.BLACK}}}
     end,
     use = function(self, card, area, copier)
         local conv_card = G.hand.highlighted[1]
