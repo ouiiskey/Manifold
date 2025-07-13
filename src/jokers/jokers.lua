@@ -23,6 +23,7 @@ SMODS.load_file("src/jokers/hot_potato.lua")()
 SMODS.load_file("src/jokers/digi_carrot.lua")()
 SMODS.load_file("src/jokers/extraterrestrial.lua")()
 SMODS.load_file("src/jokers/cthugha.lua")()
+SMODS.load_file("src/jokers/nyarlathotep.lua")()
 
 -- Vanilla
 SMODS.load_file("src/jokers/seance.lua")()

@@ -1,9 +1,11 @@
 ![Manifold](manifold.png "Manifold")
 
+---
+
 A vanilla-style Balatro mod.
 
 ## About
-This mod is intended to preserve vanilla balance and follow [LocalThunk's design guidelines](https://www.reddit.com/r/balatro/comments/1czo9g0/guidelines_for_joker_design/). I recommend you play without using unlock all. For more information, see the [wiki](https://balatromods.miraheze.org/wiki/Manifold).
+This mod is intended to preserve vanilla balance while adding new content. I recommend you play without using `Unlock All`. For more information, see the [wiki](https://balatromods.miraheze.org/wiki/Manifold).
 
 ## Installing
 1. Install [Steamodded](https://github.com/Steamodded/smods/wiki).

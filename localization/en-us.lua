@@ -29,7 +29,7 @@ return {
                 text = {
                     "{C:spectral}Spectral{} cards in your",
                     "{C:attention}consumable{} area give",
-                    "{X:red,C:white} X#1# {} Mult and then break"
+                    "{X:mult,C:white} X#1# {} Mult and then break"
                 }
             },
             j_manifold_alice = {
@@ -130,6 +130,17 @@ return {
                     "{C:mult}+#1#{} Mult",
                     "Your score",
                     "is hidden"
+                },
+                unlock = {
+                    "Sacrifice {C:attention}#1#"
+                }
+            },
+            j_manifold_nyarlathotep = {
+                name = "Nyarlathotep",
+                text = {
+                    "{X:mult,C:white} X#1# {} Mult",
+                    "Flip and shuffle all Jokers",
+                    "when {C:attention}Blind{} is selected"
                 },
                 unlock = {
                     "Sacrifice {C:attention}#1#"
