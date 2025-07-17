@@ -26,6 +26,7 @@ local jokers = {
     "cthugha",
     "nyarlathotep",
     "hastur",
+    "squid",
     -- Vanilla
     "seance"
 }

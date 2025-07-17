@@ -156,6 +156,14 @@ return {
                 unlock = {
                     "Sacrifice {C:attention}#1#"
                 }
+            },
+            j_manifold_squid = {
+                name = "Squid Joker",
+                text = {
+                    "{C:red}+#1#{} discard each hand",
+                    "if all played cards",
+                    "are number cards"
+                }
             }
         },
         Other = {

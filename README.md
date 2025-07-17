@@ -21,8 +21,8 @@ This mod is intended to preserve vanilla balance while adding new content. I rec
 Because this mod contains bespoke code, you may encounter compatibility issues with other mods.
 #### Known compatible mods:
 * [Banner](https://github.com/SylviBlossom/Banner)
-* [Too Many Jokers](https://github.com/cg-223/toomanyjokers)
 * [Talisman](https://github.com/SpectralPack/Talisman)
+* [Too Many Jokers](https://github.com/cg-223/toomanyjokers)
 #### Known incompatible mods:
 * [DebugPlus](https://github.com/WilsontheWolf/DebugPlus)
   * Copied planets emplace in the consumable slots, spawn the planets instead. 
