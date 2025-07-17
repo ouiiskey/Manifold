@@ -1,8 +1,11 @@
--- Vanilla
--- Tarots
-SMODS.load_file("src/consumables/high_priestess.lua")()
-
--- Spectrals
-SMODS.load_file("src/consumables/incantation.lua")()
-SMODS.load_file("src/consumables/familiar.lua")()
-SMODS.load_file("src/consumables/grim.lua")()
+local consumables = {
+    -- Vanilla Tarots
+    "high_priestess",
+    -- Vanilla Spectrals
+    "incantation",
+    "familiar",
+    "grim"
+}
+for k, v in ipairs(consumables) do
+    assert(SMODS.load_file("src/consumables/" .. v .. ".lua"), MANIF.install .. "src/consumables/" .. v .. ".lua")()
+end

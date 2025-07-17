@@ -7,23 +7,28 @@ SMODS.Atlas {
 
 MANIF.home = "c_planet_x" -- Aliens' homeworld
 
-SMODS.load_file("src/jokers/prosopagnosia.lua")()
-SMODS.load_file("src/jokers/archwizard.lua")()
-SMODS.load_file("src/jokers/black_knight.lua")()
-SMODS.load_file("src/jokers/bob.lua")()
-SMODS.load_file("src/jokers/alice.lua")()
-SMODS.load_file("src/jokers/space_patrol.lua")()
-SMODS.load_file("src/jokers/clay_tablet.lua")()
-SMODS.load_file("src/jokers/orange_juice.lua")()
-SMODS.load_file("src/jokers/pudding.lua")()
-SMODS.load_file("src/jokers/cookie_dough.lua")()
-SMODS.load_file("src/jokers/cookie.lua")()
-SMODS.load_file("src/jokers/baked_potato.lua")()
-SMODS.load_file("src/jokers/hot_potato.lua")()
-SMODS.load_file("src/jokers/digi_carrot.lua")()
-SMODS.load_file("src/jokers/extraterrestrial.lua")()
-SMODS.load_file("src/jokers/cthugha.lua")()
-SMODS.load_file("src/jokers/nyarlathotep.lua")()
-
--- Vanilla
-SMODS.load_file("src/jokers/seance.lua")()
+local jokers = {
+    "prosopagnosia",
+    "archwizard",
+    "black_knight",
+    "bob",
+    "alice",
+    "space_patrol",
+    "clay_tablet",
+    "orange_juice",
+    "pudding",
+    "cookie_dough",
+    "cookie",
+    "baked_potato",
+    "hot_potato",
+    "digi_carrot",
+    "extraterrestrial",
+    "cthugha",
+    "nyarlathotep",
+    "hastur",
+    -- Vanilla
+    "seance"
+}
+for k, v in ipairs(jokers) do
+    assert(SMODS.load_file("src/jokers/" .. v .. ".lua"), MANIF.install .. "src/jokers/" .. v .. ".lua")()
+end

@@ -145,6 +145,17 @@ return {
                 unlock = {
                     "Sacrifice {C:attention}#1#"
                 }
+            },
+            j_manifold_hastur = {
+                name = "Hastur",
+                text = {
+                    "{C:chips}+#1#{} Chips",
+                    "Your playing cards",
+                    "are face-down"
+                },
+                unlock = {
+                    "Sacrifice {C:attention}#1#"
+                }
             }
         },
         Other = {

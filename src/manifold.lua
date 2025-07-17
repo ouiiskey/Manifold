@@ -1,4 +1,6 @@
-MANIF = {}
+MANIF = {
+    install = "Improper install detected, missing file: "
+}
 
 SMODS.current_mod.optional_features = {
     post_trigger = true,
@@ -13,39 +15,30 @@ SMODS.Atlas {
     py = 34
 }
 
--- Utils
-SMODS.load_file("src/utils.lua")()
-
--- Fonts
-SMODS.load_file("src/fonts.lua")()
-
--- Vouchers
-SMODS.load_file("src/vouchers.lua")()
-
--- Seals
-SMODS.load_file("src/seals.lua")()
-
--- Consumables
-SMODS.load_file("src/consumables/consumables.lua")()
-
--- Jokers
-SMODS.load_file("src/jokers/jokers.lua")()
-
--- Backs
-
--- Challenges
-
--- Compatibility
-SMODS.load_file("src/compat.lua")()
+-- Load source
+local source = {
+    "utils",
+    "fonts",
+    "vouchers",
+    "seals",
+    "consumables/consumables",
+    "jokers/jokers",
+    -- Backs
+    -- Challenges
+    "compat"
+}
+for k, v in ipairs(source) do
+    assert(SMODS.load_file("src/" .. v .. ".lua"), MANIF.install .. "src/" .. v .. ".lua")()
+end
 
 -- Final startup
-SMODS.load_file("src/final.lua")()
+local menu = assert(SMODS.load_file("src/final.lua"), MANIF.install .. "src/final.lua")
 local startup = true
 local old = Game.main_menu
 Game.main_menu = function(change_context)
     if startup then
-        MANIF.menu()
+        menu()
+        startup = false
     end
-    startup = false
     old(change_context)
 end
