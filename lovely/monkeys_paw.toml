@@ -1,0 +1,34 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# create_card_for_shop
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "local forced_tag = nil"
+position = "after"
+match_indent = true
+payload = '''
+if not G.GAME.shop_cursed and G.GAME.fingers and not next(SMODS.find_card("j_manifold_monkeys_paw")) then
+    G.GAME.shop_cursed = true
+    local card = SMODS.create_card{set = "Joker", area = area, key = "j_manifold_monkeys_paw"}
+    create_shop_card_ui(card, "Joker", area)
+    for k, v in ipairs(G.GAME.tags) do
+        if v:apply_to_run({type = "store_joker_modify", card = card}) then break end
+    end
+    return card
+end
+'''
+
+# reroll_shop
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "G.CONTROLLER.locks.shop_reroll = true"
+position = "before"
+match_indent = true
+payload = '''
+G.GAME.shop_cursed = false
+'''

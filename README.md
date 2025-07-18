@@ -12,6 +12,20 @@ This mod is intended to preserve vanilla balance while adding new content. I rec
 2. Download the [latest version](https://github.com/ouiiskey/Manifold/releases).
 3. Extract the zip in your `Mods` folder.
 
+How your `Mods` folder should look after installing:
+```
+Mods/
+├── Manifold-<version>/
+│   ├── assets/
+│   ├── localization/
+│   ├── lovely/
+│   ├── src/
+│   ├── LICENSE.md
+│   ├── manifold.json
+│   └── README.md
+└── smods/
+```
+
 #### Updating
 1. Delete the old version from your `Mods` folder.
 2. Download the [latest version](https://github.com/ouiiskey/Manifold/releases).
@@ -26,3 +40,6 @@ Because this mod contains bespoke code, you may encounter compatibility issues w
 #### Known incompatible mods:
 * [DebugPlus](https://github.com/WilsontheWolf/DebugPlus)
   * Copied planets emplace in the consumable slots, spawn the planets instead. 
+
+## Issues
+If you wish to report bugs or make suggestions, visit the [issue tracker](https://github.com/ouiiskey/Manifold/issues).

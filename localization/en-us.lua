@@ -164,6 +164,29 @@ return {
                     "if all played cards",
                     "are number cards"
                 }
+            },
+            j_manifold_monkeys_paw = {
+                name = "Monkey's Paw",
+                text = {
+                    "{C:mult}+#1#{} Mult"
+                },
+                unlock = {
+                    "Discover {C:spectral}#1#"
+                }
+            },
+            j_manifold_monkeys_paw_one = {
+                name = "Monkey's Paw",
+                text = {
+                    "{C:chips}+#1#{} Chips"
+                }
+            },
+            j_manifold_monkeys_paw_two = {
+                name = "Monkey's Paw",
+                text = {
+                    "{C:mult}#1#{} Mult",
+                    "{S:1.1,C:red,E:2}Self destructs{}",
+                    "after {C:attention}#2#{} hands"
+                }
             }
         },
         Other = {
@@ -258,6 +281,7 @@ return {
             manifold_black = "Black",
             manifold_boom = "BOOM!",
             manifold_burnt = "Burnt!",
+            manifold_ceased = "Ceased...",
             manifold_cuneiform_foil = "𒃻𒊏",
             manifold_unknown = "?",
             manifold_unknown_total = "????"
