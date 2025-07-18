@@ -8,8 +8,8 @@
   "main_file": "src/manifold.lua",
   "priority": 0,
   "badge_colour": "f96932",
-  "version": "0.6.5",
+  "version": "0.6.6",
   "dependencies": [
-    "Steamodded (>=1.0.0~BETA-0530b)"
+    "Steamodded (>=1.0.0~BETA-0711a)"
   ]
 }

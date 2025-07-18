@@ -9,7 +9,7 @@ This mod is intended to preserve vanilla balance while adding new content. I rec
 
 ## Installing
 1. Install [Steamodded](https://github.com/Steamodded/smods/wiki).
-2. Download the [latest version](https://github.com/ouiiskey/Manifold/releases).
+2. Download the [latest release](https://github.com/ouiiskey/Manifold/releases/latest).
 3. Extract the zip in your `Mods` folder.
 
 How your `Mods` folder should look after installing:
@@ -28,7 +28,7 @@ Mods/
 
 #### Updating
 1. Delete the old version from your `Mods` folder.
-2. Download the [latest version](https://github.com/ouiiskey/Manifold/releases).
+2. Download the [latest release](https://github.com/ouiiskey/Manifold/releases/latest).
 3. Extract the zip in your `Mods` folder.
 
 ## Compatibility
