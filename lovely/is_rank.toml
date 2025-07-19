@@ -51,11 +51,11 @@ context.other_card:is_rank(2) and not context.blueprint then
 [[patches]]
 [patches.pattern]
 target = "card.lua"
-pattern = "if (context.other_card:get_id() == 8) and (pseudorandom('8ball') < G.GAME.probabilities.normal/self.ability.extra) then"
+pattern = "if (context.other_card:get_id() == 8) and (SMODS.pseudorandom_probability(self, '8ball', 1, self.ability.extra)) then"
 position = "at"
 match_indent = true
 payload = '''
-if (context.other_card:is_rank(8)) and (pseudorandom("8ball") < G.GAME.probabilities.normal / self.ability.extra) then
+if (context.other_card:is_rank(8)) and (SMODS.pseudorandom_probability(self, '8ball', 1, self.ability.extra)) then
 '''
 
 # The Idol

@@ -13,7 +13,7 @@ return {
                 text = {
                     "{C:mult}+#1#{} Mult every",
                     "{C:attention}#2#{} hands played",
-                    "{C:inactive}#3#",
+                    "{C:inactive}#3#"
                 }
             },
             j_manifold_black_knight = {
@@ -43,7 +43,7 @@ return {
             j_manifold_space_patrol = {
                 name = "Space Patrol",
                 text = {
-                    "{C:attention}+#1#{} {C:planet}Planet{} slots",
+                    "{C:attention}+#1#{} {C:planet}Planet{} slots"
                 },
             },
             j_manifold_clay_tablet = {
@@ -55,7 +55,7 @@ return {
                 },
                 unlock = {
                     "Reach Ante",
-                    "level {E:1,C:attention}#1#",
+                    "level {E:1,C:attention}#1#"
                 }
             },
             j_manifold_orange_juice = {
@@ -71,7 +71,7 @@ return {
                 text = {
                     "Scored {C:attention}Bonus Cards",
                     "give {C:mult}+#1#{} Mult",
-                    "the next {C:attention}#2#{} times",
+                    "the next {C:attention}#2#{} times"
                 }
             },
             j_manifold_cookie_dough = {
@@ -186,6 +186,12 @@ return {
                     "{C:mult}#1#{} Mult",
                     "{S:1.1,C:red,E:2}Self destructs{}",
                     "after {C:attention}#2#{} hands"
+                }
+            },
+            j_manifold_esper = {
+                name = "Esper",
+                text = {
+                    "{C:attention}+#1#{} consumable slots"
                 }
             }
         },

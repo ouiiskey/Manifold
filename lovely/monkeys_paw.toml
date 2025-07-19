@@ -32,3 +32,14 @@ match_indent = true
 payload = '''
 G.GAME.shop_cursed = false
 '''
+
+# toggle_shop
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "G.CONTROLLER.locks.toggle_shop = true"
+position = "before"
+match_indent = true
+payload = '''
+G.GAME.shop_cursed = false
+'''
