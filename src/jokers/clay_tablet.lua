@@ -15,7 +15,7 @@ SMODS.Joker {
         return args.type == "ease_ante" and args.ante == ante
     end,
     in_pool = function(self, args)
-        for k, v in ipairs(G.playing_cards) do
+        for k, v in ipairs(G.playing_cards or {}) do
             if SMODS.has_enhancement(v, "m_stone") then
                 return true
             end

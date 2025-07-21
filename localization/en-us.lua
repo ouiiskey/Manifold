@@ -132,7 +132,7 @@ return {
                     "is hidden"
                 },
                 unlock = {
-                    "Sacrifice {C:attention}#1#"
+                    "Sacrifice {E:1,C:attention}#1#"
                 }
             },
             j_manifold_nyarlathotep = {
@@ -143,7 +143,7 @@ return {
                     "when {C:attention}Blind{} is selected"
                 },
                 unlock = {
-                    "Sacrifice {C:attention}#1#"
+                    "Sacrifice {E:1,C:attention}#1#"
                 }
             },
             j_manifold_hastur = {
@@ -154,7 +154,7 @@ return {
                     "are face-down"
                 },
                 unlock = {
-                    "Sacrifice {C:attention}#1#"
+                    "Sacrifice {E:1,C:attention}#1#"
                 }
             },
             j_manifold_squid = {
@@ -171,7 +171,8 @@ return {
                     "{C:mult}+#1#{} Mult"
                 },
                 unlock = {
-                    "Discover {C:spectral}#1#"
+                    "Lose a run",
+                    "with {C:money}$#1#"
                 }
             },
             j_manifold_monkeys_paw_one = {
@@ -192,6 +193,18 @@ return {
                 name = "Esper",
                 text = {
                     "{C:attention}+#1#{} consumable slots"
+                }
+            },
+            j_manifold_mana_gem = {
+                name = "Mana Gem",
+                text = {
+                    "Sell this card to",
+                    "escape the current",
+                    "{C:attention}Boss Blind"
+                },
+                unlock = {
+                    "Exit an",
+                    "incomplete run"
                 }
             }
         },
@@ -289,6 +302,8 @@ return {
             manifold_burnt = "Burnt!",
             manifold_ceased = "Ceased...",
             manifold_cuneiform_foil = "𒃻𒊏",
+            manifold_escaped = "Escaped!",
+            manifold_oom = "Out of mana...",
             manifold_unknown = "?",
             manifold_unknown_total = "????"
         }

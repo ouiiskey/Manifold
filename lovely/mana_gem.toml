@@ -1,0 +1,29 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "local game_over = true"
+position = "after"
+match_indent = true
+payload = '''
+local game_over = not G.GAME.gem
+'''
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "SMODS.saved = false"
+position = "at"
+match_indent = true
+payload = '''
+if G.GAME.gem then
+    SMODS.saved = "manifold_oom"
+    G.GAME.gem = false
+else
+    SMODS.saved = false
+end
+'''

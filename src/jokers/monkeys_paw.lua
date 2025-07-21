@@ -1,5 +1,5 @@
 -- Monkey's Paw, see also monkeys_paw.toml
-local unlocker = "c_talisman"
+local threshold = 200
 
 SMODS.Atlas {
     key = "monkeys_paw",
@@ -38,10 +38,10 @@ SMODS.Joker {
     },
     unlocked = false,
     locked_loc_vars = function(self, info_queue, card)
-        return {vars = {localize{type = "name_text", set = "Spectral", key = unlocker}}}
+        return {vars = {threshold}}
     end,
     check_for_unlock = function(self, args)
-        return args.type == "discover_amount" and G.P_CENTERS[unlocker].discovered
+        return args.type == "lose" and G.GAME.dollars >= threshold
     end,
     blueprint_compat = true,
     no_pool_flag = "ceased",

@@ -24,3 +24,35 @@ match_indent = true
 payload = '''
 check_for_unlock{type = "sacrifice", name = sliced_card.ability.name}
 '''
+
+# exit_run
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "G.FUNCS.go_to_menu = function(e)"
+position = "after"
+match_indent = true
+payload = '''
+    if G.STATE ~= G.STATES.GAME_OVER and not G.GAME.won then
+        G.E_MANAGER:add_event(Event({
+            no_delete = true,
+            func = function()
+                G.E_MANAGER:add_event(Event({
+                    no_delete = true,
+                    func = function()
+                        check_for_unlock{type = "exit_run"}
+                        return true end }))
+                return true end }))
+    end
+'''
+
+# lose
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "set_joker_loss()"
+position = "after"
+match_indent = true
+payload = '''
+check_for_unlock{type = "lose"}
+'''
