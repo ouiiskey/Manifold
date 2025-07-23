@@ -30,6 +30,7 @@ local jokers = {
     "monkeys_paw",
     "esper",
     "mana_gem",
+    "wallet",
     -- Vanilla
     "seance"
 }

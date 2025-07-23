@@ -1,0 +1,49 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# G.wallet
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "self.deck = CardArea("
+position = "before"
+match_indent = true
+payload = '''
+self.wallet = CardArea(
+    G.TILE_W + CAI.joker_W / 2 - CAI.hand_W - 2.95, 0,
+    G.discard.T.w, G.discard.T.h,
+    { type = "discard", card_limit = 1e308 }
+)
+'''
+
+# use_card
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "elseif card.ability.set == 'Enhanced' or card.ability.set == 'Default' then "
+position = "before"
+match_indent = true
+payload = '''
+elseif (card.ability.set == "Enhanced" or card.ability.set == "Default") and next(SMODS.find_card("j_manifold_wallet")) then
+    G.wallet:emplace(card)
+    play_sound("card1", 0.8, 0.6)
+    play_sound("generic1")
+    dont_dissolve = true
+    delay_fac = 0.2
+'''
+
+# buy_from_shop
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "if c1.ability.set == 'Default' or c1.ability.set == 'Enhanced' then"
+position = "at"
+match_indent = true
+payload = '''
+if (c1.ability.set == "Default" or c1.ability.set == "Enhanced") and next(SMODS.find_card("j_manifold_wallet")) then
+    inc_career_stat("c_playing_cards_bought", 1)
+    G.wallet:emplace(c1)
+elseif c1.ability.set == "Default" or c1.ability.set == "Enhanced" then
+'''

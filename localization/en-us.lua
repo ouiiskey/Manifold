@@ -206,6 +206,14 @@ return {
                     "Exit an",
                     "incomplete run"
                 }
+            },
+            j_manifold_wallet = {
+                name = "Wallet",
+                text = {
+                    "This card stores",
+                    "new playing cards",
+                    "{C:inactive}(Sell to retrieve)"
+                }
             }
         },
         Other = {
@@ -302,6 +310,7 @@ return {
             manifold_burnt = "Burnt!",
             manifold_ceased = "Ceased...",
             manifold_cuneiform_foil = "𒃻𒊏",
+            manifold_emptied = "Emptied!",
             manifold_escaped = "Escaped!",
             manifold_oom = "Out of mana...",
             manifold_unknown = "?",
