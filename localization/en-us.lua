@@ -214,6 +214,15 @@ return {
                     "new playing cards",
                     "{C:inactive}(Sell to retrieve)"
                 }
+            },
+            j_manifold_carte_blanche = {
+                name = "Carte Blanche",
+                text = {
+                    "Sell this card to",
+                    "draw every card of",
+                    "the most common rank",
+                    "{C:inactive}(Currently {C:attention}#1#{C:inactive})"
+                }
             }
         },
         Other = {
@@ -308,6 +317,7 @@ return {
             manifold_black = "Black",
             manifold_boom = "BOOM!",
             manifold_burnt = "Burnt!",
+            manifold_cashed = "Cashed!",
             manifold_ceased = "Ceased...",
             manifold_cuneiform_foil = "𒃻𒊏",
             manifold_emptied = "Emptied!",

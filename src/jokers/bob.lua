@@ -1,6 +1,6 @@
 -- Bob
-MANIF.BOB = {keys = {"j_manifold_alice", "j_sixth_sense", "j_seance",
-}}
+local keys = {"j_manifold_alice", "j_sixth_sense", "j_seance",
+}
 
 SMODS.Joker {
     key = "bob",
@@ -23,7 +23,7 @@ SMODS.Joker {
                 return true
             end
         end
-        for k, v in ipairs(MANIF.BOB.keys) do
+        for k, v in ipairs(keys) do
             if next(SMODS.find_card(v)) then
                 return true
             end

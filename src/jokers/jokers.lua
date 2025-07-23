@@ -31,6 +31,7 @@ local jokers = {
     "esper",
     "mana_gem",
     "wallet",
+    "carte_blanche",
     -- Vanilla
     "seance"
 }

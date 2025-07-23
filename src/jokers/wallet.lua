@@ -5,7 +5,6 @@ SMODS.Joker {
     atlas = "jokers",
     pos = {x = 2, y = 2},
     cost = 1,
-    config = {extra = {cards = {}}},
     calculate = function(self, card, context)
         if context.selling_self and not context.blueprint then
             local retrieved = false
