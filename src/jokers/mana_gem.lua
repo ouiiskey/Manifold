@@ -26,9 +26,7 @@ SMODS.Joker {
                         G.hand_text_area.blind_chips:juice_up()
                         G.hand_text_area.game_chips:juice_up()
                         play_sound("tarot1")
-                        return true
-                    end
-                }))
+                        return true end }))
                 G.STATE = G.STATES.HAND_PLAYED
                 G.STATE_COMPLETE = true
                 end_round()

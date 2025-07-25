@@ -35,8 +35,8 @@ return {
             j_manifold_alice = {
                 name = "Alice",
                 text = {
-                    "Played {C:attention}Aces{} create",
-                    "a {C:spectral,T:c_hex}Hex{} card when scored",
+                    "Played {C:attention}Aces{} create a",
+                    "{C:spectral,T:c_hex}Hex{} card when scored",
                     "{C:inactive}(Must have room)"
                 }
             },
@@ -211,7 +211,7 @@ return {
                 name = "Wallet",
                 text = {
                     "This card stores",
-                    "new playing cards",
+                    "{C:attention}new{} playing cards",
                     "{C:inactive}(Sell to retrieve)"
                 }
             },
@@ -222,6 +222,14 @@ return {
                     "draw every card of",
                     "the most common rank",
                     "{C:inactive}(Currently {C:attention}#1#{C:inactive})"
+                }
+            },
+            j_manifold_harpoon_gun = {
+                name = "Harpoon Gun",
+                text = {
+                    "Draw the {C:attention}newest",
+                    "card in your deck",
+                    "when round begins"
                 }
             }
         },
@@ -322,6 +330,7 @@ return {
             manifold_cuneiform_foil = "𒃻𒊏",
             manifold_emptied = "Emptied!",
             manifold_escaped = "Escaped!",
+            manifold_hit = "Hit!",
             manifold_oom = "Out of mana...",
             manifold_unknown = "?",
             manifold_unknown_total = "????"

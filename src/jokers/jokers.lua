@@ -32,6 +32,7 @@ local jokers = {
     "mana_gem",
     "wallet",
     "carte_blanche",
+    "harpoon_gun",
     -- Vanilla
     "seance"
 }

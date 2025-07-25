@@ -2,7 +2,11 @@
 local get_common = function()
     local counts = {}
     for k, v in ipairs(G.deck and G.deck.cards or {}) do
-        counts[v.base.value] = (counts[v.base.value] or 0) + 1
+        for kk, vv in pairs(SMODS.Ranks) do
+            if v:is_rank(vv.id) then
+                counts[kk] = (counts[kk] or 0) + 1
+            end
+        end
     end
     local ret = false
     local quant = -1

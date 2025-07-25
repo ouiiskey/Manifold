@@ -40,9 +40,7 @@ SMODS.Joker{
                         G.hand_text_area.game_chips:juice_up()
                         play_sound("tarot1")
                         bones[1]:start_dissolve()
-                        return true
-                    end
-                }))
+                        return true end }))
                 return {
                     message = localize("k_saved_ex"),
                     message_card = bones[1],
