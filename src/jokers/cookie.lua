@@ -8,7 +8,7 @@ SMODS.Joker {
     blueprint_compat = true,
     yes_pool_flag = "cookie_baked",
     calculate = function(self, card, context)
-        if context.post_trigger and not context.blueprint and to_big(_G.mult) * _G.hand_chips >= to_big(G.GAME.blind.chips) then
+        if context.post_trigger and not context.blueprint and to_big(mult or 0) * (hand_chips or 0) >= to_big(G.GAME.blind.chips) then
             return {
                 message = localize("manifold_burnt"),
                 colour = G.C.PURPLE,
@@ -16,7 +16,7 @@ SMODS.Joker {
             }
         elseif context.joker_main then
             return {
-                chips = _G.mult
+                chips = mult
             }
         end
     end,

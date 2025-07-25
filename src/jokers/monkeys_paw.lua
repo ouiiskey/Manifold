@@ -1,5 +1,7 @@
 -- Monkey's Paw, see also monkeys_paw.toml
 local threshold = 200
+local sources = {"jud", "lib",
+}
 
 SMODS.Atlas {
     key = "monkeys_paw",
@@ -55,7 +57,11 @@ SMODS.Joker {
         return {vars = {card.ability.extra.mult}}
     end,
     in_pool = function(self, args)
-        return not args or not args.source == "jud"
+        if not args then return true end
+        for k, v in ipairs(sources) do
+            if args.source == v then return false end
+        end
+        return true
     end,
     calculate = function(self, card, context)
         if context.joker_main then

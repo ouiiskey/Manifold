@@ -231,6 +231,14 @@ return {
                     "card in your deck",
                     "when round begins"
                 }
+            },
+            j_manifold_library = {
+                name = "Library Card",
+                text = {
+                    "When {C:attention}Blind{} is selected,",
+                    "create {C:attention}#1# {C:attention}Rental Jokers",
+                    "{C:inactive}(Must have room)",
+                }
             }
         },
         Other = {
