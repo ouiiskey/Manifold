@@ -56,3 +56,16 @@ match_indent = true
 payload = '''
 check_for_unlock{type = "lose"}
 '''
+
+# j_splash
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if self.ability.name == 'Chicot' and G.GAME.blind and G.GAME.blind.boss and not G.GAME.blind.disabled then"
+position = "before"
+match_indent = true
+payload = '''
+if self.ability.name == "Splash" then
+    check_for_unlock{type = "j_splash", quantity = #SMODS.find_card("j_splash") + 1}
+end
+'''

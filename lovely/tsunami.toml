@@ -1,0 +1,45 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# evaluate_play
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "-- TARGET: adding to hand effects"
+position = "before"
+match_indent = true
+payload = '''
+if next(SMODS.find_card("j_manifold_tsunami")) then
+    for k, v in ipairs(G.hand.cards) do
+        local effects = {}
+        SMODS.calculate_context({modify_scoring_hand = true, other_card = v, full_hand = G.play.cards, scoring_hand = scoring_hand, in_scoring = true}, effects)
+        local flags = SMODS.trigger_effects(effects, v)
+        local unsplashed = flags.remove_from_hand or SMODS.never_scores(v)
+        if not unsplashed then
+            table.insert(final_scoring_hand, v)
+        end
+    end
+end
+'''
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "SMODS.calculate_main_scoring({cardarea = v, full_hand = G.play.cards, scoring_hand = scoring_hand, scoring_name = text, poker_hands = poker_hands}, v == G.play and scoring_hand or nil)"
+position = "at"
+match_indent = true
+payload = '''
+SMODS.calculate_main_scoring({cardarea = v, full_hand = G.play.cards, scoring_hand = scoring_hand, scoring_name = text, poker_hands = poker_hands}, (v == G.play or v == G.hand and next(SMODS.find_card("j_manifold_tsunami"))) and scoring_hand or nil)
+'''
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "SMODS.calculate_destroying_cards({ full_hand = G.play.cards, scoring_hand = scoring_hand, scoring_name = text, poker_hands = poker_hands, cardarea = v }, cards_destroyed, v == G.play and scoring_hand or nil)"
+position = "at"
+match_indent = true
+payload = '''
+SMODS.calculate_destroying_cards({ full_hand = G.play.cards, scoring_hand = scoring_hand, scoring_name = text, poker_hands = poker_hands, cardarea = v }, cards_destroyed, (v == G.play or v == G.hand and next(SMODS.find_card("j_manifold_tsunami"))) and scoring_hand or nil)
+'''

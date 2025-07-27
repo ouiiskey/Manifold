@@ -239,6 +239,18 @@ return {
                     "create {C:attention}#1# {C:attention}Rental Jokers",
                     "{C:inactive}(Must have room)",
                 }
+            },
+            j_manifold_tsunami = {
+                name = "Tsunami",
+                text = {
+                    "Every {C:attention}card",
+                    "{C:attention}held in hand",
+                    "counts in scoring"
+                },
+                unlock = {
+                    "Have {C:attention}#1#{} copies of",
+                    "{E:1,C:attention}#2#{} at once"
+                }
             }
         },
         Other = {

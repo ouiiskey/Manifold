@@ -34,6 +34,7 @@ local jokers = {
     "carte_blanche",
     "harpoon_gun",
     "library",
+    "tsunami",
     -- Vanilla
     "seance"
 }
