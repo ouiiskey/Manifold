@@ -1,19 +1,4 @@
 -- Hot Potato
-SMODS.current_mod.reset_game_globals = function()
-    G.GAME.current_round.hot_card = {rank = "Ace"}
-    local heatable_cards = {}
-    for k, v in ipairs(G.playing_cards) do
-        if v.ability.effect ~= 'Stone Card' then
-            heatable_cards[#heatable_cards +1] = v
-        end
-    end
-    if heatable_cards[1] then
-        local hot_card = pseudorandom_element(heatable_cards, pseudoseed("manif_hot" .. G.GAME.round_resets.ante))
-        G.GAME.current_round.hot_card.rank = hot_card.base.value
-        G.GAME.current_round.hot_card.id = hot_card.base.id
-    end
-end
-
 SMODS.Joker{
     key = "hot_potato",
     rarity = 1,

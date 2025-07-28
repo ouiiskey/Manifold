@@ -251,6 +251,18 @@ return {
                     "Have {C:attention}#1#{} copies of",
                     "{E:1,C:attention}#2#{} at once"
                 }
+            },
+            j_manifold_zombie = {
+                name = "Zombie Joker",
+                text = {
+                    "Redraw all {C:attention}face cards",
+                    "from the {C:red}discard pile",
+                    "for {C:attention}final hand{} of round"
+                },
+                unlock = {
+                    "Lose a run",
+                    "with {E:1,C:attention}#1#"
+                }
             }
         },
         Other = {
@@ -344,6 +356,7 @@ return {
             manifold_baked = "Baked!",
             manifold_black = "Black",
             manifold_boom = "BOOM!",
+            manifold_brains = "Brains!",
             manifold_burnt = "Burnt!",
             manifold_cashed = "Cashed!",
             manifold_ceased = "Ceased...",
