@@ -237,7 +237,7 @@ return {
                 text = {
                     "When {C:attention}Blind{} is selected,",
                     "create {C:attention}#1# {C:attention}Rental Jokers",
-                    "{C:inactive}(Must have room)",
+                    "{C:inactive}(Must have room)"
                 }
             },
             j_manifold_tsunami = {
@@ -262,6 +262,15 @@ return {
                 unlock = {
                     "Lose a run",
                     "with {E:1,C:attention}#1#"
+                }
+            },
+            j_manifold_chicken = {
+                name = "Chicken",
+                text = {
+                    "When {C:attention}final hand{} of",
+                    "round is played,",
+                    "create {C:attention}#1#",
+                    "{C:inactive}(Must have room)"
                 }
             }
         },
@@ -365,6 +374,7 @@ return {
             manifold_escaped = "Escaped!",
             manifold_hit = "Hit!",
             manifold_oom = "Out of mana...",
+            manifold_pop = "Pop!",
             manifold_unknown = "?",
             manifold_unknown_total = "????"
         }
