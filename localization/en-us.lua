@@ -285,6 +285,15 @@ return {
                     "ever having more",
                     "than {E:1,C:attention}#1# Jokers"
                 }
+            },
+            j_manifold_memory = {
+                name = "Memory Card",
+                text = {
+                    "This card gains Chips",
+                    "equal to the sell value of",
+                    "your {C:attention}Jokers{} at end of {C:attention}shop",
+                    "{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)"
+                }
             }
         },
         Other = {
