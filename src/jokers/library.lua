@@ -8,6 +8,7 @@ SMODS.Joker {
     blueprint_compat = true,
     config = {extra = {amount = 2}},
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = {key = "rental", set = "Other", vars = {G.GAME.rental_rate or 1}}
         return {vars = {card.ability.extra.amount}}
     end,
     calculate = function(self, card, context)

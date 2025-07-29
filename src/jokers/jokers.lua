@@ -37,6 +37,7 @@ local jokers = {
     "tsunami",
     "zombie",
     "chicken",
+    "rorschach",
     -- Vanilla
     "seance"
 }

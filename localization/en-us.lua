@@ -272,6 +272,19 @@ return {
                     "create {C:attention}#1#",
                     "{C:inactive}(Must have room)"
                 }
+            },
+            j_manifold_rorschach = {
+                name = "Rorschach",
+                text = {
+                    "Sell this card to",
+                    "{C:attention}Duplicate{} a random Joker",
+                    "{C:inactive,s:0.9}(Adds {C:attention,s:0.9}Perishable{C:inactive,s:0.9} to copy)"
+                },
+                unlock = {
+                    "Win a run without",
+                    "ever having more",
+                    "than {E:1,C:attention}#1# Jokers"
+                }
             }
         },
         Other = {
@@ -282,6 +295,13 @@ return {
                     "random {C:spectral}Spectral{} cards",
                     "when destroyed",
                     "{C:inactive}(Must have room)"
+                }
+            },
+            manifold_perishable = {
+                name = "Perishable",
+                text = {
+                    "Debuffed after",
+                    "{C:attention}#1#{} rounds"
                 }
             }
         },

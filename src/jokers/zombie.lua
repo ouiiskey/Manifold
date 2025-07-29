@@ -13,7 +13,7 @@ SMODS.Joker {
         return {vars = {localize{type = "name_text", set = "Joker", key = joker}}}
     end,
     check_for_unlock = function(self, args)
-        return args.type == "lose" and next(SMODS.find_card("j_joker"))
+        return args.type == "lose" and next(SMODS.find_card(joker))
     end,
     calculate = function(self, card, context)
         if context.hand_drawn and not context.blueprint and G.GAME.current_round.hands_left == 1 and not G.GAME.current_round.final_wave then
