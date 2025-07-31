@@ -50,7 +50,7 @@ for k, v in pairs(SMODS.calculation_keys) do
 end
 if hook then
     table.insert(SMODS.calculation_keys, "e_mult")
-    local old = SMODS.calculate_individual_effect
+    local Scie_ref = SMODS.calculate_individual_effect
     SMODS.calculate_individual_effect = function(effect, scored_card, key, amount, from_edition)
         if key == "e_mult" and amount ~= 1 then
             mult = mod_mult(mult ^ amount)
@@ -58,6 +58,6 @@ if hook then
             card_eval_status_text(scored_card, "e_mult", amount, percent)
             return true
         end
-        return old(effect, scored_card, key, amount, from_edition)
+        return Scie_ref(effect, scored_card, key, amount, from_edition)
     end
 end

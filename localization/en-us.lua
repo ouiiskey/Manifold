@@ -292,7 +292,17 @@ return {
                     "This card gains Chips",
                     "equal to the sell value of",
                     "your {C:attention}Jokers{} at end of {C:attention}shop",
-                    "{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)"
+                    "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
+                }
+            },
+            j_manifold_railgun = {
+                name = "Railgun",
+                text = {
+                    "This card gains {C:mult}+#1#{} Mult",
+                    "per {C:attention}consecutive{} card scored",
+                    "with {C:attention}opposite{} rank parity",
+                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
+                    "{C:inactive}(Score {C:attention}#3#{C:inactive} parity next)"
                 }
             }
         },
@@ -403,6 +413,9 @@ return {
             manifold_escaped = "Escaped!",
             manifold_hit = "Hit!",
             manifold_oom = "Out of mana...",
+            manifold_opposite_even = "odd",
+            manifold_opposite_odd = "even",
+            manifold_parity_any = "any",
             manifold_pop = "Pop!",
             manifold_unknown = "?",
             manifold_unknown_total = "????"

@@ -26,5 +26,6 @@ SMODS.Joker {
                 colour = G.C.CHIPS
             }
         end
-    end
+    end,
+    perishable_compat = false
 }

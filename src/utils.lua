@@ -13,8 +13,18 @@ function Card:is_even()
 end
 
 function Card:is_odd()
-    if self:get_id() <= 10 and self:get_id() >= 0 and self:get_id() % 2 == 1 or self:is_rank(14) then return true end
+    if self:get_id() <= 9 and self:get_id() >= 1 and self:get_id() % 2 == 1 or self:is_rank(14) then return true end
     return next(SMODS.find_card("j_manifold_prosopagnosia")) and next(SMODS.find_card("j_pareidolia"))
+end
+
+function Card:get_parity()
+    if self:is_even() then
+        if self:is_odd() then return "both" end
+        return "even"
+    elseif self:is_odd() then
+        return "odd"
+    end
+    return "none"
 end
 
 function Card:eat()

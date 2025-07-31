@@ -34,11 +34,11 @@ end
 -- Final startup
 local menu = assert(SMODS.load_file("src/final.lua"), MANIF.install .. "src/final.lua")
 local startup = true
-local old = Game.main_menu
+local Gmm_ref = Game.main_menu
 function Game:main_menu(change_context)
     if startup then
         menu()
         startup = false
     end
-    old(self, change_context)
+    Gmm_ref(self, change_context)
 end
