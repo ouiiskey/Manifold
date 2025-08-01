@@ -304,6 +304,13 @@ return {
                     "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
                     "{C:inactive}(Score {C:attention}#3#{C:inactive} parity next)"
                 }
+            },
+            j_manifold_rebellion = {
+                name = "Rebellion",
+                text = {
+                    "When {C:attention}Ante{} begins,",
+                    "reverse {C:attention}Blind{} order"
+                }
             }
         },
         Other = {

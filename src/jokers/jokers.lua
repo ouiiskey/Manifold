@@ -40,6 +40,7 @@ local jokers = {
     "rorschach",
     "memory",
     "railgun",
+    "rebellion",
     -- Vanilla
     "seance"
 }
