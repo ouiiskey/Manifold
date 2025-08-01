@@ -269,7 +269,7 @@ return {
                 text = {
                     "When {C:attention}final hand{} of",
                     "round is played,",
-                    "create {C:attention}#1#",
+                    "create an {C:attention}#1#",
                     "{C:inactive}(Must have room)"
                 }
             },
@@ -322,6 +322,16 @@ return {
                 unlock = {
                     "Win a run with",
                     "only {C:blue}Common{} Jokers"
+                }
+            },
+            j_manifold_ufo = {
+                name = "UFO",
+                text = {
+                    "Create a random",
+                    "{C:planet}Planet{} card",
+                },
+                unlock = {
+                    "Discover {E:1,C:planet}#1#"
                 }
             }
         },

@@ -42,6 +42,7 @@ local jokers = {
     "railgun",
     "rebellion",
     "propaganda",
+    "ufo",
     -- Vanilla
     "seance"
 }
