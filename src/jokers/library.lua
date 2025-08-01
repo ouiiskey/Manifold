@@ -18,7 +18,7 @@ SMODS.Joker {
             G.E_MANAGER:add_event(Event({
                 func = function()
                     for i = 1, jokers_to_create do
-                        local lent = SMODS.create_card{set = "Joker", area = G.jokers, key_append = "lib", stickers = {"rental"}}
+                        local lent = SMODS.create_card{set = "Joker", area = G.jokers, key_append = "manifold_lib", stickers = {"rental"}}
                         lent:add_to_deck()
                         G.jokers:emplace(lent)
                         lent:start_materialize()

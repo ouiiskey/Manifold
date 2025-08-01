@@ -30,6 +30,22 @@ payload = '''
 G.GAME.round_resets.blind_choices[#SMODS.find_card("j_manifold_rebellion") % 2 == 1 and "Small" or "Boss"] = get_new_boss()
 '''
 
+# start_run
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "self.GAME.round_resets.blind_choices.Boss = get_new_boss()"
+position = "at"
+match_indent = true
+payload = '''
+if #SMODS.find_card("j_manifold_rebellion") % 2 == 1 then
+    self.GAME.round_resets.blind_choices.Small = get_new_boss()
+    self.GAME.round_resets.blind_choices.Boss = "bl_small"
+else
+    self.GAME.round_resets.blind_choices.Boss = get_new_boss()
+end
+'''
+
 # end_round
 [[patches]]
 [patches.pattern]

@@ -1,7 +1,7 @@
 -- Wallet, see also wallet.toml
 SMODS.Joker {
     key = "wallet",
-    rarity = 2,
+    rarity = 1,
     atlas = "jokers",
     pos = {x = 2, y = 2},
     cost = 1,

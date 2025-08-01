@@ -311,6 +311,18 @@ return {
                     "When {C:attention}Ante{} begins,",
                     "reverse {C:attention}Blind{} order"
                 }
+            },
+            j_manifold_propaganda = {
+                name = "Propaganda",
+                text = {
+                    "{X:mult,C:white} X#1# {} Mult",
+                    "Debuff your other",
+                    "non-{C:blue}Common{} Jokers"
+                },
+                unlock = {
+                    "Win a run with",
+                    "only {C:blue}Common{} Jokers"
+                }
             }
         },
         Other = {

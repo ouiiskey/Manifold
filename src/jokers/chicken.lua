@@ -20,7 +20,7 @@ SMODS.Joker {
             G.E_MANAGER:add_event(Event({
                 func = function()
                     for i = 1, jokers_to_create do
-                        local laid = SMODS.create_card{set = "Joker", area = G.jokers, key = egg, key_append = "chx"}
+                        local laid = SMODS.create_card{set = "Joker", area = G.jokers, key = egg, key_append = "manifold_chx"}
                         laid:add_to_deck()
                         G.jokers:emplace(laid)
                         laid:start_materialize()

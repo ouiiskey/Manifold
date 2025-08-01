@@ -3,6 +3,7 @@ version = "1.0.0"
 dump_lua = true
 priority = 0
 
+# remove
 [[patches]]
 [patches.pattern]
 target = "card.lua"
@@ -14,7 +15,7 @@ if (self.area == G.hand or self.area == G.play) and not self.debuff and self.sea
     for i = 1, math.min(self.ability.seal.extra.spectrals, G.consumeables.config.card_limit - #G.consumeables.cards) do
         G.E_MANAGER:add_event(Event({trigger = "before", delay = 0.0, func = function()
             if G.consumeables.config.card_limit > #G.consumeables.cards then
-                SMODS.add_card{set = "Spectral", area = G.consumeables, key_append = "blk"}
+                SMODS.add_card{set = "Spectral", area = G.consumeables, key_append = "manifold_blk"}
             end
         return true end }))
     end
