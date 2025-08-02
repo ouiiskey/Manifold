@@ -69,7 +69,7 @@ return {
             j_manifold_pudding = {
                 name = "Pudding",
                 text = {
-                    "Scored {C:attention}Bonus Cards",
+                    "Scored {C:attention}Bonus{} cards",
                     "give {C:mult}+#1#{} Mult",
                     "the next {C:attention}#2#{} times"
                 }
@@ -333,6 +333,14 @@ return {
                 unlock = {
                     "Discover {E:1,C:planet}#1#"
                 }
+            },
+            j_manifold_left_turns = {
+                name = "4 Left Turns",
+                text = {
+                    "If {C:attention}poker hand{} is",
+                    "a {C:attention}#1#{},",
+                    "gain {C:blue}+#2#{} Hand"
+                }
             }
         },
         Other = {
@@ -396,11 +404,6 @@ return {
             }
         },
         Voucher = {
-            v_tarot_tycoon = {
-                text = {
-                    "{C:attention}+2{} consumable slots"
-                }
-            },
             v_planet_tycoon = {
                 text = {
                     "{C:attention}+2{} {C:planet}Planet{} slots"

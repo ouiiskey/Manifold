@@ -292,58 +292,23 @@ payload = '''
 elseif G.consumeables then if card.config.center.set == "Planet" then G.planets:emplace(card) else G.consumeables:emplace(card) end end
 '''
 
-# Perkeo
+# Collection
 [[patches]]
 [patches.pattern]
-target = "card.lua"
-pattern = "if G.consumeables.cards[1] then"
-position = "at"
-match_indent = true
-payload = '''
-local pool = {}
-for k, v in ipairs(G.consumeables.cards) do
-    table.insert(pool, v)
-end
-for k, v in ipairs(G.planets.cards) do
-    table.insert(pool, v)
-end
-if pool[1] then
-'''
-
-[[patches]]
-[patches.pattern]
-target = "card.lua"
-pattern = '''
-local card = copy_card(pseudorandom_element(G.consumeables.cards, pseudoseed('perkeo')), nil)
-card:set_edition({negative = true}, true)
-card:add_to_deck()
-G.consumeables:emplace(card)
-'''
-position = "at"
-match_indent = true
-payload = '''
-local card = copy_card(pseudorandom_element(pool, pseudoseed("perkeo")), nil)
-card:set_edition({negative = true}, true)
-card:add_to_deck()
-if card.config.center.set == "Planet" then
-    G.planets:emplace(card)
-else
-    G.consumeables:emplace(card)
-end
-'''
-
-# Gift Card
-[[patches]]
-[patches.pattern]
-target = "card.lua"
-pattern = "for k, v in ipairs(G.consumeables.cards) do"
+target = "functions/UI_definitions.lua"
+pattern = '{n=G.UIT.R, config={align = "cm", padding = 0.1, r=0.2, colour = G.C.BLACK}, nodes={'
 position = "before"
 match_indent = true
 payload = '''
-for k, v in ipairs(G.planets.cards) do
-    if v.set_cost then
-        v.ability.extra_value = (v.ability.extra_value or 0) + self.ability.extra
-        v:set_cost()
-    end
-end
+UIBox_button({button = "your_collection_planets", label = {localize("b_planet_cards")}, count = G.DISCOVER_TALLIES.planets, minw = 5, id = "your_collection_planets", colour = G.C.SECONDARY_SET.Planet}),
+'''
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/game_object.lua"]'
+pattern = "secondary_colour = G.C.SECONDARY_SET.Planet,"
+position = "after"
+match_indent = true
+payload = '''
+no_collection = true,
 '''

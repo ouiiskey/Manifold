@@ -1,12 +1,4 @@
--- Tarot Tycoon
-SMODS.Voucher:take_ownership("tarot_tycoon", {
-    redeem = function(self, card)
-        G.E_MANAGER:add_event(Event({func = function()
-            G.consumeables.config.card_limit = G.consumeables.config.card_limit + 2
-            return true end }))
-    end
-}, true)
-
+-- Vanilla
 -- Planet Tycoon
 SMODS.Voucher:take_ownership("planet_tycoon", {
     redeem = function(self, card)

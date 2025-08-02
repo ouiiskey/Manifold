@@ -22,6 +22,9 @@ SMODS.Joker {
         end
         return false
     end,
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.m_stone
+    end,
     calculate = function(self, card, context)
         if context.initial_scoring_step and not context.blueprint then
             local foiled = false
