@@ -341,6 +341,13 @@ return {
                     "a {C:attention}#1#{},",
                     "gain {C:blue}+#2#{} Hand"
                 }
+            },
+            j_manifold_lucky_sevens = {
+                name = "Lucky 7s",
+                text = {
+                    "{X:mult,C:white} X#1# {} Mult",
+                    "Rerolls every hand"
+                }
             }
         },
         Other = {

@@ -27,7 +27,7 @@ SMODS.Joker {
             end
             if #targets > 0 then
                 if #G.jokers.cards <= G.jokers.config.card_limit then
-                    local chosen_joker = pseudorandom_element(targets, pseudoseed("rorschach"))
+                    local chosen_joker = pseudorandom_element(targets, pseudoseed("manifold_rorschach"))
                     local copy = copy_card(chosen_joker)
                     if copy.ability.invis_rounds then copy.ability.invis_rounds = 0 end
                     copy:set_eternal(false)

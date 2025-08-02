@@ -7,7 +7,7 @@ SMODS.Consumable:take_ownership("familiar", {
                 table.insert(pool, v)
             end
         end
-        local target = pseudorandom_element(pool, pseudoseed("random_consumable"))
+        local target = pseudorandom_element(pool, pseudoseed("manifold_familiar"))
         for i = 1, G.consumeables.config.card_limit - #G.consumeables.cards do
             G.E_MANAGER:add_event(Event({trigger = "after", delay = 0.4, func = function()
                 if G.consumeables.config.card_limit > #G.consumeables.cards then

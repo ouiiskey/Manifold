@@ -12,9 +12,6 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.joker_main and context.scoring_name == card.ability.extra.poker_hand then
-            --G.E_MANAGER:add_event(Event({func = function()
-            --    ease_hands_played(card.ability.extra.hands)
-            --    return true end }))
             ease_hands_played(card.ability.extra.hands)
             return {
                 message = localize{type = "variable", key = "a_hands", vars = {card.ability.extra.hands}}

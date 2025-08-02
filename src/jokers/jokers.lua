@@ -44,6 +44,7 @@ local jokers = {
     "propaganda",
     "ufo",
     "left_turns",
+    "lucky_sevens",
     -- Vanilla
     "seance"
 }
@@ -61,7 +62,7 @@ SMODS.current_mod.reset_game_globals = function()
         end
     end
     if heatable_cards[1] then
-        local hot_card = pseudorandom_element(heatable_cards, pseudoseed("manif_hot" .. G.GAME.round_resets.ante))
+        local hot_card = pseudorandom_element(heatable_cards, pseudoseed("manifold_hot" .. G.GAME.round_resets.ante))
         G.GAME.current_round.hot_card.rank = hot_card.base.value
         G.GAME.current_round.hot_card.id = hot_card.base.id
     end
