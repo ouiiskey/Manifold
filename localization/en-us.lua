@@ -348,6 +348,14 @@ return {
                     "{X:mult,C:white} X#1# {} Mult",
                     "Rerolls every hand"
                 }
+            },
+            j_manifold_proud = {
+                name = "Proud Joker",
+                text = {
+                    "{C:green}#1# in #2#{} chance for",
+                    "scoring {C:attention}Wild{} cards",
+                    "to gain {C:dark_edition}Polychrome"
+                }
             }
         },
         Other = {
@@ -455,6 +463,7 @@ return {
             manifold_opposite_even = "odd",
             manifold_opposite_odd = "even",
             manifold_parity_any = "any",
+            manifold_polychrome = "Polychrome!",
             manifold_pop = "Pop!",
             manifold_unknown = "?",
             manifold_unknown_total = "????"

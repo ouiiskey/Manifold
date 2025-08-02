@@ -38,7 +38,7 @@ SMODS.Joker {
                         func = function()
                             context.full_hand[i].edition.foil = true
                             context.full_hand[i]:juice_up()
-                            play_sound('foil1', 1.2, 0.4)
+                            play_sound("foil1", 1.2, 0.4)
                             return true end }))
                 end
             end

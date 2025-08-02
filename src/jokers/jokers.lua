@@ -45,6 +45,7 @@ local jokers = {
     "ufo",
     "left_turns",
     "lucky_sevens",
+    "proud",
     -- Vanilla
     "seance"
 }
@@ -57,7 +58,7 @@ SMODS.current_mod.reset_game_globals = function()
     G.GAME.current_round.hot_card = {rank = "Ace"}
     local heatable_cards = {}
     for k, v in ipairs(G.playing_cards) do
-        if v.ability.effect ~= 'Stone Card' then
+        if v.ability.effect ~= "Stone Card" then
             heatable_cards[#heatable_cards +1] = v
         end
     end
