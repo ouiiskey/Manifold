@@ -47,6 +47,7 @@ local jokers = {
     "lucky_sevens",
     "proud",
     "envious",
+    "slothful",
     -- Vanilla
     "seance"
 }

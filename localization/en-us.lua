@@ -364,6 +364,14 @@ return {
                     "do not score",
                     "become {C:attention}Wild{} cards"
                 }
+            },
+            j_manifold_slothful = {
+                name = "Slothful Joker",
+                text = {
+                    "Each {C:attention}Wild{} card held",
+                    "in hand expends {C:blue}#1#",
+                    "Hand to give {X:mult,C:white} X#2# {} Mult"
+                }
             }
         },
         Other = {
@@ -466,6 +474,8 @@ return {
             manifold_cuneiform_foil = "𒃻𒊏",
             manifold_emptied = "Emptied!",
             manifold_escaped = "Escaped!",
+            manifold_hand = "+1 Hand",
+            manifold_hand_minus = "-1 Hand",
             manifold_hit = "Hit!",
             manifold_oom = "Out of mana...",
             manifold_opposite_even = "odd",
