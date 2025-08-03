@@ -22,7 +22,7 @@ SMODS.Joker {
         return {vars = {numerator, denominator}}
     end,
     calculate = function(self, card, context)
-        if context.initial_scoring_step then
+        if context.before and context.cardarea == G.jokers then
             local wild = false
             local chromed = false
             for k, v in ipairs(context.scoring_hand) do

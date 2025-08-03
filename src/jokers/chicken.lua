@@ -13,7 +13,7 @@ SMODS.Joker {
         return {vars = {localize{type = "name_text", set = "Joker", key = egg}}}
     end,
     calculate = function(self, card, context)
-        if context.joker_main and G.GAME.current_round.hands_left == 0 and not (context.blueprint_card or card).getting_sliced and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
+        if context.before and context.cardarea == G.jokers and G.GAME.current_round.hands_left == 0 and not (context.blueprint_card or card).getting_sliced and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
             G.GAME.joker_buffer = G.GAME.joker_buffer + 1
             G.E_MANAGER:add_event(Event({
                 func = function()

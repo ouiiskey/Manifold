@@ -18,7 +18,7 @@ SMODS.Joker {
         return false
     end,
     calculate = function(self, card, context)
-        if context.before and context.main_eval and not context.blueprint then
+        if context.before and context.cardarea == G.jokers and not context.blueprint then
             local sealed = false
             for k, v in ipairs(context.scoring_hand) do
                 if not v.seal and SMODS.has_enhancement(v, "m_steel") then

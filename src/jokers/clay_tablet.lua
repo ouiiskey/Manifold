@@ -26,7 +26,7 @@ SMODS.Joker {
         info_queue[#info_queue + 1] = G.P_CENTERS.m_stone
     end,
     calculate = function(self, card, context)
-        if context.initial_scoring_step and not context.blueprint then
+        if context.before and context.cardarea == G.jokers and not context.blueprint then
             local foiled = false
             for i = 2, #context.full_hand do
                 if not context.full_hand[i].edition and SMODS.has_enhancement(context.full_hand[i], "m_stone") and context.full_hand[i-1]:is_rank(6) then

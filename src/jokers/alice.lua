@@ -10,7 +10,7 @@ SMODS.Joker {
         info_queue[#info_queue + 1] = G.P_CENTERS.c_hex
     end,
     calculate = function(self, card, context)
-        if context.initial_scoring_step then
+        if context.before and context.cardarea == G.jokers then
             local message = ""
             for k, v in ipairs(context.scoring_hand) do
                 if v:is_rank(14) and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then

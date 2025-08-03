@@ -46,6 +46,7 @@ local jokers = {
     "left_turns",
     "lucky_sevens",
     "proud",
+    "envious",
     -- Vanilla
     "seance"
 }

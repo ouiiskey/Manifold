@@ -356,6 +356,14 @@ return {
                     "scoring {C:attention}Wild{} cards",
                     "to gain {C:dark_edition}Polychrome"
                 }
+            },
+            j_manifold_envious = {
+                name = "Envious Joker",
+                text = {
+                    "Played cards that",
+                    "do not score",
+                    "become {C:attention}Wild{} cards"
+                }
             }
         },
         Other = {
@@ -466,7 +474,8 @@ return {
             manifold_polychrome = "Polychrome!",
             manifold_pop = "Pop!",
             manifold_unknown = "?",
-            manifold_unknown_total = "????"
+            manifold_unknown_total = "????",
+            manifold_wild = "Wild!"
         }
     }
 }
