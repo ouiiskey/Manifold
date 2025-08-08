@@ -7,25 +7,24 @@ priority = 0
 [[patches]]
 [patches.pattern]
 target = "functions/common_events.lua"
-pattern = "if pseudorandom('soul_'.._type..G.GAME.round_resets.ante) > 0.997 then"
-position = "at"
-match_indent = true
-payload = '''
-if pseudorandom("soul_" .. _type .. G.GAME.round_resets.ante) > 0.994 then
+pattern = '''
+if (_type == 'Tarot' or _type == 'Spectral' or _type == 'Tarot_Planet') and
+    not (G.GAME.used_jokers['c_soul'] and not SMODS.showman('c_soul')) then
+    if pseudorandom('soul_'.._type..G.GAME.round_resets.ante) > 0.997 then
+        forced_key = 'c_soul'
 '''
-
-[[patches]]
-[patches.pattern]
-target = "functions/common_events.lua"
-pattern = "forced_key = 'c_soul'"
 position = "at"
 match_indent = true
 payload = '''
-if pseudorandom("soul_or_mind") > 0.5 then
-    forced_key = "c_soul"
-else
-    forced_key = "c_manifold_mind"
-end
+if (_type == "Tarot" or _type == "Spectral" or _type == "Tarot_Planet") then
+    if pseudorandom("soul_" .. _type .. G.GAME.round_resets.ante) > 0.994 then
+        if pseudorandom("soul_or_mind") > 0.5 then
+            if not G.GAME.used_jokers["c_soul"] or SMODS.showman("c_soul") then
+                forced_key = "c_soul"
+            end
+        elseif not G.GAME.used_jokers["c_manifold_mind"] or SMODS.showman("c_manifold_mind") then
+            forced_key = "c_manifold_mind"
+        end
 '''
 
 # get_current_pool

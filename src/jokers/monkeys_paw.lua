@@ -34,7 +34,7 @@ SMODS.Joker {
             scale_mod = (scale_mod or 0) + 0.5 * jerk
             rotate_mod = -0.5 * jerk
 
-            card.children.floating_sprite:draw_shader("dissolve", 0, nil, nil, card.children.center, scale_mod, rotate_mod, jerk, y_jerk, nil, 0.6)
+            card.children.floating_sprite:draw_shader("dissolve", 0, nil, nil, card.children.center, scale_mod, rotate_mod, jerk + 0.08, y_jerk + 0.08, nil, 0.6)
             card.children.floating_sprite:draw_shader("dissolve", nil, nil, nil, card.children.center, scale_mod, rotate_mod, jerk, y_jerk)
         end
     },

@@ -77,7 +77,7 @@ return {
             j_manifold_cookie_dough = {
                 name = "Cookie Dough",
                 text = {
-                    "Adds Chips to Mult",
+                    "Adds {C:chips}Chips{} to {C:mult}Mult",
                     "Destroy this card",
                     "if {C:attention}flames ignite"
                 }
@@ -85,7 +85,7 @@ return {
             j_manifold_cookie = {
                 name = "Cookie",
                 text = {
-                    "Adds Mult to Chips",
+                    "Adds {C:mult}Mult{} to {C:chips}Chips",
                     "Destroy this card",
                     "if {C:attention}flames ignite"
                 }
@@ -118,7 +118,7 @@ return {
                 name = "Extraterrestrial",
                 text = {
                     "Retrigger base",
-                    "Chips and Mult"
+                    "{C:chips}Chips{} and {C:mult}Mult"
                 },
                 unlock = {
                     "Discover {E:1,C:planet}#1#"
@@ -377,9 +377,19 @@ return {
                 name = "Weierstrass",
                 text = {
                     "Adds Mult equal to",
-                    "the Mult you last had",
+                    "the {C:mult}Mult{} you last had",
                     "after this triggered",
                     "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
+                },
+                unlock = {
+                    "{E:1,s:1.3}?????"
+                }
+            },
+            j_manifold_pareto = {
+                name = "Pareto",
+                text = {
+                    "Balance {C:chips}Chips",
+                    "and {C:mult}Mult"
                 },
                 unlock = {
                     "{E:1,s:1.3}?????"
