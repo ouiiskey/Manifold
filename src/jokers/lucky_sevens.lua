@@ -1,4 +1,4 @@
--- Lucky 7s, see also lucky_sevens.toml
+-- Lucky 7s
 SMODS.Joker {
     key = "lucky_sevens",
     rarity = 2,

@@ -1,5 +1,7 @@
 -- Grim
 SMODS.Consumable:take_ownership("grim", {
+    atlas = "spectrals",
+    pos = {x = 1, y = 0},
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = SMODS.Seals["manifold_black"]
         return {vars = {colours = {G.C.BLACK}}}

@@ -372,6 +372,18 @@ return {
                     "in hand expends {C:blue}#1#",
                     "Hand to give {X:mult,C:white} X#2# {} Mult"
                 }
+            },
+            j_manifold_weierstrass = {
+                name = "Weierstrass",
+                text = {
+                    "Adds Mult equal to",
+                    "the Mult you last had",
+                    "after this triggered",
+                    "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
+                },
+                unlock = {
+                    "{E:1,s:1.3}?????"
+                }
             }
         },
         Other = {
@@ -393,6 +405,14 @@ return {
             }
         },
         Spectral = {
+            c_manifold_mind = {
+              name = "The Mind",
+              text = {
+                  "Creates a",
+                  "{C:legendary,E:1}Legendary{} Joker",
+                  "{C:inactive}(Must have room)"
+              }
+            },
             c_incantation = {
                 text = {
                     "Add a random",

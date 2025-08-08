@@ -1,0 +1,69 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# create_card
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "if pseudorandom('soul_'.._type..G.GAME.round_resets.ante) > 0.997 then"
+position = "at"
+match_indent = true
+payload = '''
+if pseudorandom("soul_" .. _type .. G.GAME.round_resets.ante) > 0.994 then
+'''
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "forced_key = 'c_soul'"
+position = "at"
+match_indent = true
+payload = '''
+if pseudorandom("soul_or_mind") > 0.5 then
+    forced_key = "c_soul"
+else
+    forced_key = "c_manifold_mind"
+end
+'''
+
+# get_current_pool
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "_starting_pool, _pool_key = G.P_JOKER_RARITY_POOLS[rarity], 'Joker'..rarity..((not _legendary and _append) or '')"
+position = "after"
+match_indent = true
+payload = '''
+if _legendary then
+    _starting_pool = MANIF[_append]
+end
+'''
+
+# get_first_legendary
+[[patches]]
+[patches.pattern]
+target = "functions/misc_functions.lua"
+pattern = "local _t, key = pseudorandom_element(G.P_JOKER_RARITY_POOLS[4], pseudoseed('Joker4', _key))"
+position = "at"
+match_indent = true
+payload = '''
+local _t, key
+if pseudorandom(pseudoseed("soul_or_mind", _key)) > 0.5 then
+    _t, key = pseudorandom_element(MANIF.sou, pseudoseed("Joker4", _key))
+else
+    _t, key = pseudorandom_element(MANIF.manifold_mind, pseudoseed("Joker4", _key))
+end
+'''
+
+# Collection
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/game_object.lua"]'
+pattern = "collection_rows = { 4, 5 },"
+position = "at"
+match_indent = true
+payload = '''
+collection_rows = {4, 4},
+'''

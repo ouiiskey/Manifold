@@ -1,6 +1,6 @@
 -- Bob
 local keys = {"j_manifold_alice", "j_sixth_sense", "j_seance",
-}
+} -- Hook: Bob in_pool keys
 
 SMODS.Joker {
     key = "bob",

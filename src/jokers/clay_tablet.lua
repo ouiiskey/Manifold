@@ -1,4 +1,4 @@
--- Clay Tablet, see also clay_tablet.toml
+-- Clay Tablet
 local ante = 0
 
 SMODS.Joker {

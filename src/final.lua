@@ -61,3 +61,19 @@ if hook then
         return Scie_ref(effect, scored_card, key, amount, from_edition)
     end
 end
+
+-- Soul
+local soul = {"j_caino", "j_triboulet", "j_yorick", "j_chicot", "j_perkeo",
+} -- Hook: Soul jokers
+MANIF.sou = {}
+for k, v in ipairs(soul) do
+    SMODS.insert_pool(MANIF.sou, G.P_CENTERS[v])
+end
+
+-- Mind
+local mind = {"j_manifold_weierstrass",
+} -- Hook: Mind jokers
+MANIF.manifold_mind = {}
+for k, v in ipairs(mind) do
+    SMODS.insert_pool(MANIF.manifold_mind, G.P_CENTERS[v])
+end
