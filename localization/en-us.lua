@@ -394,6 +394,18 @@ return {
                 unlock = {
                     "{E:1,s:1.3}?????"
                 }
+            },
+            j_manifold_peano = {
+                name = "Peano",
+                text = {
+                    "If {C:attention}first hand{} of round",
+                    "contains a {C:attention}Straight{}, this",
+                    "card gains {C:attention}+#1#{} hand size",
+                    "{C:inactive}(Currently {C:attention}+#2#{C:inactive} hand size)"
+                },
+                unlock = {
+                    "{E:1,s:1.3}?????"
+                }
             }
         },
         Other = {

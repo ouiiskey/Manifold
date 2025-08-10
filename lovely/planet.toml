@@ -233,35 +233,6 @@ end
 
 [[patches]]
 [patches.pattern]
-target = "card.lua"
-pattern = "G.consumeables.config.card_limit = G.consumeables.config.card_limit + self.edition.card_limit"
-position = "at"
-match_indent = true
-payload = '''
-if self.config.center.set == "Planet" then
-    G.planets.config.card_limit = G.planets.config.card_limit + self.edition.card_limit
-else
-    G.consumeables.config.card_limit = G.consumeables.config.card_limit + self.edition.card_limit
-end
-'''
-
-[[patches]]
-[patches.pattern]
-target = "card.lua"
-pattern = "G.consumeables.config.card_limit = G.consumeables.config.card_limit - self.edition.card_limit"
-times = 2
-position = "at"
-match_indent = true
-payload = '''
-if self.config.center.set == "Planet" then
-    G.planets.config.card_limit = G.planets.config.card_limit - self.edition.card_limit
-else
-    G.consumeables.config.card_limit = G.consumeables.config.card_limit - self.edition.card_limit
-end
-'''
-
-[[patches]]
-[patches.pattern]
 target = '=[SMODS _ "src/overrides.lua"]'
 pattern = "elseif self.ability.set == 'Joker' and self.area == G.jokers then"
 position = "before"

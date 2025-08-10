@@ -23,11 +23,78 @@ end
 [[patches]]
 [patches.pattern]
 target = "functions/button_callbacks.lua"
-pattern = "G.GAME.round_resets.blind_choices.Boss = get_new_boss()"
+pattern = "G.CONTROLLER.locks.boss_reroll = true"
+position = "after"
+match_indent = true
+payload = '''
+local target_u = "Small"
+if G.P_BLINDS[G.GAME.round_resets.blind_choices.Boss].boss then
+    target_u = "Boss"
+elseif G.P_BLINDS[G.GAME.round_resets.blind_choices.Big].boss then
+    target_u = "Big"
+end
+local target = target_u:lower()
+'''
+
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = '''
+G.blind_select_opts.boss:set_role({xy_bond = 'Weak'})
+G.blind_select_opts.boss.alignment.offset.y = 20
+'''
 position = "at"
 match_indent = true
 payload = '''
-G.GAME.round_resets.blind_choices[#SMODS.find_card("j_manifold_rebellion") % 2 == 1 and "Small" or "Boss"] = get_new_boss()
+G.blind_select_opts[target]:set_role({xy_bond = 'Weak'})
+G.blind_select_opts[target].alignment.offset.y = 20
+'''
+
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = '''
+local par = G.blind_select_opts.boss.parent
+G.GAME.round_resets.blind_choices.Boss = get_new_boss()
+
+G.blind_select_opts.boss:remove()
+G.blind_select_opts.boss = UIBox{
+'''
+position = "at"
+match_indent = true
+payload = '''
+local par = G.blind_select_opts[target].parent
+G.GAME.round_resets.blind_choices[target_u] = get_new_boss()
+G.blind_select_opts[target]:remove()
+G.blind_select_opts[target] = UIBox{
+'''
+
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = '''
+par.config.object = G.blind_select_opts.boss
+par.config.object:recalculate()
+G.blind_select_opts.boss.parent = par
+G.blind_select_opts.boss.alignment.offset.y = 0
+'''
+position = "at"
+match_indent = true
+payload = '''
+par.config.object = G.blind_select_opts[target]
+par.config.object:recalculate()
+G.blind_select_opts[target].parent = par
+G.blind_select_opts[target].alignment.offset.y = 0
+'''
+
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "UIBox_dyn_container({create_UIBox_blind_choice('Boss')},false,get_blind_main_colour('Boss'), mix_colours(G.C.BLACK, get_blind_main_colour('Boss'), 0.8))"
+position = "at"
+match_indent = true
+payload = '''
+UIBox_dyn_container({create_UIBox_blind_choice(target_u)}, false, get_blind_main_colour(target_u), mix_colours(G.C.BLACK, get_blind_main_colour(target_u), 0.8))
 '''
 
 # start_run
