@@ -4,6 +4,7 @@ dump_lua = true
 priority = 0
 
 # Planet slot
+# Game:start_run
 [[patches]]
 [patches.pattern]
 target = "game.lua"
@@ -14,6 +15,7 @@ payload = '''
 self.planets = CardArea(0, CAI.consumeable_H + 0.3, CAI.consumeable_W / 2, CAI.consumeable_H, {card_limit = self.GAME.starting_params.planet_slots, type = "joker", highlight_limit = 1})
 '''
 
+# set_screen_positions
 [[patches]]
 [patches.pattern]
 target = "functions/common_events.lua"
@@ -25,6 +27,7 @@ G.planets.T.x = G.consumeables.T.x + G.consumeables.T.w / 2
 G.planets.T.y = G.consumeables.T.y + G.consumeables.T.h + 0.4
 '''
 
+# Card:highlight
 [[patches]]
 [patches.pattern]
 target = "card.lua"
@@ -45,6 +48,7 @@ payload = '''
 (self.area == G.jokers or self.area == G.consumeables or self.area == G.planets) and {x = x_off - 0.4, y = 0} or
 '''
 
+# get_starting_params
 [[patches]]
 [patches.pattern]
 target = "functions/misc_functions.lua"
@@ -53,6 +57,7 @@ position = "after"
 match_indent = true
 payload = "planet_slots = 1,"
 
+# Game:init_game_object
 [[patches]]
 [patches.pattern]
 target = "game.lua"
@@ -62,6 +67,7 @@ match_indent = true
 payload = "planet_buffer = 0,"
 
 # Buying planets
+# G.FUNCS.buy_from_shop
 [[patches]]
 [patches.pattern]
 target = "functions/button_callbacks.lua"
@@ -76,6 +82,7 @@ else
 end
 '''
 
+# G.FUNCS.check_for_buy_space
 [[patches]]
 [patches.pattern]
 target = "functions/button_callbacks.lua"
@@ -100,6 +107,7 @@ not (card.ability.consumeable and card.config.center.set ~= "Planet" and #G.cons
 '''
 
 # Blue seals
+# Card:get_end_of_round_effect
 [[patches]]
 [patches.pattern]
 target = "card.lua"
@@ -141,6 +149,7 @@ G.GAME.planet_buffer = 0
 '''
 
 # The Fool
+# Card:use_consumeable
 [[patches]]
 [patches.pattern]
 target = "card.lua"
@@ -151,6 +160,7 @@ payload = '''
 local card = SMODS.create_card{set = "Tarot", area = G.consumeables, key = G.GAME.last_tarot, key_append = "fool"}
 '''
 
+# Card:can_use_consumeable
 [[patches]]
 [patches.pattern]
 target = "card.lua"
@@ -161,6 +171,7 @@ payload = '''
 and G.GAME.last_tarot and G.GAME.last_tarot ~= "c_fool" then return true end
 '''
 
+# generate_card_ui
 [[patches]]
 [patches.pattern]
 target = "functions/common_events.lua"
@@ -171,6 +182,7 @@ payload = '''
 local fool_c = G.GAME.last_tarot and G.P_CENTERS[G.GAME.last_tarot] or nil
 '''
 
+# set_consumeable_usage
 [[patches]]
 [patches.pattern]
 target = "functions/misc_functions.lua"
@@ -186,6 +198,7 @@ end
 '''
 
 # Observatory
+# SMODS.get_card_areas
 [[patches]]
 [patches.pattern]
 target = '=[SMODS _ "src/utils.lua"]'
@@ -197,6 +210,7 @@ local t = {G.jokers, G.consumeables, G.planets, G.vouchers}
 '''
 
 # Negative
+# Card:generate_UIBox_ability_table
 [[patches]]
 [patches.pattern]
 target = "card.lua"
@@ -207,6 +221,7 @@ payload = '''
 badges[#badges + 1] = self.config.center.set == "Planet" and "negative_planet" or "negative_consumable"
 '''
 
+# G.UIDEF.card_h_popup
 [[patches]]
 [patches.pattern]
 target = "functions/UI_definitions.lua"
@@ -217,6 +232,7 @@ payload = '''
 if v == "negative_consumable" or v == "negative_planet" or v == "negative_playing_card" then v = "negative" end
 '''
 
+# Card:set_edition
 [[patches]]
 [patches.pattern]
 target = '=[SMODS _ "src/overrides.lua"]'
@@ -243,6 +259,7 @@ elseif self.ability.consumeable and self.area == G.planets then
 '''
 
 # Debug
+# add_joker
 [[patches]]
 [patches.pattern]
 target = "functions/common_events.lua"
@@ -264,6 +281,7 @@ elseif G.consumeables then if card.config.center.set == "Planet" then G.planets:
 '''
 
 # Collection
+# create_UIBox_your_collection
 [[patches]]
 [patches.pattern]
 target = "functions/UI_definitions.lua"
@@ -274,6 +292,7 @@ payload = '''
 UIBox_button({button = "your_collection_planets", label = {localize("b_planet_cards")}, count = G.DISCOVER_TALLIES.planets, minw = 5, id = "your_collection_planets", colour = G.C.SECONDARY_SET.Planet}),
 '''
 
+# loadAPIs
 [[patches]]
 [patches.pattern]
 target = '=[SMODS _ "src/game_object.lua"]'

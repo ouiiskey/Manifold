@@ -3,7 +3,7 @@ version = "1.0.0"
 dump_lua = true
 priority = 0
 
-# set_debuff
+# Card:set_debuff
 [[patches]]
 [patches.pattern]
 target = "card.lua"

@@ -160,7 +160,7 @@ return {
             j_manifold_squid = {
                 name = "Squid Joker",
                 text = {
-                    "{C:red}+#1#{} discard each hand",
+                    "{C:red}+1{} discard each hand",
                     "if all played cards",
                     "are number cards"
                 }
@@ -406,6 +406,17 @@ return {
                 unlock = {
                     "{E:1,s:1.3}?????"
                 }
+            },
+            j_manifold_escher = {
+                name = "Escher",
+                text = {
+                    "Disables all shuffling",
+                    "Played or discarded cards",
+                    "return to {C:attention}bottom{} of deck"
+                },
+                unlock = {
+                    "{E:1,s:1.3}?????"
+                }
             }
         },
         Other = {
@@ -514,6 +525,7 @@ return {
             manifold_cashed = "Cashed!",
             manifold_ceased = "Ceased...",
             manifold_cuneiform_foil = "𒃻𒊏",
+            manifold_discard = "+1 Discard",
             manifold_emptied = "Emptied!",
             manifold_escaped = "Escaped!",
             manifold_hand = "+1 Hand",
@@ -522,6 +534,7 @@ return {
             manifold_oom = "Out of mana...",
             manifold_opposite_even = "odd",
             manifold_opposite_odd = "even",
+            manifold_ordered = "Ordered",
             manifold_parity_any = "any",
             manifold_polychrome = "Polychrome!",
             manifold_pop = "Pop!",

@@ -3,7 +3,7 @@ version = "1.0.0"
 dump_lua = true
 priority = 0
 
-# add_to_deck
+# Card:add_to_deck
 [[patches]]
 [patches.pattern]
 target = "card.lua"

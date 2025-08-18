@@ -6,7 +6,7 @@ SMODS.Joker {
     pos = {x = 1, y = 0},
     cost = 5,
     blueprint_compat = true,
-    config = {extra = {mult = 1000, every = 14}},
+    config = {extra = {mult = 100000, every = 14}},
     set_ability = function(self, card, initial, delay_sprites)
         card.ability.archwizard_remaining = card.ability.extra.every - 1
     end,

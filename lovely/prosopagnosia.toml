@@ -60,6 +60,7 @@ vals[{{lovely:proso}} and curr[1]:is_face() and MANIF.PROSO.rank or curr[1]:get_
 '''
 
 # Raised Fist
+# Card:calculate_joker
 [[patches]]
 [patches.pattern]
 target = "card.lua"

@@ -57,6 +57,7 @@ end
 '''
 
 # Collection
+# loadAPIs
 [[patches]]
 [patches.pattern]
 target = '=[SMODS _ "src/game_object.lua"]'

@@ -31,10 +31,14 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.selling_self and not context.blueprint and next(G.hand.cards) then
             local rank = SMODS.Ranks[get_common()].id
+            local faces = {}
             for k, v in ipairs(G.deck.cards) do
                 if v:is_rank(rank) then
-                    draw_card(G.deck, G.hand, nil, nil, nil, v)
+                    table.insert(faces, v)
                 end
+            end
+            for i = 1, #faces do
+                draw_card(G.deck, G.hand, i / #faces * 100, nil, nil, faces[i])
             end
             return {
                 message = localize("manifold_cashed"),

@@ -8,18 +8,14 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.selling_self and not context.blueprint then
             local retrieved = false
-            for k, v in ipairs(G.wallet.cards) do
+            for i = 1, #G.wallet.cards do
                 retrieved = true
                 G.playing_card = (G.playing_card and G.playing_card + 1) or 1
-                if next(G.hand.cards) then
-                    draw_card(G.wallet, G.hand, nil, nil, nil, v)
-                else
-                    draw_card(G.wallet, G.deck, nil, nil, nil, v)
-                end
-                v.playing_card = G.playing_card
-                playing_card_joker_effects({v})
-                v:add_to_deck()
-                table.insert(G.playing_cards, v)
+                draw_card(G.wallet, next(G.hand.cards) and G.hand or G.deck, i / #G.wallet.cards * 100, nil, nil, G.wallet.cards[i])
+                G.wallet.cards[i].playing_card = G.playing_card
+                playing_card_joker_effects({G.wallet.cards[i]})
+                G.wallet.cards[i]:add_to_deck()
+                table.insert(G.playing_cards, G.wallet.cards[i])
             end
             G.wallet.cards = {}
             if retrieved then

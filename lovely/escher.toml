@@ -1,0 +1,50 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+[vars]
+to_deck = 'next(SMODS.find_card("j_manifold_escher")) and G.deck or G.discard'
+
+# CardArea:shuffle
+[[patches]]
+[patches.pattern]
+target = "cardarea.lua"
+pattern = "pseudoshuffle(self.cards, pseudoseed(_seed or 'shuffle'))"
+position = "before"
+match_indent = true
+payload = '''
+if next(SMODS.find_card("j_manifold_escher")) then return end
+'''
+
+# G.FUNCS.draw_from_play_to_discard
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "draw_card(G.play,G.discard, it*100/play_count,'down', false, v)"
+position = "at"
+match_indent = true
+payload = '''
+draw_card(G.play, {{lovely:to_deck}}, it * 100 / play_count, "down", false, v)
+'''
+
+# G.FUNCS.discard_cards_from_highlighted
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "local highlighted_count = math.min(#G.hand.highlighted, G.discard.config.card_limit - #G.play.cards)"
+position = "at"
+match_indent = true
+payload = '''
+local highlighted_count = math.min(#G.hand.highlighted, ({{lovely:to_deck}}).config.card_limit - #G.play.cards)
+'''
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "draw_card(G.hand, G.discard, i*100/highlighted_count, 'down', false, G.hand.highlighted[i])"
+position = "at"
+match_indent = true
+payload = '''
+draw_card(G.hand, {{lovely:to_deck}}, i * 100 / highlighted_count, "down", false, G.hand.highlighted[i])
+'''

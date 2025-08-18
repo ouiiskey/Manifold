@@ -3,7 +3,7 @@ version = "1.0.0"
 dump_lua = true
 priority = 0
 
-# evaluate_play
+# G.FUNCS.evaluate_play
 [[patches]]
 [patches.pattern]
 target = "functions/state_events.lua"

@@ -51,6 +51,7 @@ local jokers = {
     "weierstrass",
     "pareto",
     "peano",
+    "escher",
     -- Vanilla
     "seance"
 }

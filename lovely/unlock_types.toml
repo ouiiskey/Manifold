@@ -15,6 +15,7 @@ check_for_unlock{type = "ease_ante", ante = G.GAME.round_resets.ante}
 '''
 
 # sacrifice
+# Card:calculate_joker
 [[patches]]
 [patches.pattern]
 target = "card.lua"
@@ -26,6 +27,7 @@ check_for_unlock{type = "sacrifice", name = sliced_card.ability.name}
 '''
 
 # exit_run
+# G.FUNCS.go_to_menu
 [[patches]]
 [patches.pattern]
 target = "functions/button_callbacks.lua"
@@ -47,6 +49,7 @@ payload = '''
 '''
 
 # lose
+# Game:update_game_over
 [[patches]]
 [patches.pattern]
 target = "game.lua"
@@ -58,6 +61,7 @@ check_for_unlock{type = "lose"}
 '''
 
 # j_splash
+# Card:add_to_deck
 [[patches]]
 [patches.pattern]
 target = "card.lua"

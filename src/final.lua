@@ -62,7 +62,7 @@ if hook then
     end
 end
 
--- Soul
+-- The Soul
 local soul = {"j_caino", "j_triboulet", "j_yorick", "j_chicot", "j_perkeo",
 } -- Hook: Soul jokers
 MANIF.sou = {}
@@ -70,8 +70,8 @@ for k, v in ipairs(soul) do
     SMODS.insert_pool(MANIF.sou, G.P_CENTERS[v])
 end
 
--- Mind
-local mind = {"j_manifold_weierstrass",
+-- The Mind
+local mind = {"j_manifold_weierstrass", "j_manifold_pareto", "j_manifold_peano", "j_manifold_escher"
 } -- Hook: Mind jokers
 MANIF.manifold_mind = {}
 for k, v in ipairs(mind) do

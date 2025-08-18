@@ -18,10 +18,14 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.hand_drawn and not context.blueprint and G.GAME.current_round.hands_left == 1 and not G.GAME.current_round.final_wave then
             G.GAME.current_round.final_wave = true
+            local faces = {}
             for k, v in ipairs(G.discard.cards) do
                 if v:is_face() then
-                    draw_card(G.discard, G.hand, nil, nil, nil, v)
+                    table.insert(faces, v)
                 end
+            end
+            for i = 1, #faces do
+                draw_card(G.discard, G.hand, i / #faces * 100, nil, nil, faces[i])
             end
             return {
                 message = localize("manifold_brains")

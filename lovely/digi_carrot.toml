@@ -4,6 +4,7 @@ dump_lua = true
 priority = 0
 
 # e_mult
+# card_eval_status_text
 [[patches]]
 [patches.pattern]
 target = "functions/common_events.lua"
@@ -22,6 +23,7 @@ elseif eval_type == "e_mult" then
 '''
 
 # Cavendish
+# Game:init_item_prototypes
 [[patches]]
 [patches.pattern]
 target = "game.lua"
@@ -34,6 +36,7 @@ payload = '''
 j_cavendish = {order = 61, unlocked = true, discovered = false, blueprint_compat = true, perishable_compat = true, eternal_compat = false, rarity = 1, cost = 4, name = "Cavendish", pos = {x = 5, y = 11}, set = "Joker", cost_mult = 1.0, config = {extra = {odds = 1000, Xmult = 3}}, yes_pool_flag = "gros_michel_extinct", no_pool_flag = "cavendish_extinct"},
 '''
 
+# Card:calculate_joker
 [[patches]]
 [patches.pattern]
 target = "card.lua"

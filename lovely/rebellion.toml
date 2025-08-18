@@ -19,7 +19,7 @@ else
 end
 '''
 
-# reroll_boss
+# G.FUNCS.reroll_boss
 [[patches]]
 [patches.pattern]
 target = "functions/button_callbacks.lua"
@@ -97,7 +97,7 @@ payload = '''
 UIBox_dyn_container({create_UIBox_blind_choice(target_u)}, false, get_blind_main_colour(target_u), mix_colours(G.C.BLACK, get_blind_main_colour(target_u), 0.8))
 '''
 
-# start_run
+# Game:start_run
 [[patches]]
 [patches.pattern]
 target = "game.lua"
@@ -113,7 +113,7 @@ else
 end
 '''
 
-# end_round
+# end_round and new_round
 [[patches]]
 [patches.pattern]
 target = "functions/state_events.lua"

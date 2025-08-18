@@ -22,7 +22,7 @@ if not G.GAME.shop_cursed and G.GAME.fingers and not next(SMODS.find_card("j_man
 end
 '''
 
-# reroll_shop
+# G.FUNCS.reroll_shop
 [[patches]]
 [patches.pattern]
 target = "functions/button_callbacks.lua"
@@ -33,7 +33,7 @@ payload = '''
 G.GAME.shop_cursed = false
 '''
 
-# toggle_shop
+# G.FUNCS.toggle_shop
 [[patches]]
 [patches.pattern]
 target = "functions/button_callbacks.lua"

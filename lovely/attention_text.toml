@@ -3,7 +3,7 @@ version = "1.0.0"
 dump_lua = true
 priority = 0
 
-# calculate_individual_effect
+# SMODS.calculate_individual_effect
 [[patches]]
 [patches.pattern]
 target = '=[SMODS _ "src/utils.lua"]'

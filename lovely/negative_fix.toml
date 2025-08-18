@@ -3,7 +3,7 @@ version = "1.0.0"
 dump_lua = true
 priority = 0
 
-# change_size
+# CardArea:change_size
 [[patches]]
 [patches.pattern]
 target = "cardarea.lua"
@@ -14,7 +14,7 @@ payload = '''
 local card_count = self.config.card_limit - #self.cards
 '''
 
-# set_edition
+# Card:set_edition
 [[patches]]
 [patches.pattern]
 target = '=[SMODS _ "src/overrides.lua"]'
@@ -53,7 +53,7 @@ payload = '''
 G.hand:change_size(self.edition.card_limit)
 '''
 
-# set_debuff
+# Card:set_debuff
 [[patches]]
 [patches.pattern]
 target = "card.lua"
@@ -64,7 +64,7 @@ payload = '''
 if self.area == G.hand then if self.debuff then G.hand:change_size(self.edition.card_limit) else G.hand:change_size(-self.edition.card_limit) end end
 '''
 
-# add_to_deck
+# Card:add_to_deck
 [[patches]]
 [patches.pattern]
 target = "card.lua"
@@ -85,7 +85,6 @@ position = "at"
 match_indent = true
 payload = '''
 if self.edition and self.edition.card_limit and (from_debuff or not self.debuff) then
-    print("debug3")
     if self.ability.consumeable then
         if self.config.center.set == "Planet" then
             G.planets.config.card_limit = G.planets.config.card_limit + self.edition.card_limit
@@ -96,7 +95,7 @@ if self.edition and self.edition.card_limit and (from_debuff or not self.debuff)
         G.jokers.config.card_limit = G.jokers.config.card_limit + self.edition.card_limit
 '''
 
-# remove_from_deck
+# Card:remove_from_deck
 [[patches]]
 [patches.pattern]
 target = "card.lua"
@@ -116,9 +115,7 @@ if G.jokers then
 position = "at"
 match_indent = true
 payload = '''
-print(self.edition)
 if self.edition and self.edition.card_limit and G.jokers and (from_debuff or not self.debuff) then
-    print("debug1")
     if self.ability.consumeable then
         if self.config.center.set == "Planet" then
             G.planets.config.card_limit = G.planets.config.card_limit - self.edition.card_limit

@@ -17,6 +17,7 @@ SMODS.Atlas {
 
 -- Load source
 local source = {
+    "overrides",
     "utils",
     "fonts",
     "vouchers",

@@ -15,7 +15,7 @@ SMODS.Joker {
                 end
             end
             if target then
-                draw_card(G.deck, G.hand, nil, nil, nil, target)
+                draw_card(G.deck, G.hand, 100, nil, nil, target)
                 return {
                     message = localize("manifold_hit"),
                     colour = G.C.L_BLACK,

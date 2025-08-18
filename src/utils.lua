@@ -1,20 +1,17 @@
 -- See also is_rank.toml
 function Card:is_rank(rank)
-    if self:get_id() == rank then return true end
-    if next(SMODS.find_card("j_manifold_prosopagnosia")) then
-        return next(SMODS.find_card("j_pareidolia")) or self:is_face() and MANIF.PROSO.is_face[rank]
-    end
-    return false
+    if self.debuff then return false end
+    return self:get_id() == rank or next(SMODS.find_card("j_manifold_prosopagnosia")) and (next(SMODS.find_card("j_pareidolia")) or self:is_face() and MANIF.PROSO.is_face[rank])
 end
 
 function Card:is_even()
-    if self:get_id() <= 10 and self:get_id() >= 0 and self:get_id() % 2 == 0 then return true end
-    return next(SMODS.find_card("j_manifold_prosopagnosia")) and next(SMODS.find_card("j_pareidolia"))
+    if self.debuff then return false end
+    return self:get_id() <= 10 and self:get_id() >= 0 and self:get_id() % 2 == 0 or next(SMODS.find_card("j_manifold_prosopagnosia")) and next(SMODS.find_card("j_pareidolia"))
 end
 
 function Card:is_odd()
-    if self:get_id() <= 9 and self:get_id() >= 1 and self:get_id() % 2 == 1 or self:is_rank(14) then return true end
-    return next(SMODS.find_card("j_manifold_prosopagnosia")) and next(SMODS.find_card("j_pareidolia"))
+    if self.debuff then return false end
+    return self:get_id() <= 9 and self:get_id() >= 1 and self:get_id() % 2 == 1 or self:is_rank(14)
 end
 
 function Card:get_parity()
@@ -25,6 +22,11 @@ function Card:get_parity()
         return "odd"
     end
     return "none"
+end
+
+function Card:is_number()
+    if self.debuff then return false end
+    return not SMODS.has_no_rank(self) and not self:is_face() and not self:is_rank(14) or next(SMODS.find_card("j_manifold_prosopagnosia")) and next(SMODS.find_card("j_pareidolia"))
 end
 
 function Card:eat()

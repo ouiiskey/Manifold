@@ -8,6 +8,7 @@ unknown = 'next(SMODS.find_card("j_manifold_cthugha")) and localize ("manifold_u
 unknown_total = 'next(SMODS.find_card("j_manifold_cthugha")) and localize ("manifold_unknown_total") or'
 
 # Round score
+# G.FUNCS.chip_UI_set
 [[patches]]
 [patches.pattern]
 target = "functions/button_callbacks.lua"
@@ -19,6 +20,7 @@ G.GAME.chips_text = {{lovely:unknown_total}} new_chips_text
 '''
 
 # Mult
+# G.FUNCS.hand_mult_UI_set
 [[patches]]
 [patches.pattern]
 target = "functions/button_callbacks.lua"
@@ -30,6 +32,7 @@ G.GAME.current_round.current_hand.mult_text = {{lovely:unknown}} new_mult_text
 '''
 
 # Chips
+# G.FUNCS.hand_chip_UI_set
 [[patches]]
 [patches.pattern]
 target = "functions/button_callbacks.lua"
@@ -41,6 +44,7 @@ G.GAME.current_round.current_hand.chip_text = {{lovely:unknown}} new_chip_text
 '''
 
 # Chip total
+# G.FUNCS.hand_chip_total_UI_set
 [[patches]]
 [patches.pattern]
 target = "functions/button_callbacks.lua"

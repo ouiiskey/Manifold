@@ -3,6 +3,7 @@ version = "1.0.0"
 dump_lua = true
 priority = 0
 
+# Card:calculate_joker
 # Sixth Sense
 [[patches]]
 [patches.pattern]
@@ -204,4 +205,37 @@ position = "at"
 match_indent = true
 payload = '''
 context.other_card:is_odd()
+'''
+
+# G.UIDEF.view_deck
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/overrides.lua"]'
+pattern = '''
+if v.base.value and not v_nr and not SMODS.Ranks[v.base.value].face and card_id ~= 14 then
+    num_tally = num_tally + 1
+    if not v.debuff then mod_num_tally = mod_num_tally + 1 end
+end
+if card_id == 14 then
+    ace_tally = ace_tally + 1
+    if not v.debuff then mod_ace_tally = mod_ace_tally + 1 end
+end
+
+--ranks
+if v.base.value and not v_nr then rank_tallies[v.base.value] = rank_tallies[v.base.value] + 1 end
+if v.base.value and not v_nr and not v.debuff then mod_rank_tallies[v.base.value] = mod_rank_tallies[v.base.value] + 1 end
+'''
+position = "at"
+match_indent = true
+payload = '''
+if v.base.value and not v_nr and not SMODS.Ranks[v.base.value].face and card_id ~= 14 then num_tally = num_tally + 1 end
+if v:is_number() then mod_num_tally = mod_num_tally + 1 end
+if card_id == 14 then ace_tally = ace_tally + 1 end
+if v:is_rank(14) then mod_ace_tally = mod_ace_tally + 1 end
+
+--ranks
+for kk, vv in ipairs(rank_name_mapping) do
+    if card_id == SMODS.Ranks[vv].id then rank_tallies[vv] = rank_tallies[vv] + 1 end
+    if v:is_rank(SMODS.Ranks[vv].id) then mod_rank_tallies[vv] = mod_rank_tallies[vv] + 1 end
+end
 '''
