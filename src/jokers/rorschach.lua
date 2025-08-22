@@ -22,7 +22,7 @@ SMODS.Joker {
             local targets = {}
             for k, v in ipairs(G.jokers.cards) do
                 if v ~= card then
-                    targets[#targets + 1] = v
+                    table.insert(targets, v)
                 end
             end
             if #targets > 0 then

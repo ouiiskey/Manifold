@@ -8,7 +8,7 @@ SMODS.Joker {
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.joker_main then
-            for k, v in ipairs(context.full_hand) do
+            for k, v in ipairs(context.scoring_hand) do
                 if not v:is_number() then return end
             end
             ease_discard(1)

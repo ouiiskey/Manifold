@@ -1,4 +1,4 @@
--- Escher
+-- Escher, see also escher.toml
 SMODS.Joker {
     key = "escher",
     rarity = 4,

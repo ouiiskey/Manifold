@@ -71,7 +71,7 @@ for k, v in ipairs(soul) do
 end
 
 -- The Mind
-local mind = {"j_manifold_weierstrass", "j_manifold_pareto", "j_manifold_peano", "j_manifold_escher"
+local mind = {"j_manifold_weierstrass", "j_manifold_pareto", "j_manifold_peano", "j_manifold_escher", "j_manifold_shannon",
 } -- Hook: Mind jokers
 MANIF.manifold_mind = {}
 for k, v in ipairs(mind) do

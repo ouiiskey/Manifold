@@ -55,14 +55,14 @@ local ordered = function()
             if v.base.value and not v_nr and SMODS.Ranks[v.base.value].face then face_tally = face_tally + 1 end
             if v:is_face() then mod_face_tally = mod_face_tally + 1 end
             if v.base.value and not v_nr and not SMODS.Ranks[v.base.value].face and card_id ~= 14 then num_tally = num_tally + 1 end
-            if v:is_number() then mod_num_tally = mod_num_tally + 1 end
+            if v:is_number(true) then mod_num_tally = mod_num_tally + 1 end
             if card_id == 14 then ace_tally = ace_tally + 1 end
-            if v:is_rank(14) then mod_ace_tally = mod_ace_tally + 1 end
+            if v:is_rank(14, true) then mod_ace_tally = mod_ace_tally + 1 end
 
             --ranks
             for kk, vv in ipairs(rank_name_mapping) do
                 if card_id == SMODS.Ranks[vv].id then rank_tallies[vv] = rank_tallies[vv] + 1 end
-                if v:is_rank(SMODS.Ranks[vv].id) then mod_rank_tallies[vv] = mod_rank_tallies[vv] + 1 end
+                if v:is_rank(SMODS.Ranks[vv].id, true) then mod_rank_tallies[vv] = mod_rank_tallies[vv] + 1 end
             end
         end
     end

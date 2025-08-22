@@ -161,7 +161,7 @@ return {
                 name = "Squid Joker",
                 text = {
                     "{C:red}+1{} discard each hand",
-                    "if all played cards",
+                    "if all scored cards",
                     "are number cards"
                 }
             },
@@ -413,6 +413,18 @@ return {
                     "Disables all shuffling",
                     "Played or discarded cards",
                     "return to {C:attention}bottom{} of deck"
+                },
+                unlock = {
+                    "{E:1,s:1.3}?????"
+                }
+            },
+            j_manifold_shannon = {
+                name = "Shannon",
+                text = {
+                    "Debuff another random",
+                    "{C:attention}Joker{} every hand",
+                    "Copy the abilities",
+                    "of all other {C:attention}Jokers"
                 },
                 unlock = {
                     "{E:1,s:1.3}?????"
