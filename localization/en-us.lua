@@ -12,6 +12,18 @@ return {
                     "{C:attention}#1#{} items from",
                     "your collection"
                 }
+            },
+            b_manifold_silver = {
+                name = "Silver Deck",
+                text = {
+                    "Start run with",
+                    "a random {C:attention}Joker"
+                },
+                unlock = {
+                    "Discover at least",
+                    "{C:attention}#1#{} items from",
+                    "your collection"
+                }
             }
         },
         Joker = {
