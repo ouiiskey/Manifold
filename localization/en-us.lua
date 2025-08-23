@@ -1,5 +1,19 @@
 return {
     descriptions = {
+        Back = {
+            b_manifold_braided = {
+                name = "Braided Deck",
+                text = {
+                    "{C:attention}Poker hands",
+                    "start at {C:attention}lvl.#1#"
+                },
+                unlock = {
+                    "Discover at least",
+                    "{C:attention}#1#{} items from",
+                    "your collection"
+                }
+            }
+        },
         Joker = {
             j_manifold_prosopagnosia = {
                 name = "Prosopagnosia",

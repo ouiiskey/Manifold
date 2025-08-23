@@ -24,7 +24,7 @@ local source = {
     "seals",
     "consumables/consumables",
     "jokers/jokers",
-    -- Backs
+    "backs/backs",
     -- Challenges
     "compat"
 }
