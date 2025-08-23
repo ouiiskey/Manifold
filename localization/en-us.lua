@@ -24,6 +24,18 @@ return {
                     "{C:attention}#1#{} items from",
                     "your collection"
                 }
+            },
+            b_manifold_foil = {
+                name = "Foil Deck",
+                text = {
+                    "Add {C:dark_edition,T:e_foil}Foil{} to {C:attention}#1#",
+                    "random cards in deck"
+                },
+                unlock = {
+                    "Discover at least",
+                    "{C:attention}#1#{} items from",
+                    "your collection"
+                }
             }
         },
         Joker = {
