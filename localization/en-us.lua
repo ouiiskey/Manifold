@@ -48,6 +48,18 @@ return {
                     "{C:attention}#1#{} items from",
                     "your collection"
                 }
+            },
+            b_manifold_polychrome = {
+                name = "Polychrome Deck",
+                text = {
+                    "Add {C:dark_edition,T:e_polychrome}Polychrome{} to {C:attention}#1#",
+                    "random cards in deck"
+                },
+                unlock = {
+                    "Discover at least",
+                    "{C:attention}#1#{} items from",
+                    "your collection"
+                }
             }
         },
         Joker = {
