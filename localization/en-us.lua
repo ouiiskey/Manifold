@@ -36,6 +36,18 @@ return {
                     "{C:attention}#1#{} items from",
                     "your collection"
                 }
+            },
+            b_manifold_holographic = {
+                name = "Holographic Deck",
+                text = {
+                    "Add {C:dark_edition,T:e_holo}Holographic{} to {C:attention}#1#",
+                    "random cards in deck"
+                },
+                unlock = {
+                    "Discover at least",
+                    "{C:attention}#1#{} items from",
+                    "your collection"
+                }
             }
         },
         Joker = {
