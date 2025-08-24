@@ -72,6 +72,14 @@ return {
                     "{C:attention}other{} items from",
                     "your collection"
                 }
+            },
+            b_manifold_manifold = {
+                name = "Manifold Deck",
+                text = {
+                    "{V:1}Manifold{C:attention} Jokers",
+                    "are {C:attention}3X{} more",
+                    "likely to appear"
+                }
             }
         },
         Joker = {

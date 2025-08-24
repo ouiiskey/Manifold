@@ -1,0 +1,19 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# get_current_pool
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "_pool_size = _pool_size + 1"
+position = "after"
+match_indent = true
+payload = '''
+if G.GAME.selected_back_key and G.GAME.selected_back_key == "b_manifold_manifold" and v.key:find("j_manifold_") then
+    _pool[#_pool + 1] = v.key
+    _pool[#_pool + 1] = v.key
+    _pool_size = _pool_size + 2
+end
+'''
