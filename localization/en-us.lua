@@ -60,6 +60,18 @@ return {
                     "{C:attention}#1#{} items from",
                     "your collection"
                 }
+            },
+            b_manifold_negative = {
+                name = "Negative Deck",
+                text = {
+                    "Add {C:dark_edition,T:e_negative_playing_card}Negative{} to {C:attention}1",
+                    "random card in deck"
+                },
+                unlock = {
+                    "Discover all",
+                    "{C:attention}other{} items from",
+                    "your collection"
+                }
             }
         },
         Joker = {

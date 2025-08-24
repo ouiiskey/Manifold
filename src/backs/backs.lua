@@ -6,12 +6,12 @@ SMODS.Atlas {
 }
 
 local backs = {
-    -- Re-added
     "braided",
     "silver",
     "foil",
     "holographic",
-    "polychrome"
+    "polychrome",
+    "negative"
 }
 for k, v in ipairs(backs) do
     assert(SMODS.load_file("src/backs/" .. v .. ".lua"), MANIF.install .. "src/backs/" .. v .. ".lua")()

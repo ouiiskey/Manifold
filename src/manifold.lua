@@ -1,5 +1,6 @@
 MANIF = {
-    install = "Improper install detected, missing file: "
+    install = "Improper install detected, missing file: ",
+    tooltips = {}
 }
 
 SMODS.current_mod.optional_features = {
