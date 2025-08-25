@@ -1,0 +1,15 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# create_card
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "if card.ability.consumeable and not skip_materialize then card:start_materialize() end"
+position = "before"
+match_indent = true
+payload = '''
+if _type == "Planet" and G.GAME.selected_back_key.key == "b_manifold_syzygy" then card:set_edition({negative = true}, true, true) end
+'''

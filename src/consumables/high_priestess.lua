@@ -16,7 +16,7 @@ SMODS.Consumable:take_ownership("high_priestess", {
     end,
     use = function(self, card, area, copier)
         G.E_MANAGER:add_event(Event({trigger = "after", delay = 0.4, func = function()
-            if G.planets.config.card_limit > #G.planets.cards then
+            if G.planets.config.card_limit > #G.planets.cards or G.GAME.selected_back_key.key == "b_manifold_syzygy" then
                 play_sound("timpani")
                 SMODS.add_card{set = "Planet", area = G.planets, key = G.GAME.last_planet, key_append = "priest"}
                 card:juice_up(0.3, 0.5)
@@ -25,6 +25,6 @@ SMODS.Consumable:take_ownership("high_priestess", {
         delay(0.6)
     end,
     can_use = function(self, card)
-        return #G.planets.cards < G.planets.config.card_limit and G.GAME.last_planet
+        return (#G.planets.cards < G.planets.config.card_limit or G.GAME.selected_back_key.key == "b_manifold_syzygy") and G.GAME.last_planet
     end
 }, true)

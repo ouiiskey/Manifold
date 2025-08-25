@@ -12,6 +12,7 @@ local backs = {
     "holographic",
     "polychrome",
     "negative",
+    "syzygy",
     "manifold"
 }
 for k, v in ipairs(backs) do

@@ -93,8 +93,8 @@ not (card.ability.consumeable and #G.consumeables.cards < G.consumeables.config.
 position = "at"
 match_indent = true
 payload = '''
-not (card.ability.consumeable and card.config.center.set == "Planet" and #G.planets.cards < G.planets.config.card_limit + ((card.edition and card.edition.negative) and 1 or 0)) and
-not (card.ability.consumeable and card.config.center.set ~= "Planet" and #G.consumeables.cards < G.consumeables.config.card_limit + ((card.edition and card.edition.negative) and 1 or 0)) then
+not (card.ability.consumeable and card.config.center.set == "Planet" and #G.planets.cards < G.planets.config.card_limit + (card.edition and card.edition.card_limit or 0)) and
+not (card.ability.consumeable and card.config.center.set ~= "Planet" and #G.consumeables.cards < G.consumeables.config.card_limit + (card.edition and card.edition.card_limit or 0)) then
     if card.ability.consumeable then
         if card.config.center.set == "Planet" then
             alert_no_space(card, G.planets)
@@ -115,7 +115,7 @@ pattern = "if self.seal == 'Blue' and #G.consumeables.cards + G.GAME.consumeable
 position = "at"
 match_indent = true
 payload = '''
-if self.seal == "Blue" and #G.planets.cards + G.GAME.planet_buffer < G.planets.config.card_limit and not self.ability.extra_enhancement then
+if self.seal == "Blue" and (#G.planets.cards + G.GAME.planet_buffer < G.planets.config.card_limit or G.GAME.selected_back_key.key == "b_manifold_syzygy") and not self.ability.extra_enhancement then
 '''
 
 [[patches]]

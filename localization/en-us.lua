@@ -73,12 +73,29 @@ return {
                     "your collection"
                 }
             },
+            b_manifold_syzygy = {
+                name = "Syzygy Deck",
+                text = {
+                    "All {C:planet}Planet{} cards",
+                    "are {C:dark_edition}Negative"
+                },
+                unlock = {
+                    "Win a run with",
+                    "{C:attention}#1#",
+                    "on any difficulty"
+                }
+            },
             b_manifold_manifold = {
                 name = "Manifold Deck",
                 text = {
                     "{V:1}Manifold{C:attention} Jokers",
                     "are {C:attention}3X{} more",
                     "likely to appear"
+                },
+                unlock = {
+                    "Win a run with any",
+                    "deck on at least",
+                    "{V:1}White Stake{} difficulty",
                 }
             }
         },

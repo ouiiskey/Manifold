@@ -89,14 +89,13 @@ SMODS.Joker {
                                 end
                                 return true end }))
                         return true end }))
-            elseif context.joker_main then
-                local effects = {}
-                for k, v in ipairs(G.jokers.cards) do
-                    local effect = SMODS.blueprint_effect(card, v, context)
-                    if effect then table.insert(effects, effect) end
-                end
-                return SMODS.merge_effects(effects)
             end
+            local effects = {}
+            for k, v in ipairs(G.jokers.cards) do
+                local effect = SMODS.blueprint_effect(card, v, context)
+                if effect then table.insert(effects, effect) end
+            end
+            return SMODS.merge_effects(effects)
         end
     end
 }

@@ -14,7 +14,7 @@ SMODS.Joker {
         return args.type == "discover_amount" and G.P_CENTERS[MANIF.home].discovered
     end,
     calculate = function(self, card, context)
-        if context.joker_main and #G.planets.cards + G.GAME.planet_buffer < G.planets.config.card_limit then
+        if context.joker_main and (#G.planets.cards + G.GAME.planet_buffer < G.planets.config.card_limit or G.GAME.selected_back_key.key == "b_manifold_syzygy") then
             G.GAME.planet_buffer = G.GAME.planet_buffer + 1
             G.E_MANAGER:add_event(Event({
                 func = function()

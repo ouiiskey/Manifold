@@ -14,14 +14,18 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.joker_main then
-            return {
-                mult = card.ability.extra.mult
-            }
-        elseif context.post_trigger and not context.blueprint and context.other_card == card then
-            G.E_MANAGER:add_event(Event({
-                func = function()
-                    card.ability.extra.mult = mult
-                    return true end }))
+            if context.blueprint then
+                return {
+                    mult = card.ability.extra.mult
+                }
+            else
+                return {
+                    mult = card.ability.extra.mult,
+                    func = function()
+                        card.ability.extra.mult = mult
+                    end
+                }
+            end
         end
     end
 }
