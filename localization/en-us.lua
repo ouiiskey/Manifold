@@ -85,12 +85,23 @@ return {
                     "on any difficulty"
                 }
             },
+            b_manifold_graded = {
+                name = "Graded Deck",
+                text = {
+                    "Jokers sell at",
+                    "{C:attention}purchase price"
+                },
+                unlock = {
+                    "Win a run with",
+                    "{C:attention}#1#",
+                    "on any difficulty"
+                }
+            },
             b_manifold_manifold = {
                 name = "Manifold Deck",
                 text = {
-                    "{V:1}Manifold{C:attention} Jokers",
-                    "are {C:attention}3X{} more",
-                    "likely to appear"
+                    "{V:1}Manifold{} Jokers",
+                    "appear more frequently"
                 },
                 unlock = {
                     "Win a run with any",

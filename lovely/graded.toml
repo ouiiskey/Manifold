@@ -1,0 +1,15 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Card:set_cost
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "self.sell_cost = math.max(1, math.floor(self.cost/2)) + (self.ability.extra_value or 0)"
+position = "at"
+match_indent = true
+payload = '''
+self.sell_cost = (self.ability.set == "Joker" and G.GAME.selected_back_key and G.GAME.selected_back_key.key == "b_manifold_graded" and self.cost or math.max(1, math.floor(self.cost/2))) + (self.ability.extra_value or 0)
+'''
