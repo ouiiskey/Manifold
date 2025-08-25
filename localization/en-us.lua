@@ -97,6 +97,17 @@ return {
                     "on any difficulty"
                 }
             },
+            b_manifold_ring = {
+                name = "Ring Deck",
+                text = {
+                    "{C:attention}Straights{} can wrap"
+                },
+                unlock = {
+                    "Win a run with",
+                    "{C:attention}#1#",
+                    "on any difficulty"
+                }
+            },
             b_manifold_manifold = {
                 name = "Manifold Deck",
                 text = {

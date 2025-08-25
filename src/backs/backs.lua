@@ -14,6 +14,7 @@ local backs = {
     "negative",
     "syzygy",
     "graded",
+    "ring",
     "manifold"
 }
 for k, v in ipairs(backs) do
