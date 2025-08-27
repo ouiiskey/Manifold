@@ -1,0 +1,15 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Card:set_debuff
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "function Card:set_debuff(should_debuff)"
+position = "after"
+match_indent = true
+payload = '''
+    if G.GAME.selected_back_key.key == "b_manifold_polymer" then return end
+'''

@@ -8,6 +8,13 @@ SMODS.Joker {
     blueprint_compat = true,
     yes_pool_flag = "cavendish_extinct",
     config = {extra = {e_mult = 1.25, increment = 0.05}},
+    unlocked = false,
+    locked_loc_vars = function(self, info_queue, card)
+        if G.P_CENTERS.j_cavendish.discovered then info_queue[#info_queue + 1] = G.P_CENTERS.j_cavendish end
+    end,
+    check_for_unlock = function(self, args)
+        return args.type == "cavendish_extinct"
+    end,
     loc_vars = function(self, info_queue, card)
         return {vars = {card.ability.extra.e_mult}}
     end,

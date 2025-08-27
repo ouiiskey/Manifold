@@ -108,6 +108,18 @@ return {
                     "on any difficulty"
                 }
             },
+            b_manifold_polymer = {
+                name = "Polymer Deck",
+                text = {
+                    "Cards can't",
+                    "be debuffed"
+                },
+                unlock = {
+                    "Win a run with",
+                    "{C:attention}#1#",
+                    "on any difficulty"
+                }
+            },
             b_manifold_manifold = {
                 name = "Manifold Deck",
                 text = {
@@ -233,6 +245,11 @@ return {
                 name = "Digi-Carrot",
                 text = {
                     "{X:mult,C:white} ^#1# {} Mult"
+                },
+                unlock = {
+                    "Witness the",
+                    "extinction",
+                    "of {C:attention}Cavendish"
                 }
             },
             j_manifold_extraterrestrial = {
