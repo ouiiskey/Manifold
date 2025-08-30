@@ -1,0 +1,58 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# create_UIBox_your_collection
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "consumable_nodes[#consumable_nodes+1] = UIBox_button({button = id, label = {localize('b_'..key:lower()..'_cards')}, count = G.DISCOVER_TALLIES[key:lower()..'s'], minw = 4, id = id, colour = G.C.SECONDARY_SET[key]})"
+position = "at"
+match_indent = true
+payload = '''
+consumable_nodes[#consumable_nodes + 1] = UIBox_button{button = id, label = {localize("b_" .. key:lower() .. "_cards")}, count = G.DISCOVER_TALLIES[key:lower() .. "s"], minw = 4, id = id, colour = G.C.SECONDARY_SET[key], font = SMODS.ConsumableTypes[key].reverse and SMODS.Fonts["manifold_reverse"] or nil}
+'''
+
+# buildAdditionsTab
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/ui.lua"]'
+pattern = "consumable_nodes[#consumable_nodes+1] = UIBox_button({button = id, label = {localize('b_'..key:lower()..'_cards')}, count = tally, minw = 4, id = id, colour = G.C.SECONDARY_SET[key]})"
+position = "at"
+match_indent = true
+payload = '''
+consumable_nodes[#consumable_nodes + 1] = UIBox_button{button = id, label = {localize("b_" .. key:lower() .. "_cards")}, count = tally, minw = 4, id = id, colour = G.C.SECONDARY_SET[key], font = SMODS.ConsumableTypes[key].reverse and SMODS.Fonts["manifold_reverse"] or nil}
+'''
+
+# UIBox_button
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "{n=G.UIT.T, config={text = v, scale = args.scale, colour = args.text_colour, shadow = args.shadow, focus_args = button_pip and args.focus_args or nil, func = button_pip, ref_table = args.ref_table}}"
+position = "at"
+match_indent = true
+payload = '''
+{n = G.UIT.T, config = {text = v, scale = args.scale, colour = args.text_colour, shadow = args.shadow, focus_args = button_pip and args.focus_args or nil, func = button_pip, ref_table = args.ref_table, font = args.font}}
+'''
+
+# create_badge
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "  function create_badge(_string, _badge_col, _text_col, scaling)"
+position = "at"
+match_indent = true
+payload = '''
+function create_badge(_string, _badge_col, _text_col, scaling, font)
+'''
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "{n=G.UIT.O, config={object = DynaText({string = _string or 'ERROR', colours = {_text_col or G.C.WHITE},float = true, shadow = true, offset_y = -0.05, silent = true, spacing = 1, scale = 0.33*scaling})}},"
+position = "at"
+match_indent = true
+payload = '''
+{n = G.UIT.O, config = {object = DynaText{string = _string or "ERROR", colours = {_text_col or G.C.WHITE}, float = true, shadow = true, offset_y = -0.05, silent = true, spacing = 1, scale = 0.33 * scaling, font = font}}},
+'''

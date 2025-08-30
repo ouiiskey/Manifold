@@ -8,6 +8,8 @@ SMODS.Atlas {
 local consumables = {
     -- Spectrals
     "mind",
+    -- Reverse Tarots
+    "reverse/tarot",
     -- Vanilla Tarots
     "high_priestess",
     -- Vanilla Spectrals

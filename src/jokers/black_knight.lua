@@ -26,13 +26,17 @@ SMODS.Joker {
                     G.E_MANAGER:add_event(Event({
                         func = function()
                             v:set_seal("manifold_black", true)
+                            v:juice_up(0.3, 0.3)
                             return true end }))
                 end
             end
             if sealed then
                 return {
                     message = localize("manifold_black"),
-                    colour = G.C.BLACK
+                    colour = G.C.BLACK,
+                    sound = "gold_seal",
+                    percent = 1.2,
+                    volume = 0.4
                 }
             end
         end

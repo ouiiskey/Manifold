@@ -61,7 +61,7 @@ pattern = "if self.area == G.jokers then if should_debuff then self:remove_from_
 position = "after"
 match_indent = true
 payload = '''
-if self.area == G.hand then if self.debuff then G.hand:change_size(self.edition.card_limit) else G.hand:change_size(-self.edition.card_limit) end end
+if self.area == G.hand and self.edition then if self.debuff then G.hand:change_size(self.edition.card_limit) else G.hand:change_size(-self.edition.card_limit) end end
 '''
 
 # Card:add_to_deck

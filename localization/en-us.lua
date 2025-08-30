@@ -120,6 +120,17 @@ return {
                     "on any difficulty"
                 }
             },
+            b_manifold_orientable = {
+                text = {
+                    "{C:tarot}Tarot{} cards",
+                    "can be reversed"
+                },
+                unlock = {
+                    "Win a run with",
+                    "{C:attention}#1#",
+                    "on any difficulty"
+                }
+            },
             b_manifold_manifold = {
                 name = "Manifold Deck",
                 text = {
@@ -585,6 +596,15 @@ return {
                     "Debuffed after",
                     "{C:attention}#1#{} rounds"
                 }
+            },
+            undiscovered_manifold_reverse_tarot = {
+                name = "Not Discovered",
+                text = {
+                    "Purchase or use",
+                    "this card in an",
+                    "unseeded run to",
+                    "learn what it does"
+                }
             }
         },
         Spectral = {
@@ -652,6 +672,16 @@ return {
                 }
             }
         },
+        manifold_reverse_tarot = {
+            c_manifold_strength = {
+                name = "{f:manifold_reverse}htgnertS",
+                text = {
+                    "Decreases rank of",
+                    "up to {C:attention}#1#{} selected",
+                    "cards by {C:attention}1"
+                }
+            }
+        },
         Edition = {
             e_negative_planet = {
                 name = "Negative",
@@ -666,6 +696,8 @@ return {
             manifold_black_seal = "Black Seal"
         },
         dictionary = {
+            b_manifold_reverse_tarot_cards = "sdraC toraT",
+            k_manifold_reverse_tarot = "toraT",
             manifold_ace = "A",
             manifold_baked = "Baked!",
             manifold_black = "Black",
