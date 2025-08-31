@@ -23,11 +23,10 @@ SMODS.Joker {
             for k, v in ipairs(context.scoring_hand) do
                 if not v.seal and SMODS.has_enhancement(v, "m_steel") then
                     sealed = true
-                    G.E_MANAGER:add_event(Event({
-                        func = function()
-                            v:set_seal("manifold_black", true)
-                            v:juice_up(0.3, 0.3)
-                            return true end }))
+                    G.E_MANAGER:add_event(Event{func = function()
+                        v:set_seal("manifold_black", true)
+                        v:juice_up(0.3, 0.3)
+                        return true end})
                 end
             end
             if sealed then

@@ -20,10 +20,10 @@ SMODS.Joker {
                     message = localize("manifold_hit"),
                     colour = G.C.L_BLACK,
                     func = function()
-                        G.E_MANAGER:add_event(Event({
-                            func = function()
-                                save_run()
-                                return true end }))
+                        G.E_MANAGER:add_event(Event{func = function()
+                            -- Save run to prevent reversion of draw but not sell on exit to menu
+                            save_run()
+                            return true end})
                     end
                 }
             else

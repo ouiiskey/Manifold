@@ -33,12 +33,11 @@ SMODS.Joker {
                         -- Card scores as polychrome but shader doesn't come early
                         v:set_edition({polychrome = true}, true, true)
                         v.edition.polychrome = false
-                        G.E_MANAGER:add_event(Event({
-                            func = function()
-                                v.edition.polychrome = true
-                                v:juice_up()
-                                play_sound("polychrome1", 1.2, 0.35)
-                                return true end }))
+                        G.E_MANAGER:add_event(Event{func = function()
+                            v.edition.polychrome = true
+                            v:juice_up()
+                            play_sound("polychrome1", 1.2, 0.35)
+                            return true end})
                     end
                 end
             end

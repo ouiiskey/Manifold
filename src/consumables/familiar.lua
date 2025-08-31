@@ -9,7 +9,7 @@ SMODS.Consumable:take_ownership("familiar", {
         end
         local target = pseudorandom_element(pool, pseudoseed("manifold_familiar"))
         for i = 1, G.consumeables.config.card_limit - #G.consumeables.cards do
-            G.E_MANAGER:add_event(Event({trigger = "after", delay = 0.4, func = function()
+            G.E_MANAGER:add_event(Event{trigger = "after", delay = 0.4, func = function()
                 if G.consumeables.config.card_limit > #G.consumeables.cards then
                     play_sound("timpani")
                     local copy = copy_card(target, nil, nil, nil, true)
@@ -17,7 +17,7 @@ SMODS.Consumable:take_ownership("familiar", {
                     G.consumeables:emplace(copy)
                     card:juice_up(0.3, 0.5)
                 end
-                return true end }))
+                return true end})
         end
         delay(0.6)
     end,

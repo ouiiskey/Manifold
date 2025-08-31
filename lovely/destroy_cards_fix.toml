@@ -1,0 +1,36 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Adds certain capabilities to SMODS.destroy_cards to match vanilla
+# SMODS.destroy_cards
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = "function SMODS.destroy_cards(cards, bypass_eternal, immediate, skip_anim)"
+position = "at"
+match_indent = true
+payload = '''
+function SMODS.destroy_cards(cards, bypass_eternal, immediate, skip_anim, reverse, should_silence)
+'''
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = "for i = 1, #cards do"
+position = "at"
+match_indent = true
+payload = '''
+for i = reverse and #cards or 1, reverse and 1 or #cards, reverse and -1 or 1 do
+'''
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = "cards[i]:start_dissolve()"
+position = "at"
+match_indent = true
+payload = '''
+cards[i]:start_dissolve(nil, should_silence(i, cards[i]))
+'''

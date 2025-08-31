@@ -38,10 +38,9 @@ SMODS.Joker {
                 x_mult = card.ability.extra.x_mult,
                 message_card = context.other_consumeable,
                 func = function()
-                    G.E_MANAGER:add_event(Event({
-                        func = function()
-                            G.GAME.consumeable_buffer = 0
-                            return true end }))
+                    G.E_MANAGER:add_event(Event{func = function()
+                        G.GAME.consumeable_buffer = 0
+                        return true end})
                 end
             }
         end

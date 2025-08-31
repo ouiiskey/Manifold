@@ -17,17 +17,16 @@ SMODS.Back {
         return {vars = {self.config.extra.amt}}
     end,
     apply = function(self, back)
-        G.E_MANAGER:add_event(Event({
-            func = function()
-                local targets = {}
-                for k, v in ipairs(G.deck.cards) do
-                    table.insert(targets, v)
-                end
-                for i = 1, self.config.extra.amt do
-                    local target, key = pseudorandom_element(targets, pseudoseed("manifold_foil"))
-                    target:set_edition({foil = true}, true, true)
-                    table.remove(targets, key)
-                end
-                return true end }))
+        G.E_MANAGER:add_event(Event{func = function()
+            local targets = {}
+            for k, v in ipairs(G.deck.cards) do
+                table.insert(targets, v)
+            end
+            for i = 1, self.config.extra.amt do
+                local target, key = pseudorandom_element(targets, pseudoseed("manifold_foil"))
+                target:set_edition({foil = true}, true, true)
+                table.remove(targets, key)
+            end
+            return true end})
     end
 }

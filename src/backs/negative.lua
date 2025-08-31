@@ -10,10 +10,9 @@ SMODS.Back {
         return args.type == "discover_amount" and (args.amount + 1) / G.DISCOVER_TALLIES.total.of >= 1
     end,
     apply = function(self, back)
-        G.E_MANAGER:add_event(Event({
-            func = function()
-                local target, key = pseudorandom_element(G.deck.cards, pseudoseed("manifold_negative"))
-                target:set_edition({negative = true}, true, true)
-                return true end }))
+        G.E_MANAGER:add_event(Event{func = function()
+            local target, key = pseudorandom_element(G.deck.cards, pseudoseed("manifold_negative"))
+            target:set_edition({negative = true}, true, true)
+            return true end})
     end
 }

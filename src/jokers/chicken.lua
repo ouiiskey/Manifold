@@ -15,11 +15,10 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.before and context.cardarea == G.jokers and G.GAME.current_round.hands_left == 0 and not (context.blueprint_card or card).getting_sliced and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
             G.GAME.joker_buffer = G.GAME.joker_buffer + 1
-            G.E_MANAGER:add_event(Event({
-                func = function()
-                    SMODS.add_card{set = "Joker", area = G.jokers, key = egg, key_append = "manifold_chx"}
-                    G.GAME.joker_buffer = 0
-                    return true end }))
+            G.E_MANAGER:add_event(Event{func = function()
+                SMODS.add_card{set = "Joker", area = G.jokers, key = egg, key_append = "manifold_chx"}
+                G.GAME.joker_buffer = 0
+                return true end})
             return {
                 message = localize("manifold_pop")
             }

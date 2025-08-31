@@ -52,11 +52,11 @@ SMODS.current_mod.calculate = function(self, context)
         for k, v in ipairs(context.removed) do
             if not v.debuff and v.seal == "manifold_black" then
                 for i = 1, math.min(v.ability.seal.extra.spectrals, G.consumeables.config.card_limit - #G.consumeables.cards) do
-                    G.E_MANAGER:add_event(Event({trigger = "before", delay = 0.0, func = function()
+                    G.E_MANAGER:add_event(Event{trigger = "before", delay = 0.0, func = function()
                         if G.consumeables.config.card_limit > #G.consumeables.cards then
                             SMODS.add_card{set = "Spectral", area = G.consumeables, key_append = "manifold_blk"}
                         end
-                        return true end }))
+                        return true end})
                 end
             end
         end
@@ -66,12 +66,12 @@ SMODS.current_mod.calculate = function(self, context)
     -- Reverse Fool
     elseif context.using_consumeable and (context.consumeable.ability.set == "Tarot" or context.consumeable.ability.set == "manifold_reverse_tarot") and context.consumeable.config.center_key ~= "c_fool" and context.consumeable.config.center_key ~= "c_manifold_fool" and G.GAME.next_tarot then
         for i = 1, math.min(G.GAME.next_tarot, G.consumeables.config.card_limit - #G.consumeables.cards) do
-            G.E_MANAGER:add_event(Event({trigger = "after", delay = 0.4, func = function()
+            G.E_MANAGER:add_event(Event{trigger = "after", delay = 0.4, func = function()
                 if G.consumeables.config.card_limit > #G.consumeables.cards then
                     play_sound("timpani")
-                    SMODS.add_card{set = "Tarot", area = G.consumeables, key = context.consumeable.ability.set == "manifold_reverse_tarot" and MANIF.get_reverse_key(context.consumeable) or context.consumeable.config.center_key, key_append = "reverse_fool"}
+                    SMODS.add_card{set = "Tarot", area = G.consumeables, key = context.consumeable.ability.set == "manifold_reverse_tarot" and MANIF.get_reverse_key(context.consumeable) or context.consumeable.config.center_key, key_append = "manifold_fool"}
                 end
-                return true end }))
+                return true end})
         end
         G.GAME.next_tarot = nil
     end

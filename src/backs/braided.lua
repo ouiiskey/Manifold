@@ -17,11 +17,10 @@ SMODS.Back {
         return {vars = {self.config.extra.lvl}}
     end,
     apply = function(self, back)
-        G.E_MANAGER:add_event(Event({
-            func = function()
-                for k, v in pairs(G.GAME.hands) do
-                    level_up_hand(nil, k, true, self.config.extra.lvl - 1)
-                end
-                return true end }))
+        G.E_MANAGER:add_event(Event{func = function()
+            for k, v in pairs(G.GAME.hands) do
+                level_up_hand(nil, k, true, self.config.extra.lvl - 1)
+            end
+            return true end})
     end
 }

@@ -16,11 +16,10 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.joker_main and (#G.planets.cards + G.GAME.planet_buffer < G.planets.config.card_limit or G.GAME.selected_back_key.key == "b_manifold_syzygy") then
             G.GAME.planet_buffer = G.GAME.planet_buffer + 1
-            G.E_MANAGER:add_event(Event({
-                func = function()
-                    SMODS.add_card{set = "Planet", area = G.planets, key_append = "manifold_ufo"}
-                    G.GAME.planet_buffer = 0
-                    return true end }))
+            G.E_MANAGER:add_event(Event{func = function()
+                SMODS.add_card{set = "Planet", area = G.planets, key_append = "manifold_ufo"}
+                G.GAME.planet_buffer = 0
+                return true end})
             return {
                 message = localize("k_plus_planet"),
                 colour = G.C.SECONDARY_SET.Planet

@@ -28,14 +28,23 @@ SMODS.Joker {
                 v:flip()
             end
             if #G.jokers.cards > 1 then
-                G.E_MANAGER:add_event(Event({ trigger = "after", delay = 0.2, func = function()
-                    G.E_MANAGER:add_event(Event({ func = function() G.jokers:shuffle("nyar"); play_sound("cardSlide1", 0.85); return true end }))
+                G.E_MANAGER:add_event(Event{trigger = "after", delay = 0.2, func = function()
+                    G.E_MANAGER:add_event(Event{func = function()
+                        G.jokers:shuffle("nyar")
+                        play_sound("cardSlide1", 0.85)
+                        return true end})
                     delay(0.15)
-                    G.E_MANAGER:add_event(Event({ func = function() G.jokers:shuffle("nyar"); play_sound("cardSlide1", 1.15); return true end }))
+                    G.E_MANAGER:add_event(Event{func = function()
+                        G.jokers:shuffle("nyar")
+                        play_sound("cardSlide1", 1.15)
+                        return true end})
                     delay(0.15)
-                    G.E_MANAGER:add_event(Event({ func = function() G.jokers:shuffle("nyar"); play_sound("cardSlide1", 1); return true end }))
+                    G.E_MANAGER:add_event(Event{func = function()
+                        G.jokers:shuffle("nyar")
+                        play_sound("cardSlide1", 1)
+                        return true end})
                     delay(0.5)
-                    return true end }))
+                    return true end})
             end
         elseif context.joker_main then
             return {

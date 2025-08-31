@@ -34,25 +34,23 @@ SMODS.Joker {
         end
     end,
     remove_from_deck = function(self, card, from_debuff)
-        G.E_MANAGER:add_event(Event({
-            delay = 0.1,
-            func = function()
-                local targets = {}
-                local recent = 0
-                for k, v in ipairs(G.jokers.cards) do
-                    if v.debuff and v.ability.shannon_recent then
-                        recent = recent + 1
-                        if v ~= card then table.insert(targets, v) end
-                    end
+        G.E_MANAGER:add_event(Event{delay = 0.1, func = function()
+            local targets = {}
+            local recent = 0
+            for k, v in ipairs(G.jokers.cards) do
+                if v.debuff and v.ability.shannon_recent then
+                    recent = recent + 1
+                    if v ~= card then table.insert(targets, v) end
                 end
-                if recent > #SMODS.find_card("j_manifold_shannon") then
-                    local target = pseudorandom_element(targets, pseudoseed("manifold_shannon_remove"))
-                    if target then
-                        target:set_debuff(false)
-                        target.ability.shannon_recent = false
-                    end
+            end
+            if recent > #SMODS.find_card("j_manifold_shannon") then
+                local target = pseudorandom_element(targets, pseudoseed("manifold_shannon_remove"))
+                if target then
+                    target:set_debuff(false)
+                    target.ability.shannon_recent = false
                 end
-                return true end }))
+            end
+            return true end})
     end,
     calculate = function(self, card, context)
         if not context.blueprint then
@@ -63,32 +61,30 @@ SMODS.Joker {
             end
             if context.setting_blind or context.after and context.cardarea == G.jokers then
                 -- Nested events required in case of more than one Shannon
-                G.E_MANAGER:add_event(Event({
-                    func = function()
-                        local jokers = {}
-                        for k, v in ipairs(G.jokers.cards) do
-                            if v ~= card and (not v.debuff and not v.ability.shannon_recent or #G.jokers.cards - #SMODS.find_card("j_manifold_shannon") < 2) then table.insert(jokers, v) end
-                            if v.ability.shannon_recent then
-                                v:set_debuff(false)
-                                v.ability.shannon_recent = false
+                G.E_MANAGER:add_event(Event{func = function()
+                    local jokers = {}
+                    for k, v in ipairs(G.jokers.cards) do
+                        if v ~= card and (not v.debuff and not v.ability.shannon_recent or #G.jokers.cards - #SMODS.find_card("j_manifold_shannon") < 2) then table.insert(jokers, v) end
+                        if v.ability.shannon_recent then
+                            v:set_debuff(false)
+                            v.ability.shannon_recent = false
+                        end
+                    end
+                    G.E_MANAGER:add_event(Event{func = function()
+                        if not card.debuff then
+                            local targets = {}
+                            for k, v in ipairs(jokers) do
+                                if not v.debuff then table.insert(targets, v) end
+                            end
+                            local target = pseudorandom_element(targets, pseudoseed("manifold_shannon"))
+                            if target then
+                                target:set_debuff(true)
+                                target.ability.shannon_recent = true
+                                target:juice_up()
                             end
                         end
-                        G.E_MANAGER:add_event(Event({
-                            func = function()
-                                if not card.debuff then
-                                    local targets = {}
-                                    for k, v in ipairs(jokers) do
-                                        if not v.debuff then table.insert(targets, v) end
-                                    end
-                                    local target = pseudorandom_element(targets, pseudoseed("manifold_shannon"))
-                                    if target then
-                                        target:set_debuff(true)
-                                        target.ability.shannon_recent = true
-                                        target:juice_up()
-                                    end
-                                end
-                                return true end }))
-                        return true end }))
+                        return true end})
+                    return true end})
             end
             local effects = {}
             for k, v in ipairs(G.jokers.cards) do

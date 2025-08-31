@@ -683,6 +683,13 @@ return {
                     "{C:inactive}(Must have room)"
                 }
             },
+            c_manifold_magician = {
+                name = "{f:manifold_reverse}naicigaM ehT",
+                text = {
+                    "Destroys up to {C:attention}#1#",
+                    "selected {C:attention}Lucky{} cards"
+                }
+            },
             c_manifold_strength = {
                 name = "{f:manifold_reverse}htgnertS",
                 text = {

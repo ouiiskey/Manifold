@@ -34,6 +34,7 @@ SMODS.ConsumableType {
 
 local reversed = {
     "fool",
+    "magician",
     "strength",
 }
 for k, v in ipairs(reversed) do

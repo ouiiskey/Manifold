@@ -19,13 +19,12 @@ SMODS.Joker{
         elseif context.individual and context.cardarea == G.hand and not context.end_of_round and not context.blueprint and context.other_card:is_rank(G.GAME.current_round.hot_card.id) then
             local bones = SMODS.find_card("j_mr_bones")
             if next(bones) and (to_big(G.GAME.chips) + mult * hand_chips) / G.GAME.blind.chips >= to_big(0.25) then
-                G.E_MANAGER:add_event(Event({
-                    func = function()
-                        G.hand_text_area.blind_chips:juice_up()
-                        G.hand_text_area.game_chips:juice_up()
-                        play_sound("tarot1")
-                        bones[1]:start_dissolve()
-                        return true end }))
+                G.E_MANAGER:add_event(Event{func = function()
+                    G.hand_text_area.blind_chips:juice_up()
+                    G.hand_text_area.game_chips:juice_up()
+                    play_sound("tarot1")
+                    bones[1]:start_dissolve()
+                    return true end})
                 return {
                     message = localize("k_saved_ex"),
                     message_card = bones[1],
@@ -36,11 +35,10 @@ SMODS.Joker{
                     message = localize("manifold_boom"),
                     colour = G.C.RED,
                     func = function()
-                        G.E_MANAGER:add_event(Event({
-                            func = function()
-                                G.STATE = G.STATES.GAME_OVER
-                                G.STATE_COMPLETE = false
-                                return true end }))
+                        G.E_MANAGER:add_event(Event{func = function()
+                            G.STATE = G.STATES.GAME_OVER
+                            G.STATE_COMPLETE = false
+                            return true end})
                     end
                 }
             end

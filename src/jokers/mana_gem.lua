@@ -21,12 +21,11 @@ SMODS.Joker {
         if not context.blueprint then
             if context.selling_self and G.GAME.blind:get_type() == "Boss" then
                 G.GAME.gem = true
-                G.E_MANAGER:add_event(Event({
-                    func = function()
-                        G.hand_text_area.blind_chips:juice_up()
-                        G.hand_text_area.game_chips:juice_up()
-                        play_sound("tarot1")
-                        return true end }))
+                G.E_MANAGER:add_event(Event{func = function()
+                    G.hand_text_area.blind_chips:juice_up()
+                    G.hand_text_area.game_chips:juice_up()
+                    play_sound("tarot1")
+                    return true end})
                 G.STATE = G.STATES.HAND_PLAYED
                 G.STATE_COMPLETE = true
                 end_round()

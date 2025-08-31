@@ -23,10 +23,9 @@ SMODS.Joker {
                 if not SMODS.in_scoring(v, context.scoring_hand) then
                     envy = true
                     v:set_ability(G.P_CENTERS.m_wild, nil, true)
-                    G.E_MANAGER:add_event(Event({
-                        func = function()
-                            v:juice_up()
-                        return true end }))
+                    G.E_MANAGER:add_event(Event{func = function()
+                        v:juice_up()
+                        return true end})
                 end
             end
             if envy then

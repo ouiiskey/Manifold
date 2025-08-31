@@ -34,12 +34,11 @@ SMODS.Joker {
                     -- Card scores as foil but shader doesn't come early
                     context.full_hand[i]:set_edition({foil = true}, true, true)
                     context.full_hand[i].edition.foil = false
-                    G.E_MANAGER:add_event(Event({
-                        func = function()
-                            context.full_hand[i].edition.foil = true
-                            context.full_hand[i]:juice_up()
-                            play_sound("foil1", 1.2, 0.4)
-                            return true end }))
+                    G.E_MANAGER:add_event(Event{func = function()
+                        context.full_hand[i].edition.foil = true
+                        context.full_hand[i]:juice_up()
+                        play_sound("foil1", 1.2, 0.4)
+                        return true end})
                 end
             end
             if foiled then
