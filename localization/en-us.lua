@@ -690,6 +690,15 @@ return {
                     "selected {C:attention}Lucky{} cards"
                 }
             },
+            c_manifold_high_priestess = {
+                name = "{f:manifold_reverse}ssetseirP hgiH ehT",
+                text = {
+                    "Creates the next",
+                    "{C:planet}Planet{} card used",
+                    "during this run",
+                    "{C:inactive}(Must have room)"
+                }
+            },
             c_manifold_empress = {
                 name = "{f:manifold_reverse}sserpmE ehT",
                 text = {
@@ -741,6 +750,7 @@ return {
             manifold_discard = "+1 Discard",
             manifold_emptied = "Emptied!",
             manifold_escaped = "Escaped!",
+            manifold_foreseen = "Foreseen!",
             manifold_hand = "+1 Hand",
             manifold_hand_minus = "-1 Hand",
             manifold_hit = "Hit!",

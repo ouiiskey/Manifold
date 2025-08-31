@@ -35,6 +35,7 @@ SMODS.ConsumableType {
 local reversed = {
     "fool",
     "magician",
+    "high_priestess",
     "empress",
     "heirophant", -- Typo is intentional
     "strength",
