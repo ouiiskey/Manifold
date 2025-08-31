@@ -673,6 +673,16 @@ return {
             }
         },
         manifold_reverse_tarot = {
+            c_manifold_fool = {
+                name = "{f:manifold_reverse}looF ehT",
+                text = {
+                    "Creates the next",
+                    "{C:tarot}Tarot{} card used",
+                    "during this run",
+                    "{s:0.8,C:tarot}The Fool{s:0.8} excluded",
+                    "{C:inactive}(Must have room)"
+                }
+            },
             c_manifold_strength = {
                 name = "{f:manifold_reverse}htgnertS",
                 text = {
@@ -722,6 +732,7 @@ return {
             manifold_parity_any = "any",
             manifold_polychrome = "Polychrome!",
             manifold_pop = "Pop!",
+            manifold_refused = "Refused!",
             manifold_unknown = "?",
             manifold_unknown_total = "????",
             manifold_wild = "Wild!"

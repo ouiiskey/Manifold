@@ -9,8 +9,8 @@ SMODS.Joker {
     yes_pool_flag = "cookie_baked",
     calculate = function(self, card, context)
         -- SMODS.last_hand_oneshot is not used because it is not granular enough
-        if context.post_trigger and not context.blueprint and mult and hand_chips and to_big(mult) * hand_chips >= to_big(G.GAME.blind.chips) and not card.burnt then
-            card.burnt = true
+        if context.post_trigger and not context.blueprint and mult and hand_chips and to_big(mult) * hand_chips >= to_big(G.GAME.blind.chips) and not card.getting_sliced then
+            card.getting_sliced = true
             return {
                 message = localize("manifold_burnt"),
                 message_card = card,

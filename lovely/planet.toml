@@ -203,6 +203,8 @@ match_indent = true
 payload = '''
 if card.config.center.set == "Planet" then
     G.GAME.last_planet = card.config.center_key
+elseif card.config.center.set == "manifold_reverse_tarot" then
+    G.GAME.last_tarot = MANIF.get_reverse_key(card)
 else
     G.GAME.last_tarot = card.config.center_key
 end

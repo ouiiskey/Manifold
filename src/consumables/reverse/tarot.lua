@@ -6,6 +6,20 @@ SMODS.Atlas {
     py = 95
 }
 
+MANIF.get_reverse_key = function(card)
+    if card.config.center.set == "manifold_reverse_tarot" then
+        return "c_" .. string.sub(card.config.center_key, 12)
+    elseif card.config.center.set == "Tarot" then
+        return "c_manifold_" .. string.sub(card.config.center_key, 3)
+    elseif card.config.center_key == "c_soul" then
+        return "c_manifold_mind"
+    elseif card.config.center_key == "c_manifold_mind" then
+        return "c_soul"
+    else
+        return card.config.center_key
+    end
+end
+
 SMODS.ConsumableType {
     key = "manifold_reverse_tarot",
     collection_rows = { 5, 6 },
@@ -19,6 +33,7 @@ SMODS.ConsumableType {
 }
 
 local reversed = {
+    "fool",
     "strength",
 }
 for k, v in ipairs(reversed) do

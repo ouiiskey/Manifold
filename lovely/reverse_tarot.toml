@@ -56,3 +56,46 @@ match_indent = true
 payload = '''
 {n = G.UIT.O, config = {object = DynaText{string = _string or "ERROR", colours = {_text_col or G.C.WHITE}, float = true, shadow = true, offset_y = -0.05, silent = true, spacing = 1, scale = 0.33 * scaling, font = font}}},
 '''
+
+# set_consumeable_usage
+[[patches]]
+[patches.pattern]
+target = "functions/misc_functions.lua"
+pattern = "if card.config.center.set == 'Tarot' then"
+position = "at"
+match_indent = true
+payload = '''
+if card.config.center.set == "Tarot" or card.config.center.set == "manifold_reverse_tarot" then
+'''
+
+[[patches]]
+[patches.pattern]
+target = "functions/misc_functions.lua"
+pattern = "if card.config.center.set == 'Tarot' or card.config.center.set == 'Planet' then"
+position = "at"
+match_indent = true
+payload = '''
+if card.config.center.set == "Tarot" or card.config.center.set == "Planet" or card.config.center.set == "manifold_reverse_tarot" then
+'''
+
+# G.FUNCS.buy_from_shop
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "elseif c1.config.center.set == 'Tarot' then"
+position = "at"
+match_indent = true
+payload = '''
+elseif c1.config.center.set == "Tarot" or c1.config.center.set == "manifold_reverse_tarot" then
+'''
+
+# Card:calculate_joker
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''if self.ability.name == 'Fortune Teller' and not context.blueprint and (context.consumeable.ability.set == "Tarot") then'''
+position = "at"
+match_indent = true
+payload = '''
+if self.ability.name == "Fortune Teller" and not context.blueprint and (context.consumeable.ability.set == "Tarot" or context.consumeable.ability.set == "manifold_reverse_tarot") then
+'''

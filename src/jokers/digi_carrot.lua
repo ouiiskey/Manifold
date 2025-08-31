@@ -24,6 +24,7 @@ SMODS.Joker {
             copy.ability.extra.e_mult = copy.ability.extra.e_mult + copy.ability.extra.increment
             copy:add_to_deck()
             G.jokers:emplace(copy)
+            card_eval_status_text(card, "extra", nil, nil, nil, {message = localize("manifold_refused")})
         end
     end,
     calculate = function(self, card, context)
