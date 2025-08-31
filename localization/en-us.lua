@@ -690,6 +690,20 @@ return {
                     "selected {C:attention}Lucky{} cards"
                 }
             },
+            c_manifold_empress = {
+                name = "{f:manifold_reverse}sserpmE ehT",
+                text = {
+                    "Destroys up to {C:attention}#1#",
+                    "selected {C:attention}Mult{} cards"
+                }
+            },
+            c_manifold_heirophant = {
+                name = "{f:manifold_reverse}tnahporeiH ehT",
+                text = {
+                    "Destroys up to {C:attention}#1#",
+                    "selected {C:attention}Bonus{} cards"
+                }
+            },
             c_manifold_strength = {
                 name = "{f:manifold_reverse}htgnertS",
                 text = {

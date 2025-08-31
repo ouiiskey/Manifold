@@ -35,6 +35,8 @@ SMODS.ConsumableType {
 local reversed = {
     "fool",
     "magician",
+    "empress",
+    "heirophant", -- Typo is intentional
     "strength",
 }
 for k, v in ipairs(reversed) do
