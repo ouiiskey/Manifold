@@ -19,10 +19,19 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.before and context.cardarea == G.jokers and not context.blueprint and G.GAME.current_round.hands_played == 0 and next(context.poker_hands["Straight"]) then
-            card.ability.extra.hand_size = card.ability.extra.hand_size + card.ability.extra.increment
-            G.hand:change_size(card.ability.extra.increment)
+            SMODS.scale_card(card, {ref_value = "hand_size", scalar_value = "increment", block_overrides = {value = true, scalar = true}})
+        end
+    end,
+    calc_scaling = function(self, card, other_card, initial_value, scalar_value, args)
+        if other_card.config.center == self then
             return {
-                message = localize("k_upgrade_ex")
+                post = {
+                    func = function()
+                        if scalar_value ~= 0 then
+                            G.hand:change_size(scalar_value)
+                        end
+                    end
+                }
             }
         end
     end

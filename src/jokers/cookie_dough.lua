@@ -8,10 +8,13 @@ SMODS.Joker {
     blueprint_compat = true,
     no_pool_flag = "cookie_baked",
     calculate = function(self, card, context)
-        if context.post_trigger and not context.blueprint and mult and hand_chips and to_big(mult) * hand_chips >= to_big(G.GAME.blind.chips) then
+        -- SMODS.last_hand_oneshot is not used because it is not granular enough
+        if context.post_trigger and not context.blueprint and mult and hand_chips and to_big(mult) * hand_chips >= to_big(G.GAME.blind.chips) and not card.baked then
+            card.baked = true
             G.GAME.pool_flags.cookie_baked = true
             return {
                 message = localize("manifold_baked"),
+                message_card = card,
                 colour = G.C.PURPLE,
                 func = function() card:eat() end
             }

@@ -39,9 +39,8 @@ SMODS.Joker {
                     message_card = card
                 }
             else
-                card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.modifier
+                SMODS.scale_card(card, {ref_value = "mult", scalar_value = "modifier", no_message = true})
             end
-
         end
     end,
     perishable_compat = false

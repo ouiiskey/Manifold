@@ -13,8 +13,8 @@ SMODS.Joker {
         if not context.blueprint then
             if context.individual and context.cardarea == G.play and SMODS.has_enhancement(context.other_card, "m_lucky") and not card.getting_sliced then
                 return {
-                    message_card = card,
                     message = localize("k_drank_ex"),
+                    message_card = card,
                     colour = G.C.ORANGE,
                     func = function() card:eat() end
                 }

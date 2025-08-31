@@ -713,6 +713,8 @@ return {
             manifold_hand = "+1 Hand",
             manifold_hand_minus = "-1 Hand",
             manifold_hit = "Hit!",
+            manifold_no_space_1 = "No",
+            manifold_no_space_2 = "Space!",
             manifold_oom = "Out of mana...",
             manifold_opposite_even = "odd",
             manifold_opposite_odd = "even",

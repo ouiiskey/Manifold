@@ -22,8 +22,8 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if not context.repetition and not context.blueprint and card.ability.extra.count <= 0 then
             return {
-                message_card = card,
                 message = localize("k_eaten_ex"),
+                message_card = card,
                 colour = G.C.PURPLE,
                 func = function() card:eat() end
             }

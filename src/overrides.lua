@@ -1,3 +1,4 @@
+-- Escher Ordered Deck View
 local ordered = function()
     local deck_tables = {}
     remove_nils(G.deck.cards)
@@ -196,4 +197,11 @@ G.UIDEF.deck_info = function(show_remaining)
     end
     views[1].chosen = true
     return create_UIBox_generic_options({contents = {create_tabs{tabs = views, tab_h = 8, snap_to_nav = true}}})
+end
+
+-- Negative Planet Card
+local SEgclk_ref = SMODS.Edition.get_card_limit_key
+function SMODS.Edition:get_card_limit_key()
+    if self.ability.set == "Planet" then return "negative_planet_SMODS_INTERNAL" end
+    return SEgclk_ref(self)
 end

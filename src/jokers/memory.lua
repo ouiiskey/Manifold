@@ -20,11 +20,7 @@ SMODS.Joker {
             for k, v in ipairs(G.jokers.cards) do
                 sell_cost = sell_cost + v.sell_cost
             end
-            card.ability.extra.chips = card.ability.extra.chips + sell_cost
-            return {
-                message = localize("k_upgrade_ex"),
-                colour = G.C.CHIPS
-            }
+            SMODS.scale_card(card, {ref_value = "chips", scalar_table = {sell_cost = sell_cost}, scalar_value = "sell_cost", message_colour = G.C.CHIPS})
         end
     end,
     perishable_compat = false

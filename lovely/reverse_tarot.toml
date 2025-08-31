@@ -11,18 +11,18 @@ pattern = "consumable_nodes[#consumable_nodes+1] = UIBox_button({button = id, la
 position = "at"
 match_indent = true
 payload = '''
-consumable_nodes[#consumable_nodes + 1] = UIBox_button{button = id, label = {localize("b_" .. key:lower() .. "_cards")}, count = G.DISCOVER_TALLIES[key:lower() .. "s"], minw = 4, id = id, colour = G.C.SECONDARY_SET[key], font = SMODS.ConsumableTypes[key].reverse and SMODS.Fonts["manifold_reverse"] or nil}
+consumable_nodes[#consumable_nodes + 1] = UIBox_button{button = id, label = {localize("b_" .. key:lower() .. "_cards")}, count = G.DISCOVER_TALLIES[key:lower() .. "s"], minw = 4, id = id, colour = G.C.SECONDARY_SET[key], font = SMODS.ConsumableTypes[key].font}
 '''
 
 # buildAdditionsTab
 [[patches]]
 [patches.pattern]
 target = '=[SMODS _ "src/ui.lua"]'
-pattern = "consumable_nodes[#consumable_nodes+1] = UIBox_button({button = id, label = {localize('b_'..key:lower()..'_cards')}, count = tally, minw = 4, id = id, colour = G.C.SECONDARY_SET[key]})"
+pattern = "consumable_nodes[#consumable_nodes+1] = UIBox_button({button = id, label = {localize('b_'..key:lower()..'_cards')}, count = tally, minw = 4, id = id, colour = G.C.SECONDARY_SET[key], text_colour = G.C.UI[key]})"
 position = "at"
 match_indent = true
 payload = '''
-consumable_nodes[#consumable_nodes + 1] = UIBox_button{button = id, label = {localize("b_" .. key:lower() .. "_cards")}, count = tally, minw = 4, id = id, colour = G.C.SECONDARY_SET[key], font = SMODS.ConsumableTypes[key].reverse and SMODS.Fonts["manifold_reverse"] or nil}
+consumable_nodes[#consumable_nodes + 1] = UIBox_button{button = id, label = {localize("b_" .. key:lower() .. "_cards")}, count = tally, minw = 4, id = id, colour = G.C.SECONDARY_SET[key], text_colour = G.C.UI[key], font = SMODS.ConsumableTypes[key].font}
 '''
 
 # UIBox_button

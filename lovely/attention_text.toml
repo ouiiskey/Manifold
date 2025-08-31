@@ -6,7 +6,7 @@ priority = 0
 # SMODS.calculate_individual_effect
 [[patches]]
 [patches.pattern]
-target = '=[SMODS _ "src/utils.lua"]'
+target = '=[SMODS _ "src/game_object.lua"]'
 pattern = "if (key == 'x_mult' or key == 'xmult' or key == 'Xmult' or key == 'x_mult_mod' or key == 'Xmult_mod') and amount ~= 1 then"
 position = "at"
 match_indent = true
@@ -39,9 +39,52 @@ font = extra and extra.font,
 [[patches]]
 [patches.pattern]
 target = "functions/UI_definitions.lua"
+pattern = "args.AT = UIBox{"
+position = "before"
+match_indent = true
+payload = '''
+if type(args.text) ~= "table" then args.text = {args.text} end
+local nodes = {}
+for k, v in ipairs(args.text) do
+    table.insert(nodes, {n = G.UIT.R, config = {align = "cm", padding = 0}, nodes = {{n = G.UIT.O, config = {draw_layer = k, object = DynaText({scale = args.scale, string = {v}, maxw = args.maxw, colours = {args.colour}, float = true, shadow = true, silent = not args.noisy, args.scale, pop_in = 0, pop_in_rate = 6, rotate = args.rotate or nil, font = args.font})}}}})
+end
+'''
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
 pattern = "{n=G.UIT.O, config={draw_layer = 1, object = DynaText({scale = args.scale, string = args.text, maxw = args.maxw, colours = {args.colour},float = true, shadow = true, silent = not args.noisy, args.scale, pop_in = 0, pop_in_rate = 6, rotate = args.rotate or nil})}},"
 position = "at"
 match_indent = true
 payload = '''
-{n=G.UIT.O, config={draw_layer = 1, object = DynaText({scale = args.scale, string = _text or args.text, maxw = args.maxw, colours = {args.colour},float = true, shadow = true, silent = not args.noisy, args.scale, pop_in = 0, pop_in_rate = 6, rotate = args.rotate or nil, font = args.font})}},
+{n = G.UIT.C, config = {align = "cm", padding = 0}, nodes = nodes}
+'''
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''
+args.text = args.AT.UIRoot.children[1].config.object
+args.text:pulse(0.5)
+'''
+position = "at"
+match_indent = true
+payload = '''
+args.text = {}
+for k, v in ipairs(args.AT.UIRoot.children[1].children) do
+    v.children[1].config.object:pulse(0.5)
+    table.insert(args.text, v.children[1].config.object)
+end
+'''
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "args.text:pop_out(3)"
+position = "at"
+match_indent = true
+payload = '''
+for k, v in ipairs(args.text) do
+    v:pop_out(3)
+end
 '''

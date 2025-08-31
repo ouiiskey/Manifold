@@ -13,9 +13,9 @@ SMODS.ConsumableType {
     secondary_colour = G.C.SECONDARY_SET.Tarot,
     default = "c_manifold_strength",
     set_card_type_badge = function(self, obj, card, badges)
-        badges[#badges + 1] = create_badge(localize("k_manifold_reverse_tarot"), G.C.SECONDARY_SET.Tarot, nil, 1.2, SMODS.Fonts["manifold_reverse"])
+        badges[#badges + 1] = create_badge(localize("k_manifold_reverse_tarot"), G.C.SECONDARY_SET.Tarot, nil, 1.2, self.font)
     end,
-    reverse = true
+    font = SMODS.Fonts["manifold_reverse"]
 }
 
 local reversed = {

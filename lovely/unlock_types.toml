@@ -3,17 +3,6 @@ version = "1.0.0"
 dump_lua = true
 priority = 0
 
-# ease_ante
-[[patches]]
-[patches.pattern]
-target = "functions/common_events.lua"
-pattern = "G.GAME.round_resets.ante = G.GAME.round_resets.ante + mod"
-position = "after"
-match_indent = true
-payload = '''
-check_for_unlock{type = "ease_ante", ante = G.GAME.round_resets.ante}
-'''
-
 # sacrifice
 # Card:calculate_joker
 [[patches]]
