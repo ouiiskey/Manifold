@@ -743,6 +743,13 @@ return {
                     "selected {C:attention}Glass{} card"
                 }
             },
+            c_manifold_hermit = {
+                name = "{f:manifold_reverse}timreH ehT",
+                text = {
+                    "Sets money",
+                    "to {C:money}$#1#"
+                }
+            },
             c_manifold_strength = {
                 name = "{f:manifold_reverse}htgnertS",
                 text = {

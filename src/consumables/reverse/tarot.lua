@@ -42,6 +42,7 @@ local reversed = {
     "lovers",
     "chariot",
     "justice",
+    "hermit",
     "strength",
     "devil",
     "tower"
