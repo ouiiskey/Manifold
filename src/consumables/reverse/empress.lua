@@ -31,15 +31,12 @@ SMODS.Consumable {
         delay(0.3)
     end,
     can_use = function(self, card)
-        if G.hand and #G.hand.highlighted >= 1 then
-            local count = 0
-            for k, v in ipairs(G.hand.highlighted) do
-                if SMODS.has_enhancement(v, card.ability.extra.enhancement) then
-                    count = count + 1
-                end
+        local count = 0
+        for k, v in ipairs(G.hand.highlighted) do
+            if SMODS.has_enhancement(v, card.ability.extra.enhancement) then
+                count = count + 1
             end
-            return count >= 1 and count <= card.ability.extra.max
         end
-        return false
+        return count >= 1 and count <= card.ability.extra.max
     end
 }

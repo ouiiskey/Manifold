@@ -722,6 +722,13 @@ return {
                     "selected {C:attention}Bonus{} cards"
                 }
             },
+            c_manifold_lovers = {
+                name = "{f:manifold_reverse}srevoL ehT",
+                text = {
+                    "Destroys {C:attention}1",
+                    "selected {C:attention}Wild{} card"
+                }
+            },
             c_manifold_strength = {
                 name = "{f:manifold_reverse}htgnertS",
                 text = {

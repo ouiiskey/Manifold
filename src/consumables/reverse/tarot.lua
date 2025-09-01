@@ -39,6 +39,7 @@ local reversed = {
     "empress",
     "emperor",
     "heirophant", -- Typo is intentional
+    "lovers",
     "strength",
 }
 for k, v in ipairs(reversed) do
