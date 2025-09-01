@@ -2,8 +2,10 @@
 SMODS.Consumable {
     key = "death",
     set = "manifold_reverse_tarot",
-    atlas = "reverse_tarots",
-    pos = {x = 3, y = 1},
+    pos = G.P_CENTERS.c_death.pos,
+    set_sprites = function(self, card, front)
+        card.children.center.reverse = true
+    end,
     cost = 3,
     config = {max_highlighted = 1},
     in_pool = function(self, args)

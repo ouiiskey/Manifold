@@ -2,8 +2,10 @@
 SMODS.Consumable {
     key = "emperor",
     set = "manifold_reverse_tarot",
-    atlas = "reverse_tarots",
-    pos = {x = 4, y = 0},
+    pos = G.P_CENTERS.c_emperor.pos,
+    set_sprites = function(self, card, front)
+        card.children.center.reverse = true
+    end,
     cost = 3,
     config = {extra = {payout = 10}},
     loc_vars = function(self, info_queue, card)

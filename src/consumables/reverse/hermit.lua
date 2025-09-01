@@ -2,8 +2,10 @@
 SMODS.Consumable {
     key = "hermit",
     set = "manifold_reverse_tarot",
-    atlas = "reverse_tarots",
-    pos = {x = 9, y = 0},
+    pos = G.P_CENTERS.c_hermit.pos,
+    set_sprites = function(self, card, front)
+        card.children.center.reverse = true
+    end,
     cost = 3,
     config = {extra = {dollars = 20}},
     loc_vars = function(self, info_queue, card)

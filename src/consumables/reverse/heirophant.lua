@@ -2,8 +2,10 @@
 SMODS.Consumable {
     key = "heirophant", -- Typo is intentional
     set = "manifold_reverse_tarot",
-    atlas = "reverse_tarots",
-    pos = {x = 5, y = 0},
+    pos = G.P_CENTERS.c_heirophant.pos,
+    set_sprites = function(self, card, front)
+        card.children.center.reverse = true
+    end,
     cost = 3,
     config = {extra = {max = 2, enhancement = "m_bonus"}},
     loc_vars = function(self, info_queue, card)

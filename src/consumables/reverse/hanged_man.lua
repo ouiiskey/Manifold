@@ -2,8 +2,10 @@
 SMODS.Consumable {
     key = "hanged_man",
     set = "manifold_reverse_tarot",
-    atlas = "reverse_tarots",
-    pos = {x = 2, y = 1},
+    pos = G.P_CENTERS.c_hanged_man.pos,
+    set_sprites = function(self, card, front)
+        card.children.center.reverse = true
+    end,
     cost = 3,
     config = {max_highlighted = 2},
     loc_vars = function(self, info_queue, card)

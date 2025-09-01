@@ -3,6 +3,21 @@ version = "1.0.0"
 dump_lua = true
 priority = 0
 
+# Sprite:draw_self
+[[patches]]
+[patches.pattern]
+target = "engine/sprite.lua"
+pattern = '''
+0,
+self.VT.w/(self.T.w),
+self.VT.h/(self.T.h)
+'''
+position = "at"
+match_indent = true
+payload = '''
+self.reverse and math.pi, self.VT.w / self.T.w, self.VT.h / self.T.h, self.reverse and self.scale.x, self.reverse and self.scale.y
+'''
+
 # create_UIBox_your_collection
 [[patches]]
 [patches.pattern]

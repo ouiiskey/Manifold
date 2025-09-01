@@ -2,8 +2,10 @@
 SMODS.Consumable {
     key = "tower",
     set = "manifold_reverse_tarot",
-    atlas = "reverse_tarots",
-    pos = {x = 6, y = 1},
+    pos = G.P_CENTERS.c_tower.pos,
+    set_sprites = function(self, card, front)
+        card.children.center.reverse = true
+    end,
     cost = 3,
     config = {extra = {enhancement = "m_stone"}},
     loc_vars = function(self, info_queue, card)

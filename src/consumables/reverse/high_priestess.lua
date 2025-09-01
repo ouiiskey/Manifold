@@ -2,8 +2,10 @@
 SMODS.Consumable {
     key = "high_priestess",
     set = "manifold_reverse_tarot",
-    atlas = "reverse_tarots",
-    pos = {x = 2, y = 0},
+    pos = G.P_CENTERS.c_high_priestess.pos,
+    set_sprites = function(self, card, front)
+        card.children.center.reverse = true
+    end,
     cost = 3,
     in_pool = function(self, args)
         return false

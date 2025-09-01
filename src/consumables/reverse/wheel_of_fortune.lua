@@ -2,8 +2,10 @@
 SMODS.Consumable {
     key = "wheel_of_fortune",
     set = "manifold_reverse_tarot",
-    atlas = "reverse_tarots",
-    pos = {x = 0, y = 1},
+    pos = G.P_CENTERS.c_wheel_of_fortune.pos,
+    set_sprites = function(self, card, front)
+        card.children.center.reverse = true
+    end,
     cost = 3,
     config = {extra = {numerator = 3, denominator = 4}},
     loc_vars = function(self, info_queue, card)

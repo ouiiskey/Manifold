@@ -2,8 +2,10 @@
 SMODS.Consumable {
     key = "justice",
     set = "manifold_reverse_tarot",
-    atlas = "reverse_tarots",
-    pos = {x = 8, y = 0},
+    pos = G.P_CENTERS.c_justice.pos,
+    set_sprites = function(self, card, front)
+        card.children.center.reverse = true
+    end,
     cost = 3,
     config = {extra = {enhancement = "m_glass"}},
     loc_vars = function(self, info_queue, card)
