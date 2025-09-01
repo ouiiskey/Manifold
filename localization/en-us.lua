@@ -804,6 +804,13 @@ return {
                     "Destroys {C:attention}1",
                     "selected {C:attention}Stone{} card"
                 }
+            },
+            c_manifold_star = {
+                name = "{f:manifold_reverse}ratS ehT",
+                text = {
+                    "Destroys up to {C:attention}#1#",
+                    "selected {V:1}#2#{} cards"
+                }
             }
         },
         Edition = {
