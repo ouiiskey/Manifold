@@ -777,6 +777,13 @@ return {
                     "{C:attention}#1#{} selected cards"
                 }
             },
+            c_manifold_death = {
+                name = "{f:manifold_reverse}htaeD",
+                text = {
+                    "Copies and destroys",
+                    "{C:attention}1{} selected card"
+                }
+            },
             c_manifold_devil = {
                 name = "{f:manifold_reverse}liveD ehT",
                 text = {
