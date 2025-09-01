@@ -40,6 +40,7 @@ local reversed = {
     "strength",
     "hanged_man",
     "death",
+    "temperance",
     "devil",
     "tower"
 }

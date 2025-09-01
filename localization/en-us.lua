@@ -784,6 +784,13 @@ return {
                     "{C:attention}1{} selected card"
                 }
             },
+            c_manifold_temperance = {
+                name = "{f:manifold_reverse}ecnarepmeT",
+                text = {
+                    "Add {C:money}$#1#{} of sell value",
+                    "to every owned Joker"
+                }
+            },
             c_manifold_devil = {
                 name = "{f:manifold_reverse}liveD ehT",
                 text = {

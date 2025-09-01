@@ -16,6 +16,7 @@ SMODS.Consumable {
     end,
     use = function(self, card, area, copier)
         G.E_MANAGER:add_event(Event{trigger = "after", delay = 0.4, func = function()
+            play_sound("timpani")
             card:juice_up(0.3, 0.5)
             ease_dollars(card.ability.extra.dollars - G.GAME.dollars, true)
             return true end})

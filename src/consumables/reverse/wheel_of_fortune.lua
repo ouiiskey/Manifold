@@ -19,25 +19,21 @@ SMODS.Consumable {
         return false
     end,
     use = function(self, card, area, copier)
-        if SMODS.pseudorandom_probability(card, "manifold_wof", card.ability.extra.numerator, card.ability.extra.denominator) then
-            G.E_MANAGER:add_event(Event{trigger = "after", delay = 0.4, func = function()
+        G.E_MANAGER:add_event(Event{trigger = "after", delay = 0.4, func = function()
+            if SMODS.pseudorandom_probability(card, "manifold_wof", card.ability.extra.numerator, card.ability.extra.denominator) then
                 local pool = SMODS.Edition:get_edition_cards(G.jokers, true)
-                --local over = false
                 local target = pseudorandom_element(pool, pseudoseed("manifold_wof"))
                 target:set_edition(poll_edition("manifold_wof", nil, true, true), true)
                 check_for_unlock{type = "have_edition"}
-                card:juice_up(0.3, 0.5)
-                return true end})
-        else
-            G.E_MANAGER:add_event(Event{trigger = "after", delay = 0.4, func = function()
+            else
                 attention_text{text = localize("k_nope_ex"), scale = 1.3, hold = 1.4, major = card, backdrop_colour = G.C.SECONDARY_SET.Tarot, align = (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK) and "tm" or "cm", offset = {x = 0, y = (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK) and -0.2 or 0}, silent = true}
                 G.E_MANAGER:add_event(Event{trigger = "after", delay = 0.06 * G.SETTINGS.GAMESPEED, blockable = false, blocking = false, func = function()
                     play_sound("tarot2", 0.76, 0.4)
                     return true end})
                 play_sound("tarot2", 1, 0.4)
-                card:juice_up(0.3, 0.5)
-                return true end})
-        end
+            end
+            card:juice_up(0.3, 0.5)
+            return true end})
         delay(0.6)
     end,
     can_use = function(self, card)
