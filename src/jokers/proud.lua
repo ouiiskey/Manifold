@@ -28,7 +28,7 @@ SMODS.Joker {
             for k, v in ipairs(context.scoring_hand) do
                 if not v.edition and SMODS.has_enhancement(v, "m_wild") then
                     wild = true
-                    if SMODS.pseudorandom_probability(card, "manifold_proud", card.ability.extra.numerator, card.ability.extra.denominator, "manifold_proud") then
+                    if SMODS.pseudorandom_probability(card, "manifold_proud", card.ability.extra.numerator, card.ability.extra.denominator) then
                         chromed = true
                         -- Card scores as polychrome but shader doesn't come early
                         v:set_edition({polychrome = true}, true, true)

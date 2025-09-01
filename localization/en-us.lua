@@ -655,6 +655,9 @@ return {
                     "{C:planet}Planet{} card used",
                     "during this run"
                 }
+            },
+            c_wheel_of_fortune = {
+                name = "Wheel of Fortune"
             }
         },
         Voucher = {
@@ -748,6 +751,15 @@ return {
                 text = {
                     "Sets money",
                     "to {C:money}$#1#"
+                }
+            },
+            c_manifold_wheel_of_fortune = {
+                name = "{f:manifold_reverse}enutroF fo leehW",
+                text = {
+                    "{C:green}#1# in #2#{} chance to add",
+                    "{C:dark_edition}Foil{}, {C:dark_edition}Holographic{}, or",
+                    "{C:dark_edition}Polychrome{} edition",
+                    "to a random {C:attention}Joker"
                 }
             },
             c_manifold_strength = {

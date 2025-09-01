@@ -77,9 +77,9 @@ SMODS.current_mod.calculate = function(self, context)
             G.GAME.next_tarot = nil
         -- Reverse High Priestess
         elseif context.consumeable.ability.set == "Planet" and G.GAME.next_planet then
-            for i = 1, math.min(G.GAME.next_planet, G.planets.config.card_limit - #G.planets.cards) do
+            for i = 1, G.GAME.selected_back_key.key == "b_manifold_syzygy" and G.GAME.next_planet or math.min(G.GAME.next_planet, G.planets.config.card_limit - #G.planets.cards) do
                 G.E_MANAGER:add_event(Event{trigger = "after", delay = 0.4, func = function()
-                    if G.planets.config.card_limit > #G.planets.cards then
+                    if G.planets.config.card_limit > #G.planets.cards or G.GAME.selected_back_key.key == "b_manifold_syzygy" then
                         play_sound("timpani")
                         SMODS.add_card{set = "Planet", area = G.planets, key = context.consumeable.config.center_key, key_append = "manifold_priest"}
                     end
