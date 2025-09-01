@@ -37,6 +37,7 @@ local reversed = {
     "magician",
     "high_priestess",
     "empress",
+    "emperor",
     "heirophant", -- Typo is intentional
     "strength",
 }

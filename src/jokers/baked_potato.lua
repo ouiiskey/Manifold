@@ -25,7 +25,8 @@ SMODS.Joker {
                 repetitions = math.min(math.ceil((G.GAME.blind.chips / (mult + (card.edition and card.edition.mult or 0)) - hand_chips - (card.edition and card.edition.chips or 0)) / card.ability.extra.chips) - 1, card.ability.extra.triggers),
                 card = card
             }
-        elseif context.post_trigger and not context.blueprint and card.ability.extra.triggers <= 0 then
+        elseif context.post_trigger and not context.blueprint and card.ability.extra.triggers <= 0 and not card.getting_sliced and context.other_card == card then
+            card.getting_sliced = true
             G.GAME.pool_flags.potato_ate = true
             return {
                 message = localize("k_eaten_ex"),

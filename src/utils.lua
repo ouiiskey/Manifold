@@ -31,16 +31,6 @@ end
 
 function Card:eat()
     self.getting_sliced = true
-    G.E_MANAGER:add_event(Event{func = function()
-        play_sound("tarot1")
-        self.T.r = -0.2
-        self:juice_up(0.3, 0.4)
-        self.states.drag.is = true
-        self.children.center.pinch.x = true
-        G.E_MANAGER:add_event(Event{trigger = "after", delay = 0.3, blockable = false, func = function()
-            G.jokers:remove_card(self)
-            self:remove()
-            self = nil
-            return true end})
-        return true end})
+    -- Immediate is true for foods that require precise timings
+    SMODS.destroy_cards(self, nil, true, true)
 end

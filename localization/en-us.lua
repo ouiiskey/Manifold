@@ -626,7 +626,7 @@ return {
             },
             c_familiar = {
                 text = {
-                    "Fill your consumable",
+                    "Fill your {C:attention}consumable",
                     "area with copies of",
                     "a random card in it",
                     "{s:0.8,C:spectral}Familiar{s:0.8} excluded"
@@ -704,6 +704,15 @@ return {
                 text = {
                     "Destroys up to {C:attention}#1#",
                     "selected {C:attention}Mult{} cards"
+                }
+            },
+            c_manifold_emperor = {
+                name = "{f:manifold_reverse}rorepmE ehT",
+                text = {
+                    "Destroys {C:attention}1{} random",
+                    "{C:tarot}Tarot{} card in",
+                    "{C:attention}consumable{} area,",
+                    "gain {C:money}$#1#",
                 }
             },
             c_manifold_heirophant = {

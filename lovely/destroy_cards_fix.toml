@@ -32,5 +32,5 @@ pattern = "cards[i]:start_dissolve()"
 position = "at"
 match_indent = true
 payload = '''
-cards[i]:start_dissolve(nil, should_silence(i, cards[i]))
+cards[i]:start_dissolve(nil, should_silence and should_silence(i, cards[i]))
 '''

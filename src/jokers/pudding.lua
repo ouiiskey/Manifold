@@ -20,7 +20,8 @@ SMODS.Joker {
         return false
     end,
     calculate = function(self, card, context)
-        if not context.repetition and not context.blueprint and card.ability.extra.count <= 0 then
+        if context.post_trigger and not context.blueprint and card.ability.extra.count <= 0 and not card.getting_sliced then
+            card.getting_sliced = true
             return {
                 message = localize("k_eaten_ex"),
                 message_card = card,
