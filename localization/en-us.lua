@@ -140,7 +140,7 @@ return {
                 unlock = {
                     "Win a run with any",
                     "deck on at least",
-                    "{V:1}White Stake{} difficulty",
+                    "{V:1}White Stake{} difficulty"
                 }
             }
         },
@@ -188,7 +188,7 @@ return {
                 name = "Space Patrol",
                 text = {
                     "{C:attention}+#1#{} {C:planet}Planet{} slots"
-                },
+                }
             },
             j_manifold_clay_tablet = {
                 name = "Clay Tablet",
@@ -477,7 +477,7 @@ return {
                 name = "UFO",
                 text = {
                     "Create a random",
-                    "{C:planet}Planet{} card",
+                    "{C:planet}Planet{} card"
                 },
                 unlock = {
                     "Discover {E:1,C:planet}#1#"
@@ -715,7 +715,7 @@ return {
                     "Destroys {C:attention}1{} random",
                     "{C:tarot}Tarot{} card in",
                     "{C:attention}consumable{} area,",
-                    "gain {C:money}$#1#",
+                    "gain {C:money}$#1#"
                 }
             },
             c_manifold_heirophant = {
@@ -826,6 +826,14 @@ return {
                     "selected {V:1}#2#{} cards"
                 }
             },
+            c_manifold_judgement = {
+                name = "{f:manifold_reverse}tnemegduJ",
+                text = {
+                    "Destroys {C:attention}1{} random",
+                    "owned Joker,",
+                    "gain {C:money}$#1#"
+                }
+            },
             c_manifold_world = {
                 name = "{f:manifold_reverse}dlroW ehT",
                 text = {
@@ -838,7 +846,7 @@ return {
             e_negative_planet = {
                 name = "Negative",
                 text = {
-                    "{C:dark_edition}+#1#{} {C:planet}Planet{} slot",
+                    "{C:dark_edition}+#1#{} {C:planet}Planet{} slot"
                 }
             }
         }

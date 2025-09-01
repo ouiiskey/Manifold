@@ -46,6 +46,7 @@ local reversed = {
     "star",
     "moon",
     "sun",
+    "judgement",
     "world"
 }
 for k, v in ipairs(reversed) do
