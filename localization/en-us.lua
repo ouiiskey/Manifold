@@ -811,6 +811,27 @@ return {
                     "Destroys up to {C:attention}#1#",
                     "selected {V:1}#2#{} cards"
                 }
+            },
+            c_manifold_moon = {
+                name = "{f:manifold_reverse}nooM ehT",
+                text = {
+                    "Destroys up to {C:attention}#1#",
+                    "selected {V:1}#2#{} cards"
+                }
+            },
+            c_manifold_sun = {
+                name = "{f:manifold_reverse}nuS ehT",
+                text = {
+                    "Destroys up to {C:attention}#1#",
+                    "selected {V:1}#2#{} cards"
+                }
+            },
+            c_manifold_world = {
+                name = "{f:manifold_reverse}dlroW ehT",
+                text = {
+                    "Destroys up to {C:attention}#1#",
+                    "selected {V:1}#2#{} cards"
+                }
             }
         },
         Edition = {
