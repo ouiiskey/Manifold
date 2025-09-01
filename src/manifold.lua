@@ -89,3 +89,91 @@ SMODS.current_mod.calculate = function(self, context)
         end
     end
 end
+
+-- Credits
+SMODS.current_mod.extra_tabs = function()
+    return {
+        label = localize("b_credits"),
+        tab_definition_function = function()
+            local text_scale = 0.75
+            return {n = G.UIT.ROOT, config = {align = "cm", padding = 0.2, colour = G.C.BLACK, r = 0.1, emboss = 0.05, minh = 6, minw = 10}, nodes = {
+                -- Noto Sans Cuneiform
+                {n = G.UIT.R, config = {align = "cm", padding = 0.1, outline_colour = G.C.JOKER_GREY, r = 0.1, outline = 1}, nodes = {
+                    {n = G.UIT.R, config = {align = "cm", padding = 0}, nodes = {
+                        {n = G.UIT.T, config = {text = 'The font "NotoSansCuneiform-Regular.ttf"', scale = text_scale * 0.5, colour = G.C.UI.TEXT_LIGHT, shadow = true}}
+                    }},
+                    {n = G.UIT.R, config = {align = "cm", padding = 0}, nodes = {
+                        {n = G.UIT.T, config = {text = "(", scale = text_scale * 0.5, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
+                        {n = G.UIT.T, config = {text = "notofonts.github.io/cuneiform", scale = text_scale * 0.5, colour = G.C.BLUE, shadow = true}},
+                        {n = G.UIT.T, config={text = ")", scale = text_scale * 0.5, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
+                    }},
+                    {n = G.UIT.R, config = {align = "cm", padding = 0}, nodes = {
+                        {n = G.UIT.T, config = {text = "is licensed under the ", scale = text_scale * 0.5, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
+                        {n = G.UIT.T, config = {text = "SIL Open Font License", scale = text_scale * 0.5, colour = G.C.GOLD, shadow = true}},
+                        {n = G.UIT.T, config={text = ".", scale = text_scale * 0.5, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
+                    }},
+                    {n = G.UIT.R, config = {align = "cm", padding = 0}, nodes = {
+                        {n = G.UIT.T, config = {text = "(", scale = text_scale * 0.5, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
+                        {n = G.UIT.T, config = {text = "openfontlicense.org", scale = text_scale * 0.5, colour = G.C.BLUE, shadow = true}},
+                        {n = G.UIT.T, config={text = ")", scale = text_scale * 0.5, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
+                    }}
+                }},
+                -- Reverse m6x11
+                {n = G.UIT.R, config = {align = "cm", padding = 0.1, outline_colour = G.C.JOKER_GREY, r = 0.1, outline = 1}, nodes = {
+                    {n = G.UIT.R, config = {align = "cm", padding = 0}, nodes = {
+                        {n = G.UIT.T, config = {text = 'The font "reverse_m6x11.ttf" is an edit of', scale = text_scale * 0.5, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
+                    }},
+                    {n = G.UIT.R, config = {align = "cm", padding = 0}, nodes = {
+                        {n = G.UIT.T, config = {text = "m6x11 by Daniel Linssen", scale = text_scale * 0.5, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
+                    }},
+                    {n = G.UIT.R, config = {align = "cm", padding = 0}, nodes = {
+                        {n = G.UIT.T, config = {text = "(", scale = text_scale * 0.5, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
+                        {n = G.UIT.T, config = {text = "managore.itch.io/m6x11", scale = text_scale * 0.5, colour = G.C.BLUE, shadow = true}},
+                        {n = G.UIT.T, config={text = ")", scale = text_scale * 0.5, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
+                    }},
+                    {n = G.UIT.R, config = {align = "cm", padding = 0}, nodes = {
+                        {n = G.UIT.T, config = {text = "which is licensed under an ", scale = text_scale * 0.5, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
+                        {n = G.UIT.T, config = {text = "Attribution License", scale = text_scale * 0.5, colour = G.C.GOLD, shadow = true}},
+                        {n = G.UIT.T, config={text = ".", scale = text_scale * 0.5, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
+                    }}
+                }},
+                -- Chicken
+                {n = G.UIT.R, config = {align = "cm", padding = 0.1, outline_colour = G.C.JOKER_GREY, r = 0.1, outline = 1}, nodes = {
+                    {n = G.UIT.R, config = {align = "cm", padding = 0}, nodes = {
+                        {n = G.UIT.T, config = {text = 'Art for the Joker "Chicken" is based on', scale = text_scale * 0.5, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
+                    }},
+                    {n = G.UIT.R, config = {align = "cm", padding = 0}, nodes = {
+                        {n = G.UIT.T, config = {text = '"Rhode Island White Chicken" by Steven Johnson', scale = text_scale * 0.5, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
+                    }},
+                    {n = G.UIT.R, config = {align = "cm", padding = 0}, nodes = {
+                        {n = G.UIT.T, config = {text = '(', scale = text_scale * 0.5, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
+                        {n = G.UIT.T, config = {text = "flickr.com/photos/31295868@N06/5002574766", scale = text_scale * 0.5, colour = G.C.BLUE, shadow = true}},
+                        {n = G.UIT.T, config={text = ")", scale = text_scale * 0.5, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
+                    }},
+                    {n = G.UIT.R, config = {align = "cm", padding = 0}, nodes = {
+                        {n = G.UIT.T, config = {text = "which is licensed under ", scale = text_scale * 0.5, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
+                        {n = G.UIT.T, config = {text = "Attribution 2.0 Generic", scale = text_scale * 0.5, colour = G.C.GOLD, shadow = true}},
+                        {n = G.UIT.T, config={text = ".", scale = text_scale * 0.5, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
+                    }},
+                    {n = G.UIT.R, config = {align = "cm", padding = 0}, nodes = {
+                        {n = G.UIT.T, config = {text = '(', scale = text_scale * 0.5, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
+                        {n = G.UIT.T, config = {text = "creativecommons.org/licenses/by/2.0", scale = text_scale * 0.5, colour = G.C.BLUE, shadow = true}},
+                        {n = G.UIT.T, config={text = ")", scale = text_scale * 0.5, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
+                    }}
+                }},
+                -- Decks
+                {n = G.UIT.R, config = {align = "cm", padding = 0.1, outline_colour = G.C.JOKER_GREY, r = 0.1, outline = 1}, nodes = {
+                    {n = G.UIT.R, config = {align = "cm", padding = 0}, nodes = {
+                        {n = G.UIT.T, config = {text = "Braided Deck, Silver Deck, Foil Deck,", scale = text_scale * 0.5, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
+                    }},
+                    {n = G.UIT.R, config = {align = "cm", padding = 0}, nodes = {
+                        {n = G.UIT.T, config = {text = "Holographic Deck, and Polychrome Deck,", scale = text_scale * 0.5, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
+                    }},
+                    {n = G.UIT.R, config = {align = "cm", padding = 0}, nodes = {
+                        {n = G.UIT.T, config = {text = "are based on LocalThunk's unused concepts.", scale = text_scale * 0.5, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
+                    }}
+                }}
+            }}
+        end
+    }
+end
