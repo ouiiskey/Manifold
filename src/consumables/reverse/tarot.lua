@@ -40,7 +40,11 @@ local reversed = {
     "emperor",
     "heirophant", -- Typo is intentional
     "lovers",
+    "chariot",
+    "justice",
     "strength",
+    "devil",
+    "tower"
 }
 for k, v in ipairs(reversed) do
     assert(SMODS.load_file("src/consumables/reverse/" .. v .. ".lua"), MANIF.install .. "src/consumables/reverse/" .. v .. ".lua")()

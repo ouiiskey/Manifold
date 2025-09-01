@@ -26,7 +26,7 @@ SMODS.Consumable {
                     if #marked == card.ability.extra.max then break end
                 end
             end
-            SMODS.destroy_cards(marked, nil, true, nil, true, function(k, v) return k == #marked end)
+            SMODS.destroy_cards(marked, nil, true, nil, function(k, v) return k == #marked end)
             return true end})
         delay(0.3)
     end,

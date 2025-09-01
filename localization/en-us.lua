@@ -729,12 +729,40 @@ return {
                     "selected {C:attention}Wild{} card"
                 }
             },
+            c_manifold_chariot = {
+                name = "{f:manifold_reverse}toirahC ehT",
+                text = {
+                    "Destroys {C:attention}1",
+                    "selected {C:attention}Steel{} card"
+                }
+            },
+            c_manifold_justice = {
+                name = "{f:manifold_reverse}ecitsuJ",
+                text = {
+                    "Destroys {C:attention}1",
+                    "selected {C:attention}Glass{} card"
+                }
+            },
             c_manifold_strength = {
                 name = "{f:manifold_reverse}htgnertS",
                 text = {
                     "Decreases rank of",
                     "up to {C:attention}#1#{} selected",
                     "cards by {C:attention}1"
+                }
+            },
+            c_manifold_devil = {
+                name = "{f:manifold_reverse}liveD ehT",
+                text = {
+                    "Destroys {C:attention}1",
+                    "selected {C:attention}Gold{} card"
+                }
+            },
+            c_manifold_tower = {
+                name = "{f:manifold_reverse}rewoT ehT",
+                text = {
+                    "Destroys {C:attention}1",
+                    "selected {C:attention}Stone{} card"
                 }
             }
         },

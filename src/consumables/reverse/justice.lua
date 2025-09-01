@@ -1,14 +1,13 @@
--- Reverse Magician
+-- Reverse Justice
 SMODS.Consumable {
-    key = "magician",
+    key = "justice",
     set = "manifold_reverse_tarot",
     atlas = "reverse_tarots",
-    pos = {x = 1, y = 0},
+    pos = {x = 8, y = 0},
     cost = 3,
-    config = {extra = {max = 2, enhancement = "m_lucky"}},
+    config = {extra = {enhancement = "m_glass"}},
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.extra.enhancement]
-        return {vars = {card.ability.extra.max}}
     end,
     in_pool = function(self, args)
         return false
@@ -19,14 +18,14 @@ SMODS.Consumable {
             card:juice_up(0.3, 0.5)
             return true end})
         G.E_MANAGER:add_event(Event{trigger = "after", delay = 0.2, func = function()
-            local marked = {}
+            local target
             for k, v in ipairs(G.hand.highlighted) do
                 if SMODS.has_enhancement(v, card.ability.extra.enhancement) then
-                    table.insert(marked, v)
-                    if #marked == card.ability.extra.max then break end
+                    target = v
+                    break
                 end
             end
-            SMODS.destroy_cards(marked, nil, true, nil, function(k, v) return k == #marked end)
+            SMODS.destroy_cards(target, nil, true)
             return true end})
         delay(0.3)
     end,
@@ -37,6 +36,6 @@ SMODS.Consumable {
                 count = count + 1
             end
         end
-        return count >= 1 and count <= card.ability.extra.max
+        return count == 1
     end
 }
