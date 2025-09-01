@@ -45,6 +45,7 @@ local reversed = {
     "hermit",
     "wheel_of_fortune",
     "strength",
+    "hanged_man",
     "devil",
     "tower"
 }

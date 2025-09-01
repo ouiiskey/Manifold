@@ -770,6 +770,13 @@ return {
                     "cards by {C:attention}1"
                 }
             },
+            c_manifold_hanged_man = {
+                name = "{f:manifold_reverse}naM degnaH ehT",
+                text = {
+                    "Copies up to",
+                    "{C:attention}#1#{} selected cards"
+                }
+            },
             c_manifold_devil = {
                 name = "{f:manifold_reverse}liveD ehT",
                 text = {
