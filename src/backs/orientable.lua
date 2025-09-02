@@ -2,7 +2,6 @@
 local prev = "b_manifold_polychrome"
 
 function MANIF.reverse_button(card)
-    local t
     if card.area == G.consumeables then
         return UIBox{definition = {n = G.UIT.ROOT, config = {padding = 0, colour = G.C.CLEAR}, nodes = {
             {n = G.UIT.R, config = {ref_table = card, r = 0.08, padding = 0.1, align = "bm", minw = 1.25, maxw = 1.25, minh = 0.3 * card.T.h, hover = true, shadow = true, colour = G.C.UI.BACKGROUND_INACTIVE, one_press = true, button = "reverse_tarot", func = "can_reverse_tarot"}, nodes = {

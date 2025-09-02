@@ -143,6 +143,20 @@ return {
                     "deck on at least",
                     "{V:1}White Stake{} difficulty"
                 }
+            },
+            b_manifold_trick = {
+                name = "Trick Deck",
+                text = {
+                    "Apply a random {C:tarot}Tarot",
+                    "to each card in deck",
+                    "{C:attention}#1#{} consumable slots",
+                    "{C:attention}#2#{C:planet} Planet{} slot"
+                },
+                unlock = {
+                    "Win a run with any",
+                    "deck on at least",
+                    "{V:1}Purple Stake{} difficulty"
+                }
             }
         },
         Joker = {
@@ -188,7 +202,7 @@ return {
             j_manifold_space_patrol = {
                 name = "Space Patrol",
                 text = {
-                    "{C:attention}+#1#{} {C:planet}Planet{} slots"
+                    "{C:attention}+#1#{C:planet} Planet{} slots"
                 }
             },
             j_manifold_clay_tablet = {
@@ -393,9 +407,9 @@ return {
             j_manifold_tsunami = {
                 name = "Tsunami",
                 text = {
-                    "Every {C:attention}card",
-                    "{C:attention}held in hand",
-                    "counts in scoring"
+                    "Every card {C:attention}held",
+                    "{C:attention}in hand{} scores",
+                    "as played instead"
                 },
                 unlock = {
                     "Have {C:attention}#1#{} copies of",
@@ -664,7 +678,7 @@ return {
         Voucher = {
             v_planet_tycoon = {
                 text = {
-                    "{C:attention}+2{} {C:planet}Planet{} slots"
+                    "{C:attention}+2{C:planet} Planet{} slots"
                 }
             },
             v_observatory = {
@@ -847,7 +861,7 @@ return {
             e_negative_planet = {
                 name = "Negative",
                 text = {
-                    "{C:dark_edition}+#1#{} {C:planet}Planet{} slot"
+                    "{C:dark_edition}+#1#{C:planet} Planet{} slot"
                 }
             }
         }

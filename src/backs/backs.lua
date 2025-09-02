@@ -17,7 +17,8 @@ local backs = {
     "ring",
     "polymer",
     "orientable",
-    "manifold"
+    "manifold",
+    "trick"
 }
 for k, v in ipairs(backs) do
     assert(SMODS.load_file("src/backs/" .. v .. ".lua"), MANIF.install .. "src/backs/" .. v .. ".lua")()
