@@ -1,5 +1,5 @@
 -- Mana Gem, see also mana_gem.toml
-MANIF.gem = function()
+function MANIF.gem()
     if G.GAME.gem then
         G.GAME.gem = false
         return true

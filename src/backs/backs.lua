@@ -16,7 +16,7 @@ local backs = {
     "graded",
     "ring",
     "polymer",
-    --"orientable",
+    "orientable",
     "manifold"
 }
 for k, v in ipairs(backs) do

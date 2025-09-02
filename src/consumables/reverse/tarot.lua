@@ -11,7 +11,7 @@ SMODS.ConsumableType {
     font = SMODS.Fonts["manifold_reverse"]
 }
 
-MANIF.get_reverse_key = function(card)
+function MANIF.get_reverse_key(card)
     if card.config.center.set == "manifold_reverse_tarot" then
         return "c_" .. string.sub(card.config.center_key, 12)
     elseif card.config.center.set == "Tarot" then

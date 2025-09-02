@@ -1,0 +1,55 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Card:highlight
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if self.ability.consumeable or self.ability.set == 'Joker' then"
+position = "before"
+match_indent = true
+payload = '''
+if G.GAME.selected_back_key and G.GAME.selected_back_key.key == "b_manifold_orientable" and (self.ability.set == "Tarot" or self.ability.set == "manifold_reverse_tarot" or self.config.center_key == "c_soul" or self.config.center_key == "c_manifold_mind") then
+    if self.highlighted then
+        self.children.reverse_button = MANIF.reverse_button(self)
+    elseif self.children.reverse_button then
+        self.children.reverse_button:remove()
+        self.children.reverse_button = nil
+    end
+end
+'''
+
+# tags_buttons DrawStep
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/card_draw.lua"]'
+pattern = "if self.children.use_button and self.highlighted then self.children.use_button:draw() end"
+position = "after"
+match_indent = true
+payload = '''
+if self.children.reverse_button and self.highlighted then self.children.reverse_button:draw() end
+'''
+
+# Card:sell_card
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if self.children.use_button then self.children.use_button:remove(); self.children.use_button = nil end"
+position = "after"
+match_indent = true
+payload = '''
+if self.children.reverse_button then self.children.reverse_button:remove(); self.children.reverse_button = nil end
+'''
+
+# G.FUNCS.use_card
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "if card.children.use_button then card.children.use_button:remove(); card.children.use_button = nil end"
+position = "after"
+match_indent = true
+payload = '''
+if card.children.reverse_button then card.children.reverse_button:remove(); card.children.reverse_button = nil end
+'''

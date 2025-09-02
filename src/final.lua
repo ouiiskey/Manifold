@@ -71,6 +71,7 @@ for k, v in ipairs(soul) do
 end
 
 -- The Mind
+G.shared_mind = Sprite(0, 0, G.CARD_W, G.CARD_H, G.ASSET_ATLAS["manifold_mind"], {x = 0, y = 0})
 local mind = {"j_manifold_weierstrass", "j_manifold_pareto", "j_manifold_peano", "j_manifold_escher", "j_manifold_shannon",
 } -- Hook: Mind jokers
 MANIF.manifold_mind = {}

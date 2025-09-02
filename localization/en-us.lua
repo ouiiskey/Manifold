@@ -121,6 +121,7 @@ return {
                 }
             },
             b_manifold_orientable = {
+                name = "Orientable Deck",
                 text = {
                     "{C:tarot}Tarot{} cards",
                     "can be reversed"
@@ -884,6 +885,7 @@ return {
             manifold_polychrome = "Polychrome!",
             manifold_pop = "Pop!",
             manifold_refused = "Refused!",
+            manifold_reverse = "SPIN",
             manifold_unknown = "?",
             manifold_unknown_total = "????",
             manifold_wild = "Wild!"
