@@ -114,3 +114,14 @@ match_indent = true
 payload = '''
 if self.ability.name == "Fortune Teller" and not context.blueprint and (context.consumeable.ability.set == "Tarot" or context.consumeable.ability.set == "manifold_reverse_tarot") then
 '''
+
+# get_current_pool
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "elseif not (G.GAME.used_jokers[v.key] and not pool_opts.allow_duplicates and not SMODS.showman(v.key)) and"
+position = "at"
+match_indent = true
+payload = '''
+elseif not ((G.GAME.used_jokers[v.key] or _type == "Tarot" and G.GAME.used_jokers["c_manifold_" .. string.sub(v.key, 3)]) and not pool_opts.allow_duplicates and not SMODS.showman(v.key)) and
+'''

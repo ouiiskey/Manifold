@@ -157,6 +157,20 @@ return {
                     "deck on at least",
                     "{V:1}Purple Stake{} difficulty"
                 }
+            },
+            b_manifold_burning = {
+                name = "Burning Deck",
+                text = {
+                    "Start run with {C:attention}#1#",
+                    "copies of {C:spectral,T:c_immolate}Immolate",
+                    "{C:attention}#2#{} Joker slot after",
+                    "every odd ante"
+                },
+                unlock = {
+                    "Win a run with any",
+                    "deck on at least",
+                    "{V:1}Gold Stake{} difficulty"
+                }
             }
         },
         Joker = {
@@ -878,6 +892,7 @@ return {
             manifold_black = "Black",
             manifold_boom = "BOOM!",
             manifold_brains = "Brains!",
+            manifold_burn = "Burn!",
             manifold_burnt = "Burnt!",
             manifold_cashed = "Cashed!",
             manifold_ceased = "Ceased...",

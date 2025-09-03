@@ -15,7 +15,7 @@ SMODS.Joker {
             for k, v in ipairs(context.scoring_hand) do
                 if v:is_rank(14) and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
                     message = message .. localize("manifold_ace")
-                    SMODS.add_card{key = "Spectral", area = G.consumeables, key = "c_hex", key_append = "manifold_alice"}
+                    SMODS.add_card{set = "Spectral", area = G.consumeables, key = "c_hex", key_append = "manifold_alice"}
                     -- The card must be added immediately rather than with an event to synergize with Bob
                 end
             end
