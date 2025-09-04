@@ -1,0 +1,102 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# CardArea:align_cards
+[[patches]]
+[patches.pattern]
+target = "cardarea.lua"
+pattern = "table.sort(self.cards, function (a, b) return a.T.x + a.T.w/2 - 100*((a.pinned and not a.ignore_pinned) and a.sort_id or 0) < b.T.x + b.T.w/2 - 100*((b.pinned and not b.ignore_pinned) and b.sort_id or 0) end)"
+position = "at"
+match_indent = true
+payload = '''
+table.sort(self.cards, function (a, b)
+    local function score(card)
+        local pin_score = 0
+        if not card.ignore_pinned then
+            if card.pinned then pin_score = pin_score - (card.sort_id or 0) end
+            if card.pinned_right then pin_score = pin_score + (card.sort_id or 0) end
+            pin_score = pin_score * 100
+        end
+        return card.T.x + card.T.w / 2 + pin_score
+    end
+    return score(a) < score(b)
+end)
+'''
+
+# Card:generate_UIBox_ability_table
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if self.pinned then badges[#badges + 1] = 'pinned_left' end"
+position = "after"
+match_indent = true
+payload = '''
+if self.pinned_right then badges[#badges + 1] = "pinned_right" end
+'''
+
+# generate_card_ui
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "if specific_vars and specific_vars.pinned then info_queue[#info_queue+1] = {key = 'pinned_left', set = 'Other'} end"
+position = "after"
+match_indent = true
+payload = '''
+if specific_vars and specific_vars.pinned_right then info_queue[#info_queue + 1] = {key = "pinned_right", set = "Other"} end
+'''
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "if v == 'pinned_left' then info_queue[#info_queue+1] = {key = 'pinned_left', set = 'Other'} end"
+position = "after"
+match_indent = true
+payload = '''
+if v == "pinned_right" then info_queue[#info_queue + 1] = {key = "pinned_right", set = "Other"} end
+'''
+
+# Card:save
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "pinned = self.pinned,"
+position = "after"
+match_indent = true
+payload = '''
+pinned_right = self.pinned_right,
+'''
+
+# Card:load
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "self.pinned = cardTable.pinned"
+position = "after"
+match_indent = true
+payload = '''
+self.pinned_right = cardTable.pinned_right
+'''
+
+# get_badge_colour
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "pinned_left = G.C.ORANGE,"
+position = "after"
+match_indent = true
+payload = '''
+pinned_right = G.C.ORANGE,
+'''
+
+# copy_card
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "new_card.pinned = other.pinned"
+position = "after"
+match_indent = true
+payload = '''
+new_card.pinned_right = other.pinned_right
+'''

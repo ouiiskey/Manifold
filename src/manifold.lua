@@ -26,7 +26,7 @@ local source = {
     "consumables/consumables",
     "jokers/jokers",
     "backs/backs",
-    -- Challenges
+    "challenges/challenges",
     "compat"
 }
 for k, v in ipairs(source) do

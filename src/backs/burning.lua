@@ -5,9 +5,6 @@ SMODS.Back {
     pos = {x = 2, y = 1},
     unlocked = false,
     config = {extra = {immo = 2, joker_mod = -1}},
-    locked_loc_vars = function(self, info_queue, back)
-        return {vars = {colours = {G.C.GOLD}}}
-    end,
     check_for_unlock = function(self, args)
         return args.type == "win_stake" and get_deck_win_stake() >= 8
     end,

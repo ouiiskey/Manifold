@@ -155,7 +155,7 @@ return {
                 unlock = {
                     "Win a run with any",
                     "deck on at least",
-                    "{V:1}Purple Stake{} difficulty"
+                    "{C:purple}Purple Stake{} difficulty"
                 }
             },
             b_manifold_burning = {
@@ -169,7 +169,7 @@ return {
                 unlock = {
                     "Win a run with any",
                     "deck on at least",
-                    "{V:1}Gold Stake{} difficulty"
+                    "{C:gold}Gold Stake{} difficulty"
                 }
             }
         },
@@ -626,6 +626,17 @@ return {
                     "{C:attention}#1#{} rounds"
                 }
             },
+            pinned_left = {
+                name = "Leftmost"
+            },
+            pinned_right = {
+                name = "Rightmost",
+                text = {
+                    "This Joker stays",
+                    "pinned to the",
+                    "rightmost position"
+                }
+            },
             undiscovered_manifold_reverse_tarot = {
                 name = "Not Discovered",
                 text = {
@@ -881,8 +892,8 @@ return {
         }
     },
     misc = {
-        labels = {
-            manifold_black_seal = "Black Seal"
+        challenge_names = {
+            c_manifold_high_roller = "High Roller"
         },
         dictionary = {
             b_manifold_reverse_tarot_cards = "sdraC toraT",
@@ -918,6 +929,16 @@ return {
             manifold_unknown = "?",
             manifold_unknown_total = "????",
             manifold_wild = "Wild!"
+        },
+        labels = {
+            manifold_black_seal = "Black Seal",
+            pinned_left = "Leftmost",
+            pinned_right = "Rightmost"
+        },
+        v_text = {
+            ch_m_gold_stake = {
+                "{C:gold}Gold Stake"
+            }
         }
     }
 }

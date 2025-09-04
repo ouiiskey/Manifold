@@ -1,0 +1,50 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# G.UIDEF.challenge_description
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "if v.eternal then card:set_eternal(true) end"
+position = "after"
+match_indent = true
+payload = '''
+if v.rental then card:set_rental(true) end
+if v.pinned_right then card.pinned_right = true end
+'''
+
+# G.UIDEF.challenge_description_tab
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "hand_size = {value = starting_params.hand_size, order = 3},"
+position = "after"
+match_indent = true
+payload = '''
+gold_stake = {value = "", order = 0},
+'''
+
+# G.FUNCS.start_challenge_run
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "G.FUNCS.start_run(e, {stake = 1, challenge = G.CHALLENGES[e.config.id]})"
+position = "at"
+match_indent = true
+payload = '''
+G.FUNCS.start_run(e, {stake = G.CHALLENGES[e.config.id].stake or 1, challenge = G.CHALLENGES[e.config.id]})
+'''
+
+# Game:start_run
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "if v.eternal then _joker:set_eternal(true) end"
+position = "after"
+match_indent = true
+payload = '''
+if v.rental then _joker:set_rental(true) end
+if v.pinned_right then _joker.pinned_right = true end
+'''
