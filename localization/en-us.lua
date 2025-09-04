@@ -525,7 +525,7 @@ return {
                 text = {
                     "If {C:attention}poker hand{} is",
                     "a {C:attention}#1#{},",
-                    "gain {C:blue}+#2#{} Hand"
+                    "gain {C:blue}+#2#{} Hands"
                 }
             },
             j_manifold_lucky_sevens = {
@@ -912,7 +912,8 @@ return {
     misc = {
         challenge_names = {
             c_manifold_high_roller = "High Roller",
-            c_manifold_plant_vs_zombie = "Plant vs. Zombie"
+            c_manifold_plant_vs_zombie = "Plant vs. Zombie",
+            c_manifold_dark_inferno = "Dark Inferno"
         },
         dictionary = {
             b_manifold_reverse_tarot_cards = "sdraC toraT",
@@ -956,6 +957,9 @@ return {
             pinned_right = "Rightmost"
         },
         v_text = {
+            ch_c_ante_x_base = {
+                "Multiply required {C:red}Base{} Score by current Ante"
+            },
             ch_c_leaf = {
                 "Face {C:green,T:bl_final_leaf}Verdant Leaf{} on Ante 8"
             },
@@ -964,6 +968,9 @@ return {
             },
             ch_m_gold_stake = {
                 "{C:gold}Gold Stake"
+            },
+            ch_m_x_base = {
+                "Score {C:red}#1#X Base"
             }
         }
     }

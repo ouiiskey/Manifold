@@ -11,6 +11,7 @@ pattern = "if v.eternal then card:set_eternal(true) end"
 position = "after"
 match_indent = true
 payload = '''
+if v.perishable then card:set_perishable(true) end
 if v.rental then card:set_rental(true) end
 if v.pinned_right then card.pinned_right = true end
 '''
@@ -19,11 +20,16 @@ if v.pinned_right then card.pinned_right = true end
 [[patches]]
 [patches.pattern]
 target = "functions/UI_definitions.lua"
-pattern = "hand_size = {value = starting_params.hand_size, order = 3},"
+pattern = "for k, v in ipairs(challenge.rules.modifiers) do"
 position = "after"
 match_indent = true
 payload = '''
-gold_stake = {value = "", order = 0},
+    if v.id == "gold_stake" then
+        base_modifiers.gold_stake = {value = "", order = 0}
+    end
+    if v.id == "x_base" then
+        base_modifiers.x_base = {value = "1", order = 8}
+    end
 '''
 
 # G.FUNCS.start_challenge_run
@@ -37,6 +43,31 @@ payload = '''
 G.FUNCS.start_run(e, {stake = G.CHALLENGES[e.config.id].stake or 1, challenge = G.CHALLENGES[e.config.id]})
 '''
 
+# get_blind_amount
+[[patches]]
+[patches.pattern]
+target = "functions/misc_functions.lua"
+pattern = '''
+if ante < 1 then return 100 end
+if ante <= 8 then return amounts[ante] end
+'''
+position = "at"
+match_indent = true
+payload = '''
+if ante < 1 then return 100 * (G.GAME.modifiers.x_base or 1) end
+if ante <= 8 then return amounts[ante] * (G.GAME.modifiers.x_base or 1) end
+'''
+
+[[patches]]
+[patches.pattern]
+target = "functions/misc_functions.lua"
+pattern = "return amount"
+position = "before"
+match_indent = true
+payload = '''
+amount = amount * (G.GAME.modifiers.x_base or 1)
+'''
+
 # Game:start_run
 [[patches]]
 [patches.pattern]
@@ -45,6 +76,7 @@ pattern = "if v.eternal then _joker:set_eternal(true) end"
 position = "after"
 match_indent = true
 payload = '''
+if v.perishable then _joker:set_perishable(true) end
 if v.rental then _joker:set_rental(true) end
 if v.pinned_right then _joker.pinned_right = true end
 '''

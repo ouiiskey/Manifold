@@ -6,7 +6,7 @@ SMODS.Joker {
     pos = {x = 5, y = 3},
     cost = 8,
     blueprint_compat = true,
-    config = {extra = {hands = 1, poker_hand = "Four of a Kind"}},
+    config = {extra = {hands = 2, poker_hand = "Four of a Kind"}},
     loc_vars = function(self, info_queue, card)
         return {vars = {localize(card.ability.extra.poker_hand, "poker_hands"), card.ability.extra.hands}}
     end,
