@@ -911,7 +911,8 @@ return {
     },
     misc = {
         challenge_names = {
-            c_manifold_high_roller = "High Roller"
+            c_manifold_high_roller = "High Roller",
+            c_manifold_plant_vs_zombie = "Plant vs. Zombie"
         },
         dictionary = {
             b_manifold_reverse_tarot_cards = "sdraC toraT",
@@ -955,6 +956,12 @@ return {
             pinned_right = "Rightmost"
         },
         v_text = {
+            ch_c_leaf = {
+                "Face {C:green,T:bl_final_leaf}Verdant Leaf{} on Ante 8"
+            },
+            ch_c_plant = {
+                "Face {C:green,T:bl_plant}The Plant{} on Antes 1 to 7"
+            },
             ch_m_gold_stake = {
                 "{C:gold}Gold Stake"
             }

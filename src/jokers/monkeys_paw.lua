@@ -1,6 +1,6 @@
 -- Monkey's Paw, see also monkeys_paw.toml
 local threshold = 200
-local sources = {"jud", "lib",
+local sources = {"jud", "manifold_lib",
 } -- Hook: Monkey's Paw banned pools
 
 SMODS.Atlas {
