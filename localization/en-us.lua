@@ -913,7 +913,8 @@ return {
         challenge_names = {
             c_manifold_high_roller = "High Roller",
             c_manifold_plant_vs_zombie = "Plant vs. Zombie",
-            c_manifold_dark_inferno = "Dark Inferno"
+            c_manifold_dark_inferno = "Dark Inferno",
+            c_manifold_pacific_rim = "Pacific Rim"
         },
         dictionary = {
             b_manifold_reverse_tarot_cards = "sdraC toraT",

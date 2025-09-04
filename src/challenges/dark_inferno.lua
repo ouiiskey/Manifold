@@ -14,7 +14,7 @@ SMODS.Challenge {
     jokers = {
         {id = "j_manifold_left_turns", eternal = true},
         {id = "j_burglar"},
-        {id = "j_blueprint", perishable = true},
+        {id = "j_blueprint"},
         {id = "j_manifold_archwizard", eternal = true}
     },
     calculate = function(self, context)
