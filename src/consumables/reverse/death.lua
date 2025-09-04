@@ -8,9 +8,7 @@ SMODS.Consumable {
     end,
     cost = 3,
     config = {max_highlighted = 1},
-    in_pool = function(self, args)
-        return false
-    end,
+    in_pool = false,
     use = function(self, card, area, copier)
         G.E_MANAGER:add_event(Event{func = function()
             G.playing_card = G.playing_card and G.playing_card + 1 or 1

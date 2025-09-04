@@ -11,9 +11,7 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {vars = {card.ability.extra.payout}}
     end,
-    in_pool = function(self, args)
-        return false
-    end,
+    in_pool = false,
     use = function(self, card, area, copier)
         local pool = {}
         for k, v in ipairs(G.consumeables.cards) do

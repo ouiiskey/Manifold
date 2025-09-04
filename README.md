@@ -40,6 +40,7 @@ Because this mod contains bespoke code, you may encounter compatibility issues w
 #### Known incompatible mods:
 * [DebugPlus](https://github.com/WilsontheWolf/DebugPlus)
   * Copied planets emplace in the consumable slots, spawn the planets instead. 
+  * Spawning planets requires empty consumable slots.
 
 ## Issues
 If you wish to report bugs or make suggestions, visit the [issue tracker](https://github.com/ouiiskey/Manifold/issues).

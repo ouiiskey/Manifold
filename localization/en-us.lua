@@ -173,6 +173,14 @@ return {
                 }
             }
         },
+        Edition = {
+            e_negative_planet = {
+                name = "Negative",
+                text = {
+                    "{C:dark_edition}+#1#{C:planet} Planet{} slot"
+                }
+            }
+        },
         Joker = {
             j_manifold_prosopagnosia = {
                 name = "Prosopagnosia",
@@ -609,112 +617,6 @@ return {
                 }
             }
         },
-        Other = {
-            manifold_black_seal = {
-                name = "Black Seal",
-                text = {
-                    "Creates up to {C:attention}#1#",
-                    "random {C:spectral}Spectral{} cards",
-                    "when destroyed",
-                    "{C:inactive}(Must have room)"
-                }
-            },
-            manifold_perishable = {
-                name = "Perishable",
-                text = {
-                    "Debuffed after",
-                    "{C:attention}#1#{} rounds"
-                }
-            },
-            pinned_left = {
-                name = "Leftmost"
-            },
-            pinned_right = {
-                name = "Rightmost",
-                text = {
-                    "This Joker stays",
-                    "pinned to the",
-                    "rightmost position"
-                }
-            },
-            undiscovered_manifold_reverse_tarot = {
-                name = "Not Discovered",
-                text = {
-                    "Purchase or use",
-                    "this card in an",
-                    "unseeded run to",
-                    "learn what it does"
-                }
-            }
-        },
-        Spectral = {
-            c_manifold_mind = {
-              name = "The Mind",
-              text = {
-                  "Creates a",
-                  "{C:legendary,E:1}Legendary{} Joker",
-                  "{C:inactive}(Must have room)"
-              }
-            },
-            c_incantation = {
-                text = {
-                    "Add a random",
-                    "{C:dark_edition}Negative{} playing card",
-                    "to your deck,",
-                    "{C:red}-2{} hand size"
-                }
-            },
-            c_familiar = {
-                text = {
-                    "Fill your {C:attention}consumable",
-                    "area with copies of",
-                    "a random card in it",
-                    "{s:0.8,C:spectral}Familiar{s:0.8} excluded"
-                }
-            },
-            c_grim = {
-                text = {
-                    "Add a {V:1}Black Seal",
-                    "to {C:attention}1{} selected",
-                    "card in your hand"
-                }
-            }
-        },
-        Tarot = {
-            c_fool = {
-                text = {
-                    "Creates the last",
-                    "{C:tarot}Tarot{} card used",
-                    "during this run",
-                    "{s:0.8,C:tarot}The Fool{s:0.8} excluded"
-                }
-            },
-            c_high_priestess = {
-                text = {
-                    "Creates the last",
-                    "{C:planet}Planet{} card used",
-                    "during this run"
-                }
-            },
-            c_wheel_of_fortune = {
-                name = "Wheel of Fortune"
-            }
-        },
-        Voucher = {
-            v_planet_tycoon = {
-                text = {
-                    "{C:attention}+2{C:planet} Planet{} slots"
-                }
-            },
-            v_observatory = {
-                text = {
-                    "{C:planet}Planet{} cards in your",
-                    "{C:planet}Planet{} area give",
-                    "{X:red,C:white} X#1# {} Mult for their",
-                    "specified {C:attention}poker hand"
-                }
-            }
-        },
         manifold_reverse_tarot = {
             c_manifold_fool = {
                 name = "{f:manifold_reverse}looF ehT",
@@ -882,11 +784,127 @@ return {
                 }
             }
         },
-        Edition = {
-            e_negative_planet = {
-                name = "Negative",
+        Other = {
+            manifold_black_seal = {
+                name = "Black Seal",
                 text = {
-                    "{C:dark_edition}+#1#{C:planet} Planet{} slot"
+                    "Creates up to {C:attention}#1#",
+                    "random {C:spectral}Spectral{} cards",
+                    "when destroyed",
+                    "{C:inactive}(Must have room)"
+                }
+            },
+            manifold_perishable = {
+                name = "Perishable",
+                text = {
+                    "Debuffed after",
+                    "{C:attention}#1#{} rounds"
+                }
+            },
+            manifold_premium = {
+                name = "Premium",
+                text = {
+                    "Costs {C:money}$3{} extra"
+                }
+            },
+            pinned_left = {
+                name = "Leftmost"
+            },
+            pinned_right = {
+                name = "Rightmost",
+                text = {
+                    "This Joker stays",
+                    "pinned to the",
+                    "rightmost position"
+                }
+            },
+            undiscovered_manifold_reverse_tarot = {
+                name = "Not Discovered",
+                text = {
+                    "Purchase or use",
+                    "this card in an",
+                    "unseeded run to",
+                    "learn what it does"
+                }
+            }
+        },
+        Spectral = {
+            c_manifold_mind = {
+              name = "The Mind",
+              text = {
+                  "Creates a",
+                  "{C:legendary,E:1}Legendary{} Joker",
+                  "{C:inactive}(Must have room)"
+              }
+            },
+            c_incantation = {
+                text = {
+                    "Add a random",
+                    "{C:dark_edition}Negative{} playing card",
+                    "to your deck,",
+                    "{C:red}-2{} hand size"
+                }
+            },
+            c_familiar = {
+                text = {
+                    "Fill your {C:attention}consumable",
+                    "area with copies of",
+                    "a random card in it",
+                    "{s:0.8,C:spectral}Familiar{s:0.8} excluded"
+                }
+            },
+            c_grim = {
+                text = {
+                    "Add a {V:1}Black Seal",
+                    "to {C:attention}1{} selected",
+                    "card in your hand"
+                }
+            }
+        },
+        Stake = {
+            stake_blue = {
+                text = {
+                    "Shop can have {C:attention}Perishable{} Jokers",
+                    "{C:inactive,s:0.8}(Debuffed after 5 Rounds)",
+                    "{s:0.8}Applies all previous Stakes"
+                }
+            },
+            stake_orange = {
+                text = {
+                    "Shop can have {C:attention}Premium{} Jokers",
+                    "{C:inactive,s:0.8}(Costs {C:money,s:0.8}$3{C:inactive,s:0.8} more)",
+                    "{s:0.8}Applies all previous Stakes",
+                }
+            }
+        },
+        Tarot = {
+            c_fool = {
+                text = {
+                    "Creates the last",
+                    "{C:tarot}Tarot{} card used",
+                    "during this run",
+                    "{s:0.8,C:tarot}The Fool{s:0.8} excluded"
+                }
+            },
+            c_high_priestess = {
+                text = {
+                    "Creates the last",
+                    "{C:planet}Planet{} card used",
+                    "during this run",
+                    "{C:inactive}(Must have room)"
+                }
+            },
+            c_wheel_of_fortune = {
+                name = "Wheel of Fortune"
+            }
+        },
+        Voucher = {
+            v_observatory = {
+                text = {
+                    "{C:planet}Planet{} cards in your",
+                    "{C:planet}Planet{} area give",
+                    "{X:red,C:white} X#1# {} Mult for their",
+                    "specified {C:attention}poker hand"
                 }
             }
         }
@@ -932,6 +950,7 @@ return {
         },
         labels = {
             manifold_black_seal = "Black Seal",
+            manifold_premium = "Premium",
             pinned_left = "Leftmost",
             pinned_right = "Rightmost"
         },

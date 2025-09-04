@@ -15,9 +15,7 @@ SMODS.Consumable {
         local numerator, denominator = SMODS.get_probability_vars(card, card.ability.extra.numerator, card.ability.extra.denominator, "manifold_wof")
         return {vars = {numerator, denominator}}
     end,
-    in_pool = function(self, args)
-        return false
-    end,
+    in_pool = false,
     use = function(self, card, area, copier)
         G.E_MANAGER:add_event(Event{trigger = "after", delay = 0.4, func = function()
             if SMODS.pseudorandom_probability(card, "manifold_wof", card.ability.extra.numerator, card.ability.extra.denominator) then

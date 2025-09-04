@@ -11,9 +11,7 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.extra.enhancement]
     end,
-    in_pool = function(self, args)
-        return false
-    end,
+    in_pool = false,
     use = function(self, card, area, copier)
         G.E_MANAGER:add_event(Event{trigger = "after", delay = 0.4, func = function()
             play_sound("tarot1")

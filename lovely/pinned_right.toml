@@ -51,11 +51,9 @@ if specific_vars and specific_vars.pinned_right then info_queue[#info_queue + 1]
 [patches.pattern]
 target = "functions/common_events.lua"
 pattern = "if v == 'pinned_left' then info_queue[#info_queue+1] = {key = 'pinned_left', set = 'Other'} end"
-position = "after"
+position = "at"
 match_indent = true
-payload = '''
-if v == "pinned_right" then info_queue[#info_queue + 1] = {key = "pinned_right", set = "Other"} end
-'''
+payload = ""
 
 # Card:save
 [[patches]]
@@ -99,4 +97,48 @@ position = "after"
 match_indent = true
 payload = '''
 new_card.pinned_right = other.pinned_right
+'''
+
+# loadAPIs
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/game_object.lua"]'
+pattern = '''
+SMODS.Sticker{
+    key = "pinned",
+    badge_colour = HEX 'fda200',
+    prefix_config = {key = false},
+    pos = { x = 10, y = 10 }, -- Base game has no art, and I haven't made any yet to represent Pinned with
+    rate = 0,
+    should_apply = false,
+    order = 4,
+    apply = function(self, card, val)
+        card[self.key] = val
+    end
+}
+'''
+position = "at"
+match_indent = true
+payload = ""
+
+# stickers DrawStep
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/card_draw.lua"]'
+pattern = "if self.ability[v.key] then"
+position = "at"
+match_indent = true
+payload = '''
+if self.ability[v.key] or v.key == "pinned_left" and self.pinned or v.key == "pinned_right" and self.pinned_right then
+'''
+
+# create_UIBox_your_collection_stickers
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/ui.lua"]'
+pattern = "return SMODS.card_collection_UIBox(SMODS.Stickers, {5,5}, {"
+position = "at"
+match_indent = true
+payload = '''
+return SMODS.card_collection_UIBox(SMODS.Stickers, {4,5}, {
 '''

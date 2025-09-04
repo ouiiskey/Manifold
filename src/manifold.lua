@@ -21,12 +21,13 @@ local source = {
     "overrides",
     "utils",
     "fonts",
-    "vouchers",
     "seals",
     "consumables/consumables",
     "jokers/jokers",
     "backs/backs",
     "challenges/challenges",
+    "stakes",
+    "stickers",
     "compat"
 }
 for k, v in ipairs(source) do

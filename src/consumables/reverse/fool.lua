@@ -7,9 +7,7 @@ SMODS.Consumable {
         card.children.center.reverse = true
     end,
     cost = 3,
-    in_pool = function(self, args)
-        return false
-    end,
+    in_pool = false,
     use = function(self, card, area, copier)
         G.E_MANAGER:add_event(Event{trigger = "after", delay = 0.4, func = function()
             attention_text{text = localize("manifold_foreseen"), hold = 1.4, major = card, backdrop_colour = G.C.SECONDARY_SET.Tarot, align = (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK) and "tm" or "cm", offset = {x = 0, y = (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK) and -0.2 or 0}, silent = true}

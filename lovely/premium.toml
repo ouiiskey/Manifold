@@ -1,0 +1,15 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Card:set_cost
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if self.ability.rental then self.cost = 1 end"
+position = "after"
+match_indent = true
+payload = '''
+if self.ability.manifold_premium then self.cost = self.cost + 3 end
+'''

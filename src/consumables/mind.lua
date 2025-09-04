@@ -30,9 +30,7 @@ SMODS.Consumable {
     atlas = "spectrals",
     pos = {x = 0, y = 0},
     cost = 4,
-    in_pool = function(self, args)
-        return false
-    end,
+    in_pool = false,
     use = function(self, card, area, copier)
         G.E_MANAGER:add_event(Event{trigger = "after", delay = 0.4, func = function()
             play_sound("timpani")
