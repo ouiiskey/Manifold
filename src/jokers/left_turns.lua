@@ -1,7 +1,7 @@
 -- 4 Left Turns
 SMODS.Joker {
     key = "left_turns",
-    rarity = 2,
+    rarity = 3,
     atlas = "jokers",
     pos = {x = 5, y = 3},
     cost = 8,

@@ -914,7 +914,8 @@ return {
             c_manifold_high_roller = "High Roller",
             c_manifold_plant_vs_zombie = "Plant vs. Zombie",
             c_manifold_dark_inferno = "Dark Inferno",
-            c_manifold_pacific_rim = "Pacific Rim"
+            c_manifold_pacific_rim = "Pacific Rim",
+            c_manifold_glitter = "Glitter"
         },
         dictionary = {
             b_manifold_reverse_tarot_cards = "sdraC toraT",
@@ -960,6 +961,9 @@ return {
         v_text = {
             ch_c_ante_x_base = {
                 "Multiply required {C:red}Base{} Score by current Ante"
+            },
+            ch_c_no_flush = {
+                "Hands containing a {C:attention}Flush{} do not score"
             },
             ch_c_leaf = {
                 "Face {C:green,T:bl_final_leaf}Verdant Leaf{} on Ante 8"

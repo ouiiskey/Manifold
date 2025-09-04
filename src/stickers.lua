@@ -13,6 +13,12 @@ SMODS.Sticker {
     badge_colour = HEX("b96050"),
     sets = {Joker = true},
     needs_enable_flag = true,
+    should_apply = function(self, card, center, area, bypass_roll)
+        if G.GAME.modifiers.enable_manifold_premium and area == G.shop_jokers or area == G.pack_cards then
+            return bypass_roll or pseudorandom((area == G.pack_cards and "pack_premium" or "premium_poll") .. G.GAME.round_resets.ante) > 1 - self.rate
+        end
+        return false
+    end,
     apply = function(self, card, val)
         card.ability.manifold_premium = val
         card:set_cost()
