@@ -1,4 +1,5 @@
 -- Propaganda, see also propaganda.toml
+-- debuff_card context is not used because it is only triggered when called via Blind:debuff_card
 SMODS.Joker {
     key = "propaganda",
     rarity = 3,
@@ -40,10 +41,8 @@ SMODS.Joker {
             return {
                 x_mult = card.ability.extra.x_mult
             }
-        elseif context.card_added and not context.blueprint then
-            if context.card.ability.set == "Joker" and context.card.config.center.rarity ~= 1 and context.card.config.center.rarity ~= "Common" then
-                context.card:set_debuff(true)
-            end
+        elseif context.card_added and not context.blueprint and context.card.ability.set == "Joker" and context.card.config.center.rarity ~= 1 and context.card.config.center.rarity ~= "Common" then
+            context.card:set_debuff(true)
         end
     end
 }

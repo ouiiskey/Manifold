@@ -918,7 +918,8 @@ return {
             c_manifold_glitter = "Glitter",
             c_manifold_servant_of_chaos = "Servant of Chaos",
             c_manifold_beach_episode = "Beach Episode",
-            c_manifold_boss_rush = "Boss Rush"
+            c_manifold_boss_rush = "Boss Rush",
+            c_manifold_salted_earth = "Salted Earth"
         },
         dictionary = {
             b_manifold_reverse_tarot_cards = "sdraC toraT",
@@ -976,6 +977,9 @@ return {
             },
             ch_c_plant = {
                 "Face {C:green,T:bl_plant}The Plant{} on Antes 1 to 7"
+            },
+            ch_c_debuff_cards = {
+                "Your playing cards are {C:attention}debuffed"
             },
             ch_m_gold_stake = {
                 "{C:gold}Gold Stake"

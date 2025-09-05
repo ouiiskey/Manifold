@@ -11,5 +11,5 @@ pattern = "if self.ability.perishable and self.ability.perish_tally <= 0 then "
 position = "at"
 match_indent = true
 payload = '''
-if self.ability.perishable and self.ability.perish_tally <= 0 or self.ability.set == "Joker" and self.config.center.rarity ~= 1 and self.config.center.rarity ~= "Common" and next(SMODS.find_card("j_manifold_propaganda")) and SMODS.find_card("j_manifold_propaganda")[1] ~= self then
+if self.ability.perishable and self.ability.perish_tally <= 0 or self.ability.set == "Joker" and self.config.center.rarity ~= 1 and self.config.center.rarity ~= "Common" and next(SMODS.find_card("j_manifold_propaganda")) and SMODS.find_card("j_manifold_propaganda")[1] ~= self or G.GAME.modifiers.debuff_cards and (self.ability.set == "Default" or self.ability.set == "Enhanced") then
 '''
