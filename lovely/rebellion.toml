@@ -11,11 +11,17 @@ pattern = "G.GAME.round_resets.blind_choices.Boss = get_new_boss()"
 position = "at"
 match_indent = true
 payload = '''
-if #SMODS.find_card("j_manifold_rebellion") % 2 == 1 then
+if G.GAME.modifiers.boss_rush then
     G.GAME.round_resets.blind_choices.Small = get_new_boss()
-    G.GAME.round_resets.blind_choices.Boss = "bl_small"
-else
+    G.GAME.round_resets.blind_choices.Big = get_new_boss()
     G.GAME.round_resets.blind_choices.Boss = get_new_boss()
+else
+    if #SMODS.find_card("j_manifold_rebellion") % 2 == 1 then
+        G.GAME.round_resets.blind_choices.Small = get_new_boss()
+        G.GAME.round_resets.blind_choices.Boss = "bl_small"
+    else
+        G.GAME.round_resets.blind_choices.Boss = get_new_boss()
+    end
 end
 '''
 
@@ -105,11 +111,17 @@ pattern = "self.GAME.round_resets.blind_choices.Boss = get_new_boss()"
 position = "at"
 match_indent = true
 payload = '''
-if #SMODS.find_card("j_manifold_rebellion") % 2 == 1 then
-    self.GAME.round_resets.blind_choices.Small = get_new_boss()
-    self.GAME.round_resets.blind_choices.Boss = "bl_small"
+if G.GAME.modifiers.boss_rush then
+    G.GAME.round_resets.blind_choices.Small = get_new_boss()
+    G.GAME.round_resets.blind_choices.Big = get_new_boss()
+    G.GAME.round_resets.blind_choices.Boss = get_new_boss()
 else
-    self.GAME.round_resets.blind_choices.Boss = get_new_boss()
+    if #SMODS.find_card("j_manifold_rebellion") % 2 == 1 then
+        G.GAME.round_resets.blind_choices.Small = get_new_boss()
+        G.GAME.round_resets.blind_choices.Boss = "bl_small"
+    else
+        G.GAME.round_resets.blind_choices.Boss = get_new_boss()
+    end
 end
 '''
 
@@ -142,4 +154,21 @@ position = "at"
 match_indent = true
 payload = '''
 if G.GAME.blind_on_deck == "Boss" then
+'''
+
+# create_UIBox_blind_choice
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "if G.GAME.modifiers.no_blind_reward and G.GAME.modifiers.no_blind_reward[type] then _reward = nil end"
+position = "at"
+match_indent = true
+payload = '''
+local cash_type = "Boss"
+if blind_choice.config.name == "Small Blind" then
+    cash_type = "Small"
+elseif blind_choice.config.name == "Big Blind" then
+    cash_type = "Big"
+end
+if G.GAME.modifiers.no_blind_reward and G.GAME.modifiers.no_blind_reward[cash_type] then _reward = nil end
 '''

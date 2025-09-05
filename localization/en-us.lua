@@ -917,7 +917,8 @@ return {
             c_manifold_pacific_rim = "Pacific Rim",
             c_manifold_glitter = "Glitter",
             c_manifold_servant_of_chaos = "Servant of Chaos",
-            c_manifold_beach_episode = "Beach Episode"
+            c_manifold_beach_episode = "Beach Episode",
+            c_manifold_boss_rush = "Boss Rush"
         },
         dictionary = {
             b_manifold_reverse_tarot_cards = "sdraC toraT",
@@ -963,6 +964,9 @@ return {
         v_text = {
             ch_c_ante_x_base = {
                 "Multiply required {C:red}Base{} Score by current Ante"
+            },
+            ch_c_boss_rush = {
+                "Face only {C:attention}Boss Blinds"
             },
             ch_c_no_flush = {
                 "Hands containing a {C:attention}Flush{} do not score"
