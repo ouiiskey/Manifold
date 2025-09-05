@@ -916,7 +916,8 @@ return {
             c_manifold_dark_inferno = "Dark Inferno",
             c_manifold_pacific_rim = "Pacific Rim",
             c_manifold_glitter = "Glitter",
-            c_manifold_servant_of_chaos = "Servant of Chaos"
+            c_manifold_servant_of_chaos = "Servant of Chaos",
+            c_manifold_beach_episode = "Beach Episode"
         },
         dictionary = {
             b_manifold_reverse_tarot_cards = "sdraC toraT",

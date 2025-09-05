@@ -15,6 +15,9 @@ SMODS.Challenge {
         {id = "j_blueprint"},
         {id = "j_manifold_archwizard", eternal = true}
     },
+    consumeables = {
+        {id = "c_immolate"}
+    },
     calculate = function(self, context)
         if context.ante_change then
             G.GAME.modifiers.x_base = (G.GAME.modifiers.x_base or 1) + context.ante_change
