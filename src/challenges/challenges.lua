@@ -3,7 +3,8 @@ local challenges = {
     "plant_vs_zombie",
     "dark_inferno",
     "pacific_rim",
-    "glitter"
+    "glitter",
+    "servant_of_chaos"
 }
 for k, v in ipairs(challenges) do
     assert(SMODS.load_file("src/challenges/" .. v .. ".lua"), MANIF.install .. "src/challenges/" .. v .. ".lua")()

@@ -1,6 +1,4 @@
 -- Dark Inferno
-local x_base = 3
-
 SMODS.Challenge {
     key = "dark_inferno",
     rules = {
