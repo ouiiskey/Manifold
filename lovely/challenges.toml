@@ -80,3 +80,70 @@ if v.perishable then _joker:set_perishable(true) end
 if v.rental then _joker:set_rental(true) end
 if v.pinned_right then _joker.pinned_right = true end
 '''
+
+# create_card
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "if G.GAME.modifiers.all_eternal then"
+position = "before"
+match_indent = true
+payload = '''
+if G.GAME.modifiers.all_perishable then
+    card:set_perishable(true)
+end
+'''
+
+# G.CHALLENGES
+[[patches]]
+[patches.pattern]
+target = "challenges.lua"
+pattern = "{id = 'j_luchador'},"
+position = "after"
+match_indent = true
+payload = '''
+{id = "j_manifold_mana_gem"},
+{id = "j_manifold_baked_potato"},
+{id = "j_manifold_carte_blanche"},
+{id = "j_manifold_cookie"},
+{id = "j_manifold_pudding"},
+{id = "j_manifold_cookie_dough"},
+{id = "j_manifold_orange_juice"},
+{id = "j_manifold_wallet"},
+'''
+
+# Blind:set_blind
+[[patches]]
+[patches.pattern]
+target = "blind.lua"
+pattern = "self.mult = blind and blind.mult or 0"
+position = "after"
+match_indent = true
+payload = '''
+if blind and (blind.name == "Small Blind" or blind.name == "Big Blind") then
+    self.mult = self.mult * (G.GAME.modifiers.x_non_boss or 1)
+else
+    self.mult = self.mult * (G.GAME.modifiers.x_boss or 1)
+end
+'''
+
+# create_UIBox_blind_choice
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "local blind_amt = get_blind_amount(G.GAME.round_resets.blind_ante)*blind_choice.config.mult*G.GAME.starting_params.ante_scaling"
+position = "after"
+match_indent = true
+payload = '''
+local blind_type = "Boss"
+if blind_choice.config.name == "Small Blind" then
+    blind_type = "Small"
+elseif blind_choice.config.name == "Big Blind" then
+    blind_type = "Big"
+end
+if blind_type == "Boss" then
+    blind_amt = blind_amt * (G.GAME.modifiers.x_boss or 1)
+else
+    blind_amt = blind_amt * (G.GAME.modifiers.x_non_boss or 1)
+end
+'''

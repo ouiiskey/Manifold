@@ -182,6 +182,13 @@ return {
             }
         },
         Joker = {
+            j_hanging_chad = {
+                text = {
+                    "Retrigger {C:attention}first",
+                    "{C:attention}two{} scored cards",
+                    "{C:attention}1{} additional time"
+                }
+            },
             j_manifold_prosopagnosia = {
                 name = "Prosopagnosia",
                 text = {
@@ -208,7 +215,7 @@ return {
             j_manifold_bob = {
                 name = "Bob",
                 text = {
-                    "{C:spectral}Spectral{} cards in your",
+                    "{C:attention}Consumable{} cards in your",
                     "{C:attention}consumable{} area give",
                     "{X:mult,C:white} X#1# {} Mult and then break"
                 }
@@ -464,7 +471,7 @@ return {
                 text = {
                     "Sell this card to",
                     "{C:attention}Duplicate{} a random Joker",
-                    "{C:inactive,s:0.9}(Adds {C:attention,s:0.9}Perishable{C:inactive,s:0.9} to copy)"
+                    "{C:inactive,s:0.9}(Adds {C:perishable,s:0.9}Perishable{C:inactive,s:0.9} to copy)"
                 },
                 unlock = {
                     "Win a run without",
@@ -919,7 +926,8 @@ return {
             c_manifold_servant_of_chaos = "Servant of Chaos",
             c_manifold_beach_episode = "Beach Episode",
             c_manifold_boss_rush = "Boss Rush",
-            c_manifold_salted_earth = "Salted Earth"
+            c_manifold_salted_earth = "Salted Earth",
+            c_manifold_apocalypse = "Apocalypse"
         },
         dictionary = {
             b_manifold_reverse_tarot_cards = "sdraC toraT",
@@ -963,11 +971,17 @@ return {
             pinned_right = "Rightmost"
         },
         v_text = {
+            ch_c_all_perishable = {
+                "All Jokers are {C:perishable}Perishable"
+            },
             ch_c_ante_x_base = {
                 "Multiply required {C:red}Base{} Score by current Ante"
             },
             ch_c_boss_rush = {
                 "Face only {C:attention}Boss Blinds"
+            },
+            ch_c_debuff_cards = {
+                "Your playing cards are {C:attention}debuffed"
             },
             ch_c_no_flush = {
                 "Hands containing a {C:attention}Flush{} do not score"
@@ -978,8 +992,11 @@ return {
             ch_c_plant = {
                 "Face {C:green,T:bl_plant}The Plant{} on Antes 1 to 7"
             },
-            ch_c_debuff_cards = {
-                "Your playing cards are {C:attention}debuffed"
+            ch_c_x_boss = {
+                "{C:attention}Boss Blinds{} require {C:red}#1#X{} Score"
+            },
+            ch_c_x_non_boss = {
+                "{C:attention}Small{} and {C:attention}Big Blinds{} require {C:red}#1#X{} Score"
             },
             ch_m_gold_stake = {
                 "{C:gold}Gold Stake"

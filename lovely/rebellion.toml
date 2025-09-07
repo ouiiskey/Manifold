@@ -116,7 +116,7 @@ if G.GAME.modifiers.boss_rush then
     G.GAME.round_resets.blind_choices.Big = get_new_boss()
     G.GAME.round_resets.blind_choices.Boss = get_new_boss()
 else
-    if #SMODS.find_card("j_manifold_rebellion") % 2 == 1 then
+    if G.GAME.modifiers.start_rebellion then
         G.GAME.round_resets.blind_choices.Small = get_new_boss()
         G.GAME.round_resets.blind_choices.Boss = "bl_small"
     else
@@ -164,11 +164,5 @@ pattern = "if G.GAME.modifiers.no_blind_reward and G.GAME.modifiers.no_blind_rew
 position = "at"
 match_indent = true
 payload = '''
-local cash_type = "Boss"
-if blind_choice.config.name == "Small Blind" then
-    cash_type = "Small"
-elseif blind_choice.config.name == "Big Blind" then
-    cash_type = "Big"
-end
-if G.GAME.modifiers.no_blind_reward and G.GAME.modifiers.no_blind_reward[cash_type] then _reward = nil end
+if G.GAME.modifiers.no_blind_reward and G.GAME.modifiers.no_blind_reward[blind_type] then _reward = nil end
 '''

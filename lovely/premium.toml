@@ -13,3 +13,31 @@ match_indent = true
 payload = '''
 if self.ability.manifold_premium then self.cost = self.cost + 3 end
 '''
+
+# G.FUNCS.can_select_card
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "if card.ability.set ~= 'Joker' or #G.jokers.cards < G.jokers.config.card_limit + card_limit then"
+position = "at"
+match_indent = true
+payload = '''
+if card.ability.set ~= "Joker" or #G.jokers.cards < G.jokers.config.card_limit + card_limit and (not card.ability.manifold_premium or G.GAME.dollars >= 3) then
+'''
+
+# G.FUNCS.use_card
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = '''
+G.jokers:emplace(card)
+play_sound('card1', 0.8, 0.6)
+play_sound('generic1')
+'''
+position = "after"
+match_indent = true
+payload = '''
+if card.ability.manifold_premium then
+    ease_dollars(-3)
+end
+'''

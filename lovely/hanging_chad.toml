@@ -1,0 +1,23 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Card:calculate_joker
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+    context.other_card == context.scoring_hand[1]) then
+return {
+    message = localize('k_again_ex'),
+    repetitions = self.ability.extra,
+'''
+position = "at"
+match_indent = true
+payload = '''
+    context.other_card == context.scoring_hand[1] or context.other_card == context.scoring_hand[2]) then
+return {
+    message = localize("k_again_ex"),
+    repetitions = 1,
+'''
