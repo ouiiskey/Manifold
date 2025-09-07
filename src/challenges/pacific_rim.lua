@@ -21,5 +21,6 @@ SMODS.Challenge {
     apply = function(self)
         G.GAME.modifiers.x_base = x_base
     end,
+    unlocked = false,
     stake = 8
 }

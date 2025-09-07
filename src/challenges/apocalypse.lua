@@ -45,5 +45,6 @@ SMODS.Challenge {
         G.GAME.modifiers.x_non_boss = 0.5
         G.GAME.modifiers.start_rebellion = true
     end,
+    unlocked = false,
     stake = 8
 }

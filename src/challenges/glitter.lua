@@ -25,5 +25,6 @@ SMODS.Challenge {
             }
         end
     end,
+    unlocked = false,
     stake = 8
 }

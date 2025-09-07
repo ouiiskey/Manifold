@@ -9,5 +9,6 @@ SMODS.Challenge {
     jokers = {
         {id = "j_manifold_lucky_sevens", eternal = true, rental = true, pinned_right = true}
     },
+    unlocked = false,
     stake = 8
 }

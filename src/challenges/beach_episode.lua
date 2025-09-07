@@ -22,5 +22,6 @@ SMODS.Challenge {
         {id = "v_grabber"},
         {id = "v_nacho_tong"}
     },
+    unlocked = false,
     stake = 8
 }

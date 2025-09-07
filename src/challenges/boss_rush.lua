@@ -12,5 +12,6 @@ SMODS.Challenge {
     apply = function(self)
         G.GAME.modifiers.boss_rush = true
     end,
+    unlocked = false,
     stake = 8
 }

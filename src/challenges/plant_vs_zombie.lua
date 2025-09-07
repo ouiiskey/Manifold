@@ -29,5 +29,6 @@ SMODS.Challenge {
             "bl_final_leaf"
         }
     end,
+    unlocked = false,
     stake = 8
 }

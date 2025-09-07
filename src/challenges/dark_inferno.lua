@@ -23,5 +23,6 @@ SMODS.Challenge {
             G.GAME.modifiers.x_base = (G.GAME.modifiers.x_base or 1) + context.ante_change
         end
     end,
+    unlocked = false,
     stake = 8
 }

@@ -102,7 +102,7 @@ not (card.ability.consumeable and card.config.center.set ~= "Planet" and #G.cons
             alert_no_space(card, G.consumeables)
         end
     else
-        alert_no_space(G.jokers)
+        alert_no_space(card, G.jokers)
     end
 '''
 
