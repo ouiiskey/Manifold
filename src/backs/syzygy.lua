@@ -1,6 +1,8 @@
 -- Syzygy Deck, see also syzygy.toml
 local prev = "b_manifold_braided"
 
+MANIF.tooltips.e_negative_planet = {key = "e_negative_planet", name = "Negative", set = "Edition", config = {extra = G.P_CENTERS.e_negative.config.card_limit}}
+
 SMODS.Back {
     key = "syzygy",
     atlas = "backs",

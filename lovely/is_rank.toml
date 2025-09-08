@@ -12,7 +12,7 @@ pattern = "if self.ability.name == 'Sixth Sense' and #context.full_hand == 1 and
 position = "at"
 match_indent = true
 payload = '''
-if self.ability.name == "Sixth Sense" and #context.full_hand == 1 and context.full_hand[1]:is_rank(6) and G.GAME.current_round.hands_played == 0 then
+if self.ability.name == "Sixth Sense" and #context.full_hand == 1 and context.full_hand[1]:is_rank(6) and G.GAME.current_round.hands_played == 0 and SMODS.find_card("j_sixth_sense")[1] == self then
 '''
 
 # Mail in Rebate

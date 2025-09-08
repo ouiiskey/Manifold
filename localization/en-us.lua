@@ -77,7 +77,7 @@ return {
                 name = "Syzygy Deck",
                 text = {
                     "All {C:planet}Planet{} cards",
-                    "are {C:dark_edition}Negative"
+                    "are {C:dark_edition,T:e_negative_planet}Negative"
                 },
                 unlock = {
                     "Win a run with",

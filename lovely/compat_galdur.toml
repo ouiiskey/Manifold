@@ -1,0 +1,17 @@
+# Compat for Galdur
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Show custom hover tooltips
+# populate_info_queue
+[[patches]]
+[patches.pattern]
+target = '=[SMODS galdur "galdur.lua"]'
+pattern = "if part.control.T then info_queue[#info_queue+1] = G.P_CENTERS[part.control.T] or G.P_TAGS[part.control.T] end"
+position = "at"
+match_indent = true
+payload = '''
+if part.control.T then info_queue[#info_queue + 1] = G.P_CENTERS[part.control.T] or G.P_TAGS[part.control.T] or MANIF.tooltips[part.control.T] end
+'''

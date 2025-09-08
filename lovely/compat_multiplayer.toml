@@ -1,0 +1,58 @@
+# Compat for Multiplayer mod
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 2147483601
+
+# The Mind
+# create_card
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''
+if (_type == 'Tarot' or _type == 'Spectral' or _type == 'Tarot_Planet') and
+    not (G.GAME.used_jokers['c_soul'] and not SMODS.showman('c_soul')) then
+    if pseudorandom('soul_'..(MP.should_use_the_order() and 'c_soul' or _type)..G.GAME.round_resets.ante) > 0.997 then
+	    forced_key = 'c_soul'
+'''
+position = "at"
+match_indent = true
+payload = '''
+if (_type == "Tarot" or _type == "Spectral" or _type == "Tarot_Planet") then
+    if pseudorandom("soul_" .. (MP.should_use_the_order() and "c_soul" or _type) .. G.GAME.round_resets.ante) > 0.994 then
+        if pseudorandom("soul_or_mind") > 0.5 then
+            if not G.GAME.used_jokers["c_soul"] or SMODS.showman("c_soul") then
+                forced_key = "c_soul"
+            end
+        elseif not G.GAME.used_jokers["c_manifold_mind"] or SMODS.showman("c_manifold_mind") then
+            forced_key = "c_manifold_mind"
+        end
+'''
+
+# Shared Area
+# Game:start_run
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''
+MP.shared = CardArea(
+    0, CAI.consumeable_H + 0.3,
+'''
+position = "at"
+match_indent = true
+payload = '''
+MP.shared = CardArea(0, 2 * CAI.consumeable_H + 0.6,
+'''
+
+# set_screen_positions
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''
+MP.shared.T.y = G.consumeables.T.y + G.consumeables.T.h + 0.4
+'''
+position = "at"
+match_indent = true
+payload = '''
+MP.shared.T.y = G.consumeables.T.y + 2 * G.consumeables.T.h + 0.8
+'''

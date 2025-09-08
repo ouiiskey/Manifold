@@ -11,6 +11,8 @@ SMODS.ConsumableType {
     font = SMODS.Fonts["manifold_reverse"]
 }
 
+SMODS.UndiscoveredSprite {key = "manifold_reverse_tarot", atlas = "Tarot", prefix_config = {atlas = false}, pos = G.t_undiscovered.pos}
+
 function MANIF.get_reverse_key(card)
     if card.config.center.set == "manifold_reverse_tarot" then
         return "c_" .. string.sub(card.config.center_key, 12)
