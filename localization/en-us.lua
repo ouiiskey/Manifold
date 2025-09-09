@@ -736,7 +736,7 @@ return {
             c_manifold_temperance = {
                 name = "{f:manifold_reverse}ecnarepmeT",
                 text = {
-                    "Add {C:money}$#1#{} of sell value",
+                    "Adds {C:money}$#1#{} of sell value",
                     "to every owned Joker"
                 }
             },
