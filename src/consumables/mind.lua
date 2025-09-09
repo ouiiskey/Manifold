@@ -17,7 +17,7 @@ SMODS.DrawStep {
             local scale_mod = (scale_mod or 0) - 0.1 + 0.005 * math.sin(1.219 * G.TIMERS.REAL / 2)
 
             G.shared_mind.role.draw_major = card
-            G.shared_mind:draw_shader("dissolve", 0, nil, nil, card.children.center, scale_mod, rotate_mod, nil, shake, nil, 0.6)
+            G.shared_mind:draw_shader("dissolve", 0, nil, nil, card.children.center, scale_mod, rotate_mod, nil, shake + 0.1, nil, 0.6)
             G.shared_mind:draw_shader("dissolve", nil, nil, nil, card.children.center, scale_mod, rotate_mod, nil, shake)
         end
     end,
