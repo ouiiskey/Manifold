@@ -20,7 +20,6 @@ Mods/
 │   ├── localization/
 │   ├── lovely/
 │   ├── src/
-│   ├── LICENSE.md
 │   ├── manifold.json
 │   └── README.md
 └── smods/
