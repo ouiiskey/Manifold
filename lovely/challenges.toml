@@ -110,6 +110,7 @@ payload = '''
 {id = "j_manifold_cookie_dough"},
 {id = "j_manifold_orange_juice"},
 {id = "j_manifold_wallet"},
+{id = "j_manifold_monkeys_paw},
 '''
 
 # Blind:set_blind

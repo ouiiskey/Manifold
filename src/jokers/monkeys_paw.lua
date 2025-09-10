@@ -93,5 +93,6 @@ SMODS.Joker {
                 G.GAME.fingers = math.min((G.GAME.fingers or 0) + 1, 2)
             end
         end
-    end
+    end,
+    eternal_compat = false
 }
