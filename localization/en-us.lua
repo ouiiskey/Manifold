@@ -429,7 +429,7 @@ return {
                 name = "Library Card",
                 text = {
                     "When {C:attention}Blind{} is selected,",
-                    "create {C:attention}#1# {C:attention}Rental Jokers",
+                    "create {C:attention}#1# Rental{} Jokers",
                     "{C:inactive}(Must have room)"
                 }
             },
