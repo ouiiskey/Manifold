@@ -48,5 +48,6 @@ SMODS.Joker {
                 }
             end
         end
-    end
+    end,
+    eternal_compat = false
 }
