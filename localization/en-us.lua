@@ -471,7 +471,7 @@ return {
                 text = {
                     "Sell this card to",
                     "{C:attention}Duplicate{} a random Joker",
-                    "{C:inactive,s:0.9}(Adds {C:perishable,s:0.9}Perishable{C:inactive,s:0.9} to copy)"
+                    "{C:inactive,s:0.9}(Adds {C:attention,s:0.9}Perishable{C:inactive,s:0.9} to copy)"
                 },
                 unlock = {
                     "Win a run without",
@@ -972,7 +972,7 @@ return {
         },
         v_text = {
             ch_c_all_perishable = {
-                "All Jokers are {C:perishable}Perishable"
+                "All Jokers are {C:attention}Perishable"
             },
             ch_c_ante_x_base = {
                 "Multiply required {C:red}Base{} Score by current Ante"
