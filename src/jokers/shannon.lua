@@ -7,6 +7,9 @@ SMODS.Joker {
     cost = 20,
     soul_pos = {x = 9, y = 4},
     unlocked = false,
+    locked_loc_vars = function(self, info_queue, card)
+        return {key = "manifold_legendary_unlock"}
+    end,
     loc_vars = function(self, info_queue, card)
         if card.area and card.area == G.jokers and not card.debuff then
             local nodes = {}

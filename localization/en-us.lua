@@ -801,6 +801,13 @@ return {
                     "{C:inactive}(Must have room)"
                 }
             },
+            manifold_legendary_unlock = {
+                name = "Locked",
+                text = {
+                    "Find this Joker",
+                    "from the {C:spectral}Mind{} card",
+                }
+            },
             manifold_perishable = {
                 name = "Perishable",
                 text = {

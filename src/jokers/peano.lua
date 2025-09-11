@@ -7,6 +7,9 @@ SMODS.Joker {
     cost = 20,
     soul_pos = {x = 7, y = 4},
     unlocked = false,
+    locked_loc_vars = function(self, info_queue, card)
+        return {key = "manifold_legendary_unlock"}
+    end,
     config = {extra = {hand_size = 0, increment = 1}},
     loc_vars = function(self, info_queue, card)
         return {vars = {card.ability.extra.increment, card.ability.extra.hand_size}}
