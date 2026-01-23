@@ -729,8 +729,10 @@ return {
             c_manifold_death = {
                 name = "{f:manifold_reverse}htaeD",
                 text = {
-                    "Copies and destroys",
-                    "{C:attention}1{} selected card"
+                    "Select {C:attention}2{} cards,",
+                    "copy the {C:attention}left{} card's rank",
+                    "onto the {C:attention}right{} card",
+                    "{C:inactive}(Drag to rearrange)"
                 }
             },
             c_manifold_temperance = {

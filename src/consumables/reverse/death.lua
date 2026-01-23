@@ -7,22 +7,40 @@ SMODS.Consumable {
         card.children.center.reverse = true
     end,
     cost = 3,
-    config = {max_highlighted = 1},
+    config = {min_highlighted = 2, max_highlighted = 2},
     in_pool = false,
     use = function(self, card, area, copier)
-        G.E_MANAGER:add_event(Event{func = function()
-            G.playing_card = G.playing_card and G.playing_card + 1 or 1
-            local copy = copy_card(G.hand.highlighted[1], nil, nil, G.playing_card)
-            copy:add_to_deck()
-            G.deck.config.card_limit = G.deck.config.card_limit + 1
-            table.insert(G.playing_cards, copy)
-            G.hand:emplace(copy)
-            copy:start_materialize()
-            SMODS.calculate_context{playing_card_added = true, cards = {copy}}
-            return true end})
-        G.E_MANAGER:add_event(Event{trigger = "after", delay = 0.2, func = function()
-            SMODS.destroy_cards(G.hand.highlighted[1], nil, true)
-            return true end})
-        delay(0.3)
+        G.E_MANAGER:add_event(Event({trigger = "after", delay = 0.4, func = function()
+            play_sound("tarot1")
+            card:juice_up(0.3, 0.5)
+            return true end}))
+        for i = 2, 1, -1 do
+            local percent = 1.15 - (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({trigger = "after", delay = 0.15, func = function()
+                G.hand.highlighted[i]:flip()
+                play_sound("card1", percent)
+                G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                return true end}))
+        end
+        delay(0.2)
+        for i = 2, 1, -1 do
+            G.E_MANAGER:add_event(Event({trigger = "after", delay = 0.1, func = function()
+                if i ~= 1 then
+                    SMODS.change_base(G.hand.highlighted[2], nil, G.hand.highlighted[1].base.value)
+                end
+                return true end}))
+        end
+        for i = 2, 1, -1 do
+            local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({trigger = "after", delay = 0.15, func = function()
+                G.hand.highlighted[i]:flip()
+                play_sound("tarot2", percent, 0.6)
+                G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                return true end}))
+        end
+        G.E_MANAGER:add_event(Event({trigger = "after", delay = 0.2, func = function()
+            G.hand:unhighlight_all()
+            return true end}))
+        delay(0.5)
     end
 }
