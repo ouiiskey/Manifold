@@ -136,9 +136,9 @@ if self.ability[v.key] or v.key == "pinned_left" and self.pinned or v.key == "pi
 [[patches]]
 [patches.pattern]
 target = '=[SMODS _ "src/ui.lua"]'
-pattern = "return SMODS.card_collection_UIBox(SMODS.Stickers, {5,5}, {"
+pattern = "return SMODS.card_collection_UIBox(SMODS.Stickers, { 5, 5 }, {"
 position = "at"
 match_indent = true
 payload = '''
-return SMODS.card_collection_UIBox(SMODS.Stickers, {4,5}, {
+return SMODS.card_collection_UIBox(SMODS.Stickers, {4, 5}, {
 '''
