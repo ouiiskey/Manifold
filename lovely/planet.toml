@@ -13,6 +13,7 @@ position = "before"
 match_indent = true
 payload = '''
 self.planets = CardArea(0, CAI.consumeable_H + 0.3, CAI.consumeable_W / 2, CAI.consumeable_H, {card_limit = self.GAME.starting_params.planet_slots, type = "joker", highlight_limit = 1})
+self.planets.config.align_buttons = true
 '''
 
 # set_screen_positions
@@ -25,27 +26,6 @@ match_indent = true
 payload = '''
 G.planets.T.x = G.consumeables.T.x + G.consumeables.T.w / 2
 G.planets.T.y = G.consumeables.T.y + G.consumeables.T.h + 0.4
-'''
-
-# Card:highlight
-[[patches]]
-[patches.pattern]
-target = "card.lua"
-pattern = '((self.area == G.jokers) or (self.area == G.consumeables)) and "cr" or'
-position = "at"
-match_indent = true
-payload = '''
-(self.area == G.jokers or self.area == G.consumeables or self.area == G.planets) and "cr" or
-'''
-
-[[patches]]
-[patches.pattern]
-target = "card.lua"
-pattern = "((self.area == G.jokers) or (self.area == G.consumeables)) and {x=x_off - 0.4,y=0} or"
-position = "at"
-match_indent = true
-payload = '''
-(self.area == G.jokers or self.area == G.consumeables or self.area == G.planets) and {x = x_off - 0.4, y = 0} or
 '''
 
 # get_starting_params
