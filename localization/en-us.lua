@@ -189,6 +189,14 @@ return {
                     "{C:attention}1{} additional time"
                 }
             },
+            j_matador = {
+                text = {
+                    "Earn {C:money}$6{} at end of",
+                    "round if chips scored",
+                    "are less than {C:attention}150%",
+                    "of required chips"
+                }
+            },
             j_manifold_prosopagnosia = {
                 name = "Prosopagnosia",
                 text = {
