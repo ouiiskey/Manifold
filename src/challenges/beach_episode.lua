@@ -14,7 +14,7 @@ SMODS.Challenge {
     },
     jokers = {
         {id = "j_manifold_tsunami", eternal = true},
-        {id = "j_delayed_grat"},
+        {id = "j_delayed_grat", edition = "negative"},
         {id = "j_manifold_squid", eternal = true},
         {id = "j_manifold_orange_juice"}
     },
