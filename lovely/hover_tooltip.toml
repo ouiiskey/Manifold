@@ -3,10 +3,10 @@ version = "1.0.0"
 dump_lua = true
 priority = 0
 
-# localize
+# SMODS.localize_box
 [[patches]]
 [patches.pattern]
-target = "functions/misc_functions.lua"
+target = '''=[SMODS _ "src/utils.lua"]'''
 pattern = "detailed_tooltip = part.control.T and (G.P_CENTERS[part.control.T] or G.P_TAGS[part.control.T]) or nil,"
 position = "at"
 match_indent = true
