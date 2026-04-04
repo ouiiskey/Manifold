@@ -11,9 +11,9 @@ SMODS.Challenge {
     },
     jokers = {
         {id = "j_manifold_left_turns", eternal = true},
-        {id = "j_blueprint"},
+        {id = "j_blueprint", edition = "polychrome"},
         {id = "j_burglar", edition = "negative"},
-        {id = "j_manifold_archwizard"}
+        {id = "j_manifold_archwizard", edition = "holo"}
     },
     consumeables = {
         {id = "c_immolate"}
