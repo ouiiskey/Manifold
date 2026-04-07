@@ -10,6 +10,8 @@
   "badge_colour": "f96932",
   "version": "1.0.4",
   "dependencies": [
+    "Balatro (==1.0.1o-FULL)",
+    "Lovely (>=0.9.0)",
     "Steamodded (>=1.0.0~BETA-1531zeebee)"
   ]
 }
