@@ -12,19 +12,6 @@ This mod is intended to preserve vanilla balance while adding new content. For t
 2. Download the [latest release](https://github.com/ouiiskey/Manifold/releases/latest).
 3. Place or extract the zip in your `Mods` folder.
 
-How your `Mods` folder should look after installing:
-```
-Mods/
-├── Manifold-<version>/
-│   ├── assets/
-│   ├── localization/
-│   ├── lovely/
-│   ├── src/
-│   ├── manifold.json
-│   └── README.md
-└── smods/
-```
-
 #### Updating
 1. Delete the old version from your `Mods` folder.
 2. Download the [latest release](https://github.com/ouiiskey/Manifold/releases/latest).
