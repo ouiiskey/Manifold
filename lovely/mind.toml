@@ -36,7 +36,7 @@ position = "after"
 match_indent = true
 payload = '''
 if _legendary then
-    _starting_pool = MANIF[_append]
+    _starting_pool = MANIF[_append] or _starting_pool
 end
 '''
 

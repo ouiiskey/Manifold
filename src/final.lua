@@ -62,14 +62,6 @@ if hook then
     end
 end
 
--- The Soul
-local soul = {"j_caino", "j_triboulet", "j_yorick", "j_chicot", "j_perkeo",
-} -- Hook: Soul jokers
-MANIF.sou = {}
-for k, v in ipairs(soul) do
-    SMODS.insert_pool(MANIF.sou, G.P_CENTERS[v])
-end
-
 -- The Mind
 G.shared_mind = Sprite(0, 0, G.CARD_W, G.CARD_H, G.ASSET_ATLAS["manifold_mind"], {x = 0, y = 0})
 local mind = {"j_manifold_weierstrass", "j_manifold_pareto", "j_manifold_peano", "j_manifold_escher", "j_manifold_shannon",
@@ -77,4 +69,19 @@ local mind = {"j_manifold_weierstrass", "j_manifold_pareto", "j_manifold_peano",
 MANIF.manifold_mind = {}
 for k, v in ipairs(mind) do
     SMODS.insert_pool(MANIF.manifold_mind, G.P_CENTERS[v])
+end
+
+-- The Soul
+MANIF.sou = {}
+for k, v in ipairs(G.P_JOKER_RARITY_POOLS[4]) do
+    local in_mind = false
+    for _, key in ipairs(mind) do
+        if v.key == key then
+            in_mind = true
+            break
+        end
+    end
+    if not in_mind then
+        SMODS.insert_pool(MANIF.sou, v)
+    end
 end
