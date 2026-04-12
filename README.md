@@ -29,7 +29,7 @@ Because this mod contains bespoke code, you may encounter compatibility issues w
   * Copied planets emplace in the consumable slots, spawn the planets instead.
   * Spawning planets requires empty consumable slots.
 * [JokerDisplay](https://github.com/nh6574/JokerDisplay)
-  * No display on modded jokers.
+  * Work in progress.
 * [Multiplayer](https://github.com/Balatro-Multiplayer/BalatroMultiplayer)
   * Activating Mana Gem can cause the lobby to hang.
 

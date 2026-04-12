@@ -28,7 +28,7 @@ local source = {
     "challenges/challenges",
     "stakes",
     "stickers",
-    "compat"
+    "compat/compat"
 }
 for k, v in ipairs(source) do
     assert(SMODS.load_file("src/" .. v .. ".lua"), MANIF.install .. "src/" .. v .. ".lua")()
