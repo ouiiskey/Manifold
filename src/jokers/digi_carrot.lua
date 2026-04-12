@@ -1,4 +1,4 @@
--- Digi-Carrot, see also digi_carrot.toml and inject.lua
+-- Digi-Carrot, see also digi_carrot.toml
 SMODS.Joker {
     key = "digi_carrot",
     rarity = 1,

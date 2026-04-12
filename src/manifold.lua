@@ -88,6 +88,12 @@ SMODS.current_mod.calculate = function(self, context)
             end
             G.GAME.next_planet = nil
         end
+    -- Mana Gem
+    elseif context.end_of_round and context.main_eval and context.game_over and G.GAME.gem then
+        G.GAME.gem = false
+        return {
+            saved = "manifold_oom"
+        }
     end
 end
 

@@ -1,4 +1,4 @@
--- Mana Gem, see also mana_gem.toml
+-- Mana Gem
 function MANIF.gem()
     if G.GAME.gem then
         G.GAME.gem = false

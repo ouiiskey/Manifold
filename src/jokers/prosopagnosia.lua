@@ -1,4 +1,4 @@
--- Prosopagnosia, see also prosopagnosia.toml and inject.lua
+-- Prosopagnosia, see also prosopagnosia.toml
 MANIF.PROSO = {
     faces = {},
     after_face = {},
