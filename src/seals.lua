@@ -5,7 +5,7 @@ SMODS.Atlas {
     py = 95
 }
 
--- Black Seal, see also black_seal.toml
+-- Black Seal
 SMODS.Seal {
     key = "black",
     atlas = "seals",

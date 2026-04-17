@@ -1,4 +1,4 @@
 .idea/
-libs/
+.luarc.json
 builds/
 devbuild.sh

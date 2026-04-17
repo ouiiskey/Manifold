@@ -1,5 +1,5 @@
 -- Carte Blanche
-local get_common = function()
+function MANIF.get_common(with_quant)
     local counts = {}
     for k, v in ipairs(G.deck and G.deck.cards or {}) do
         for kk, vv in pairs(SMODS.Ranks) do
@@ -16,6 +16,9 @@ local get_common = function()
             quant = v
         end
     end
+    if with_quant then
+        return ret and ret or "Ace", quant > 0 and quant or 0
+    end
     return ret and ret or "Ace"
 end
 
@@ -26,11 +29,11 @@ SMODS.Joker {
     pos = {x = 3, y = 2},
     cost = 5,
     loc_vars = function(self, info_queue, card)
-        return {vars = {localize(get_common(), "ranks")}}
+        return {vars = {localize(MANIF.get_common(), "ranks")}}
     end,
     calculate = function(self, card, context)
         if context.selling_self and not context.blueprint and next(G.hand.cards) then
-            local rank = SMODS.Ranks[get_common()].id
+            local rank = SMODS.Ranks[MANIF.get_common()].id
             local faces = {}
             for k, v in ipairs(G.deck.cards) do
                 if v:is_rank(rank) then

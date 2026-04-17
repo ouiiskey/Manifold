@@ -26,7 +26,7 @@ SMODS.Consumable {
         for i = 2, 1, -1 do
             G.E_MANAGER:add_event(Event({trigger = "after", delay = 0.1, func = function()
                 if i ~= 1 then
-                    SMODS.change_base(G.hand.highlighted[2], nil, G.hand.highlighted[1].base.value)
+                    assert(SMODS.change_base(G.hand.highlighted[2], nil, G.hand.highlighted[1].base.value))
                 end
                 return true end}))
         end

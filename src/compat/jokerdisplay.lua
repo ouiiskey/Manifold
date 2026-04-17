@@ -166,10 +166,10 @@ JokerDisplay.Definitions.j_manifold_hot_potato = {
     },
     text_config = {colour = G.C.CHIPS},
     reminder_text = {
-        {ref_table = "card.joker_display_values", ref_value = "localized_text"}
+        {ref_table = "card.joker_display_values", ref_value = "hot_card"}
     },
     calc_function = function(card)
-        card.joker_display_values.localized_text = "(" .. localize(G.GAME.current_round.hot_card and G.GAME.current_round.hot_card.rank or "Ace", "ranks") .. ")"
+        card.joker_display_values.hot_card = "(" .. localize(G.GAME.current_round.hot_card and G.GAME.current_round.hot_card.rank or "Ace", "ranks") .. ")"
     end
 }
 JokerDisplay.Definitions.j_manifold_digi_carrot = {
@@ -276,4 +276,65 @@ JokerDisplay.Definitions.j_manifold_mana_gem = {
     style_function = function(card, text, reminder_text, extra)
         reminder_text.children[2].config.colour = G.GAME.blind:get_type() == "Boss" and G.C.GREEN or G.C.UI.TEXT_INACTIVE
     end
+}
+JokerDisplay.Definitions.j_manifold_wallet = {
+    text = {
+        {ref_table = "card.joker_display_values", ref_value = "stored"}
+    },
+    calc_function = function(card)
+        card.joker_display_values.stored = #G.wallet.cards
+    end,
+    style_function = function(card, text, reminder_text, extra)
+        text.children[1].config.colour = #G.wallet.cards > 0 and G.C.FILTER or G.C.UI.TEXT_INACTIVE
+    end
+}
+JokerDisplay.Definitions.j_manifold_carte_blanche = {
+    text = {
+        {ref_table = "card.joker_display_values", ref_value = "quant"},
+        {text = " "},
+        {ref_table = "card.joker_display_values", ref_value = "rank", colour = G.C.FILTER}
+    },
+    calc_function = function(card)
+        local rank, quant = MANIF.get_common(true)
+        card.joker_display_values.quant = quant
+        card.joker_display_values.rank = localize(rank, "ranks")
+    end
+}
+JokerDisplay.Definitions.j_manifold_harpoon_gun = {
+    text = {
+        {ref_table = "card.joker_display_values", ref_value = "name"}
+    },
+    calc_function = function(card)
+        local out = ""
+        local target = false
+        for k, v in ipairs(G.deck.cards) do
+            if not target or (target.ability.era or 0) < (v.ability.era or 0) then
+                target = v
+            end
+        end
+        if target.edition and target.edition.key then
+            out = out .. localize{type = "name_text", set = "Edition", key = target.edition.key} .. " "
+        end
+        if target.seal then
+            out = out .. localize(target.seal:lower() .. "_seal", "labels") .. " "
+        end
+        if not SMODS.has_no_suit(target) then
+            out = out .. localize(target.base.suit, "suits_singular") .. " "
+        end
+        if not SMODS.has_no_rank(target) then
+            out = out .. localize(target.base.value, "ranks")
+            if target.config.center.key ~= "c_base" then
+                out = out .. " "
+            end
+        end
+        if target.config.center.key ~= "c_base" then
+            out = out .. localize{type = "name_text", set = "Enhanced", key = target.config.center.key}
+        end
+        card.joker_display_values.name = out
+    end
+}
+JokerDisplay.Definitions.j_manifold_library = {}
+JokerDisplay.Definitions.j_manifold_tsunami = {}
+JokerDisplay.Definitions.j_manifold_zombie = {
+    
 }
