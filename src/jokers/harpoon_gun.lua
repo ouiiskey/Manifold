@@ -1,4 +1,4 @@
--- Harpoon Gun, see also harpoon_gun.toml
+-- Harpoon Gun
 SMODS.Joker {
     key = "harpoon_gun",
     rarity = 2,
@@ -10,7 +10,7 @@ SMODS.Joker {
         if context.first_hand_drawn then
             local target = false
             for k, v in ipairs(G.deck.cards) do
-                if not target or (target.ability.era or 0) < (v.ability.era or 0) then
+                if not target or target.ID < v.ID then
                     target = v
                 end
             end

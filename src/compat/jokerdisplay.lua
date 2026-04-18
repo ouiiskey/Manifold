@@ -74,8 +74,14 @@ JokerDisplay.Definitions.j_manifold_alice = {
     end
 }
 JokerDisplay.Definitions.j_manifold_space_patrol = {}
-JokerDisplay.Definitions.j_manifold_clay_tablet = {}
-JokerDisplay.Definitions.j_manifold_orange_juice = {}
+JokerDisplay.Definitions.j_manifold_clay_tablet = {
+    -- TODO
+}
+JokerDisplay.Definitions.j_manifold_orange_juice = {
+    -- TODO
+    -- localize("k_drank_ex")
+    -- localize("k_safe_ex")
+}
 JokerDisplay.Definitions.j_manifold_pudding = {
     text = {
         {text = "+"},
@@ -231,7 +237,9 @@ JokerDisplay.Definitions.j_manifold_hastur = {
     },
     text_config = {colour = G.C.CHIPS}
 }
-JokerDisplay.Definitions.j_manifold_squid = {}
+JokerDisplay.Definitions.j_manifold_squid = {
+    -- TODO
+}
 JokerDisplay.Definitions.j_manifold_monkeys_paw = {
     text = {
         {text = "+"},
@@ -300,37 +308,61 @@ JokerDisplay.Definitions.j_manifold_carte_blanche = {
         card.joker_display_values.rank = localize(rank, "ranks")
     end
 }
+local could_flip = function(card)
+    -- Check for Wheel first to not step RNG
+    return G.GAME.blind.name == "The Wheel" or G.GAME.blind:stay_flipped(G.hand, card)
+end
 JokerDisplay.Definitions.j_manifold_harpoon_gun = {
     text = {
         {ref_table = "card.joker_display_values", ref_value = "name"}
     },
+    reminder_text = {
+        {ref_table = "card.joker_display_values", ref_value = "base"}
+    },
+    extra = {
+        {{ref_table = "card.joker_display_values", ref_value = "seal", colour = G.C.EDITION}},
+        {{ref_table = "card.joker_display_values", ref_value = "edition", colour = G.C.DARK_EDITION}}
+    },
+    extra_config = {scale = 0.2},
     calc_function = function(card)
-        local out = ""
         local target = false
         for k, v in ipairs(G.deck.cards) do
-            if not target or (target.ability.era or 0) < (v.ability.era or 0) then
+            if not target or target.ID < v.ID then
                 target = v
             end
         end
-        if target.edition and target.edition.key then
-            out = out .. localize{type = "name_text", set = "Edition", key = target.edition.key} .. " "
-        end
-        if target.seal then
-            out = out .. localize(target.seal:lower() .. "_seal", "labels") .. " "
-        end
-        if not SMODS.has_no_suit(target) then
-            out = out .. localize(target.base.suit, "suits_singular") .. " "
-        end
-        if not SMODS.has_no_rank(target) then
-            out = out .. localize(target.base.value, "ranks")
-            if target.config.center.key ~= "c_base" then
-                out = out .. " "
+        local edition = ""
+        local seal = ""
+        local name = ""
+        local base = ""
+        if target then
+            if not could_flip(target) then
+                if target.edition and target.edition.key then
+                    edition = edition .. localize{type = "name_text", set = "Edition", key = target.edition.key}
+                end
+                if target.seal then
+                    seal = seal .. localize(target.seal:lower() .. "_seal", "labels")
+                end
+                if not SMODS.has_no_suit(target) then
+                    name = name .. localize(target.base.suit, "suits_singular")
+                    if not SMODS.has_no_rank(target) then
+                        name = name .. " "
+                    end
+                end
+                if not SMODS.has_no_rank(target) then
+                    name = name .. localize(target.base.value, "ranks")
+                end
+                if target.config.center.key ~= "c_base" then
+                    base = base .. localize{type = "name_text", set = "Enhanced", key = target.config.center.key}
+                end
+            else
+                name = localize("manifold_unknown_total")
             end
         end
-        if target.config.center.key ~= "c_base" then
-            out = out .. localize{type = "name_text", set = "Enhanced", key = target.config.center.key}
-        end
-        card.joker_display_values.name = out
+        card.joker_display_values.edition = edition
+        card.joker_display_values.seal = seal
+        card.joker_display_values.name = name
+        card.joker_display_values.base = base
     end
 }
 JokerDisplay.Definitions.j_manifold_library = {}

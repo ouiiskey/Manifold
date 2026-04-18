@@ -27,7 +27,7 @@ SMODS.Consumable {
                 silent = true
                 table.insert(new_cards, copy)
             end
-            SMODS.calculate_context{playing_card_added = true, cards = new_cards}
+            playing_card_joker_effects(new_cards)
             return true end})
     end
 }
