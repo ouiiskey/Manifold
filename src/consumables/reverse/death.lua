@@ -8,7 +8,6 @@ SMODS.Consumable {
     end,
     cost = 3,
     config = {min_highlighted = 2, max_highlighted = 2},
-    in_pool = false,
     use = function(self, card, area, copier)
         G.E_MANAGER:add_event(Event({trigger = "after", delay = 0.4, func = function()
             play_sound("tarot1")

@@ -11,7 +11,6 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return {vars = {card.ability.extra.max, localize(card.ability.extra.suit, "suits_singular"), colours = {G.C.SUITS[card.ability.extra.suit]}}}
     end,
-    in_pool = false,
     use = function(self, card, area, copier)
         G.E_MANAGER:add_event(Event{trigger = "after", delay = 0.4, func = function()
             play_sound("tarot1")
