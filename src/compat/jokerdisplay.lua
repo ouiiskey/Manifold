@@ -75,12 +75,45 @@ JokerDisplay.Definitions.j_manifold_alice = {
 }
 JokerDisplay.Definitions.j_manifold_space_patrol = {}
 JokerDisplay.Definitions.j_manifold_clay_tablet = {
-    -- TODO
+    reminder_text = {
+        {text = "("},
+        {ref_table = "card.joker_display_values", ref_value = "state"},
+        {text = ")"}
+    },
+    calc_function = function(card)
+        card.joker_display_values.is_active = false
+        for i = 2, #JokerDisplay.current_hand do
+            if not JokerDisplay.current_hand[i].edition and SMODS.has_enhancement(JokerDisplay.current_hand[i], "m_stone") and JokerDisplay.current_hand[i-1]:is_rank(6) then
+                card.joker_display_values.is_active = true
+                break
+            end
+        end
+        card.joker_display_values.state = card.joker_display_values.is_active and localize("k_active_ex") or localize("jdis_inactive")
+    end,
+    style_function = function(card, text, reminder_text, extra)
+        reminder_text.children[2].config.colour = card.joker_display_values.is_active and G.C.GREEN or G.C.UI.TEXT_INACTIVE
+    end
 }
 JokerDisplay.Definitions.j_manifold_orange_juice = {
-    -- TODO
-    -- localize("k_drank_ex")
-    -- localize("k_safe_ex")
+    reminder_text = {
+        {text = "("},
+        {ref_table = "card.joker_display_values", ref_value = "warning"},
+        {text = ")"}
+    },
+    calc_function = function(card)
+        card.joker_display_values.will_drink = false
+        local _, _, scoring_hand = JokerDisplay.evaluate_hand()
+        for k, v in ipairs(scoring_hand) do
+            if SMODS.has_enhancement(v, "m_lucky") then
+                card.joker_display_values.will_drink = true
+                break
+            end
+        end
+        card.joker_display_values.warning = card.joker_display_values.will_drink and localize("k_drank_ex") or localize("k_safe_ex")
+    end,
+    style_function = function(card, text, reminder_text, extra)
+        reminder_text.children[2].config.colour = card.joker_display_values.will_drink and G.C.RED or G.C.UI.TEXT_INACTIVE
+    end
 }
 JokerDisplay.Definitions.j_manifold_pudding = {
     text = {
@@ -238,7 +271,25 @@ JokerDisplay.Definitions.j_manifold_hastur = {
     text_config = {colour = G.C.CHIPS}
 }
 JokerDisplay.Definitions.j_manifold_squid = {
-    -- TODO
+    reminder_text = {
+        {text = "("},
+        {ref_table = "card.joker_display_values", ref_value = "state"},
+        {text = ")"}
+    },
+    calc_function = function(card)
+        local _, _, scoring_hand = JokerDisplay.evaluate_hand()
+        card.joker_display_values.is_active = #scoring_hand > 0
+        for k, v in ipairs(scoring_hand) do
+            if not v:is_number() then
+                card.joker_display_values.is_active = false
+                break
+            end
+        end
+        card.joker_display_values.state = card.joker_display_values.is_active and localize("k_active_ex") or localize("jdis_inactive")
+    end,
+    style_function = function(card, text, reminder_text, extra)
+        reminder_text.children[2].config.colour = card.joker_display_values.is_active and G.C.GREEN or G.C.UI.TEXT_INACTIVE
+    end
 }
 JokerDisplay.Definitions.j_manifold_monkeys_paw = {
     text = {
@@ -279,7 +330,7 @@ JokerDisplay.Definitions.j_manifold_mana_gem = {
         {text = ")"}
     },
     calc_function = function(card)
-        card.joker_display_values.active = G.GAME.blind:get_type() == "Boss" and localize{type = "variable", key = "loyalty_active", vars = {}} or localize("k_nope_ex")
+        card.joker_display_values.active = G.GAME.blind:get_type() == "Boss" and localize{type = "variable", key = "loyalty_active", vars = {}} or localize("jdis_inactive")
     end,
     style_function = function(card, text, reminder_text, extra)
         reminder_text.children[2].config.colour = G.GAME.blind:get_type() == "Boss" and G.C.GREEN or G.C.UI.TEXT_INACTIVE
@@ -366,7 +417,59 @@ JokerDisplay.Definitions.j_manifold_harpoon_gun = {
     end
 }
 JokerDisplay.Definitions.j_manifold_library = {}
+local JDeh_ref = JokerDisplay.evaluate_hand
+JokerDisplay.evaluate_hand = function(cards, count_facedowns)
+    local text, poker_hands, scoring_hand = JDeh_ref(cards, count_facedowns)
+    if not cards and next(SMODS.find_card("j_manifold_tsunami")) then
+        local held_cards = {}
+        for k, v in ipairs(G.hand.cards) do
+            if not v.highlighted then
+                table.insert(held_cards, v)
+            end
+        end
+        scoring_hand = SMODS.merge_lists({scoring_hand, held_cards})
+    end
+    return text, poker_hands, scoring_hand
+end
 JokerDisplay.Definitions.j_manifold_tsunami = {}
 JokerDisplay.Definitions.j_manifold_zombie = {
-    
+    text = {
+        {ref_table = "card.joker_display_values", ref_value = "bodies"},
+        {text = " " .. localize("k_face_cards")}
+    },
+    calc_function = function(card)
+        local bodies = 0
+        for k, v in ipairs(G.discard.cards) do
+            if v:is_face() then
+                bodies = bodies + 1
+            end
+        end
+        card.joker_display_values.bodies = bodies
+    end
 }
+JokerDisplay.Definitions.j_manifold_chicken = {}
+JokerDisplay.Definitions.j_manifold_rorschach = {}
+JokerDisplay.Definitions.j_manifold_memory = {
+    text = {
+        {text = "+"},
+        {ref_table = "card.ability.extra", ref_value = "chips", retrigger_type = "mult"}
+    },
+    text_config = {colour = G.C.CHIPS}
+}
+JokerDisplay.Definitions.j_manifold_railgun = {
+    text = {
+        {text = "+"},
+        {ref_table = "card.ability.extra", ref_value = "mult", retrigger_type = "mult"}
+    },
+    text_config = {colour = G.C.MULT}
+}
+JokerDisplay.Definitions.j_manifold_rebellion = {}
+JokerDisplay.Definitions.j_manifold_propaganda = {
+    text = {
+        {border_nodes = {
+            {text = "x"},
+            {ref_table = "card.ability.extra", ref_value = "x_mult", retrigger_type = "exp"}
+        }}
+    }
+}
+JokerDisplay.Definitions.j_manifold_ufo = {}

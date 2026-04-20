@@ -490,7 +490,7 @@ return {
             j_manifold_memory = {
                 name = "Memory Card",
                 text = {
-                    "This card gains Chips",
+                    "This Joker gains Chips",
                     "equal to the sell value of",
                     "your {C:attention}Jokers{} at end of {C:attention}shop",
                     "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
@@ -499,7 +499,7 @@ return {
             j_manifold_railgun = {
                 name = "Railgun",
                 text = {
-                    "This card gains {C:mult}+#1#{} Mult",
+                    "This Joker gains {C:mult}+#1#{} Mult",
                     "per {C:attention}consecutive{} card scored",
                     "with {C:attention}opposite{} rank parity",
                     "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
@@ -529,7 +529,8 @@ return {
                 name = "UFO",
                 text = {
                     "Create a random",
-                    "{C:planet}Planet{} card"
+                    "{C:planet}Planet{} card",
+                    "each hand"
                 },
                 unlock = {
                     "Discover {E:1,C:planet}#1#"
