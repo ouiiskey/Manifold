@@ -12,6 +12,7 @@ local backs = {
     "holographic",
     "polychrome",
     "negative",
+    "rocky",
     "syzygy",
     "graded",
     "ring",

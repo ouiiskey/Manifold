@@ -73,6 +73,13 @@ return {
                     "your collection"
                 }
             },
+            b_manifold_rocky = {
+                name = "Rocky Deck",
+                text = {
+                    "Start run with {C:attention}#1#",
+                    "{C:attention,T:m_stone}Stone Cards{} in deck"
+                }
+            },
             b_manifold_syzygy = {
                 name = "Syzygy Deck",
                 text = {
