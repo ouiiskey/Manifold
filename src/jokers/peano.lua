@@ -10,9 +10,9 @@ SMODS.Joker {
     locked_loc_vars = function(self, info_queue, card)
         return {key = "manifold_legendary_unlock"}
     end,
-    config = {extra = {hand_size = 0, increment = 1}},
+    config = {extra = {hand_size = 0, increment = 1, poker_hand = "Straight"}},
     loc_vars = function(self, info_queue, card)
-        return {vars = {card.ability.extra.increment, card.ability.extra.hand_size}}
+        return {vars = {localize(card.ability.extra.poker_hand, "poker_hands"), card.ability.extra.increment, card.ability.extra.hand_size}}
     end,
     add_to_deck = function(self, card, from_debuff)
         G.hand:change_size(card.ability.extra.hand_size)
@@ -21,7 +21,7 @@ SMODS.Joker {
         G.hand:change_size(-card.ability.extra.hand_size)
     end,
     calculate = function(self, card, context)
-        if context.before and context.cardarea == G.jokers and not context.blueprint and G.GAME.current_round.hands_played == 0 and next(context.poker_hands["Straight"]) then
+        if context.before and context.cardarea == G.jokers and not context.blueprint and G.GAME.current_round.hands_played == 0 and next(context.poker_hands[card.ability.extra.poker_hand]) then
             SMODS.scale_card(card, {ref_value = "hand_size", scalar_value = "increment", block_overrides = {value = true, scalar = true}})
         end
     end,

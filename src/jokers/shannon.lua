@@ -28,9 +28,9 @@ SMODS.Joker {
                 if G.jokers.cards[i].debuff then
                     txt_color = G.C.UI.TEXT_LIGHT
                 end
-                table.insert(nodes, {n = G.UIT.C, config = {ref_table = card, align = "m", colour = bg_color, r = 5, padding = 0.06}, nodes = {{n = G.UIT.T, config = {text = "X", colour = txt_color, scale = 0.32 * 0.8}}}})
+                table.insert(nodes, {n = G.UIT.C, config = {ref_table = card, align = "m", colour = bg_color, r = 0.05, padding = 0.06}, nodes = {{n = G.UIT.T, config = {text = "X", colour = txt_color, scale = 0.32 * 0.8}}}})
                 if i < #G.jokers.cards then
-                    table.insert(nodes, {n = G.UIT.C, config = {ref_table = card, align = "m", colour = G.C.BACKGROUND_WHITE, r = 0.5, padding = 0.06}, nodes = {{n = G.UIT.T, config = {text = "|", colour = G.C.BACKGROUND_WHITE, scale = 0.32 * 0.8}}}})
+                    table.insert(nodes, {n = G.UIT.T, config = {text = " ", colour = G.C.BACKGROUND_WHITE, scale = 0.32 * 0.8}})
                 end
             end
             return {main_end = {{n = G.UIT.C, config = {align = "bm", minh = 0.4}, nodes = nodes}}}

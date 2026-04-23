@@ -601,9 +601,9 @@ return {
                 name = "Peano",
                 text = {
                     "If {C:attention}first hand{} of round",
-                    "contains a {C:attention}Straight{}, this",
-                    "card gains {C:attention}+#1#{} hand size",
-                    "{C:inactive}(Currently {C:attention}+#2#{C:inactive} hand size)"
+                    "contains a {C:attention}#1#{}, this",
+                    "card gains {C:attention}+#2#{} hand size",
+                    "{C:inactive}(Currently {C:attention}+#3#{C:inactive} hand size)"
                 },
                 unlock = {
                     "{E:1,s:1.3}?????"

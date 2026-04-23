@@ -22,14 +22,13 @@ Because this mod contains bespoke code, you may encounter compatibility issues w
 #### Known compatible mods:
 * [Banner](https://github.com/SylviBlossom/Banner)
 * [Galdur](https://github.com/Eremel/Galdur)
+* [JokerDisplay](https://github.com/nh6574/JokerDisplay)
 * [Talisman](https://github.com/SpectralPack/Talisman)
 * [Too Many Jokers](https://github.com/cg-223/toomanyjokers)
 #### Known incompatible mods:
 * [DebugPlus](https://github.com/WilsontheWolf/DebugPlus)
   * Copied planets emplace in the consumable slots, spawn the planets instead.
   * Spawning planets requires empty consumable slots.
-* [JokerDisplay](https://github.com/nh6574/JokerDisplay)
-  * Work in progress.
 * [Multiplayer](https://github.com/Balatro-Multiplayer/BalatroMultiplayer)
   * Activating Mana Gem can cause the lobby to hang.
 

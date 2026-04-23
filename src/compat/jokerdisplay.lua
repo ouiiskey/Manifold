@@ -27,25 +27,22 @@ JokerDisplay.Definitions.j_manifold_archwizard = {
 }
 JokerDisplay.Definitions.j_manifold_black_knight = {}
 JokerDisplay.Definitions.j_manifold_bob = {
-    text = {
-        {
-            border_nodes = {
-                {text = "x"},
-                {ref_table = "card.joker_display_values", ref_value = "x_mult"}
-            }
+    text = {{
+        border_nodes = {
+            {text = "X"},
+            {ref_table = "card.joker_display_values", ref_value = "x_mult"}
         }
-    },
+    }},
     reminder_text = {
         {text = "("},
         {ref_table = "card.joker_display_values", ref_value = "count", colour = G.C.ORANGE},
         {text = "x"},
-        {ref_table = "card.joker_display_values", ref_value = "localized_text", colour = G.C.GREEN},
+        {text = localize("b_stat_consumables"), colour = G.C.GREEN},
         {text = ")"}
     },
     calc_function = function(card)
         local count = G.consumeables and G.consumeables.cards and #G.consumeables.cards or 0
         card.joker_display_values.count = count
-        card.joker_display_values.localized_text = localize("b_stat_consumables")
         card.joker_display_values.x_mult = card.ability.extra.x_mult ^ count
     end
 }
@@ -56,7 +53,7 @@ JokerDisplay.Definitions.j_manifold_alice = {
     },
     text_config = {colour = G.C.SECONDARY_SET.Spectral},
     reminder_text = {
-        {ref_table = "card.joker_display_values", ref_value = "localized_text"}
+        {text = "(" .. localize("k_aces") .. ")"}
     },
     calc_function = function(card)
         local count = 0
@@ -70,7 +67,6 @@ JokerDisplay.Definitions.j_manifold_alice = {
             end
         end
         card.joker_display_values.count = count
-        card.joker_display_values.localized_text = "(" .. localize("k_aces") .. ")"
     end
 }
 JokerDisplay.Definitions.j_manifold_space_patrol = {}
@@ -187,10 +183,10 @@ JokerDisplay.Definitions.j_manifold_baked_potato = {
     },
     retrigger_joker_function = function (card, retrigger_joker)
         if card == retrigger_joker then
-            local mult = G.GAME.current_round.current_hand.mult_text
             local chips = G.GAME.current_round.current_hand.chip_text
+            local mult = G.GAME.current_round.current_hand.mult_text
             local triggers = 0
-            if (tonumber(mult) or type(mult) == "table") and (tonumber(chips) or type(chips) == "table") then
+            if (tonumber(chips) or type(chips) == "table") and (tonumber(mult) or type(mult) == "table") then
                 triggers = math.min(math.ceil((G.GAME.blind.chips / (mult + (card.edition and card.edition.mult or 0)) - chips - (card.edition and card.edition.chips or 0)) / card.ability.extra.chips) - 1, card.ability.extra.triggers) - 1
             end
             return triggers > 0 and triggers or 0
@@ -212,8 +208,8 @@ JokerDisplay.Definitions.j_manifold_hot_potato = {
     end
 }
 JokerDisplay.Definitions.j_manifold_digi_carrot = {
-    text = {
-        {border_nodes = {
+    text = {{
+        border_nodes = {
             {text = "^"},
             {
                 ref_table = "card.ability.extra",
@@ -226,8 +222,8 @@ JokerDisplay.Definitions.j_manifold_digi_carrot = {
                     return out
                 end
             }
-        }}
-    }
+        }
+    }}
 }
 JokerDisplay.Definitions.j_manifold_extraterrestrial = {
     text = {
@@ -256,12 +252,12 @@ JokerDisplay.Definitions.j_manifold_cthugha = {
     text_config = {colour = G.C.MULT}
 }
 JokerDisplay.Definitions.j_manifold_nyarlathotep = {
-    text = {
-        {border_nodes = {
-            {text = "x"},
+    text = {{
+        border_nodes = {
+            {text = "X"},
             {ref_table = "card.ability.extra", ref_value = "x_mult", retrigger_type = "exp"}
-        }}
-    }
+        }
+    }}
 }
 JokerDisplay.Definitions.j_manifold_hastur = {
     text = {
@@ -271,24 +267,28 @@ JokerDisplay.Definitions.j_manifold_hastur = {
     text_config = {colour = G.C.CHIPS}
 }
 JokerDisplay.Definitions.j_manifold_squid = {
-    reminder_text = {
-        {text = "("},
-        {ref_table = "card.joker_display_values", ref_value = "state"},
-        {text = ")"}
+    text = {
+        {text = "+", colour = G.C.RED},
+        {ref_table = "card.joker_display_values", ref_value = "count", retrigger_type = "mult", colour = G.C.RED},
+        {
+            ref_table = "card.joker_display_values",
+            ref_value = "localized_text",
+            retrigger_type = function(base_number, triggers)
+                if base_number == localize("b_discard") and triggers ~= 1 then return localize("k_hud_discards") end
+            end
+        }
     },
     calc_function = function(card)
         local _, _, scoring_hand = JokerDisplay.evaluate_hand()
-        card.joker_display_values.is_active = #scoring_hand > 0
+        local is_active = #scoring_hand > 0
         for k, v in ipairs(scoring_hand) do
             if not v:is_number() then
-                card.joker_display_values.is_active = false
+                is_active = false
                 break
             end
         end
-        card.joker_display_values.state = card.joker_display_values.is_active and localize("k_active_ex") or localize("jdis_inactive")
-    end,
-    style_function = function(card, text, reminder_text, extra)
-        reminder_text.children[2].config.colour = card.joker_display_values.is_active and G.C.GREEN or G.C.UI.TEXT_INACTIVE
+        card.joker_display_values.count = is_active and 1 or 0
+        card.joker_display_values.localized_text = " " .. (is_active and localize("b_discard") or localize("k_hud_discards"))
     end
 }
 JokerDisplay.Definitions.j_manifold_monkeys_paw = {
@@ -344,14 +344,14 @@ JokerDisplay.Definitions.j_manifold_wallet = {
         card.joker_display_values.stored = #G.wallet.cards
     end,
     style_function = function(card, text, reminder_text, extra)
-        text.children[1].config.colour = #G.wallet.cards > 0 and G.C.FILTER or G.C.UI.TEXT_INACTIVE
+        text.children[1].config.colour = #G.wallet.cards > 0 and G.C.ORANGE or G.C.UI.TEXT_INACTIVE
     end
 }
 JokerDisplay.Definitions.j_manifold_carte_blanche = {
     text = {
         {ref_table = "card.joker_display_values", ref_value = "quant"},
         {text = " "},
-        {ref_table = "card.joker_display_values", ref_value = "rank", colour = G.C.FILTER}
+        {ref_table = "card.joker_display_values", ref_value = "rank", colour = G.C.ORANGE}
     },
     calc_function = function(card)
         local rank, quant = MANIF.get_common(true)
@@ -465,11 +465,144 @@ JokerDisplay.Definitions.j_manifold_railgun = {
 }
 JokerDisplay.Definitions.j_manifold_rebellion = {}
 JokerDisplay.Definitions.j_manifold_propaganda = {
-    text = {
-        {border_nodes = {
-            {text = "x"},
+    text = {{
+        border_nodes = {
+            {text = "X"},
             {ref_table = "card.ability.extra", ref_value = "x_mult", retrigger_type = "exp"}
-        }}
-    }
+        }
+    }}
 }
 JokerDisplay.Definitions.j_manifold_ufo = {}
+JokerDisplay.Definitions.j_manifold_left_turns = {
+    text = {
+        {text = "+", colour = G.C.BLUE},
+        {ref_table = "card.joker_display_values", ref_value = "count", retrigger_type = "mult", colour = G.C.BLUE},
+        {text = " " .. localize("k_hud_hands")}
+    },
+    reminder_text = {
+        {text = "("},
+        {ref_table = "card.joker_display_values", ref_value = "localized_text", colour = G.C.ORANGE},
+        {text = ")"}
+    },
+    calc_function = function(card)
+        local text, _, _ = JokerDisplay.evaluate_hand()
+        card.joker_display_values.count = text == card.ability.extra.poker_hand and card.ability.extra.hands or 0
+        card.joker_display_values.localized_text = localize(card.ability.extra.poker_hand, "poker_hands")
+    end
+}
+JokerDisplay.Definitions.j_manifold_lucky_sevens = {
+    text = {{
+        border_nodes = {
+            {text = "X"},
+            {ref_table = "card.ability.extra", ref_value = "x_mult", retrigger_type = "exp"}
+        }
+    }}
+}
+JokerDisplay.Definitions.j_manifold_proud = {
+    extra = {{
+        {text = "("},
+        {ref_table = "card.joker_display_values", ref_value = "odds"},
+        {text = ")"}
+    }},
+    extra_config = {colour = G.C.GREEN, scale = 0.3},
+    calc_function = function(card)
+        local numerator, denominator = SMODS.get_probability_vars(card, card.ability.extra.numerator, card.ability.extra.denominator, "manifold_proud")
+        card.joker_display_values.odds = localize{type = "variable", key = "jdis_odds", vars = {numerator, denominator}}
+    end
+}
+JokerDisplay.Definitions.j_manifold_envious = {}
+JokerDisplay.Definitions.j_manifold_slothful = {
+    text = {{
+        border_nodes = {
+            {text = "X"},
+            {ref_table = "card.joker_display_values", ref_value = "x_mult", retrigger_type = "exp"}
+        }
+    }},
+    reminder_text = {
+        {text = "-", colour = G.C.BLUE},
+        {ref_table = "card.joker_display_values", ref_value = "hands", retrigger_type = "mult", colour = G.C.BLUE},
+        {text = " " .. localize("k_hud_hands")}
+    },
+    calc_function = function(card)
+        local wilds = 0
+        for k, v in ipairs(G.hand.cards) do
+            if SMODS.has_enhancement(v, "m_wild") then
+                wilds = wilds + 1
+            end
+        end
+        card.joker_display_values.x_mult = wilds ^ card.ability.extra.x_mult
+        card.joker_display_values.hands = wilds * card.ability.extra.hand_cost
+    end
+}
+JokerDisplay.Definitions.j_manifold_weierstrass = {
+    text = {
+        {text = "+"},
+        {ref_table = "card.ability.extra", ref_value = "mult", retrigger_type = "mult"}
+    },
+    text_config = {colour = G.C.MULT}
+}
+JokerDisplay.Definitions.j_manifold_pareto = {
+    text = {
+        {ref_table = "card.joker_display_values", ref_value = "chips_sign", colour = G.C.CHIPS},
+        {ref_table = "card.joker_display_values", ref_value = "chips", colour = G.C.CHIPS, retrigger_type = "mult"},
+        {text = " "},
+        {ref_table = "card.joker_display_values", ref_value = "mult_sign", colour = G.C.MULT},
+        {ref_table = "card.joker_display_values", ref_value = "mult",  colour = G.C.MULT,  retrigger_type = "mult"}
+    },
+    calc_function = function(card)
+        local chips = G.GAME.current_round.current_hand.chip_text
+        local mult = G.GAME.current_round.current_hand.mult_text
+        local chips_mod
+        local mult_mod
+        local chips_sign = "+"
+        local mult_sign = "+"
+        if (tonumber(chips) or type(chips) == "table") and (tonumber(mult) or type(mult) == "table") then
+            chips_mod = (mult - chips) / 2
+            mult_mod = -chips_mod
+            if chips_mod < 0 then
+                chips_sign = ""
+            end
+            if mult_mod < 0 then
+                mult_sign = ""
+            end
+        else
+            chips_mod = localize("manifold_unknown")
+            mult_mod = localize("manifold_unknown")
+        end
+        card.joker_display_values.chips = chips_mod
+        card.joker_display_values.mult = mult_mod
+        card.joker_display_values.chips_sign = chips_sign
+        card.joker_display_values.mult_sign = mult_sign
+    end
+}
+JokerDisplay.Definitions.j_manifold_peano = {
+    reminder_text = {
+        {text = "("},
+        {ref_table = "card.joker_display_values", ref_value = "localized_text", colour = G.C.ORANGE},
+        {text = ")"}
+    },
+    calc_function = function(card)
+        card.joker_display_values.localized_text = localize(card.ability.extra.poker_hand, "poker_hands")
+    end
+}
+JokerDisplay.Definitions.j_manifold_escher = {}
+JokerDisplay.Definitions.j_manifold_shannon = {
+    text = {
+        {ref_table = "card.joker_display_values", ref_value = "compat", colour = G.C.GREEN}
+    },
+    calc_function = function(card)
+        local compat = ""
+        for i = 1, #G.jokers.cards do
+            local bg_color, txt_color
+            if G.jokers.cards[i].config.center.blueprint_compat and not G.jokers.cards[i].debuff and G.jokers.cards[i] ~= card then
+                compat = compat .. "O"
+            else
+                compat = compat .. "X"
+            end
+            if i < #G.jokers.cards then
+                compat = compat .. " "
+            end
+        end
+        card.joker_display_values.compat = compat
+    end
+}
