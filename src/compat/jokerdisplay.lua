@@ -606,3 +606,30 @@ JokerDisplay.Definitions.j_manifold_shannon = {
         card.joker_display_values.compat = compat
     end
 }
+-- Vanilla
+JokerDisplay.Definitions.j_hanging_chad = {
+    retrigger_function = function(playing_card, scoring_hand, held_in_hand, joker_card)
+        if playing_card == JokerDisplay.sort_cards(scoring_hand)[1] or playing_card == JokerDisplay.sort_cards(scoring_hand)[2] then
+            return JokerDisplay.calculate_joker_triggers(joker_card)
+        else
+            return 0
+        end
+    end
+}
+JokerDisplay.Definitions.j_matador = {
+    text = {
+        {text = "+$"},
+        {ref_table = "card.joker_display_values", ref_value = "gold"},
+    },
+    text_config = {colour = G.C.GOLD},
+    reminder_text = {
+        {text = "(" .. localize("k_round") .. ")"},
+    },
+    calc_function = function(card)
+        if G.GAME.chips/G.GAME.blind.chips < 1.5 then
+            card.joker_display_values.gold = 6
+        else
+            card.joker_display_values.gold = 0
+        end
+    end
+}

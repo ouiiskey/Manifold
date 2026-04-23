@@ -21,12 +21,12 @@ local source = {
     "overrides",
     "utils",
     "fonts",
-    "seals",
-    "consumables/consumables",
     "jokers/jokers",
+    "consumables/consumables",
     "backs/backs",
     "challenges/challenges",
     "stakes",
+    "seals",
     "stickers",
     "compat/compat"
 }
