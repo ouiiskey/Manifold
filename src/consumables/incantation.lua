@@ -12,6 +12,7 @@ SMODS.Consumable:take_ownership("incantation", {
             card:add_to_deck()
             G.hand:change_size(-2)
             card:juice_up(0.3, 0.5)
+            playing_card_joker_effects({card})
             return true end})
         delay(0.6)
     end,

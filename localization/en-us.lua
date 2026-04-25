@@ -1,6 +1,19 @@
 return {
     descriptions = {
         Back = {
+            b_manifold_white = {
+                name = "White Deck",
+                text = {
+                    "{C:attention}+#1#{} Joker slot",
+                    "Start run with {C:attention}#2#",
+                    "extra {C:attention}blank{} cards"
+                },
+                unlock = {
+                    "Discover at least",
+                    "{C:attention}#1#{} items from",
+                    "your collection"
+                }
+            },
             b_manifold_braided = {
                 name = "Braided Deck",
                 text = {
@@ -78,6 +91,11 @@ return {
                 text = {
                     "Start run with {C:attention}#1#",
                     "{C:attention,T:m_stone}Stone Cards{} in deck"
+                },
+                unlock = {
+                    "Win a run with",
+                    "{C:attention}#1#",
+                    "on any difficulty"
                 }
             },
             b_manifold_syzygy = {
@@ -850,6 +868,21 @@ return {
                     "rightmost position"
                 }
             },
+            rankless = {
+                text = {
+                    "No rank"
+                }
+            },
+            rankless_suitless = {
+                text = {
+                    "No rank or suit"
+                }
+            },
+            suitless = {
+                text = {
+                    "No suit"
+                }
+            },
             undiscovered_manifold_reverse_tarot = {
                 name = "Not Discovered",
                 text = {
@@ -971,7 +1004,6 @@ return {
             manifold_emptied = "Emptied!",
             manifold_escaped = "Escaped!",
             manifold_foreseen = "Foreseen!",
-            manifold_hand = "+1 Hand",
             manifold_hand_minus = "-1 Hand",
             manifold_hit = "Hit!",
             manifold_no_space_1 = "No",
@@ -994,6 +1026,15 @@ return {
             manifold_premium = "Premium",
             pinned_left = "Leftmost",
             pinned_right = "Rightmost"
+        },
+        ranks = {
+            manifold_none = "None"
+        },
+        suits_plural = {
+            manifold_nothing = "Nothing"
+        },
+        suits_singular = {
+            manifold_nothing = "Nothing"
         },
         v_text = {
             ch_c_all_perishable = {

@@ -6,6 +6,7 @@ SMODS.Atlas {
 }
 
 local backs = {
+    "white",
     "braided",
     "silver",
     "foil",

@@ -2,7 +2,7 @@
 SMODS.Back {
     key = "manifold",
     atlas = "backs",
-    pos = {x = 0, y = 1},
+    pos = {x = 0, y = 0},
     unlocked = false,
     locked_loc_vars = function(self, info_queue, back)
         return {vars = {colours = {G.C.UI.OUTLINE_LIGHT}}}

@@ -1,0 +1,93 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+[vars]
+none_text = '''
+local rankless = specific_vars.value == "manifold_none"
+local suitless = specific_vars.suit == "manifold_nothing"
+if rankless and suitless then
+    localize{type = "other", key = "rankless_suitless", nodes = desc_nodes, vars = {}}
+elseif rankless then
+    localize{type = "other", key = "rankless", nodes = desc_nodes, vars = {}}
+elseif suitless then
+    localize{type = "other", key = "suitless", nodes = desc_nodes, vars = {}}
+end
+'''
+
+# generate_card_ui
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "if specific_vars.bonus_chips then"
+position = "before"
+match_indent = true
+payload = '''
+{{lovely:none_text}}
+'''
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "if _c.effect == 'Mult Card' then loc_vars = {SMODS.signed(cfg.mult)}"
+position = "before"
+match_indent = true
+payload = '''
+if specific_vars and _c.name ~= "Stone Card" then
+    {{lovely:none_text}}
+end
+'''
+
+# SMODS.has_no_suit
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = "return is_stone and not is_wild"
+position = "before"
+match_indent = true
+payload = 'if card.base.suit == "manifold_nothing" then is_stone = true end'
+
+# Card:get_nominal
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "elseif self.config.center.no_suit then"
+position = "at"
+match_indent = true
+payload = 'elseif self.config.center.no_suit or self.base.suit == "manifold_nothing" then'
+
+# G.UIDEF.view_deck
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/overrides.lua"]'
+pattern = "if suit_tallies[suit] == 0 and SMODS.Suits[suit].in_pool and not SMODS.add_to_pool(SMODS.Suits[suit], {rank=''}) then"
+position = "at"
+match_indent = true
+payload = 'if suit_tallies[suit] == 0 and SMODS.Suits[suit].in_pool and not SMODS.add_to_pool(SMODS.Suits[suit], {rank=""}) or SMODS.Suits[suit].hidden then'
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/overrides.lua"]'
+pattern = "if rank_tallies[rank_name_mapping[i]] ~= 0 or SMODS.add_to_pool(SMODS.Ranks[rank_name_mapping[i]], { suit = '' }) then"
+position = "at"
+match_indent = true
+payload = 'if (rank_tallies[rank_name_mapping[i]] ~= 0 or SMODS.add_to_pool(SMODS.Ranks[rank_name_mapping[i]], {suit = ""})) and not SMODS.Ranks[rank_name_mapping[i]].hidden then'
+
+# Move nothing to end of suit list
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/overrides.lua"]'
+pattern = "for i = #SMODS.Suit.obj_buffer, 1, -1 do"
+position = "at"
+match_indent = true
+payload = '''
+local buffer = SMODS.Suit.obj_buffer
+for k, v in ipairs(buffer) do
+    if v == "manifold_nothing" then
+        table.insert(buffer, 1, table.remove(buffer, k))
+        break
+    end
+end
+for i = #buffer, 1, -1 do
+'''

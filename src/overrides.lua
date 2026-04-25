@@ -75,7 +75,7 @@ local ordered = function()
 
     local rank_cols = {}
     for i = #rank_name_mapping, 1, -1 do
-        if rank_tallies[rank_name_mapping[i]] ~= 0 or not SMODS.Ranks[rank_name_mapping[i]].in_pool or SMODS.Ranks[rank_name_mapping[i]]:in_pool({suit = ""}) then
+        if (rank_tallies[rank_name_mapping[i]] ~= 0 or not SMODS.Ranks[rank_name_mapping[i]].in_pool or SMODS.Ranks[rank_name_mapping[i]]:in_pool({suit = ""})) and not SMODS.Ranks[rank_name_mapping[i]].hidden then
             local mod_delta = mod_rank_tallies[rank_name_mapping[i]] ~= rank_tallies[rank_name_mapping[i]]
             rank_cols[#rank_cols + 1] = {n = G.UIT.R, config = {align = "cm", padding = 0.07}, nodes = {
                 {n = G.UIT.C, config = {align = "cm", r = 0.1, padding = 0.04, emboss = 0.04, minw = 0.5, colour = G.C.L_BLACK}, nodes = {
@@ -126,16 +126,18 @@ local ordered = function()
     local n_nodes = {}
     local temp_list = {}
     for k, v in pairs(suit_map) do
-        table.insert(n_nodes, tally_sprite(
-                SMODS.Suits[v].ui_pos,
-                {
-                    { string = "" .. suit_tallies[v], colour = flip_col },
-                    { string = "" .. mod_suit_tallies[v], colour = G.C.BLUE }
-                },
-                { localize(v, "suits_plural") }, v))
-        if #n_nodes == suits_per_row then
-            table.insert(temp_list, n_nodes)
-            n_nodes = {}
+        if not SMODS.Suits[v].hidden then
+            table.insert(n_nodes, tally_sprite(
+                    SMODS.Suits[v].ui_pos,
+                    {
+                        { string = "" .. suit_tallies[v], colour = flip_col },
+                        { string = "" .. mod_suit_tallies[v], colour = G.C.BLUE }
+                    },
+                    { localize(v, "suits_plural") }, v))
+            if #n_nodes == suits_per_row then
+                table.insert(temp_list, n_nodes)
+                n_nodes = {}
+            end
         end
     end
     if #n_nodes > 0 then
