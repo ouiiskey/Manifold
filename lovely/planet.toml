@@ -3,40 +3,7 @@ version = "1.0.0"
 dump_lua = true
 priority = 0
 
-# Planet slot
-# Game:start_run
-[[patches]]
-[patches.pattern]
-target = "game.lua"
-pattern = "self.jokers = CardArea("
-position = "before"
-match_indent = true
-payload = '''
-self.planets = CardArea(0, CAI.consumeable_H + 0.3, CAI.consumeable_W / 2, CAI.consumeable_H, {card_limit = self.GAME.starting_params.planet_slots, type = "joker", highlight_limit = 1})
-self.planets.config.align_buttons = true
-'''
-
-# set_screen_positions
-[[patches]]
-[patches.pattern]
-target = "functions/common_events.lua"
-pattern = "G.consumeables.T.y = 0"
-position = "after"
-match_indent = true
-payload = '''
-G.planets.T.x = G.consumeables.T.x + G.consumeables.T.w / 2
-G.planets.T.y = G.consumeables.T.y + G.consumeables.T.h + 0.4
-'''
-
-# get_starting_params
-[[patches]]
-[patches.pattern]
-target = "functions/misc_functions.lua"
-pattern = "consumable_slots = 2,"
-position = "after"
-match_indent = true
-payload = "planet_slots = 1,"
-
+# Planet buffer
 # Game:init_game_object
 [[patches]]
 [patches.pattern]

@@ -18,7 +18,7 @@ SMODS.Joker {
     cost = 4,
     set_sprites = function(self, card, front)
         if self.discovered or card.bypass_discovery_center then
-            card.children.floating_sprite = Sprite(card.T.x, card.T.y, card.T.w, card.T.h, G.ASSET_ATLAS["manifold_monkeys_paw"], {x = G.GAME.fingers or 0, y = 0})
+            card.children.floating_sprite = SMODS.create_sprite(card.T.x, card.T.y, card.T.w, card.T.h, G.ASSET_ATLAS["manifold_monkeys_paw"], {x = G.GAME.fingers or 0, y = 0})
             card.children.floating_sprite.role.draw_major = card
             card.children.floating_sprite.states.hover.can = false
             card.children.floating_sprite.states.click.can = false

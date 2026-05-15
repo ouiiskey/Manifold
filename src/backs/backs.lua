@@ -14,6 +14,7 @@ local backs = {
     "polychrome",
     "negative",
     "rocky",
+    "e_paper",
     "syzygy",
     "graded",
     "ring",

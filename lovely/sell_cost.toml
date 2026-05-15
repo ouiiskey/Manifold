@@ -1,0 +1,23 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Card:set_cost
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "self.sell_cost = math.max(1, math.floor(self.cost/2)) + (self.ability.extra_value or 0)"
+position = "after"
+match_indent = true
+payload = '''
+if self.ability.set == "Joker" then
+    if G.GAME.selected_back_key then
+        if G.GAME.selected_back_key.key == "b_manifold_graded" then
+            self.sell_cost = self.cost
+        elseif G.GAME.selected_back_key.key == "b_manifold_e_paper" then
+            self.sell_cost = 0
+        end
+    end
+end
+'''

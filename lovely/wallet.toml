@@ -3,22 +3,6 @@ version = "1.0.0"
 dump_lua = true
 priority = 0
 
-# G.wallet
-# Game:start_run
-[[patches]]
-[patches.pattern]
-target = "game.lua"
-pattern = "self.deck = CardArea("
-position = "before"
-match_indent = true
-payload = '''
-self.wallet = CardArea(
-    G.TILE_W + CAI.joker_W / 2 - CAI.hand_W - 2.95, 0,
-    G.discard.T.w, G.discard.T.h,
-    { type = "discard", card_limit = 1e308 }
-)
-'''
-
 # G.FUNCS.use_card
 [[patches]]
 [patches.pattern]
@@ -27,7 +11,7 @@ pattern = "elseif card.ability.set == 'Enhanced' or card.ability.set == 'Default
 position = "before"
 match_indent = true
 payload = '''
-elseif (card.ability.set == "Enhanced" or card.ability.set == "Default") and next(SMODS.find_card("j_manifold_wallet")) then
+elseif (card.ability.set == "Enhanced" or card.ability.set == "Default") and MANIF.find_wallet() then
     G.wallet:emplace(card)
     play_sound("card1", 0.8, 0.6)
     play_sound("generic1")
@@ -43,7 +27,7 @@ pattern = "if c1.ability.set == 'Default' or c1.ability.set == 'Enhanced' then"
 position = "at"
 match_indent = true
 payload = '''
-if (c1.ability.set == "Default" or c1.ability.set == "Enhanced") and next(SMODS.find_card("j_manifold_wallet")) then
+if (c1.ability.set == "Default" or c1.ability.set == "Enhanced") and MANIF.find_wallet() then
     inc_career_stat("c_playing_cards_bought", 1)
     G.wallet:emplace(c1)
 elseif c1.ability.set == "Default" or c1.ability.set == "Enhanced" then

@@ -633,3 +633,10 @@ JokerDisplay.Definitions.j_matador = {
         end
     end
 }
+-- E-Paper CardArea
+local JDgda_ref = JokerDisplay.get_display_areas
+JokerDisplay.get_display_areas = function()
+    local ret = JDgda_ref()
+    table.insert(ret, G.e_paper)
+    return ret
+end

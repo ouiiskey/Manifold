@@ -1,4 +1,4 @@
--- Graded Deck, see also graded.toml
+-- Graded Deck, see also sell_cost.toml
 local prev = "b_manifold_silver"
 
 SMODS.Back {

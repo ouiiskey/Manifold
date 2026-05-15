@@ -1,4 +1,17 @@
 -- Wallet, see also wallet.toml
+-- Wallet should only store when in a CardArea it can be sold from
+MANIF.find_wallet = function()
+    for _, area in ipairs(SMODS.get_card_areas("jokers")) do
+        if area.cards and area.config.type == "joker" then
+            for k, v in ipairs(area.cards) do
+                if v and type(v) == "table" and v.config.center.key == "j_manifold_wallet" and not v.debuff then
+                    return true
+                end
+            end
+        end
+    end
+end
+
 SMODS.Joker {
     key = "wallet",
     rarity = 1,

@@ -8,6 +8,25 @@ SMODS.current_mod.optional_features = {
     retrigger_joker = true
 }
 
+SMODS.current_mod.custom_card_areas = function(game)
+	game.wallet = CardArea(
+        G.TILE_W + 2.45 * G.CARD_W - 6 * G.CARD_W - 2.95, 0,
+        G.discard.T.w, G.discard.T.h,
+        {type = "discard", card_limit = 1e308}
+	)
+    game.e_paper = CardArea(
+        G.TILE_W - G.deck.T.w - 0.25, G.TILE_H - G.deck.T.h - 0.95 * G.CARD_H - 1.5,
+        G.CARD_W * 1.1, 0.95 * G.CARD_H,
+        {type = "discard", card_limit = 1}
+    )
+    game.GAME.starting_params.planet_slots = 1
+    game.planets = CardArea(
+        G.consumeables.T.x + G.consumeables.T.w / 2, G.consumeables.T.y + G.consumeables.T.h + 0.4,
+        1.15 * G.CARD_W, 0.95 * G.CARD_H,
+        {type = "joker", card_limit = game.GAME.starting_params.planet_slots, highlight_limit = 1})
+    game.planets.config.align_buttons = true
+end
+
 -- Mod icon
 SMODS.Atlas {
     key = "modicon",

@@ -1,12 +1,4 @@
 -- Mana Gem
-function MANIF.gem()
-    if G.GAME.gem then
-        G.GAME.gem = false
-        return true
-    end
-    return false
-end
-
 SMODS.Joker {
     key = "mana_gem",
     rarity = 3,

@@ -98,6 +98,19 @@ return {
                     "on any difficulty"
                 }
             },
+            b_manifold_e_paper = {
+                name = "E-Paper Deck",
+                text = {
+                    "Copies ability of",
+                    "the last Joker sold",
+                    "Jokers sell for {C:money}$0"
+                },
+                unlock = {
+                    "Win a run with",
+                    "{C:attention}#1#",
+                    "on any difficulty"
+                }
+            },
             b_manifold_syzygy = {
                 name = "Syzygy Deck",
                 text = {
@@ -999,6 +1012,7 @@ return {
             manifold_burnt = "Burnt!",
             manifold_cashed = "Cashed!",
             manifold_ceased = "Ceased...",
+            manifold_copied = "Copied",
             manifold_cuneiform_foil = "𒃻𒊏",
             manifold_discard = "+1 Discard",
             manifold_emptied = "Emptied!",
