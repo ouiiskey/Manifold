@@ -2,3 +2,4 @@
 .luarc.json
 builds/
 devbuild.sh
+Manifold.code-workspace

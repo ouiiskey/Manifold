@@ -1013,6 +1013,7 @@ return {
             manifold_cashed = "Cashed!",
             manifold_ceased = "Ceased...",
             manifold_copied = "Copied",
+            manifold_copied_ex = "Copied!",
             manifold_cuneiform_foil = "𒃻𒊏",
             manifold_discard = "+1 Discard",
             manifold_emptied = "Emptied!",

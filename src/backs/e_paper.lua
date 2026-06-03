@@ -85,6 +85,9 @@ SMODS.Back {
             end
             copy:add_to_deck()
             G.e_paper:emplace(copy)
+            return {
+                message = localize("manifold_copied_ex")
+            }
         end
     end
 }
