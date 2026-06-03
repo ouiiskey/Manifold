@@ -2,10 +2,10 @@
 
 ---
 
-A vanilla-style Balatro mod.
+A Balatro mod focused on creativity and balance.
 
 ## About
-This mod is intended to preserve vanilla balance while adding new content. For the best experience, play without using `Unlock All`. For more information, see the [wiki](https://balatromods.miraheze.org/wiki/Manifold).
+This mod is intended to preserve the base game's balance while adding new gameplay. For the best experience, play without using `Unlock All`. For more information, see the [wiki](https://balatromods.miraheze.org/wiki/Manifold).
 
 ## Installing
 1. Install [Steamodded](https://github.com/Steamodded/smods/wiki).
