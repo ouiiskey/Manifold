@@ -20,6 +20,7 @@ This mod is intended to preserve vanilla balance while adding new content. For t
 ## Compatibility
 Because this mod contains bespoke code, you may encounter compatibility issues with other mods.
 #### Known compatible mods:
+* [Amulet](https://github.com/frostice482/amulet)
 * [Banner](https://github.com/SylviBlossom/Banner)
 * [Galdur](https://github.com/Eremel/Galdur)
 * [JokerDisplay](https://github.com/nh6574/JokerDisplay)
