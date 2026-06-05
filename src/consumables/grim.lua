@@ -21,6 +21,7 @@ SMODS.Consumable:take_ownership("grim", {
             return true end})
     end,
     can_use = function(self, card)
-        return G.hand and #G.hand.highlighted == 1 and G.hand.highlighted[1] and not G.hand.highlighted[1].seal
+        -- We do this to override vanilla check, cannot simply use max_highlighted
+        return G.hand and #G.hand.highlighted == 1
     end
 }, true)
