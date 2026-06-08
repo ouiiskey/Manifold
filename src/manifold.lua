@@ -194,7 +194,7 @@ SMODS.current_mod.extra_tabs = function()
                         {n = G.UIT.T, config = {text = "Braided Deck, Silver Deck, Foil Deck,", scale = text_scale * 0.5, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
                     }},
                     {n = G.UIT.R, config = {align = "cm", padding = 0}, nodes = {
-                        {n = G.UIT.T, config = {text = "Holographic Deck, and Polychrome Deck,", scale = text_scale * 0.5, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
+                        {n = G.UIT.T, config = {text = "Holographic Deck, Polychrome Deck, and Rocky Deck", scale = text_scale * 0.5, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
                     }},
                     {n = G.UIT.R, config = {align = "cm", padding = 0}, nodes = {
                         {n = G.UIT.T, config = {text = "are based on LocalThunk's unused concepts.", scale = text_scale * 0.5, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
