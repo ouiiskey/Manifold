@@ -8,6 +8,7 @@ A Balatro mod focused on creativity and balance.
 This mod is intended to preserve the base game's balance while adding new gameplay. For the best experience, play without using `Unlock All`. For more information, see the [wiki](https://balatromods.miraheze.org/wiki/Manifold).
 
 ## Installing
+### Method 1: Manual Install
 1. Install [Steamodded](https://github.com/Steamodded/smods/wiki).
 2. Download the [latest release](https://github.com/ouiiskey/Manifold/releases/latest).
 3. Place the zip in your `Mods` folder.
@@ -16,6 +17,9 @@ This mod is intended to preserve the base game's balance while adding new gamepl
 1. Delete the old version from your `Mods` folder.
 2. Download the [latest release](https://github.com/ouiiskey/Manifold/releases/latest).
 3. Place the zip in your `Mods` folder.
+
+### Method 2: [JokerDeck](https://github.com/Ch3rryC0d3r/JokerDeck)
+Note: Windows only.
 
 ## Compatibility
 Because this mod contains bespoke code, you may encounter compatibility issues with other mods.
