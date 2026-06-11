@@ -21,6 +21,8 @@ This mod is intended to preserve the base game's balance while adding new gamepl
 ### Method 2: [JokerDeck](https://github.com/Ch3rryC0d3r/JokerDeck)
 Note: Windows only.
 
+### Method 3: [balatro-imm](https://github.com/frostice482/balatro-imm)
+
 ## Compatibility
 Because this mod contains bespoke code, you may encounter compatibility issues with other mods.
 #### Known compatible mods:
