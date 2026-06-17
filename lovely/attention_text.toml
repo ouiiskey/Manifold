@@ -35,31 +35,6 @@ payload = '''
 font = extra and extra.font,
 '''
 
-# attention_text
-[[patches]]
-[patches.pattern]
-target = "functions/UI_definitions.lua"
-pattern = "args.AT = UIBox{"
-position = "before"
-match_indent = true
-payload = '''
-if type(args.text) ~= "table" then args.text = {args.text} end
-local nodes = {}
-for k, v in ipairs(args.text) do
-    table.insert(nodes, {n = G.UIT.R, config = {align = "cm", padding = 0}, nodes = {{n = G.UIT.O, config = {draw_layer = k, object = DynaText({scale = args.scale, string = {v}, maxw = args.maxw, colours = {args.colour}, float = true, shadow = true, silent = not args.noisy, args.scale, pop_in = 0, pop_in_rate = 6, rotate = args.rotate or nil, font = args.font})}}}})
-end
-'''
-
-[[patches]]
-[patches.pattern]
-target = "functions/UI_definitions.lua"
-pattern = "{n=G.UIT.O, config={draw_layer = 1, object = DynaText({scale = args.scale, string = args.text, maxw = args.maxw, colours = {args.colour},float = true, shadow = true, silent = not args.noisy, args.scale, pop_in = 0, pop_in_rate = 6, rotate = args.rotate or nil})}},"
-position = "at"
-match_indent = true
-payload = '''
-{n = G.UIT.C, config = {align = "cm", padding = 0}, nodes = nodes}
-'''
-
 [[patches]]
 [patches.pattern]
 target = "functions/UI_definitions.lua"

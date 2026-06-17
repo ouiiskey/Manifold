@@ -1,6 +1,4 @@
 -- Negative Deck
-MANIF.tooltips.e_negative_playing_card = {key = "e_negative_playing_card", name = "Negative", set = "Edition", config = {extra = G.P_CENTERS.e_negative.config.card_limit}}
-
 SMODS.Back {
     key = "negative",
     atlas = "backs",

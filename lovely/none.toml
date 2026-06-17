@@ -46,16 +46,9 @@ target = '=[SMODS _ "src/utils.lua"]'
 pattern = "return is_stone and not is_wild"
 position = "before"
 match_indent = true
-payload = 'if card.base.suit == "manifold_nothing" then is_stone = true end'
-
-# Card:get_nominal
-[[patches]]
-[patches.pattern]
-target = "card.lua"
-pattern = "elseif self.config.center.no_suit then"
-position = "at"
-match_indent = true
-payload = 'elseif self.config.center.no_suit or self.base.suit == "manifold_nothing" then'
+payload = '''
+if card.base.suit == "manifold_nothing" then is_stone = true end
+'''
 
 # G.UIDEF.view_deck
 [[patches]]
@@ -64,7 +57,9 @@ target = '=[SMODS _ "src/overrides.lua"]'
 pattern = "if suit_tallies[suit] == 0 and SMODS.Suits[suit].in_pool and not SMODS.add_to_pool(SMODS.Suits[suit], {rank=''}) then"
 position = "at"
 match_indent = true
-payload = 'if suit_tallies[suit] == 0 and SMODS.Suits[suit].in_pool and not SMODS.add_to_pool(SMODS.Suits[suit], {rank=""}) or SMODS.Suits[suit].hidden then'
+payload = '''
+if suit_tallies[suit] == 0 and SMODS.Suits[suit].in_pool and not SMODS.add_to_pool(SMODS.Suits[suit], {rank=""}) or SMODS.Suits[suit].hidden then
+'''
 
 [[patches]]
 [patches.pattern]
@@ -72,7 +67,9 @@ target = '=[SMODS _ "src/overrides.lua"]'
 pattern = "if rank_tallies[rank_name_mapping[i]] ~= 0 or SMODS.add_to_pool(SMODS.Ranks[rank_name_mapping[i]], { suit = '' }) then"
 position = "at"
 match_indent = true
-payload = 'if (rank_tallies[rank_name_mapping[i]] ~= 0 or SMODS.add_to_pool(SMODS.Ranks[rank_name_mapping[i]], {suit = ""})) and not SMODS.Ranks[rank_name_mapping[i]].hidden then'
+payload = '''
+if (rank_tallies[rank_name_mapping[i]] ~= 0 or SMODS.add_to_pool(SMODS.Ranks[rank_name_mapping[i]], {suit = ""})) and not SMODS.Ranks[rank_name_mapping[i]].hidden then
+'''
 
 # Move nothing to end of suit list
 [[patches]]
@@ -90,4 +87,15 @@ for k, v in ipairs(buffer) do
     end
 end
 for i = #buffer, 1, -1 do
+'''
+
+# SMODS.always_scores
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = "if (G.P_CENTERS[(card.edition or {}).key] or {}).always_scores then return true end"
+position = "before"
+match_indent = true
+payload = '''
+if card.base.suit == "manifold_nothing" and card.base.value == "manifold_none" then return true end
 '''

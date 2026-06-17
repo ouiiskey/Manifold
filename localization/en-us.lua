@@ -1068,10 +1068,10 @@ return {
                 "Hands containing a {C:attention}Flush{} do not score"
             },
             ch_c_leaf = {
-                "Face {C:green,T:bl_final_leaf}Verdant Leaf{} on Ante 8"
+                "Face {C:green,T_set:Blind,T:bl_final_leaf}Verdant Leaf{} on Ante 8"
             },
             ch_c_plant = {
-                "Face {C:green,T:bl_plant}The Plant{} on Antes 1 to 7"
+                "Face {C:green,T_set:Blind,T:bl_plant}The Plant{} on Antes 1 to 7"
             },
             ch_c_x_boss = {
                 "{C:attention}Boss Blinds{} require {C:red}#1#X{} Score"

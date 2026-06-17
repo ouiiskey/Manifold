@@ -1,7 +1,4 @@
 -- Plant vs. Zombie
-MANIF.tooltips.bl_plant = {key = "bl_plant", name = "The Plant", set = "Blind"}
-MANIF.tooltips.bl_final_leaf = {key = "bl_final_leaf", name = "Verdant Leaf", set = "Blind"}
-
 SMODS.Challenge {
     key = "plant_vs_zombie",
     rules = {

@@ -43,7 +43,7 @@ SMODS.Back {
             end,
             -- Hanged Man
             function(card)
-                SMODS.destroy_cards(card, nil, true, true, function() return true end)
+                SMODS.destroy_cards(card, {immediate = true, should_silence = function() return true end})
             end,
             -- Devil
             enhance("m_gold"),

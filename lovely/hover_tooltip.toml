@@ -3,13 +3,14 @@ version = "1.0.0"
 dump_lua = true
 priority = 0
 
-# SMODS.localize_box
+# Game:init_item_prototypes
 [[patches]]
 [patches.pattern]
-target = '''=[SMODS _ "src/utils.lua"]'''
-pattern = "detailed_tooltip = part.control.T and (G.P_CENTERS[part.control.T] or G.P_TAGS[part.control.T]) or nil,"
-position = "at"
+target = "game.lua"
+pattern = '''e_negative =   {order = 5,  unlocked = true, discovered = false, name = "Negative", pos = {x=0,y=0}, atlas = 'Joker', set = "Edition", config = {extra = 1}},'''
+position = "after"
 match_indent = true
 payload = '''
-detailed_tooltip = part.control.T and (G.P_CENTERS[part.control.T] or G.P_TAGS[part.control.T] or MANIF.tooltips[part.control.T]) or nil,
+e_negative_playing_card = {order = 6, name = "Negative", set = "Edition", config = {extra = 1}},
+e_negative_planet = {order = 7, name = "Negative", set = "Edition", config = {extra = 1}},
 '''
