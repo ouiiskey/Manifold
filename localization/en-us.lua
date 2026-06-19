@@ -209,6 +209,20 @@ return {
                     "deck on at least",
                     "{C:gold}Gold Stake{} difficulty"
                 }
+            },
+            b_manifold_chance = {
+                name = "Chance Deck",
+                text = {
+                    "After defeating each",
+                    "{C:attention}Boss Blind{}, gain a",
+                    "random {C:attention}tag"
+                },
+                unlock = {
+                    "Win a run with",
+                    "{C:attention}#1#{}",
+                    "on at least",
+                    "{V:1}Orange Stake{} difficulty"
+                }
             }
         },
         Edition = {
