@@ -51,7 +51,7 @@ function G.FUNCS.reverse_tarot(e)
         G.CONTROLLER.locks.reversing_tarot = nil
         G.CONTROLLER:recall_cardarea_focus(area)
         if area == "shop_jokers" then
-            create_shop_card_ui(card, "Joker", G.shop)
+            create_shop_card_ui(card, "Joker", G.shop_jokers)
         end
         return true end})
 end
