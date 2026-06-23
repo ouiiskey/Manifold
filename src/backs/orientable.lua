@@ -4,6 +4,7 @@ local prev = "b_manifold_polychrome"
 function MANIF.reverse_button(card)
     if card.area == G.consumeables then
         return UIBox{definition = {n = G.UIT.ROOT, config = {padding = 0, colour = G.C.CLEAR}, nodes = {
+            {n = G.UIT.R, config = {mid = true}, nodes={}},
             {n = G.UIT.R, config = {ref_table = card, r = 0.08, padding = 0.1, align = "bm", minw = 1.25, maxw = 1.25, minh = 0.3 * card.T.h, hover = true, shadow = true, colour = G.C.UI.BACKGROUND_INACTIVE, one_press = true, button = "reverse_tarot", func = "can_reverse_tarot"}, nodes = {
                 {n = G.UIT.T, config = {text = localize("manifold_reverse"), colour = G.C.UI.TEXT_LIGHT, scale = 0.55, shadow = true}}
             }}
@@ -11,16 +12,16 @@ function MANIF.reverse_button(card)
     else
         return UIBox{definition = {n = G.UIT.ROOT, config = {padding = 0, colour = G.C.CLEAR}, nodes = {
             {n = G.UIT.C, config = {padding = 0.15, align = "cr"}, nodes = {
-                {n = G.UIT.R, config = {align = "cr"}, nodes = {
-                    {n = G.UIT.C, config = {align = "cl"}, nodes = {
-                        {n = G.UIT.C, config = {ref_table = card, align = "cl", maxw = 1.25, padding = 0.1, r = 0.08, minw = 1.25, minh = 0.3 * card.T.h, hover = true, shadow = true, colour = G.C.UI.BACKGROUND_INACTIVE, one_press = true, button = "reverse_tarot", func = "can_reverse_tarot"}, nodes = {
-                            {n = G.UIT.T, config = {text = localize("manifold_reverse"), colour = G.C.UI.TEXT_LIGHT, scale = 0.55, shadow = true}},
-                            {n = G.UIT.B, config = {w = 0.1, h = 0.6}}
+                {n = G.UIT.R, config = {align = "cl"}, nodes = {
+                    {n = G.UIT.C, config = {align = "cr"}, nodes = {
+                        {n = G.UIT.C, config = {ref_table = card, r = 0.08, padding = 0.1, align = "cr", minw = 1.25, maxw = 1.25, minh = 0.3 * card.T.h, hover = true, shadow = true, colour = G.C.UI.BACKGROUND_INACTIVE, one_press = true, button = "reverse_tarot", func = "can_reverse_tarot"}, nodes = {
+                            {n = G.UIT.B, config = {w = 0.1, h = 0.6}},
+                            {n = G.UIT.T, config = {text = localize("manifold_reverse"), colour = G.C.UI.TEXT_LIGHT, scale = 0.55, shadow = true}}
                         }}
                     }}
                 }}
             }}
-        }}, config = {align = "cl", offset = {x = 0.5, y = 0}, parent = card}}
+        }}, config = {align = "cr", offset = {x = -0.5, y = 0}, parent = card}}
     end
 end
 
@@ -38,7 +39,7 @@ function G.FUNCS.reverse_tarot(e)
     G.CONTROLLER.locks.reversing_tarot = true
     stop_use()
     local card = e.config.ref_table
-    local area = card.area == G.shop and "shop_jokers" or card.area == G.pack_cards and "pack_cards" or "consumeables"
+    local area = card.area == G.shop_jokers and "shop_jokers" or card.area == G.pack_cards and "pack_cards" or "consumeables"
     G.CONTROLLER:recall_cardarea_focus(area)
     card:highlight(false)
     G.E_MANAGER:add_event(Event{trigger = "after", delay = 0.2, func = function()
@@ -49,6 +50,9 @@ function G.FUNCS.reverse_tarot(e)
         card:set_ability(MANIF.get_reverse_key(card), nil, true)
         G.CONTROLLER.locks.reversing_tarot = nil
         G.CONTROLLER:recall_cardarea_focus(area)
+        if area == "shop_jokers" then
+            create_shop_card_ui(card, "Joker", G.shop)
+        end
         return true end})
 end
 
