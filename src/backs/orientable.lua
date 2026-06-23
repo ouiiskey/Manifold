@@ -1,14 +1,13 @@
--- Orientable Deck, see also orientable.toml
+-- Orientable Deck, see also buttons.toml
 local prev = "b_manifold_polychrome"
 
 function MANIF.reverse_button(card)
     if card.area == G.consumeables then
         return UIBox{definition = {n = G.UIT.ROOT, config = {padding = 0, colour = G.C.CLEAR}, nodes = {
-            {n = G.UIT.R, config = {mid = true}, nodes={}},
             {n = G.UIT.R, config = {ref_table = card, r = 0.08, padding = 0.1, align = "bm", minw = 1.25, maxw = 1.25, minh = 0.3 * card.T.h, hover = true, shadow = true, colour = G.C.UI.BACKGROUND_INACTIVE, one_press = true, button = "reverse_tarot", func = "can_reverse_tarot"}, nodes = {
                 {n = G.UIT.T, config = {text = localize("manifold_reverse"), colour = G.C.UI.TEXT_LIGHT, scale = 0.55, shadow = true}}
             }}
-        }}, config = {align = "bm", offset = {x = 0, y = -0.3}, parent = card}}
+        }}, config = {align = "bm", offset = {x = 0, y = -0.3}, bond = "Strong", parent = card}}
     else
         return UIBox{definition = {n = G.UIT.ROOT, config = {padding = 0, colour = G.C.CLEAR}, nodes = {
             {n = G.UIT.C, config = {padding = 0.15, align = "cr"}, nodes = {
@@ -21,7 +20,7 @@ function MANIF.reverse_button(card)
                     }}
                 }}
             }}
-        }}, config = {align = "cr", offset = {x = -0.5, y = 0}, parent = card}}
+        }}, config = {align = "cr", offset = {x = -0.5, y = card.children.buy_and_use_button.definition.config.button and 0.5 or 0}, parent = card}}
     end
 end
 
