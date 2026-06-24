@@ -1,7 +1,7 @@
 #if __VERSION__ > 100 || defined(GL_FRAGMENT_PRECISION_HIGH)
-	#define P highp
+    #define P highp
 #else
-	#define P mediump
+    #define P mediump
 #endif
 
 uniform int floating;

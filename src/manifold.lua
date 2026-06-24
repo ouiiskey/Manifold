@@ -9,11 +9,11 @@ SMODS.current_mod.optional_features = {
 }
 
 SMODS.current_mod.custom_card_areas = function(game)
-	game.wallet = CardArea(
+    game.wallet = CardArea(
         G.TILE_W + 2.45 * G.CARD_W - 6 * G.CARD_W - 2.95, 0,
         G.discard.T.w, G.discard.T.h,
         {type = "discard", card_limit = 1e308}
-	)
+    )
     game.e_paper = CardArea(
         G.TILE_W - G.deck.T.w - 0.25, G.TILE_H - G.deck.T.h - 0.95 * G.CARD_H - 1.5,
         G.CARD_W * 1.1, 0.95 * G.CARD_H,
