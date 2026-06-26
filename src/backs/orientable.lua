@@ -45,7 +45,7 @@ function G.FUNCS.reverse_tarot(e)
         play_sound("card1", 0.8, 0.6)
         card:juice_up(0.3, math.pi)
         return true end})
-    G.E_MANAGER:add_event(Event{trigger = "after", delay = 0.4, func = function()
+    G.E_MANAGER:add_event(Event{trigger = "after", func = function()
         card:set_ability(MANIF.get_reverse_key(card), nil, true)
         G.CONTROLLER.locks.reversing_tarot = nil
         G.CONTROLLER:recall_cardarea_focus(area)
