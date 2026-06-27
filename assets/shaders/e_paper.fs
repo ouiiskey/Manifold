@@ -1,20 +1,14 @@
-#if __VERSION__ > 100 || defined(GL_FRAGMENT_PRECISION_HIGH)
-    #define P highp
-#else
-    #define P mediump
-#endif
-
-uniform lowp int floating;
-uniform P vec2 aspects;
+uniform int floating;
+uniform vec2 aspects;
 
 vec4 effect(vec4 color, Image texture, vec2 texture_coords, vec2 screen_coords) {
-    P vec2 p = texture_coords * aspects;
-    P float x = mod(p.x, 71.0);
-    P float y = mod(p.y, 95.0);
+    vec2 p = texture_coords * aspects;
+    float x = mod(p.x, 71.0);
+    float y = mod(p.y, 95.0);
     if (x < 5.0 || x > 66.0 || y < 5.0 || y > 90.0 || ((x < 6.0 || x > 65.0) && (y < 6.0 || y > 89.0))) {
         return vec4(0.0);
     }
-    P vec3[16] palette = vec3[](
+    vec3 palette[16] = vec3[](
         vec3(0.3255),
         vec3(0.3542),
         vec3(0.3830),
@@ -32,9 +26,9 @@ vec4 effect(vec4 color, Image texture, vec2 texture_coords, vec2 screen_coords) 
         vec3(0.7281),
         vec3(0.7569)
     );
-    P vec4 c = Texel(texture, texture_coords);
-    lowp int i;
-    P float a;
+    vec4 c = Texel(texture, texture_coords);
+    int i;
+    float a;
     if (floating == 1) {
         i = int((c.r + c.g + c.b) * 16 / 3);
         a = c.a > 0.5 ? 1.0 : 0.0;
