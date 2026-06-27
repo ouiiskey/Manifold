@@ -15,6 +15,7 @@ if G.GAME.selected_back_key then
     if G.GAME.selected_back_key.key == "b_manifold_orientable" and (self.ability.set == "Tarot" or self.ability.set == "manifold_reverse_tarot" or self.config.center_key == "c_soul" or self.config.center_key == "c_manifold_mind") then
         if self.highlighted then
             self.children.reverse_button = MANIF.reverse_button(self)
+            self.children.reverse_button.custom_draw = true
         elseif self.children.reverse_button then
             self.children.reverse_button:remove()
             self.children.reverse_button = nil
@@ -22,6 +23,7 @@ if G.GAME.selected_back_key then
     elseif G.GAME.selected_back_key.key == "b_manifold_icy" and (self.area == G.shop_jokers or self.area == G.pack_cards) then
         if self.highlighted then
             self.children.freeze_button = MANIF.freeze_button(self)
+            self.children.freeze_button.custom_draw = true
         elseif self.children.freeze_button then
             self.children.freeze_button:remove()
             self.children.freeze_button = nil
@@ -39,7 +41,7 @@ position = "after"
 match_indent = true
 payload = '''
 if self.children.reverse_button and self.highlighted then self.children.reverse_button:draw() end
-if self.children.freeze_button and self.highlighted then self.children.freeze_buttion:draw() end
+if self.children.freeze_button and self.highlighted then self.children.freeze_button:draw() end
 '''
 
 # Card:sell_card
