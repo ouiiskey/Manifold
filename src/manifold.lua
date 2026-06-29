@@ -114,6 +114,14 @@ SMODS.current_mod.calculate = function(self, context)
         return {
             saved = "manifold_oom"
         }
+    -- Force Queue, see also force_queue.toml
+    elseif context.create_shop_card then
+        local out = MANIF.dequeue()
+        if out then
+            MANIF.skip_sticker_poll = true
+            out.force_stickers = true
+            return {shop_create_flags = out}
+        end
     end
 end
 

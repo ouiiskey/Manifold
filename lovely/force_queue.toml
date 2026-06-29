@@ -1,0 +1,102 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# generate_card_ui
+# This relies on the smods patch that adds card to params
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "for _, v in ipairs(info_queue) do"
+position = "before"
+match_indent = true
+payload = '''
+if card and card.frozen then
+    info_queue[#info_queue + 1] = {key = "manifold_frozen", set = "Other"}
+end
+'''
+
+# Game:init_game_object
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "shop = {"
+position = "before"
+match_indent = true
+payload = '''
+force_queue = {first = 0, last = -1},
+'''
+
+# SMODS.create_card
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = "return _card"
+position = "before"
+match_indent = true
+payload = '''
+MANIF.skip_sticker_poll = nil
+_card.frozen = t.frozen
+if t.couponed then
+    _card.ability.couponed = true
+    _card.cost = 0
+end
+'''
+
+# G.FUNCS.end_consumeable
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "G.booster_pack:remove()"
+position = "before"
+match_indent = true
+payload = '''
+for k, v in ipairs(G.pack_cards.cards) do
+    if v.frozen then
+        MANIF.enqueue_card(v)
+    end
+end
+'''
+
+# G.FUNCS.reroll_shop
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "for i = #G.shop_jokers.cards,1, -1 do"
+position = "before"
+match_indent = true
+payload = '''
+for k, v in ipairs(G.shop_jokers.cards) do
+    if v.config.center.key == "j_manifold_monkeys_paw" and G.GAME.fingers then
+        MANIF.push_card(v)
+    elseif v.frozen then
+        MANIF.enqueue_card(v)
+    end
+end
+'''
+
+# create_card
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "for k, v in ipairs(SMODS.Sticker.obj_buffer) do"
+position = "before"
+match_indent = true
+payload = '''
+if not MANIF.skip_sticker_poll then
+'''
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''
+end
+return card
+'''
+position = "at"
+match_indent = true
+payload = '''
+end
+end
+return card
+'''

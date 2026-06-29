@@ -91,6 +91,7 @@ SMODS.Joker {
                 }
             elseif context.selling_self then
                 G.GAME.fingers = math.min((G.GAME.fingers or 0) + 1, 2)
+                MANIF.push_card(card)
             end
         end
     end,
