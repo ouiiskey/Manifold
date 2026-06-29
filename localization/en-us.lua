@@ -210,6 +210,19 @@ return {
                     "{C:gold}Gold Stake{} difficulty"
                 }
             },
+            b_manifold_icy = {
+                name = "Icy Deck",
+                text = {
+                    "Cards in the shop",
+                    "can be {C:blue,T:manifold_frozen}frozen"
+                },
+                unlock = {
+                    "Win a run with",
+                    "{C:attention}#1#",
+                    "on at least",
+                    "{C:blue}Blue Stake{} difficulty"
+                }
+            },
             b_manifold_chance = {
                 name = "Chance Deck",
                 text = {
@@ -219,7 +232,7 @@ return {
                 },
                 unlock = {
                     "Win a run with",
-                    "{C:attention}#1#{}",
+                    "{C:attention}#1#",
                     "on at least",
                     "{V:1}Orange Stake{} difficulty"
                 }
@@ -864,6 +877,13 @@ return {
                     "{C:inactive}(Must have room)"
                 }
             },
+            manifold_frozen = {
+                name = "Frozen",
+                text = {
+                    "Always shows up",
+                    "in the shop"
+                }
+            },
             manifold_legendary_unlock = {
                 name = "Locked",
                 text = {
@@ -1033,6 +1053,7 @@ return {
             manifold_emptied = "Emptied!",
             manifold_escaped = "Escaped!",
             manifold_foreseen = "Foreseen!",
+            manifold_freeze = "ICE",
             manifold_hand_minus = "-1 Hand",
             manifold_hit = "Hit!",
             manifold_no_space_1 = "No",
@@ -1046,6 +1067,7 @@ return {
             manifold_pop = "Pop!",
             manifold_refused = "Refused!",
             manifold_reverse = "SPIN",
+            manifold_thaw = "THAW",
             manifold_unknown = "?",
             manifold_unknown_total = "????",
             manifold_wild = "Wild!"

@@ -23,6 +23,7 @@ local backs = {
     "manifold",
     "trick",
     "burning",
+    "icy",
     "chance"
 }
 for k, v in ipairs(backs) do
