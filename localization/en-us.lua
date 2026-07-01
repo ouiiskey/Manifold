@@ -640,6 +640,14 @@ return {
                     "Hand to give {X:mult,C:white} X#2# {} Mult"
                 }
             },
+            j_manifold_gold_bug = {
+                name = "Gold Bug",
+                text = {
+                    "Cards held in hand",
+                    "deduct {C:money}$#1#{} at end round",
+                    "and become {C:attention}Gold"
+                }
+            },
             j_manifold_weierstrass = {
                 name = "Weierstrass",
                 text = {
@@ -1092,7 +1100,7 @@ return {
                 "All Jokers are {C:attention}Perishable"
             },
             ch_c_ante_x_base = {
-                "Multiply required {C:red}Base{} Score by current Ante"
+                "Multiply base Blind size by current Ante"
             },
             ch_c_boss_rush = {
                 "Face only {C:attention}Boss Blinds"
@@ -1110,16 +1118,16 @@ return {
                 "Face {C:green,T_set:Blind,T:bl_plant}The Plant{} on Antes 1 to 7"
             },
             ch_c_x_boss = {
-                "{C:attention}Boss Blinds{} require {C:red}#1#X{} Score"
+                "{C:red}X#1#{} base {C:attention}Boss Blind{} size"
             },
             ch_c_x_non_boss = {
-                "{C:attention}Small{} and {C:attention}Big Blinds{} require {C:red}#1#X{} Score"
+                "{C:red}X#1#{} base {C:attention}Small{} and {C:attention}Big Blind{} size"
             },
             ch_m_gold_stake = {
                 "{C:gold}Gold Stake"
             },
             ch_m_x_base = {
-                "Score {C:red}#1#X Base"
+                "{C:red}X#1#{} base Blind size"
             }
         }
     }

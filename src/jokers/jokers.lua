@@ -48,6 +48,7 @@ local jokers = {
     "proud",
     "envious",
     "slothful",
+    -- "gold_bug",
     "weierstrass",
     "pareto",
     "peano",
