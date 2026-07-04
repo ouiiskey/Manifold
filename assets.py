@@ -1,5 +1,4 @@
 import os
-
 import cv2
 
 filenames = os.listdir("assets/1x")
