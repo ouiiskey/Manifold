@@ -238,6 +238,43 @@ return {
                 }
             }
         },
+        Blind = {
+            bl_manifold_final_adamant = {
+                name = "Argent Adamant",
+                text = {
+                    "Hands must score",
+                    "over #1#"
+                }
+            },
+            bl_manifold_final_capsid = {
+                name = "Sallow Capsid",
+                text = {
+                    "Poker hand levels are",
+                    "capped at average level"
+                }
+            },
+            bl_manifold_final_aether = {
+                name = "Azure Aether",
+                text = {
+                    "Must play at least #1#",
+                    "hand types this round"
+                }
+            },
+            bl_manifold_final_caltrop = {
+                name = "Cupreous Caltrop",
+                text = {
+                    "Increase blind size",
+                    "by #1#X each hand"
+                }
+            },
+            bl_manifold_final_die = {
+                name = "Ochre Die",
+                text = {
+                    "#1# in #2# cards",
+                    "are debuffed"
+                }
+            }
+        },
         Edition = {
             e_negative_planet = {
                 name = "Negative",
