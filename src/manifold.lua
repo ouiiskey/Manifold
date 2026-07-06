@@ -1,6 +1,5 @@
 MANIF = {
-    install = "Improper install detected, missing file: ",
-    tooltips = {}
+    install = "Improper install detected, missing file: "
 }
 
 SMODS.current_mod.optional_features = {
@@ -44,6 +43,7 @@ local source = {
     "consumables/consumables",
     "backs/backs",
     "challenges/challenges",
+    "blinds/blinds",
     "stakes",
     "seals",
     "stickers",

@@ -1083,6 +1083,7 @@ return {
             b_manifold_reverse_tarot_cards = "sdraC toraT",
             k_manifold_reverse_tarot = "toraT",
             manifold_ace = "A",
+            manifold_adamant_floor = "half of Blind size",
             manifold_baked = "Baked!",
             manifold_black = "Black",
             manifold_boom = "BOOM!",
