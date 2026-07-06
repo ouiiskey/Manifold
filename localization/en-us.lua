@@ -264,7 +264,7 @@ return {
                 name = "Cupreous Caltrop",
                 text = {
                     "Increase blind size",
-                    "by #1#X each hand"
+                    "by 1.4X each hand"
                 }
             },
             bl_manifold_final_die = {
@@ -1109,6 +1109,7 @@ return {
             manifold_opposite_odd = "even",
             manifold_ordered = "Ordered",
             manifold_parity_any = "any",
+            manifold_played_hand = "Hand type already played",
             manifold_polychrome = "Polychrome!",
             manifold_pop = "Pop!",
             manifold_refused = "Refused!",
