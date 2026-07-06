@@ -250,7 +250,7 @@ return {
                 name = "Sallow Capsid",
                 text = {
                     "Poker hand levels are",
-                    "capped at average level"
+                    "capped at their average"
                 }
             },
             bl_manifold_final_aether = {
