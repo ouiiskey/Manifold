@@ -1,4 +1,8 @@
 -- Azure Aether, see also final_aether.toml
+MANIF.aether_hands = function()
+    return math.max(math.min(5, G.GAME.aether_hands or G.GAME.starting_params.hands), 0)
+end
+
 SMODS.Blind {
     key = "final_aether",
     atlas = "blinds",
@@ -7,7 +11,7 @@ SMODS.Blind {
     boss = {showdown = true},
     boss_colour = HEX("0080ff"),
     loc_vars = function(self)
-        return {vars = {math.max(math.min(5, G.GAME.round_resets.hands), 0)}}
+        return {vars = {MANIF.aether_hands()}}
     end,
     collection_loc_vars = function(self)
         return {vars = {5}}

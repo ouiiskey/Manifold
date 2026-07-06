@@ -84,6 +84,10 @@ SMODS.current_mod.calculate = function(self, context)
     -- ease_ante Unlock
     elseif context.ante_change then
         check_for_unlock{type = "ease_ante", ante = G.GAME.round_resets.ante + context.ante_change}
+        -- Azure Aether
+        if context.ante_end then
+            G.GAME.aether_hands = G.GAME.round_resets.hands -- Snapshot hands at end of ante
+        end
     elseif context.using_consumeable then
         -- Reverse Fool
         if (context.consumeable.ability.set == "Tarot" or context.consumeable.ability.set == "manifold_reverse_tarot") and context.consumeable.config.center_key ~= "c_fool" and context.consumeable.config.center_key ~= "c_manifold_fool" and G.GAME.next_tarot then
