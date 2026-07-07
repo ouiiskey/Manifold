@@ -13,7 +13,7 @@ pattern = '''
 position = "before"
 match_indent = true
 payload = '''
-if G.GAME.round_resets.blind == G.P_BLINDS.bl_manifold_final_aether then
+if G.GAME.round_resets.blind == G.P_BLINDS.bl_manifold_final_aether and not G.GAME.blind.disabled then
     local count = 0
     for k, v in pairs(G.GAME.blind.hands) do
         count = count + 1
@@ -49,7 +49,7 @@ payload = '''
 if G.GAME.current_round.hands_left < 1 then
     G.STATE = G.STATES.NEW_ROUND
 elseif G.GAME.chips >= G.GAME.blind.chips then
-    if G.GAME.round_resets.blind == G.P_BLINDS.bl_manifold_final_aether then
+    if G.GAME.round_resets.blind == G.P_BLINDS.bl_manifold_final_aether and not G.GAME.blind.disabled then
         local count = 0
         for k, v in pairs(G.GAME.blind.hands) do
             count = count + 1

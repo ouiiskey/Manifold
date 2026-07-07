@@ -5,7 +5,7 @@ local get_min = function()
 end
 
 MANIF.adamant = function()
-    if G.GAME.round_resets.blind == G.P_BLINDS.bl_manifold_final_adamant and mult * hand_chips < get_min() then
+    if G.GAME.round_resets.blind == G.P_BLINDS.bl_manifold_final_adamant and not G.GAME.blind.disabled and mult * hand_chips < get_min() then
         mult = mod_mult(0)
         hand_chips = mod_chips(0)
         G.E_MANAGER:add_event(Event{trigger = "immediate", func = function()
