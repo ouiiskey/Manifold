@@ -9,8 +9,8 @@ MANIF.PROSO = {
 
 SMODS.Joker {
     key = "prosopagnosia",
-    rarity = 2,
+    rarity = 3,
     atlas = "jokers",
     pos = {x = 0, y = 0},
-    cost = 5
+    cost = 7
 }
