@@ -263,8 +263,8 @@ return {
             bl_manifold_final_caltrop = {
                 name = "Rusty Caltrop",
                 text = {
-                    "Increase Blind size by",
-                    "1.5X after each hand"
+                    "Multiply Blind size by",
+                    "1.5 after each hand"
                 }
             },
             bl_manifold_final_die = {
