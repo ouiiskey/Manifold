@@ -10,7 +10,8 @@ SMODS.Atlas {
 local blinds = {
     "final_adamant",
     "final_capsid",
-    "final_aether"
+    "final_aether",
+    "final_caltrop"
 }
 for k, v in ipairs(blinds) do
     assert(SMODS.load_file("src/blinds/" .. v .. ".lua"), MANIF.install .. "src/blinds/" .. v .. ".lua")()

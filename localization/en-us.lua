@@ -261,10 +261,10 @@ return {
                 }
             },
             bl_manifold_final_caltrop = {
-                name = "Cupreous Caltrop",
+                name = "Rusty Caltrop",
                 text = {
-                    "Increase blind size",
-                    "by 1.4X each hand"
+                    "Increase Blind size by",
+                    "1.5X after each hand"
                 }
             },
             bl_manifold_final_die = {
@@ -1114,6 +1114,7 @@ return {
             manifold_pop = "Pop!",
             manifold_refused = "Refused!",
             manifold_reverse = "SPIN",
+            manifold_size_up = "Size Up!",
             manifold_thaw = "THAW",
             manifold_unknown = "?",
             manifold_unknown_total = "????",
