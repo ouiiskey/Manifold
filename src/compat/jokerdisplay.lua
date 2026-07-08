@@ -22,7 +22,9 @@ JokerDisplay.Definitions.j_manifold_archwizard = {
         card.joker_display_values.mult = (card.joker_display_values.is_active and card.ability.extra.mult or 0)
     end,
     style_function = function(card, text, reminder_text, extra)
-        reminder_text.children[2].config.colour = card.joker_display_values.is_active and G.C.GREEN or G.C.UI.TEXT_INACTIVE
+        if reminder_text and reminder_text.children and reminder_text.children[2] then
+            reminder_text.children[2].config.colour = card.joker_display_values.is_active and G.C.GREEN or G.C.UI.TEXT_INACTIVE
+        end
     end
 }
 JokerDisplay.Definitions.j_manifold_black_knight = {}
@@ -87,7 +89,9 @@ JokerDisplay.Definitions.j_manifold_clay_tablet = {
         card.joker_display_values.state = card.joker_display_values.is_active and localize("k_active_ex") or localize("jdis_inactive")
     end,
     style_function = function(card, text, reminder_text, extra)
-        reminder_text.children[2].config.colour = card.joker_display_values.is_active and G.C.GREEN or G.C.UI.TEXT_INACTIVE
+        if reminder_text and reminder_text.children and reminder_text.children[2] then
+            reminder_text.children[2].config.colour = card.joker_display_values.is_active and G.C.GREEN or G.C.UI.TEXT_INACTIVE
+        end
     end
 }
 JokerDisplay.Definitions.j_manifold_orange_juice = {
@@ -108,7 +112,9 @@ JokerDisplay.Definitions.j_manifold_orange_juice = {
         card.joker_display_values.warning = card.joker_display_values.will_drink and localize("k_drank_ex") or localize("k_safe_ex")
     end,
     style_function = function(card, text, reminder_text, extra)
-        reminder_text.children[2].config.colour = card.joker_display_values.will_drink and G.C.RED or G.C.UI.TEXT_INACTIVE
+        if reminder_text and reminder_text.children and reminder_text.children[2] then
+            reminder_text.children[2].config.colour = card.joker_display_values.will_drink and G.C.RED or G.C.UI.TEXT_INACTIVE
+        end
     end
 }
 JokerDisplay.Definitions.j_manifold_pudding = {
@@ -307,18 +313,22 @@ JokerDisplay.Definitions.j_manifold_monkeys_paw = {
         end
     end,
     style_function = function(card, text, reminder_text, extra)
-        local color = G.GAME.fingers == 1 and G.C.CHIPS or G.C.MULT
-        text.children[1].config.colour = color
-        text.children[2].config.colour = color
-        if G.GAME.fingers == 2 then
-            text.children[1].config.text = ""
-            reminder_text.children[1].config.text = "("
-            reminder_text.children[1].config.scale = 0.3
-            reminder_text.children[2].config.text = card.ability.extra.hands
-            reminder_text.children[2].config.scale = 0.3
-            reminder_text.children[3].config.text = "/10)"
-            reminder_text.children[3].config.scale = 0.3
-            return true
+        if text and text.children and text.children[1] and text.children[2] then
+            local color = G.GAME.fingers == 1 and G.C.CHIPS or G.C.MULT
+            text.children[1].config.colour = color
+            text.children[2].config.colour = color
+            if G.GAME.fingers == 2 then
+                text.children[1].config.text = ""
+                if reminder_text and reminder_text.children and reminder_text.children[1] and reminder_text.children[2] and reminder_text.children[3] then
+                    reminder_text.children[1].config.text = "("
+                    reminder_text.children[1].config.scale = 0.3
+                    reminder_text.children[2].config.text = card.ability.extra.hands
+                    reminder_text.children[2].config.scale = 0.3
+                    reminder_text.children[3].config.text = "/10)"
+                    reminder_text.children[3].config.scale = 0.3
+                    return true
+                end
+            end
         end
     end
 }
@@ -333,7 +343,9 @@ JokerDisplay.Definitions.j_manifold_mana_gem = {
         card.joker_display_values.active = G.GAME.blind:get_type() == "Boss" and localize{type = "variable", key = "loyalty_active", vars = {}} or localize("jdis_inactive")
     end,
     style_function = function(card, text, reminder_text, extra)
-        reminder_text.children[2].config.colour = G.GAME.blind:get_type() == "Boss" and G.C.GREEN or G.C.UI.TEXT_INACTIVE
+        if reminder_text and reminder_text.children and reminder_text.children[2] then
+            reminder_text.children[2].config.colour = G.GAME.blind:get_type() == "Boss" and G.C.GREEN or G.C.UI.TEXT_INACTIVE
+        end
     end
 }
 JokerDisplay.Definitions.j_manifold_wallet = {
@@ -344,7 +356,9 @@ JokerDisplay.Definitions.j_manifold_wallet = {
         card.joker_display_values.stored = #G.wallet.cards
     end,
     style_function = function(card, text, reminder_text, extra)
-        text.children[1].config.colour = #G.wallet.cards > 0 and G.C.ORANGE or G.C.UI.TEXT_INACTIVE
+        if text and text.children and reminder_text.children[1] then
+            text.children[1].config.colour = #G.wallet.cards > 0 and G.C.ORANGE or G.C.UI.TEXT_INACTIVE
+        end
     end
 }
 JokerDisplay.Definitions.j_manifold_carte_blanche = {
