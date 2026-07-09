@@ -24,3 +24,17 @@ match_indent = true
 payload = '''
 args.i = i
 '''
+
+# Update blind text on "reset" (ex: selling Oops)
+# Blind:set_blind
+[[patches]]
+[patches.pattern]
+target = "blind.lua"
+pattern = "if not reset then"
+position = "at"
+match_indent = true
+payload = '''
+if reset then
+    self:set_text()
+else
+'''
