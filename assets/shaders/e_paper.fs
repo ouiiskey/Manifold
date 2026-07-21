@@ -9,22 +9,22 @@ vec4 effect(vec4 color, Image texture, vec2 texture_coords, vec2 screen_coords) 
         return vec4(0.0);
     }
     vec3 palette[16] = vec3[](
-        vec3(0.3255),
-        vec3(0.3542),
-        vec3(0.3830),
-        vec3(0.4118),
-        vec3(0.4405),
-        vec3(0.4693),
-        vec3(0.4980),
-        vec3(0.5268),
-        vec3(0.5556),
-        vec3(0.5843),
-        vec3(0.6131),
-        vec3(0.6418),
-        vec3(0.6706),
-        vec3(0.6993),
-        vec3(0.7281),
-        vec3(0.7569)
+        vec3(83.0 / 255.0),
+        vec3(90.0 / 255.0),
+        vec3(98.0 / 255.0),
+        vec3(105.0 / 255.0),
+        vec3(112.0 / 255.0),
+        vec3(120.0 / 255.0),
+        vec3(127.0 / 255.0),
+        vec3(134.0 / 255.0),
+        vec3(142.0 / 255.0),
+        vec3(149.0 / 255.0),
+        vec3(156.0 / 255.0),
+        vec3(164.0 / 255.0),
+        vec3(171.0 / 255.0),
+        vec3(178.0 / 255.0),
+        vec3(186.0 / 255.0),
+        vec3(193.0 / 255.0)
     );
     vec4 c = Texel(texture, texture_coords);
     int i;
