@@ -87,8 +87,8 @@ vec4 effect(vec4 color, Image texture, vec2 texture_coords, vec2 screen_coords) 
 
     base.r += (1 - base.r) * maxfac * (0.1 + fac5 * 0.1);
     base.g += (1 - base.g) * maxfac * (0.1 - fac5 * 0.1);
-    base.b += (1 - base.b) * maxfac * 0.1;
-    base.a = Texel(texture, texture_coords).a * (base.a + maxfac * 0.1);
+    base.b += (1 - base.b) * maxfac * 0.2;
+    base.a *= Texel(texture, texture_coords).a;
 
     return dissolve_mask(base, texture_coords, uv);
 }
