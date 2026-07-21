@@ -44,7 +44,7 @@ SMODS.Joker {
             if foiled then
                 return {
                     message = localize("manifold_cuneiform_foil"),
-                    font = SMODS.Fonts["manifold_cuneiform"],
+                    font = SMODS.Fonts.manifold_cuneiform,
                     colour = G.C.SECONDARY_SET.Edition
                 }
             end

@@ -8,7 +8,7 @@ SMODS.ConsumableType {
     set_card_type_badge = function(self, obj, card, badges)
         badges[#badges + 1] = create_badge(localize("k_manifold_reverse_tarot"), G.C.SECONDARY_SET.Tarot, nil, 1.2, self.font)
     end,
-    font = SMODS.Fonts["manifold_reverse"]
+    font = SMODS.Fonts.manifold_reverse
 }
 
 SMODS.UndiscoveredSprite {key = "manifold_reverse_tarot", atlas = "Tarot", prefix_config = {atlas = false}, pos = G.t_undiscovered.pos}

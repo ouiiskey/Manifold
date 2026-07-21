@@ -24,7 +24,7 @@ SMODS.Back {
         G.E_MANAGER:add_event(Event{func = function()
             for k, v in ipairs(G.deck.cards) do
                 if v:is_number() then
-                    v:set_ability(G.P_CENTERS["m_stone"])
+                    v:set_ability(G.P_CENTERS.m_stone)
                 end
             end
             return true end})

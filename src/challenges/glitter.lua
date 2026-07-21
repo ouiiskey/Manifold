@@ -19,7 +19,7 @@ SMODS.Challenge {
     },
     deck = {enhancement = "m_wild"},
     calculate = function(self, context)
-        if context.debuff_hand and next(context.poker_hands["Flush"]) then
+        if context.debuff_hand and next(context.poker_hands.Flush) then
             return {
                 debuff = true
             }
