@@ -56,9 +56,6 @@ vec2 hash22(vec2 p) {
 }
 
 vec4 effect(vec4 color, Image texture, vec2 texture_coords, vec2 screen_coords) {
-    if (Texel(texture, texture_coords).a == 0.0) {
-        return vec4(0.0);
-    }
     vec2 ice_coords = (texture_coords * image_details - texture_details.xy * texture_details.zw) / vec2(71.0, 95.0);
     vec2 grid_coords = floor(ice_coords * 3);
     vec2 relative_coords = fract(ice_coords * 3);
@@ -91,7 +88,7 @@ vec4 effect(vec4 color, Image texture, vec2 texture_coords, vec2 screen_coords) 
     base.r += (1 - base.r) * maxfac * (0.1 + fac5 * 0.1);
     base.g += (1 - base.g) * maxfac * (0.1 - fac5 * 0.1);
     base.b += (1 - base.b) * maxfac * 0.1;
-    base.a += maxfac * 0.1;
+    base.a = Texel(texture, texture_coords).a * (base.a + maxfac * 0.1);
 
     return dissolve_mask(base, texture_coords, uv);
 }
