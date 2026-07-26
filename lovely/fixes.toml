@@ -38,3 +38,31 @@ if reset then
     self:set_text()
 else
 '''
+
+# Fix save + reload of SMODS.Gradient (ex: when using for Suit color)
+# recursive_table_cull
+[[patches]]
+[patches.pattern]
+target = "functions/misc_functions.lua"
+pattern = 'if v.is and v:is(Object) then ret_t[k] = [["]].."MANUAL_REPLACE"..[["]]'
+position = "at"
+match_indent = true
+payload = '''
+if v.is then
+    if v:is(SMODS.Gradient) then
+        ret_t[k] = v.key
+    elseif v:is(Object) then
+        ret_t[k] = '"MANUAL_REPLACE"'
+    end
+'''
+
+# UIElement:draw_self
+[[patches]]
+[patches.pattern]
+target = "engine/ui.lua"
+pattern = "if self.config.colour[4] > 0.01 then"
+position = "before"
+match_indent = true
+payload = '''
+if not self.config.colour[4] then self.config.colour = SMODS.Gradients[self.config.colour] end
+'''
