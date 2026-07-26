@@ -52,7 +52,7 @@ G.blind_select_opts.boss.alignment.offset.y = 20
 position = "at"
 match_indent = true
 payload = '''
-G.blind_select_opts[target]:set_role({xy_bond = 'Weak'})
+G.blind_select_opts[target]:set_role{xy_bond = "Weak"}
 G.blind_select_opts[target].alignment.offset.y = 20
 '''
 

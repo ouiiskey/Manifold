@@ -26,7 +26,7 @@ SMODS.DrawStep {
                     card.children.e_paper.states.click = card.states.click
                     card.children.e_paper.states.drag = card.states.drag
                     card.children.e_paper.states.collide.can = false
-                    card.children.e_paper:set_role({major = card, role_type = "Glued", draw_major = card})
+                    card.children.e_paper:set_role{major = card, role_type = "Glued", draw_major = card}
                     card.children.e_paper.custom_draw = true
                 end
                 card.children.e_paper:draw_shader("manifold_e_paper", nil, {{name = "floating", val = 0}, {name = "aspects", val = {target.children.center.atlas.image:getDimensions()}}}, nil, nil, nil, nil, nil, nil, true)

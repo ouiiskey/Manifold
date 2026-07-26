@@ -14,13 +14,13 @@ vec4 dissolve_mask(vec4 tex, vec2 texture_coords, vec2 uv) {
     float adjusted_dissolve = dissolve * dissolve * (3.0 - 2.0 * dissolve) * 1.02 - 0.01;
     //Adjusting 0.0 - 1.0 to fall to -0.1 - 1.1 scale so the mask does not pause at extreme values
 
-	float t = time * 10.0 + 2003.0;
-	vec2 floored_uv = floor(uv * texture_details.ba) / max(texture_details.b, texture_details.a);
+    float t = time * 10.0 + 2003.0;
+    vec2 floored_uv = floor(uv * texture_details.ba) / max(texture_details.b, texture_details.a);
     vec2 uv_scaled_centered = (floored_uv - 0.5) * 2.3 * max(texture_details.b, texture_details.a);
-	
-	vec2 field_part1 = uv_scaled_centered + 50.0 * vec2(sin(-t / 143.6340), cos(-t / 99.4324));
-	vec2 field_part2 = uv_scaled_centered + 50.0 * vec2(cos(t / 53.1532), cos(t / 61.4532));
-	vec2 field_part3 = uv_scaled_centered + 50.0 * vec2(sin(-t / 87.53218), sin(-t / 49.0000));
+    
+    vec2 field_part1 = uv_scaled_centered + 50.0 * vec2(sin(-t / 143.6340), cos(-t / 99.4324));
+    vec2 field_part2 = uv_scaled_centered + 50.0 * vec2(cos(t / 53.1532), cos(t / 61.4532));
+    vec2 field_part3 = uv_scaled_centered + 50.0 * vec2(sin(-t / 87.53218), sin(-t / 49.0000));
 
     float field = (1.0 + cos(length(field_part1) / 19.483) + sin(length(field_part2) / 33.155) * cos(field_part2.y / 15.73) + cos(length(field_part3) / 27.193) * sin(field_part3.x / 21.92)) / 2.0;
     vec2 borders = vec2(0.2, 0.8);
@@ -50,7 +50,7 @@ uniform vec2 frozen;
 // MIT License
 // https://www.shadertoy.com/view/4djSRW
 vec2 hash22(vec2 p) {
-	vec3 p3 = fract(vec3(p.xyx) * vec3(0.1031, 0.1030, 0.0973));
+    vec3 p3 = fract(vec3(p.xyx) * vec3(0.1031, 0.1030, 0.0973));
     p3 += dot(p3, p3.yzx + 33.33);
     return fract((p3.xx + p3.yz) * p3.zy);
 }
