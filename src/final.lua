@@ -51,7 +51,7 @@ end
 if hook then
     table.insert(SMODS.calculation_keys, "e_mult")
     local Scie_ref = SMODS.calculate_individual_effect
-    SMODS.calculate_individual_effect = function(effect, scored_card, key, amount, from_edition)
+    function SMODS.calculate_individual_effect(effect, scored_card, key, amount, from_edition)
         if key == "e_mult" and amount ~= 1 then
             mult = mod_mult(mult ^ amount)
             update_hand_text({delay = 0}, {chips = hand_chips, mult = mult})

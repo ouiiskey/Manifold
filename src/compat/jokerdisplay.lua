@@ -432,7 +432,7 @@ JokerDisplay.Definitions.j_manifold_harpoon_gun = {
 }
 JokerDisplay.Definitions.j_manifold_library = {}
 local JDeh_ref = JokerDisplay.evaluate_hand
-JokerDisplay.evaluate_hand = function(cards, count_facedowns)
+function JokerDisplay.evaluate_hand(cards, count_facedowns)
     local text, poker_hands, scoring_hand = JDeh_ref(cards, count_facedowns)
     if not cards and next(SMODS.find_card("j_manifold_tsunami")) then
         local held_cards = {}
@@ -649,7 +649,7 @@ JokerDisplay.Definitions.j_matador = {
 }
 -- E-Paper CardArea
 local JDgda_ref = JokerDisplay.get_display_areas
-JokerDisplay.get_display_areas = function()
+function JokerDisplay.get_display_areas()
     local ret = JDgda_ref()
     table.insert(ret, G.e_paper)
     return ret
