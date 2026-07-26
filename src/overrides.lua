@@ -83,8 +83,8 @@ local ordered = function()
                 {n = G.UIT.C, config = {align = "cr", minw = 0.4}, nodes = {
                     mod_delta and {n = G.UIT.O, config = {
                         object = DynaText({
-                            string = { { string = "" .. rank_tallies[rank_name_mapping[i]], colour = flip_col }, { string = "" .. mod_rank_tallies[rank_name_mapping[i]], colour = G.C.BLUE } },
-                            colours = { G.C.RED }, scale = 0.4, y_offset = -2, silent = true, shadow = true, pop_in_rate = 10, pop_delay = 4
+                            string = {{string = "" .. rank_tallies[rank_name_mapping[i]], colour = flip_col}, {string = "" .. mod_rank_tallies[rank_name_mapping[i]], colour = G.C.BLUE}},
+                            colours = {G.C.RED}, scale = 0.4, y_offset = -2, silent = true, shadow = true, pop_in_rate = 10, pop_delay = 4
                         })}}
                             or {n = G.UIT.T, config = {text = rank_tallies[rank_name_mapping[i]], colour = flip_col, scale = 0.45, shadow = true}}}}}}
         end
@@ -96,28 +96,28 @@ local ordered = function()
             {n = G.UIT.O, config = {
                 object = DynaText({
                     string = {
-                        { string = localize("k_base_cards"), colour = G.C.RED },
-                        modded and { string = localize("k_effective"), colour = G.C.BLUE } or nil
+                        {string = localize("k_base_cards"), colour = G.C.RED},
+                        modded and {string = localize("k_effective"), colour = G.C.BLUE} or nil
                     },
-                    colours = { G.C.RED }, silent = true, scale = 0.4, pop_in_rate = 10, pop_delay = 4
+                    colours = {G.C.RED}, silent = true, scale = 0.4, pop_in_rate = 10, pop_delay = 4
                 })
             }}}},
         -- Aces, faces and numbered cards
         {n = G.UIT.R, config = {align = "cm", minh = 0.05, padding = 0.1}, nodes = {
             tally_sprite(
-                    { x = 1, y = 0 },
-                    { { string = "" .. ace_tally, colour = flip_col }, { string = "" .. mod_ace_tally, colour = G.C.BLUE } },
-                    { localize("k_aces") }
+                    {x = 1, y = 0},
+                    {{string = "" .. ace_tally, colour = flip_col}, {string = "" .. mod_ace_tally, colour = G.C.BLUE}},
+                    {localize("k_aces")}
             ), -- Aces
             tally_sprite(
-                    { x = 2, y = 0 },
-                    { { string = "" .. face_tally, colour = flip_col }, { string = "" .. mod_face_tally, colour = G.C.BLUE } },
-                    { localize("k_face_cards") }
+                    {x = 2, y = 0},
+                    {{string = "" .. face_tally, colour = flip_col}, {string = "" .. mod_face_tally, colour = G.C.BLUE}},
+                    {localize("k_face_cards")}
             ), -- Face
             tally_sprite(
-                    { x = 3, y = 0 },
-                    { { string = "" .. num_tally, colour = flip_col }, { string = "" .. mod_num_tally, colour = G.C.BLUE } },
-                    { localize("k_numbered_cards") }
+                    {x = 3, y = 0},
+                    {{string = "" .. num_tally, colour = flip_col}, {string = "" .. mod_num_tally, colour = G.C.BLUE}},
+                    {localize("k_numbered_cards")}
             ), -- Numbers
         }},
     }
@@ -130,10 +130,10 @@ local ordered = function()
             table.insert(n_nodes, tally_sprite(
                     SMODS.Suits[v].ui_pos,
                     {
-                        { string = "" .. suit_tallies[v], colour = flip_col },
-                        { string = "" .. mod_suit_tallies[v], colour = G.C.BLUE }
+                        {string = "" .. suit_tallies[v], colour = flip_col},
+                        {string = "" .. mod_suit_tallies[v], colour = G.C.BLUE}
                     },
-                    { localize(v, "suits_plural") }, v))
+                    {localize(v, "suits_plural")}, v))
             if #n_nodes == suits_per_row then
                 table.insert(temp_list, n_nodes)
                 n_nodes = {}
@@ -157,13 +157,13 @@ local ordered = function()
                     {n = G.UIT.R, config = {align = "cm", r = 0.1, colour = G.C.L_BLACK, emboss = 0.05, padding = 0.15}, nodes = {
                         {n = G.UIT.R, config = {align = "cm"}, nodes = {
                             {n = G.UIT.O, config = {
-                                object = DynaText({ string = G.GAME.selected_back.loc_name, colours = {G.C.WHITE}, bump = true, rotate = true, shadow = true, scale = 0.6 - string.len(G.GAME.selected_back.loc_name) * 0.01 })
+                                object = DynaText({string = G.GAME.selected_back.loc_name, colours = {G.C.WHITE}, bump = true, rotate = true, shadow = true, scale = 0.6 - string.len(G.GAME.selected_back.loc_name) * 0.01})
                             }},
                         }},
                         {n = G.UIT.R, config = {align = "cm", r = 0.1, padding = 0.1, minw = 2.5, minh = 1.3, colour = G.C.WHITE, emboss = 0.05}, nodes = {
                             {n = G.UIT.O, config = {
                                 object = UIBox {
-                                    definition = G.GAME.selected_back:generate_UI(nil, 0.7, 0.5, G.GAME.challenge), config = {offset = { x = 0, y = 0 } }
+                                    definition = G.GAME.selected_back:generate_UI(nil, 0.7, 0.5, G.GAME.challenge), config = {offset = {x = 0, y = 0}}
                                 }
                             }}
                         }}
@@ -185,7 +185,7 @@ local ordered = function()
         {n = G.UIT.O, config = {
             id = "suit_list",
             object = UIBox {
-                definition = object, config = {offset = { x = 0, y = 0 }, align = "cm"}
+                definition = object, config = {offset = {x = 0, y = 0}, align = "cm"}
             }}}}}
 end
 
@@ -270,8 +270,8 @@ local copied = function()
                 {n = G.UIT.C, config = {align = "cr", minw = 0.4}, nodes = {
                     mod_delta and {n = G.UIT.O, config = {
                         object = DynaText({
-                            string = { { string = "" .. rank_tallies[rank_name_mapping[i]], colour = flip_col }, { string = "" .. mod_rank_tallies[rank_name_mapping[i]], colour = G.C.BLUE } },
-                            colours = { G.C.RED }, scale = 0.4, y_offset = -2, silent = true, shadow = true, pop_in_rate = 10, pop_delay = 4
+                            string = {{string = "" .. rank_tallies[rank_name_mapping[i]], colour = flip_col}, {string = "" .. mod_rank_tallies[rank_name_mapping[i]], colour = G.C.BLUE}},
+                            colours = {G.C.RED}, scale = 0.4, y_offset = -2, silent = true, shadow = true, pop_in_rate = 10, pop_delay = 4
                         })}}
                             or {n = G.UIT.T, config = {text = rank_tallies[rank_name_mapping[i]], colour = flip_col, scale = 0.45, shadow = true}}}}}}
         end
@@ -283,28 +283,28 @@ local copied = function()
             {n = G.UIT.O, config = {
                 object = DynaText({
                     string = {
-                        { string = localize("k_base_cards"), colour = G.C.RED },
-                        modded and { string = localize("k_effective"), colour = G.C.BLUE } or nil
+                        {string = localize("k_base_cards"), colour = G.C.RED},
+                        modded and {string = localize("k_effective"), colour = G.C.BLUE} or nil
                     },
-                    colours = { G.C.RED }, silent = true, scale = 0.4, pop_in_rate = 10, pop_delay = 4
+                    colours = {G.C.RED}, silent = true, scale = 0.4, pop_in_rate = 10, pop_delay = 4
                 })
             }}}},
         -- Aces, faces and numbered cards
         {n = G.UIT.R, config = {align = "cm", minh = 0.05, padding = 0.1}, nodes = {
             tally_sprite(
-                    { x = 1, y = 0 },
-                    { { string = "" .. ace_tally, colour = flip_col }, { string = "" .. mod_ace_tally, colour = G.C.BLUE } },
-                    { localize("k_aces") }
+                    {x = 1, y = 0},
+                    {{string = "" .. ace_tally, colour = flip_col}, {string = "" .. mod_ace_tally, colour = G.C.BLUE}},
+                    {localize("k_aces")}
             ), -- Aces
             tally_sprite(
-                    { x = 2, y = 0 },
-                    { { string = "" .. face_tally, colour = flip_col }, { string = "" .. mod_face_tally, colour = G.C.BLUE } },
-                    { localize("k_face_cards") }
+                    {x = 2, y = 0},
+                    {{string = "" .. face_tally, colour = flip_col}, {string = "" .. mod_face_tally, colour = G.C.BLUE}},
+                    {localize("k_face_cards")}
             ), -- Face
             tally_sprite(
-                    { x = 3, y = 0 },
-                    { { string = "" .. num_tally, colour = flip_col }, { string = "" .. mod_num_tally, colour = G.C.BLUE } },
-                    { localize("k_numbered_cards") }
+                    {x = 3, y = 0},
+                    {{string = "" .. num_tally, colour = flip_col}, {string = "" .. mod_num_tally, colour = G.C.BLUE}},
+                    {localize("k_numbered_cards")}
             ), -- Numbers
         }},
     }
@@ -317,10 +317,10 @@ local copied = function()
             table.insert(n_nodes, tally_sprite(
                     SMODS.Suits[v].ui_pos,
                     {
-                        { string = "" .. suit_tallies[v], colour = flip_col },
-                        { string = "" .. mod_suit_tallies[v], colour = G.C.BLUE }
+                        {string = "" .. suit_tallies[v], colour = flip_col},
+                        {string = "" .. mod_suit_tallies[v], colour = G.C.BLUE}
                     },
-                    { localize(v, "suits_plural") }, v))
+                    {localize(v, "suits_plural")}, v))
             if #n_nodes == suits_per_row then
                 table.insert(temp_list, n_nodes)
                 n_nodes = {}
@@ -344,13 +344,13 @@ local copied = function()
                     {n = G.UIT.R, config = {align = "cm", r = 0.1, colour = G.C.L_BLACK, emboss = 0.05, padding = 0.15}, nodes = {
                         {n = G.UIT.R, config = {align = "cm"}, nodes = {
                             {n = G.UIT.O, config = {
-                                object = DynaText({ string = G.GAME.selected_back.loc_name, colours = {G.C.WHITE}, bump = true, rotate = true, shadow = true, scale = 0.6 - string.len(G.GAME.selected_back.loc_name) * 0.01 })
+                                object = DynaText({string = G.GAME.selected_back.loc_name, colours = {G.C.WHITE}, bump = true, rotate = true, shadow = true, scale = 0.6 - string.len(G.GAME.selected_back.loc_name) * 0.01})
                             }},
                         }},
                         {n = G.UIT.R, config = {align = "cm", r = 0.1, padding = 0.1, minw = 2.5, minh = 1.3, colour = G.C.WHITE, emboss = 0.05}, nodes = {
                             {n = G.UIT.O, config = {
                                 object = UIBox {
-                                    definition = G.GAME.selected_back:generate_UI(nil, 0.7, 0.5, G.GAME.challenge), config = {offset = { x = 0, y = 0 } }
+                                    definition = G.GAME.selected_back:generate_UI(nil, 0.7, 0.5, G.GAME.challenge), config = {offset = {x = 0, y = 0}}
                                 }
                             }}
                         }}
@@ -372,7 +372,7 @@ local copied = function()
         {n = G.UIT.O, config = {
             id = "suit_list",
             object = UIBox {
-                definition = object, config = {offset = { x = 0, y = 0 }, align = "cm"}
+                definition = object, config = {offset = {x = 0, y = 0}, align = "cm"}
             }}}}}
 end
 
