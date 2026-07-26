@@ -45,13 +45,13 @@ local ordered = function()
     for k, v in ipairs(G.deck.cards) do
         if v.ability.name ~= "Stone Card" then
             local v_nr, v_ns = SMODS.has_no_rank(v), SMODS.has_no_suit(v)
-            --For the suits
+            -- For the suits
             if v.base.suit and not v_ns then suit_tallies[v.base.suit] = (suit_tallies[v.base.suit] or 0) + 1 end
             for kk, vv in pairs(mod_suit_tallies) do
                 mod_suit_tallies[kk] = (vv or 0) + (v:is_suit(kk) and 1 or 0)
             end
 
-            --for face cards/numbered cards/aces
+            -- For face cards/numbered cards/aces
             local card_id = v:get_id()
             if v.base.value and not v_nr and SMODS.Ranks[v.base.value].face then face_tally = face_tally + 1 end
             if v:is_face() then mod_face_tally = mod_face_tally + 1 end
@@ -60,7 +60,7 @@ local ordered = function()
             if card_id == 14 then ace_tally = ace_tally + 1 end
             if v:is_rank(14, true) then mod_ace_tally = mod_ace_tally + 1 end
 
-            --ranks
+            -- Ranks
             for kk, vv in ipairs(rank_name_mapping) do
                 if card_id == SMODS.Ranks[vv].id then rank_tallies[vv] = rank_tallies[vv] + 1 end
                 if v:is_rank(SMODS.Ranks[vv].id, true) then mod_rank_tallies[vv] = mod_rank_tallies[vv] + 1 end
@@ -91,7 +91,7 @@ local ordered = function()
     end
 
     local tally_ui = {
-        -- base cards
+        -- Base cards
         {n = G.UIT.R, config = {align = "cm", minh = 0.05, padding = 0.07}, nodes = {
             {n = G.UIT.O, config = {
                 object = DynaText({
@@ -102,26 +102,26 @@ local ordered = function()
                     colours = { G.C.RED }, silent = true, scale = 0.4, pop_in_rate = 10, pop_delay = 4
                 })
             }}}},
-        -- aces, faces and numbered cards
+        -- Aces, faces and numbered cards
         {n = G.UIT.R, config = {align = "cm", minh = 0.05, padding = 0.1}, nodes = {
             tally_sprite(
                     { x = 1, y = 0 },
                     { { string = "" .. ace_tally, colour = flip_col }, { string = "" .. mod_ace_tally, colour = G.C.BLUE } },
                     { localize("k_aces") }
-            ), --Aces
+            ), -- Aces
             tally_sprite(
                     { x = 2, y = 0 },
                     { { string = "" .. face_tally, colour = flip_col }, { string = "" .. mod_face_tally, colour = G.C.BLUE } },
                     { localize("k_face_cards") }
-            ), --Face
+            ), -- Face
             tally_sprite(
                     { x = 3, y = 0 },
                     { { string = "" .. num_tally, colour = flip_col }, { string = "" .. mod_num_tally, colour = G.C.BLUE } },
                     { localize("k_numbered_cards") }
-            ), --Numbers
+            ), -- Numbers
         }},
     }
-    -- add suit tallies
+    -- Add suit tallies
     local suits_per_row = 2
     local n_nodes = {}
     local temp_list = {}
@@ -232,13 +232,13 @@ local copied = function()
     for k, v in ipairs(G.playing_cards) do
         if v.ability.name ~= "Stone Card" then
             local v_nr, v_ns = SMODS.has_no_rank(v), SMODS.has_no_suit(v)
-            --For the suits
+            -- For the suits
             if v.base.suit and not v_ns then suit_tallies[v.base.suit] = (suit_tallies[v.base.suit] or 0) + 1 end
             for kk, vv in pairs(mod_suit_tallies) do
                 mod_suit_tallies[kk] = (vv or 0) + (v:is_suit(kk) and 1 or 0)
             end
 
-            --for face cards/numbered cards/aces
+            -- For face cards/numbered cards/aces
             local card_id = v:get_id()
             if v.base.value and not v_nr and SMODS.Ranks[v.base.value].face then face_tally = face_tally + 1 end
             if v:is_face() then mod_face_tally = mod_face_tally + 1 end
@@ -247,7 +247,7 @@ local copied = function()
             if card_id == 14 then ace_tally = ace_tally + 1 end
             if v:is_rank(14, true) then mod_ace_tally = mod_ace_tally + 1 end
 
-            --ranks
+            -- Ranks
             for kk, vv in ipairs(rank_name_mapping) do
                 if card_id == SMODS.Ranks[vv].id then rank_tallies[vv] = rank_tallies[vv] + 1 end
                 if v:is_rank(SMODS.Ranks[vv].id, true) then mod_rank_tallies[vv] = mod_rank_tallies[vv] + 1 end
@@ -278,7 +278,7 @@ local copied = function()
     end
 
     local tally_ui = {
-        -- base cards
+        -- Base cards
         {n = G.UIT.R, config = {align = "cm", minh = 0.05, padding = 0.07}, nodes = {
             {n = G.UIT.O, config = {
                 object = DynaText({
@@ -289,26 +289,26 @@ local copied = function()
                     colours = { G.C.RED }, silent = true, scale = 0.4, pop_in_rate = 10, pop_delay = 4
                 })
             }}}},
-        -- aces, faces and numbered cards
+        -- Aces, faces and numbered cards
         {n = G.UIT.R, config = {align = "cm", minh = 0.05, padding = 0.1}, nodes = {
             tally_sprite(
                     { x = 1, y = 0 },
                     { { string = "" .. ace_tally, colour = flip_col }, { string = "" .. mod_ace_tally, colour = G.C.BLUE } },
                     { localize("k_aces") }
-            ), --Aces
+            ), -- Aces
             tally_sprite(
                     { x = 2, y = 0 },
                     { { string = "" .. face_tally, colour = flip_col }, { string = "" .. mod_face_tally, colour = G.C.BLUE } },
                     { localize("k_face_cards") }
-            ), --Face
+            ), -- Face
             tally_sprite(
                     { x = 3, y = 0 },
                     { { string = "" .. num_tally, colour = flip_col }, { string = "" .. mod_num_tally, colour = G.C.BLUE } },
                     { localize("k_numbered_cards") }
-            ), --Numbers
+            ), -- Numbers
         }},
     }
-    -- add suit tallies
+    -- Add suit tallies
     local suits_per_row = 2
     local n_nodes = {}
     local temp_list = {}
