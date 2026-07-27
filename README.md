@@ -30,7 +30,6 @@ Because this mod contains bespoke code, you may encounter compatibility issues w
 * [Banner](https://github.com/SylviBlossom/Banner)
 * [Galdur](https://github.com/Eremel/Galdur)
 * [JokerDisplay](https://github.com/nh6574/JokerDisplay)
-* [Talisman](https://github.com/SpectralPack/Talisman)
 * [Too Many Jokers](https://github.com/cg-223/toomanyjokers)
 #### Known incompatible mods:
 * [DebugPlus](https://github.com/WilsontheWolf/DebugPlus)
