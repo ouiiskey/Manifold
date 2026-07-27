@@ -12,6 +12,7 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if not context.blueprint then
             if context.individual and context.cardarea == G.play and SMODS.has_enhancement(context.other_card, "m_lucky") and not card.getting_sliced then
+                card.getting_sliced = true
                 return {
                     message = localize("k_drank_ex"),
                     message_card = card,

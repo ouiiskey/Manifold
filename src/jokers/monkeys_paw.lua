@@ -77,6 +77,7 @@ SMODS.Joker {
             if context.cardarea == G.jokers and context.after and G.GAME.fingers == 2 then
                 card.ability.extra.hands = card.ability.extra.hands - 1
                 if card.ability.extra.hands <= 0 then
+                    card.getting_sliced = true
                     G.GAME.pool_flags.ceased = true
                     G.GAME.fingers = false
                     return {

@@ -30,9 +30,7 @@ function Card:is_number(check_debuff)
 end
 
 function Card:eat()
-    self.getting_sliced = true
-    -- Immediate is true for foods that require precise timings
-    SMODS.destroy_cards(self, nil, true, true)
+    SMODS.destroy_cards(self, {pinch_anim = true})
 end
 
 -- Force Queue, see also force_queue.toml
