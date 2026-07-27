@@ -42,6 +42,19 @@ if specific_vars and _c.name ~= "Stone Card" then
 end
 '''
 
+# SMODS.Enhancement.generate_ui
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/game_object.lua"]'
+pattern = "SMODS.Enhancement.super.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)"
+position = "before"
+match_indent = true
+payload = '''
+if not (self.replace_base_card or specific_vars.debuffed) then
+    {{lovely:pip_text}}
+end
+'''
+
 # SMODS.has_no_suit
 [[patches]]
 [patches.pattern]
