@@ -544,8 +544,8 @@ JokerDisplay.Definitions.j_manifold_slothful = {
                 wilds = wilds + 1
             end
         end
-        card.joker_display_values.x_mult = wilds ^ card.ability.extra.x_mult
-        card.joker_display_values.hands = wilds * card.ability.extra.hand_cost
+        card.joker_display_values.x_mult = card.ability.extra.x_mult ^ wilds
+        card.joker_display_values.hands = card.ability.extra.hand_cost * wilds
     end
 }
 JokerDisplay.Definitions.j_manifold_weierstrass = {
