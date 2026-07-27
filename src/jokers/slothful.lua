@@ -16,8 +16,8 @@ SMODS.Joker {
         return false
     end,
     loc_vars = function(self, info_queue, card)
-        info_queue[#info_queue + 1] = G.P_CENTERS.m_wild
-        return {vars = {card.ability.extra.hand_cost, card.ability.extra.x_mult}}
+        info_queue[#info_queue + 1] = {key = "wild", set = "Other"}
+        return {vars = {card.ability.extra.hand_cost, card.ability.extra.x_mult, colours = {G.C.SUITS.manifold_wild}}}
     end,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.hand and not context.end_of_round and SMODS.has_enhancement(context.other_card, "m_wild") then

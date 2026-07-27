@@ -12,6 +12,7 @@ local consumables = {
     "reverse/tarot",
     -- Vanilla Tarots
     "high_priestess",
+    "lovers",
     -- Vanilla Spectrals
     "incantation",
     "familiar",

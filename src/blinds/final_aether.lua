@@ -1,6 +1,9 @@
 -- Azure Aether, see also final_aether.toml
+local max_hands = 5
+
 MANIF.aether_hands = function()
-    return math.max(math.min(5, G.GAME.aether_hands or G.GAME.starting_params.hands), 0)
+    local out = math.min(G.GAME.round_resets.hands, max_hands)
+    return out > 1 and out or 0
 end
 
 SMODS.Blind {
@@ -14,7 +17,7 @@ SMODS.Blind {
         return {vars = {MANIF.aether_hands()}}
     end,
     collection_loc_vars = function(self)
-        return {vars = {5}}
+        return {vars = {max_hands}}
     end,
     set_blind = function(self, reset, silent)
         if not reset then

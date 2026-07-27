@@ -32,7 +32,7 @@ SMODS.Back {
             -- Hierophant
             enhance("m_bonus"),
             -- Lovers
-            enhance("m_wild"),
+            suit_conv("manifold_wild"),
             -- Chariot
             enhance("m_steel"),
             -- Justice

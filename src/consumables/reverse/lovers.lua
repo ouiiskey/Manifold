@@ -9,7 +9,8 @@ SMODS.Consumable {
     cost = 3,
     config = {extra = {enhancement = "m_wild"}},
     loc_vars = function(self, info_queue, card)
-        info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.extra.enhancement]
+        info_queue[#info_queue + 1] = {key = "wild", set = "Other"}
+        return {vars = {colours = {G.C.SUITS.manifold_wild}}}
     end,
     use = function(self, card, area, copier)
         G.E_MANAGER:add_event(Event{trigger = "after", delay = 0.4, func = function()

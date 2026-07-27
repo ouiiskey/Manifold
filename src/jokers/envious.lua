@@ -14,7 +14,8 @@ SMODS.Joker {
         return false
     end,
     loc_vars = function(self, info_queue, card)
-        info_queue[#info_queue + 1] = G.P_CENTERS.m_wild
+        info_queue[#info_queue + 1] = {key = "wild", set = "Other"}
+        return {vars = {colours = {G.C.SUITS.manifold_wild}}}
     end,
     calculate = function(self, card, context)
         if context.before and context.cardarea == G.jokers then
@@ -22,8 +23,8 @@ SMODS.Joker {
             for k, v in ipairs(context.full_hand) do
                 if not SMODS.in_scoring(v, context.scoring_hand) then
                     envy = true
-                    v:set_ability(G.P_CENTERS.m_wild, nil, true)
                     G.E_MANAGER:add_event(Event{func = function()
+                        v:change_suit("manifold_wild")
                         v:juice_up()
                         return true end})
                 end

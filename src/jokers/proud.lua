@@ -16,10 +16,10 @@ SMODS.Joker {
         return false
     end,
     loc_vars = function(self, info_queue, card)
-        info_queue[#info_queue + 1] = G.P_CENTERS.m_wild
+        info_queue[#info_queue + 1] = {key = "wild", set = "Other"}
         info_queue[#info_queue + 1] = G.P_CENTERS.e_polychrome
         local numerator, denominator = SMODS.get_probability_vars(card, card.ability.extra.numerator, card.ability.extra.denominator, "manifold_proud")
-        return {vars = {numerator, denominator}}
+        return {vars = {numerator, denominator, colours = {G.C.SUITS.manifold_wild}}}
     end,
     calculate = function(self, card, context)
         if context.before and context.cardarea == G.jokers then

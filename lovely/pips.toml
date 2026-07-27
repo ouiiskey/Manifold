@@ -4,7 +4,7 @@ dump_lua = true
 priority = 0
 
 [vars]
-none_text = '''
+pip_text = '''
 local rankless = specific_vars.value == "manifold_none"
 local suitless = specific_vars.suit == "manifold_nothing"
 if rankless and suitless then
@@ -13,6 +13,9 @@ elseif rankless then
     localize{type = "other", key = "rankless", nodes = desc_nodes, vars = {}}
 elseif suitless then
     localize{type = "other", key = "suitless", nodes = desc_nodes, vars = {}}
+end
+if specific_vars.suit == "manifold_wild" then
+    localize{type = "other", key = "wild", nodes = desc_nodes, vars = {}}
 end
 '''
 
@@ -24,7 +27,7 @@ pattern = "if specific_vars.bonus_chips then"
 position = "before"
 match_indent = true
 payload = '''
-{{lovely:none_text}}
+{{lovely:pip_text}}
 '''
 
 [[patches]]
@@ -35,7 +38,7 @@ position = "before"
 match_indent = true
 payload = '''
 if specific_vars and _c.name ~= "Stone Card" then
-    {{lovely:none_text}}
+    {{lovely:pip_text}}
 end
 '''
 
@@ -50,28 +53,7 @@ payload = '''
 if card.base.suit == "manifold_nothing" then is_stone = true end
 '''
 
-# G.UIDEF.view_deck
-[[patches]]
-[patches.pattern]
-target = '=[SMODS _ "src/overrides.lua"]'
-pattern = "if suit_tallies[suit] == 0 and SMODS.Suits[suit].in_pool and not SMODS.add_to_pool(SMODS.Suits[suit], {rank=''}) then"
-position = "at"
-match_indent = true
-payload = '''
-if suit_tallies[suit] == 0 and SMODS.Suits[suit].in_pool and not SMODS.add_to_pool(SMODS.Suits[suit], {rank=""}) or SMODS.Suits[suit].hidden then
-'''
-
-[[patches]]
-[patches.pattern]
-target = '=[SMODS _ "src/overrides.lua"]'
-pattern = "if rank_tallies[rank_name_mapping[i]] ~= 0 or SMODS.add_to_pool(SMODS.Ranks[rank_name_mapping[i]], { suit = '' }) then"
-position = "at"
-match_indent = true
-payload = '''
-if (rank_tallies[rank_name_mapping[i]] ~= 0 or SMODS.add_to_pool(SMODS.Ranks[rank_name_mapping[i]], {suit = ""})) and not SMODS.Ranks[rank_name_mapping[i]].hidden then
-'''
-
-# Move nothing to end of suit list
+# Move suits to end of suit list (deck views)
 [[patches]]
 [patches.pattern]
 target = '=[SMODS _ "src/overrides.lua"]'
@@ -83,6 +65,12 @@ local buffer = SMODS.Suit.obj_buffer
 for k, v in ipairs(buffer) do
     if v == "manifold_nothing" then
         table.insert(buffer, 1, table.remove(buffer, k))
+        break
+    end
+end
+for k, v in ipairs(buffer) do
+    if v == "manifold_wild" then
+        table.insert(buffer, 2, table.remove(buffer, k))
         break
     end
 end

@@ -6,7 +6,7 @@ return {
                 text = {
                     "{C:attention}+#1#{} Joker slot",
                     "Start run with {C:attention}#2#",
-                    "extra {C:attention}blank{} cards"
+                    "extra {C:attention,T:rankless_suitless}blank{} cards"
                 },
                 unlock = {
                     "Discover at least",
@@ -657,7 +657,7 @@ return {
                 name = "Proud Joker",
                 text = {
                     "{C:green}#1# in #2#{} chance for",
-                    "scoring {C:attention}Wild{} cards",
+                    "scoring {V:1}Wild{} cards",
                     "to gain {C:dark_edition}Polychrome"
                 }
             },
@@ -666,13 +666,13 @@ return {
                 text = {
                     "Played cards that",
                     "do not score",
-                    "become {C:attention}Wild{} cards"
+                    "become {V:1}Wild{} cards"
                 }
             },
             j_manifold_slothful = {
                 name = "Slothful Joker",
                 text = {
-                    "Each {C:attention}Wild{} card held",
+                    "Each {V:1}Wild{} card held",
                     "in hand expends {C:blue}#1#",
                     "Hand to give {X:mult,C:white} X#2# {} Mult"
                 }
@@ -797,7 +797,7 @@ return {
                 name = "{f:manifold_reverse}srevoL ehT",
                 text = {
                     "Destroys {C:attention}1",
-                    "selected {C:attention}Wild{} card"
+                    "selected {V:1}Wild{} card"
                 }
             },
             c_manifold_chariot = {
@@ -966,6 +966,7 @@ return {
                 }
             },
             rankless_suitless = {
+                name = "Blank",
                 text = {
                     "No rank or suit"
                 }
@@ -982,6 +983,12 @@ return {
                     "this card in an",
                     "unseeded run to",
                     "learn what it does"
+                }
+            },
+            wild = {
+                name = "Wild",
+                text = {
+                    "All suits"
                 }
             }
         },
@@ -1049,6 +1056,13 @@ return {
                     "{C:planet}Planet{} card used",
                     "during this run",
                     "{C:inactive}(Must have room)"
+                }
+            },
+            c_lovers = {
+                text = {
+                    "Converts {C:attention}#1#{}",
+                    "selected card",
+                    "to {V:1}#2#"
                 }
             },
             c_wheel_of_fortune = {
@@ -1130,10 +1144,12 @@ return {
             manifold_none = "None"
         },
         suits_plural = {
-            manifold_nothing = "Nothing"
+            manifold_nothing = "Nothing",
+            manifold_wild = "Wilds"
         },
         suits_singular = {
-            manifold_nothing = "Nothing"
+            manifold_nothing = "Nothing",
+            manifold_wild = "Wild"
         },
         v_text = {
             ch_c_all_perishable = {
