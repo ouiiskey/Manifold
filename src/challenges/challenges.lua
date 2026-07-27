@@ -1,3 +1,4 @@
+-- See also challenges.toml
 local challenges = {
     "high_roller",
     "plant_vs_zombie",
