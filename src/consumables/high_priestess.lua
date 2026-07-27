@@ -1,6 +1,6 @@
 -- The High Priestess, see also planet.toml
 SMODS.Consumable:take_ownership("high_priestess", {
-    loc_vars = function(self, info_queue, center)
+    loc_vars = function(self, info_queue, card)
         local priest_c = G.GAME.last_planet and G.P_CENTERS[G.GAME.last_planet] or nil
         local last_planet = priest_c and localize{ type = "name_text", key = priest_c.key, set = priest_c.set} or localize("k_none")
         if priest_c then
