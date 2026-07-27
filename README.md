@@ -5,7 +5,7 @@
 A Balatro mod focused on creativity and balance.
 
 ## About
-This mod is intended to preserve the base game's balance while adding new gameplay. For the best experience, play without using `Unlock All`. For more information, see the [wiki](https://balatromods.miraheze.org/wiki/Manifold).
+This mod is intended to preserve the base game's balance while adding new gameplay. For the full experience, play without using `Unlock All`. For more information, see the [wiki](https://balatromods.miraheze.org/wiki/Manifold).
 
 ## Installing
 ### Method 1: Manual Install
