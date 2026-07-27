@@ -61,8 +61,8 @@ local ordered = function()
             if v:is_rank(14, true) then mod_ace_tally = mod_ace_tally + 1 end
 
             -- Ranks
+            if v.base.value and not v_nr then rank_tallies[v.base.value] = rank_tallies[v.base.value] + 1 end
             for kk, vv in ipairs(rank_name_mapping) do
-                if card_id == SMODS.Ranks[vv].id then rank_tallies[vv] = rank_tallies[vv] + 1 end
                 if v:is_rank(SMODS.Ranks[vv].id, true) then mod_rank_tallies[vv] = mod_rank_tallies[vv] + 1 end
             end
         end
@@ -122,11 +122,17 @@ local ordered = function()
         }},
     }
     -- Add suit tallies
-    local suits_per_row = 2
+    local suits_tallied = 0
+    for k, v in pairs(suit_tallies) do
+        if v > 0 then
+            suits_tallied = suits_tallied + 1
+        end
+    end
+    local suits_per_row = suits_tallied > 4 and 3 or 2
     local n_nodes = {}
     local temp_list = {}
     for k, v in pairs(suit_map) do
-        if not SMODS.Suits[v].hidden then
+        if suit_tallies[v] ~= 0 or not SMODS.Suits[v].in_pool or SMODS.add_to_pool(SMODS.Suits[v], {rank=""}) then
             table.insert(n_nodes, tally_sprite(
                     SMODS.Suits[v].ui_pos,
                     {
@@ -248,8 +254,8 @@ local copied = function()
             if v:is_rank(14, true) then mod_ace_tally = mod_ace_tally + 1 end
 
             -- Ranks
+            if v.base.value and not v_nr then rank_tallies[v.base.value] = rank_tallies[v.base.value] + 1 end
             for kk, vv in ipairs(rank_name_mapping) do
-                if card_id == SMODS.Ranks[vv].id then rank_tallies[vv] = rank_tallies[vv] + 1 end
                 if v:is_rank(SMODS.Ranks[vv].id, true) then mod_rank_tallies[vv] = mod_rank_tallies[vv] + 1 end
             end
         end
@@ -309,11 +315,17 @@ local copied = function()
         }},
     }
     -- Add suit tallies
-    local suits_per_row = 2
+    local suits_tallied = 0
+    for k, v in pairs(suit_tallies) do
+        if v > 0 then
+            suits_tallied = suits_tallied + 1
+        end
+    end
+    local suits_per_row = suits_tallied > 4 and 3 or 2
     local n_nodes = {}
     local temp_list = {}
     for k, v in pairs(suit_map) do
-        if not SMODS.Suits[v].hidden then
+        if suit_tallies[v] ~= 0 or not SMODS.Suits[v].in_pool or SMODS.add_to_pool(SMODS.Suits[v], {rank=""}) then
             table.insert(n_nodes, tally_sprite(
                     SMODS.Suits[v].ui_pos,
                     {
