@@ -48,10 +48,10 @@ pattern = 'if v.is and v:is(Object) then ret_t[k] = [["]].."MANUAL_REPLACE"..[["
 position = "at"
 match_indent = true
 payload = '''
-if v.is then
+if v.is and v:is(Object) then
     if v:is(SMODS.Gradient) then
         ret_t[k] = v.key
-    elseif v:is(Object) then
+    else
         ret_t[k] = '"MANUAL_REPLACE"'
     end
 '''
