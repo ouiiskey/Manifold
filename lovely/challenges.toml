@@ -98,6 +98,22 @@ end
 [[patches]]
 [patches.pattern]
 target = "challenges.lua"
+pattern = '''
+        }
+    }
+},
+{
+    name = "Cruelty",
+'''
+position = "before"
+match_indent = true
+payload = '''
+{id = "bl_manifold_final_aether", type = "blind"},
+'''
+
+[[patches]]
+[patches.pattern]
+target = "challenges.lua"
 pattern = "{id = 'j_luchador'},"
 position = "after"
 match_indent = true
@@ -112,22 +128,6 @@ payload = '''
 {id = "j_manifold_wallet"},
 {id = "j_manifold_monkeys_paw"},
 {id = "j_manifold_rorschach"},
-'''
-
-[[patches]]
-[patches.pattern]
-target = "challenges.lua"
-pattern = '''
-        }
-    }
-},
-{
-    name = "Cruelty",
-'''
-position = "before"
-match_indent = true
-payload = '''
-{id = "bl_manifold_final_aether", type = "blind"},
 '''
 
 # Blind:set_blind
