@@ -1,5 +1,5 @@
 -- The Mind, see also mind.toml
--- Note: the SMODS hidden feature is not used because its randomness is flawed and legendary seed sifting is easier this way
+-- Note: the SMODS hidden feature is not used because its randomness was flawed when I wrote this and legendary seed sifting is easier this way
 SMODS.Atlas {
     key = "mind",
     path = "mind.png",
