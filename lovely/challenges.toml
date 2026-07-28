@@ -102,15 +102,15 @@ pattern = "{id = 'j_luchador'},"
 position = "after"
 match_indent = true
 payload = '''
-{id = "j_manifold_mana_gem"},
-{id = "j_manifold_baked_potato"},
-{id = "j_manifold_carte_blanche"},
-{id = "j_manifold_cookie"},
+{id = "j_manifold_orange_juice"},
 {id = "j_manifold_pudding"},
 {id = "j_manifold_cookie_dough"},
-{id = "j_manifold_orange_juice"},
-{id = "j_manifold_wallet"},
+{id = "j_manifold_cookie"},
+{id = "j_manifold_baked_potato"},
 {id = "j_manifold_monkeys_paw"},
+{id = "j_manifold_mana_gem"},
+{id = "j_manifold_wallet"},
+{id = "j_manifold_carte_blanche"},
 {id = "j_manifold_rorschach"},
 '''
 
