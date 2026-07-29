@@ -115,3 +115,20 @@ for kk, vv in ipairs(rank_name_mapping) do
     if v:is_rank(SMODS.Ranks[vv].id, true) then mod_rank_tallies[vv] = mod_rank_tallies[vv] + 1 end
 end
 '''
+
+# Add seal chance to Vanilla Illusion and make Edition chance scale with Hone
+# create_card_for_shop
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''
+if (v.type == 'Base' or v.type == 'Enhanced') and G.GAME.used_vouchers["v_illusion"] and pseudorandom(pseudoseed('illusion')) > 0.8 then 
+    card:set_edition(poll_edition('illusion', nil, true, true))
+'''
+position = "at"
+match_indent = true
+payload = '''
+if (v.type == "Base" or v.type == "Enhanced") and G.GAME.used_vouchers.v_illusion then
+    card:set_seal(SMODS.poll_seal({key = "illusion", mod = 10}), true, true)
+    card:set_edition(poll_edition("illusion", 5, true))
+'''
