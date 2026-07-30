@@ -1,0 +1,25 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# G.UIDEF.shop
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "2.1*G.CARD_W,"
+position = "at"
+match_indent = true
+payload = '''
+1.6 * G.CARD_W,
+'''
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "2.4*G.CARD_W,"
+position = "at"
+match_indent = true
+payload = '''
+2.9 * G.CARD_W,
+'''

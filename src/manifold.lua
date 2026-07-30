@@ -48,6 +48,7 @@ local source = {
     "seals",
     "stickers",
     "pips/pips",
+    "vouchers/vouchers",
     "compat/compat"
 }
 for k, v in ipairs(source) do
