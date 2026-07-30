@@ -11,6 +11,7 @@ SMODS.Joker {
     unlocked = false,
     locked_loc_vars = function(self, info_queue, card)
         if G.P_CENTERS.j_cavendish.discovered then info_queue[#info_queue + 1] = G.P_CENTERS.j_cavendish end
+        return {} -- Just to stop the warning
     end,
     check_for_unlock = function(self, args)
         return args.type == "cavendish_extinct"
