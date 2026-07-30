@@ -1105,7 +1105,7 @@ return {
                     "add a {C:planet}Celestial Pack",
                     "in the shop"
                 }
-            },
+            }
         }
     },
     misc = {
