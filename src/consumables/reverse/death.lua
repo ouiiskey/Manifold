@@ -22,13 +22,11 @@ SMODS.Consumable {
                 return true end}))
         end
         delay(0.2)
-        for i = 2, 1, -1 do
-            G.E_MANAGER:add_event(Event({trigger = "after", delay = 0.1, func = function()
-                if i ~= 1 then
-                    assert(SMODS.change_base(G.hand.highlighted[2], nil, SMODS.has_no_rank(G.hand.highlighted[1]) and "manifold_none" or G.hand.highlighted[1].base.value))
-                end
-                return true end}))
-        end
+        local left = G.hand.highlighted[G.hand.highlighted[1].T.x > G.hand.highlighted[2].T.x and 2 or 1]
+        local right = G.hand.highlighted[G.hand.highlighted[1].T.x > G.hand.highlighted[2].T.x and 1 or 2]
+        G.E_MANAGER:add_event(Event({trigger = "after", delay = 0.1, func = function()
+            assert(SMODS.change_base(right, SMODS.has_no_suit(left) and "manifold_nothing" or left.base.suit, SMODS.has_no_rank(left) and "manifold_none" or left.base.value))
+            return true end}))
         for i = 2, 1, -1 do
             local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
             G.E_MANAGER:add_event(Event({trigger = "after", delay = 0.15, func = function()
