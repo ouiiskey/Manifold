@@ -69,7 +69,6 @@ vec4 effect(vec4 color, Image texture, vec2 texture_coords, vec2 screen_coords) 
         vec3(259.0, 302.0, 36.0) / 255.0,
         vec3(91.0, 149.0, 337.0) / 255.0,
         vec3(318.0, 235.0, 37.0) / 255.0
-
     );
     vec4 tex = Texel(texture, texture_coords);
     vec2 uv = (texture_coords * image_details - texture_details.xy * texture_details.zw) / texture_details.zw;
