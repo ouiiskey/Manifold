@@ -12,7 +12,7 @@ vec4 dissolve_mask(vec4 tex, vec2 texture_coords, vec2 uv) {
     }
 
     float adjusted_dissolve = dissolve * dissolve * (3.0 - 2.0 * dissolve) * 1.02 - 0.01;
-    //Adjusting 0.0 - 1.0 to fall to -0.1 - 1.1 scale so the mask does not pause at extreme values
+    // Adjusting 0.0 - 1.0 to fall to -0.1 - 1.1 scale so the mask does not pause at extreme values
 
     float t = time * 10.0 + 2003.0;
     vec2 floored_uv = floor(uv * texture_details.ba) / max(texture_details.b, texture_details.a);
