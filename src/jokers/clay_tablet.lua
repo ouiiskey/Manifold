@@ -31,14 +31,7 @@ SMODS.Joker {
             for i = 2, #context.full_hand do
                 if not context.full_hand[i].edition and SMODS.has_enhancement(context.full_hand[i], "m_stone") and context.full_hand[i-1]:is_rank(6) then
                     foiled = true
-                    -- Card scores as foil but shader doesn't come early
-                    context.full_hand[i]:set_edition({foil = true}, true, true)
-                    context.full_hand[i].edition.foil = false
-                    G.E_MANAGER:add_event(Event{func = function()
-                        context.full_hand[i].edition.foil = true
-                        context.full_hand[i]:juice_up()
-                        play_sound("foil1", 1.2, 0.4)
-                        return true end})
+                    context.full_hand[i]:set_edition({foil = true})
                 end
             end
             if foiled then
