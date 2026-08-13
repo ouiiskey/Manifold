@@ -32,7 +32,7 @@ SMODS.Joker {
                 if not context.full_hand[i].edition and SMODS.has_enhancement(context.full_hand[i], "m_stone") and context.full_hand[i-1]:is_rank(6) then
                     context.full_hand[i]:set_edition({foil = true}, true, foiled)
                     if foiled then
-                        G.E_MANAGER:add_event(Event{trigger = "after", delay = 0, blockable = false, func = function()
+                        G.E_MANAGER:add_event(Event{trigger = "after", blockable = false, func = function()
                             context.full_hand[i]:juice_up(1, 0.5)
                             return true end})
                     end

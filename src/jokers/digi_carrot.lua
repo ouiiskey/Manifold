@@ -10,8 +10,8 @@ SMODS.Joker {
     config = {extra = {e_mult = 1.5, increment = 0.05}},
     unlocked = false,
     locked_loc_vars = function(self, info_queue, card)
+        ---@diagnostic disable-next-line: missing-return
         if G.P_CENTERS.j_cavendish.discovered then info_queue[#info_queue + 1] = G.P_CENTERS.j_cavendish end
-        return {} -- Just to stop the warning
     end,
     check_for_unlock = function(self, args)
         return args.type == "cavendish_extinct"

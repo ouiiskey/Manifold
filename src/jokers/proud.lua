@@ -29,15 +29,13 @@ SMODS.Joker {
                 if not v.edition and SMODS.has_enhancement(v, "m_wild") then
                     wild = true
                     if SMODS.pseudorandom_probability(card, "manifold_proud", card.ability.extra.numerator, card.ability.extra.denominator) then
+                        v:set_edition({polychrome = true}, true, chromed)
+                        if chromed then
+                            G.E_MANAGER:add_event(Event{trigger = "after", blockable = false, func = function()
+                                v:juice_up(1, 0.5)
+                                return true end})
+                        end
                         chromed = true
-                        -- Card scores as polychrome but shader doesn't come early
-                        v:set_edition({polychrome = true}, true, true)
-                        v.edition.polychrome = false
-                        G.E_MANAGER:add_event(Event{func = function()
-                            v.edition.polychrome = true
-                            v:juice_up()
-                            play_sound("polychrome1", 1.2, 0.35)
-                            return true end})
                     end
                 end
             end
