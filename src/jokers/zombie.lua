@@ -13,6 +13,7 @@ SMODS.Joker {
         return {vars = {localize{type = "name_text", set = "Joker", key = joker}}}
     end,
     check_for_unlock = function(self, args)
+        ---@diagnostic disable-next-line: return-type-mismatch
         return args.type == "lose" and next(SMODS.find_card(joker))
     end,
     calculate = function(self, card, context)
