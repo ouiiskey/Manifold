@@ -1070,13 +1070,6 @@ return {
             }
         },
         Voucher = {
-            v_tarot_merchant = {
-                text = {
-                    "{C:green}#1# in #2#{} chance to",
-                    "add an {C:tarot}Arcana Pack",
-                    "in the shop"
-                }
-            },
             v_planet_merchant = {
                 text = {
                     "{C:green}#1# in #2#{} chance to",
@@ -1090,13 +1083,6 @@ return {
                     "{C:planet}Planet{} area give",
                     "{X:red,C:white} X#1# {} Mult for their",
                     "specified {C:attention}poker hand"
-                }
-            },
-            v_tarot_tycoon = {
-                text = {
-                    "{C:green}#1# in #2#{} chance to",
-                    "add an {C:tarot}Arcana Pack",
-                    "in the shop"
                 }
             },
             v_planet_tycoon = {
