@@ -1,0 +1,18 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Allow Zombie to trigger on empty deck
+# G.FUNCS.draw_from_deck_to_hand
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "if #SMODS.drawn_cards > 0 then"
+position = "at"
+match_indent = true
+payload = '''
+if #SMODS.drawn_cards == 0 then
+    SMODS.calculate_context{no_hand_drawn = G.GAME.facing_blind}
+else
+'''

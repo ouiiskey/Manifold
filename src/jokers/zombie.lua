@@ -1,4 +1,4 @@
--- Zombie Joker
+-- Zombie Joker, see also zombie.toml
 local joker = "j_joker"
 
 SMODS.Joker {
@@ -17,7 +17,7 @@ SMODS.Joker {
         return args.type == "lose" and next(SMODS.find_card(joker))
     end,
     calculate = function(self, card, context)
-        if context.hand_drawn and not context.blueprint and G.GAME.current_round.hands_left == 1 and not G.GAME.current_round.final_wave then
+        if (context.hand_drawn or context.no_hand_drawn) and not context.blueprint and G.GAME.current_round.hands_left == 1 and not G.GAME.current_round.final_wave then
             G.GAME.current_round.final_wave = true
             local faces = {}
             for k, v in ipairs(G.discard.cards) do
