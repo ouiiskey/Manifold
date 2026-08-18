@@ -11,12 +11,12 @@ This mod is intended to preserve the base game's balance while adding new gamepl
 ### Method 1: Manual Install
 1. Install [Steamodded](https://github.com/Steamodded/smods/wiki).
 2. Download the [latest release](https://github.com/ouiiskey/Manifold/releases/latest).
-3. Place the zip in your `Mods` folder.
+3. Place `Manifold.zip` in your `Mods` folder.
 
 #### Updating
 1. Delete the old version from your `Mods` folder.
 2. Download the [latest release](https://github.com/ouiiskey/Manifold/releases/latest).
-3. Place the zip in your `Mods` folder.
+3. Place `Manifold.zip` in your `Mods` folder.
 
 ### Method 2: [JokerDeck](https://github.com/Ch3rryC0d3r/JokerDeck)
 Note: Windows only.
