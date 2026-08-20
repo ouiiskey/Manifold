@@ -9,7 +9,7 @@ This mod is intended to preserve the base game's balance while adding new gamepl
 
 ## Installing
 ### Method 1: Manual Install
-1. Install [Steamodded](https://github.com/Steamodded/smods/wiki).
+1. Install [Steamodded](https://docs.smods.dev/Installation/).
 2. Download the [latest release](https://github.com/ouiiskey/Manifold/releases/latest).
 3. Place `Manifold.zip` in your `Mods` folder.
 
