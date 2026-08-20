@@ -592,9 +592,9 @@ return {
             j_manifold_memory = {
                 name = "Memory Card",
                 text = {
-                    "This Joker gains Chips",
-                    "equal to the sell value of",
-                    "your {C:attention}Jokers{} at end of {C:attention}shop",
+                    "This Joker gains {C:chips}+1{} Chips",
+                    "per sell value of your",
+                    "{C:attention}Jokers{} at end of {C:attention}shop",
                     "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
                 }
             },
