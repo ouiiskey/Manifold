@@ -103,5 +103,6 @@ SMODS.Enhancement:take_ownership("wild", {
     pools = {},
     in_pool = function(self, args)
         return false
-    end
+    end,
+    no_collection = true
 }, true)
