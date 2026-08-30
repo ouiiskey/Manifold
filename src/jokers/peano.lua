@@ -21,21 +21,16 @@ SMODS.Joker {
         G.hand:change_size(-card.ability.extra.hand_size)
     end,
     calculate = function(self, card, context)
-        if context.before and context.cardarea == G.jokers and not context.blueprint and G.GAME.current_round.hands_played == 0 and next(context.poker_hands[card.ability.extra.poker_hand]) then
-            SMODS.scale_card(card, {ref_value = "hand_size", scalar_value = "increment", block_overrides = {value = true, scalar = true}})
-        end
-    end,
-    calc_scaling = function(self, card, other_card, initial_value, scalar_value, args)
-        if other_card.config.center == self then
-            return {
-                post = {
-                    func = function()
-                        if scalar_value ~= 0 then
-                            G.hand:change_size(scalar_value)
-                        end
-                    end
-                }
-            }
+        if context.before and context.cardarea == G.jokers and G.GAME.current_round.hands_played == 0 and next(context.poker_hands[card.ability.extra.poker_hand]) then
+            SMODS.scale_card(card, {
+                ref_value = "hand_size",
+                scalar_value = "increment",
+                message_key = "a_handsize",
+                operation = function(ref_table, ref_value, value, change)
+                    ref_table[ref_value] = value + change
+                    G.hand:change_size(change)
+                end
+            })
         end
     end
 }
