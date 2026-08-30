@@ -27,14 +27,12 @@ SMODS.Joker {
             if card.ability.extra.parity == "none" then
                 if prev ~= "none" then
                     SMODS.reset_card(card, {
-                        ref_table = card.ability.extra,
                         ref_value = "mult",
                         reset_value = 0
                     })
                 end
             elseif prev == card.ability.extra.parity and prev ~= "both" then
                 SMODS.reset_card(card, {
-                    ref_table = card.ability.extra,
                     ref_value = "mult",
                     reset_value = card.ability.extra.modifier
                 })
