@@ -17,15 +17,13 @@ SMODS.Joker{
                 chips = card.ability.extra.chips
             }
         elseif context.individual and context.cardarea == G.hand and not context.end_of_round and not context.blueprint and context.other_card:is_rank(G.GAME.current_round.hot_card.id) then
-            -- Mr. Bones does not trigger any contexts when removed, both in vanilla and smods
             local bones = SMODS.find_card("j_mr_bones")
             if next(bones) and (to_big(G.GAME.chips) + mult * hand_chips) / G.GAME.blind.chips >= to_big(0.25) then
                 G.E_MANAGER:add_event(Event{func = function()
                     G.hand_text_area.blind_chips:juice_up()
                     G.hand_text_area.game_chips:juice_up()
-                    play_sound("tarot1")
-                    bones[1]:start_dissolve()
                     return true end})
+                SMODS.destroy_cards(bones)
                 return {
                     message = localize("k_saved_ex"),
                     message_card = bones[1],
