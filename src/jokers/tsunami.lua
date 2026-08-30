@@ -4,7 +4,7 @@ local quantity = 2
 
 SMODS.Joker {
     key = "tsunami",
-    rarity = 1,
+    rarity = 2,
     atlas = "jokers",
     pos = {x = 6, y = 2},
     cost = 6,
