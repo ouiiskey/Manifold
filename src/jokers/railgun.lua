@@ -26,18 +26,18 @@ SMODS.Joker {
             card.ability.extra.parity = context.other_card:get_parity()
             if card.ability.extra.parity == "none" then
                 if prev ~= "none" then
-                    card.ability.extra.mult = 0
-                    return {
-                        message = localize("k_reset"),
-                        message_card = card
-                    }
+                    SMODS.reset_card(card, {
+                        ref_table = card.ability.extra,
+                        ref_value = "mult",
+                        reset_value = 0
+                    })
                 end
             elseif prev == card.ability.extra.parity and prev ~= "both" then
-                card.ability.extra.mult = card.ability.extra.modifier
-                return {
-                    message = localize("k_reset"),
-                    message_card = card
-                }
+                SMODS.reset_card(card, {
+                    ref_table = card.ability.extra,
+                    ref_value = "mult",
+                    reset_value = card.ability.extra.modifier
+                })
             else
                 SMODS.scale_card(card, {ref_value = "mult", scalar_value = "modifier", no_message = true})
             end
