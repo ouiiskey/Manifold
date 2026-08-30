@@ -11,7 +11,7 @@ SMODS.Challenge {
         }
     },
     jokers = {
-        {id = "j_pareidolia", eternal = true},
+        {id = "j_pareidolia", edition = "negative", eternal = true},
         {id = "j_manifold_zombie", eternal = true}
     },
     apply = function(self)
