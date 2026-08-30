@@ -295,7 +295,7 @@ return {
                 text = {
                     "Earn {C:money}$6{} at end of",
                     "round if chips scored",
-                    "are less than {C:attention}150%",
+                    "are less than {C:attention}120%",
                     "of required chips"
                 }
             },

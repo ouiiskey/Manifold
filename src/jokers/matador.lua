@@ -6,7 +6,7 @@ SMODS.Joker:take_ownership("matador", {
         end
     end,
     calc_dollar_bonus = function(self, card)
-        if G.GAME.chips / G.GAME.blind.chips < 1.5 then
+        if G.GAME.chips / G.GAME.blind.chips < 1.2 then
             return 6
         end
     end
