@@ -1,4 +1,4 @@
--- Boss Rush
+-- Boss Rush, see also rebellion.toml
 SMODS.Challenge {
     key = "boss_rush",
     rules = {

@@ -4,5 +4,14 @@ SMODS.Joker {
     rarity = 3,
     atlas = "jokers",
     pos = {x = 2, y = 3},
-    cost = 7
+    cost = 2
 }
+
+function Blind:get_type()
+    if self.config.blind.boss then
+        return "Boss"
+    elseif self.config.blind.big then
+        return "Big"
+    end
+    return "Small"
+end
