@@ -28,7 +28,6 @@ Because this mod contains bespoke code, you may encounter compatibility issues w
 #### Known compatible mods:
 * [Amulet](https://github.com/frostice482/amulet)
 * [Banner](https://github.com/SylviBlossom/Banner)
-* [Galdur](https://github.com/Eremel/Galdur)
 * [JokerDisplay](https://github.com/nh6574/JokerDisplay)
 * [Too Many Jokers](https://github.com/cg-223/toomanyjokers)
 #### Known incompatible mods:
