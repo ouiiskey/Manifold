@@ -1,10 +1,4 @@
 -- None, see also pips.toml
-local Shnr_ref = SMODS.has_no_rank
-function SMODS.has_no_rank(card)
-    if card.base.value == "manifold_none" then return true end
-    return Shnr_ref(card)
-end
-
 SMODS.Rank {
     key = "none",
     card_key = "0",

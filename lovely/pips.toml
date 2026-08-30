@@ -55,17 +55,6 @@ if not (self.replace_base_card or specific_vars.debuffed) then
 end
 '''
 
-# SMODS.has_no_suit
-[[patches]]
-[patches.pattern]
-target = '=[SMODS _ "src/utils.lua"]'
-pattern = "return is_stone and not is_wild"
-position = "before"
-match_indent = true
-payload = '''
-if card.base.suit == "manifold_nothing" then is_stone = true end
-'''
-
 # Move suits to end of suit list (deck views)
 [[patches]]
 [patches.pattern]
@@ -88,15 +77,4 @@ for k, v in ipairs(buffer) do
     end
 end
 for i = #buffer, 1, -1 do
-'''
-
-# SMODS.always_scores
-[[patches]]
-[patches.pattern]
-target = '=[SMODS _ "src/utils.lua"]'
-pattern = "if (G.P_CENTERS[(card.edition or {}).key] or {}).always_scores then return true end"
-position = "before"
-match_indent = true
-payload = '''
-if card.base.suit == "manifold_nothing" and card.base.value == "manifold_none" then return true end
 '''

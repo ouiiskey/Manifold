@@ -56,11 +56,6 @@ SMODS.DrawStep {
     conditions = {vortex = false, facing = "front"},
 }
 
-local Shas_ref = SMODS.has_any_suit
-function SMODS.has_any_suit(card)
-    return card.base.suit == "manifold_wild" or Shas_ref(card)
-end
-
 SMODS.Suit {
     key = "wild",
     card_key = "?",
