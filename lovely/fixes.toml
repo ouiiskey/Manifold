@@ -3,16 +3,16 @@ version = "1.0.0"
 dump_lua = true
 priority = 0
 
-# Adds silence condition
+# Adds silence function
 # SMODS.destroy_cards
 [[patches]]
 [patches.pattern]
 target = '=[SMODS _ "src/utils.lua"]'
-pattern = "return card:start_dissolve(args.colours) ~= false"
+pattern = "return card:start_dissolve(args.colours, args.silent, args.dissolve_time_fac, args.no_juice) ~= false"
 position = "at"
 match_indent = true
 payload = '''
-return card:start_dissolve(args.colours, args.should_silence and args.should_silence(args.i)) ~= false
+return card:start_dissolve(args.colours, args.silent or args.should_silence and args.should_silence(args.i), args.dissolve_time_fac, args.no_juice) ~= false
 '''
 
 [[patches]]
