@@ -1,5 +1,5 @@
 -- Planet Tycoon, see also planet_merchant.lua for calculation
-local base_num = 1
+local base_num = 2
 
 SMODS.Voucher:take_ownership("planet_tycoon", {
     loc_vars = function(self, info_queue, card)
