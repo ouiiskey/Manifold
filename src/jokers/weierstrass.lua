@@ -21,7 +21,7 @@ SMODS.Joker {
                 card.ability.extra.mult = mult
             end
             return {
-                mult = card.ability.extra.mult,
+                mult = card.ability.extra.mult
             }
         end
     end
