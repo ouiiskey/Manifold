@@ -17,18 +17,12 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.joker_main then
-            if context.blueprint then
-                return {
-                    mult = card.ability.extra.mult
-                }
-            else
-                return {
-                    mult = card.ability.extra.mult,
-                    func = function()
-                        card.ability.extra.mult = mult
-                    end
-                }
+            if not context.blueprint and card.ability.extra.mult < mult then
+                card.ability.extra.mult = mult
             end
+            return {
+                mult = card.ability.extra.mult,
+            }
         end
     end
 }

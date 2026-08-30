@@ -688,9 +688,9 @@ return {
             j_manifold_weierstrass = {
                 name = "Weierstrass",
                 text = {
-                    "Adds Mult equal to",
-                    "the {C:mult}Mult{} you last had",
-                    "after this triggered",
+                    "Adds Mult equal to the most",
+                    "{C:mult}Mult{} you've had just before",
+                    "a trigger of this card",
                     "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
                 },
                 unlock = {
