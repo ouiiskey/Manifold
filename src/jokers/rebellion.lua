@@ -12,6 +12,8 @@ function Blind:get_type()
         return "Boss"
     elseif self.config.blind.big then
         return "Big"
+    elseif self.config.blind.small then
+        return "Small"
     end
-    return "Small"
+    return ""
 end
