@@ -77,7 +77,7 @@ return {
             b_manifold_negative = {
                 name = "Negative Deck",
                 text = {
-                    "Add {C:dark_edition,T:e_negative_playing_card}Negative{} to {C:attention}1",
+                    "Add {C:dark_edition,T:hover_negative_playing_card}Negative{} to {C:attention}1",
                     "random card in deck"
                 },
                 unlock = {
@@ -115,7 +115,7 @@ return {
                 name = "Syzygy Deck",
                 text = {
                     "All {C:planet}Planet{} cards",
-                    "are {C:dark_edition,T:e_negative_planet}Negative"
+                    "are {C:dark_edition,T:hover_negative_planet}Negative"
                 },
                 unlock = {
                     "Win a run with",
@@ -989,6 +989,18 @@ return {
                 name = "Wild",
                 text = {
                     "All suits"
+                }
+            },
+            hover_negative_playing_card = {
+                name = "Negative",
+                text = {
+                    "{C:dark_edition}+1{} hand size"
+                }
+            },
+            hover_negative_planet = {
+                name = "Negative",
+                text = {
+                    "{C:dark_edition}+1{C:planet} Planet{} slot"
                 }
             }
         },
