@@ -2,15 +2,13 @@
 SMODS.Gradient {
     key = "lc_wild",
     colours = {G.C.SO_1.Spades, G.C.SO_1.Hearts, G.C.SO_1.Clubs, G.C.SO_1.Diamonds},
-    cycle = 4,
-    interpolation = "linear"
+    cycle = 13/3
 }
 
 SMODS.Gradient {
     key = "hc_wild",
     colours = {G.C.SO_2.Spades, G.C.SO_2.Hearts, G.C.SO_2.Clubs, G.C.SO_2.Diamonds},
-    cycle = 4,
-    interpolation = "linear"
+    cycle = 13/3
 }
 
 SMODS.Shader {
