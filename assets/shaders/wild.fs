@@ -72,7 +72,7 @@ vec4 effect(vec4 color, Image texture, vec2 texture_coords, vec2 screen_coords) 
     );
     vec4 tex = Texel(texture, texture_coords);
     vec2 uv = (texture_coords * image_details - texture_details.xy * texture_details.zw) / texture_details.zw;
-    float element = mod(wild.x + tex.b * 4 + (wild.z == 1.0 ? uv.y : 0), 13 / 3);
+    float element = mod(4 * 3 / 13 * wild.x + tex.b * 4 + (wild.z == 1.0 ? uv.y : 0), 4);
     int i = int(element);
     int j = i + 1;
     int offset = int(wild.y);
