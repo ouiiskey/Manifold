@@ -72,11 +72,11 @@ vec4 effect(vec4 color, Image texture, vec2 texture_coords, vec2 screen_coords) 
     );
     vec4 tex = Texel(texture, texture_coords);
     vec2 uv = (texture_coords * image_details - texture_details.xy * texture_details.zw) / texture_details.zw;
-    float element = mod(4 * 3 / 13 * wild.x + tex.b * 4 + (wild.z == 1.0 ? uv.y : 0), 4);
+    float element = mod(4.0 * 3.0 / 13.0 * wild.x + tex.b * 4.0 + (wild.z == 1.0 ? uv.y : 0.0), 4.0);
     int i = int(element);
     int j = i + 1;
     int offset = int(wild.y);
-    float blend = 0.5 * (1 - cos(3.1415926538 * fract(element)));
+    float blend = 0.5 * (1.0 - cos(3.1415926538 * fract(element)));
     vec3 base = mix(palette[i + offset], palette[(j == 4 ? 0 : j) + offset], blend);
     return dissolve_mask(vec4(base, tex.a), texture_coords, uv);
 }
