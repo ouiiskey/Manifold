@@ -25,14 +25,21 @@ Note: Windows only.
 
 ## Compatibility
 Because this mod contains bespoke code, you may encounter compatibility issues with other mods.
-#### Known compatible mods:
+
+<p><details>
+  <summary><b>Known compatible mods:</b></summary>
+  
 * [Amulet](https://github.com/frostice482/amulet)
 * [Banner](https://github.com/SylviBlossom/Banner)
 * [BetterTags](https://github.com/WaffleDevs/BetterTags)
 * [Handy](https://github.com/SleepyG11/HandyBalatro)
 * [JokerDisplay](https://github.com/nh6574/JokerDisplay)
 * [Too Many Jokers](https://github.com/cg-223/toomanyjokers)
-#### Known incompatible mods:
+</details></p>
+
+<p><details>
+<summary><b>Known incompatible mods:</b></summary>
+
 * [DebugPlus](https://github.com/WilsontheWolf/DebugPlus)
   * Copied planets emplace in the consumable slots, spawn the planets instead.
   * Spawning planets requires empty consumable slots.
@@ -40,13 +47,14 @@ Because this mod contains bespoke code, you may encounter compatibility issues w
   * Using "Win blind" crashes the game unless you have DebugPlus installed.
 * [Multiplayer](https://github.com/Balatro-Multiplayer/BalatroMultiplayer)
   * Activating Mana Gem can cause the lobby to hang.
+</details></p>
 
 ## Issues
 If you wish to report bugs or make suggestions, visit the [issue tracker](https://github.com/ouiiskey/Manifold/issues).
 
 ## Screenshots
 <details>
-  <summary>Click to view</summary>
+  <summary><b>Click to view</b></summary>
   <div>A naneinf build featuring the Zombie + Tsunami combo.</div>
   <img src="screenshots/naneinf.png" alt="naneinf">
   <div>credit: HEAVENBRAND (2026/9/2)</div>
