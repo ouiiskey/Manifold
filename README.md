@@ -28,12 +28,16 @@ Because this mod contains bespoke code, you may encounter compatibility issues w
 #### Known compatible mods:
 * [Amulet](https://github.com/frostice482/amulet)
 * [Banner](https://github.com/SylviBlossom/Banner)
+* [BetterTags](https://github.com/WaffleDevs/BetterTags)
+* [Handy](https://github.com/SleepyG11/HandyBalatro)
 * [JokerDisplay](https://github.com/nh6574/JokerDisplay)
 * [Too Many Jokers](https://github.com/cg-223/toomanyjokers)
 #### Known incompatible mods:
 * [DebugPlus](https://github.com/WilsontheWolf/DebugPlus)
   * Copied planets emplace in the consumable slots, spawn the planets instead.
   * Spawning planets requires empty consumable slots.
+* [DebugPlusPlus](https://github.com/jogla-the-wizard/DebugPlusPlus)
+  * Using "Win blind" crashes the game unless you have DebugPlus installed.
 * [Multiplayer](https://github.com/Balatro-Multiplayer/BalatroMultiplayer)
   * Activating Mana Gem can cause the lobby to hang.
 
