@@ -39,3 +39,11 @@ Because this mod contains bespoke code, you may encounter compatibility issues w
 
 ## Issues
 If you wish to report bugs or make suggestions, visit the [issue tracker](https://github.com/ouiiskey/Manifold/issues).
+
+## Screenshots
+<details>
+  <summary>Click to view</summary>
+  <div>A naneinf build featuring the Zombie + Tsunami combo.</div>
+  <img src="screenshots/naneinf.png" alt="naneinf">
+  <div>credit: HEAVENBRAND (2026/9/2)</div>
+</details>
