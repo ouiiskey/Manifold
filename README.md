@@ -1,4 +1,4 @@
-![Manifold](manifold.png "Manifold")
+![Manifold](https://raw.githubusercontent.com/ouiiskey/Manifold/main/manifold.png "Manifold")
 
 ---
 
@@ -56,6 +56,6 @@ If you wish to report bugs or make suggestions, visit the [issue tracker](https:
 <details>
   <summary><b>Click to view</b></summary>
   <div>A naneinf build featuring the Zombie + Tsunami combo.</div>
-  <img src="screenshots/naneinf.png" alt="naneinf">
+  <img src="https://raw.githubusercontent.com/ouiiskey/Manifold/main/screenshots/naneinf.png" alt="naneinf">
   <div>credit: HEAVENBRAND (2026/9/2)</div>
 </details>
