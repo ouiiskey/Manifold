@@ -55,7 +55,6 @@ local jokers = {
     "escher",
     "shannon",
     -- Vanilla
-    "seance",
     "matador"
 }
 for k, v in ipairs(jokers) do
