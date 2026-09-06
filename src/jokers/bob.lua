@@ -9,18 +9,17 @@ SMODS.Joker {
     loc_vars = function(self, info_queue, card)
         return {vars = {card.ability.extra.x_mult}}
     end,
+    blueprint_compat = false,
     calculate = function(self, card, context)
-        if context.other_consumeable and not context.other_consumeable.getting_sliced and not context.blueprint then
+        if context.other_consumeable and not context.other_consumeable.getting_sliced and context.other_consumeable.area == G.consumeables then
             G.GAME.consumeable_buffer = G.GAME.consumeable_buffer - 1
             SMODS.destroy_cards(context.other_consumeable)
+            G.E_MANAGER:add_event(Event{func = function()
+                G.GAME.consumeable_buffer = 0
+                return true end})
             return {
                 x_mult = card.ability.extra.x_mult,
                 message_card = context.other_consumeable,
-                func = function()
-                    G.E_MANAGER:add_event(Event{func = function()
-                        G.GAME.consumeable_buffer = 0
-                        return true end})
-                end
             }
         end
     end
