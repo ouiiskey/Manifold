@@ -132,3 +132,15 @@ if (v.type == "Base" or v.type == "Enhanced") and G.GAME.used_vouchers.v_illusio
     card:set_seal(SMODS.poll_seal({key = "illusion", mod = 10}), true, true)
     card:set_edition(poll_edition("illusion", 5, true))
 '''
+
+# Fix hand misordering on high nominal cards
+# Card:get_nominal
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "return 10*self.base.nominal*rank_mult + self.base.suit_nominal*mult + (self.base.suit_nominal_original or 0)*0.0001*mult + 10*self.base.face_nominal*rank_mult + 0.000001*self.unique_val"
+position = "at"
+match_indent = true
+payload = '''
+return self.base.nominal * rank_mult + self.base.suit_nominal * mult + (self.base.suit_nominal_original or 0) * 0.0001 * mult + 10 * self.base.face_nominal * rank_mult + 0.000001 * self.unique_val
+'''
