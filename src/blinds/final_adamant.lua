@@ -16,7 +16,7 @@ MANIF.adamant = function()
             play_sound("tarot2", 1, 0.4)
             return true end})
         play_area_status_text(localize("k_not_allowed_ex"))
-        SMODS.calculate_context({full_hand = G.play.cards, scoring_hand = scoring_hand, scoring_name = text, poker_hands = poker_hands, debuffed_hand = true})
+        SMODS.calculate_context{full_hand = G.play.cards, scoring_hand = scoring_hand, scoring_name = text, poker_hands = poker_hands, debuffed_hand = true}
     end
 end
 

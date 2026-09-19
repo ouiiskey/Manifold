@@ -441,7 +441,7 @@ function JokerDisplay.evaluate_hand(cards, count_facedowns)
                 table.insert(held_cards, v)
             end
         end
-        scoring_hand = SMODS.merge_lists({scoring_hand, held_cards})
+        scoring_hand = SMODS.merge_lists{scoring_hand, held_cards}
     end
     return text, poker_hands, scoring_hand
 end

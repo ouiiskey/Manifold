@@ -20,7 +20,7 @@ SMODS.Back {
         G.GAME.starting_params.joker_slots = G.GAME.starting_params.joker_slots + 1
         G.E_MANAGER:add_event(Event{func = function()
             for i = 1, self.config.extra.amt do
-                card_from_control({s = "manifold_0", r = "manifold_0"})
+                card_from_control{s = "manifold_0", r = "manifold_0"}
             end
             return true end})
     end
