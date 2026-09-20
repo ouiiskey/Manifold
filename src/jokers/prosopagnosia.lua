@@ -1,12 +1,4 @@
--- Prosopagnosia, see also prosopagnosia.toml
-MANIF.PROSO = {
-    faces = {},
-    after_face = {},
-    next = {},
-    rank = -1,
-    is_face = {}
-}
-
+-- Prosopagnosia
 SMODS.Joker {
     key = "prosopagnosia",
     rarity = 3,

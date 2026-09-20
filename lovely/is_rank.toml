@@ -239,3 +239,43 @@ for kk, vv in ipairs(rank_name_mapping) do
     if v:is_rank(SMODS.Ranks[vv].id, true) then mod_rank_tallies[vv] = mod_rank_tallies[vv] + 1 end
 end
 '''
+
+# loadAPIs
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/game_object.lua"]'
+pattern = '''
+if #parts._3 < 1 or #parts._2 < 2 or not next(parts._flush) then return {} end
+return { SMODS.merge_lists(parts._all_pairs, parts._flush) }
+'''
+position = "at"
+match_indent = true
+payload = '''
+return next(parts.manifold_full_house) and next(parts._flush) and {SMODS.merge_lists(parts.manifold_full_house, parts._flush)} or {}
+'''
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/game_object.lua"]'
+pattern = '''
+if #parts._3 < 1 or #parts._2 < 2 then return {} end
+return parts._all_pairs
+'''
+position = "at"
+match_indent = true
+payload = '''
+return parts.manifold_full_house
+'''
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/game_object.lua"]'
+pattern = '''
+if #parts._2 < 2 then return {} end
+return parts._all_pairs
+'''
+position = "at"
+match_indent = true
+payload = '''
+return parts.manifold_two_pair
+'''
