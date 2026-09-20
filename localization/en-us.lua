@@ -913,6 +913,25 @@ return {
             }
         },
         Other = {
+            deity = {
+                name = "Deity",
+                text = {
+                    "All ranks",
+                    "Can't be debuffed"
+                }
+            },
+            deity_suitless = {
+                text = {
+                    "All ranks but no suit",
+                    "Can't be debuffed"
+                }
+            },
+            deity_wild = {
+                text = {
+                    "All ranks and suits",
+                    "Can't be debuffed"
+                }
+            },
             manifold_black_seal = {
                 name = "Black Seal",
                 text = {
@@ -969,6 +988,11 @@ return {
                 name = "Blank",
                 text = {
                     "No rank or suit"
+                }
+            },
+            rankless_wild = {
+                text = {
+                    "No rank but all suits"
                 }
             },
             suitless = {
@@ -1167,7 +1191,8 @@ return {
             pinned_right = "Rightmost"
         },
         ranks = {
-            manifold_none = "None"
+            manifold_none = "None",
+            manifold_deity = "Deity"
         },
         suits_plural = {
             manifold_nothing = "Nothing",

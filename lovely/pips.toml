@@ -7,14 +7,27 @@ priority = 0
 pip_text = '''
 local rankless = specific_vars.value == "manifold_none"
 local suitless = specific_vars.suit == "manifold_nothing"
-if rankless and suitless then
-    localize{type = "other", key = "rankless_suitless", nodes = desc_nodes, vars = {}}
-elseif rankless then
-    localize{type = "other", key = "rankless", nodes = desc_nodes, vars = {}}
+local wild = specific_vars.suit == "manifold_wild"
+local deity = specific_vars.value == "manifold_deity"
+if rankless then
+    if suitless then
+        localize{type = "other", key = "rankless_suitless", nodes = desc_nodes, vars = {}}
+    elseif wild then
+        localize{type = "other", key = "rankless_wild", nodes = desc_nodes, vars = {}}
+    else
+        localize{type = "other", key = "rankless", nodes = desc_nodes, vars = {}}
+    end
+elseif deity then
+    if suitless then
+        localize{type = "other", key = "deity_suitless", nodes = desc_nodes, vars = {}}
+    elseif wild then
+        localize{type = "other", key = "deity_wild", nodes = desc_nodes, vars = {}}
+    else
+        localize{type = "other", key = "deity", nodes = desc_nodes, vars = {}}
+    end
 elseif suitless then
     localize{type = "other", key = "suitless", nodes = desc_nodes, vars = {}}
-end
-if specific_vars.suit == "manifold_wild" then
+elseif wild then
     localize{type = "other", key = "wild", nodes = desc_nodes, vars = {}}
 end
 '''
