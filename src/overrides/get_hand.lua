@@ -187,18 +187,15 @@ SMODS.PokerHandPart {
             local ret = {}
             local three = false
             local twos = {}
-            local single = false
             for k, v in pairs(rankmap) do
                 quick_merge(ret, v)
-                if #v >= 3 then
+                if #v >= 3 and ranked > #v + 1 then
                     three = true
                 elseif #v == 2 then
                     quick_merge(twos, v)
-                else
-                    single = true
                 end
             end
-            if three and single then
+            if three then
                 quick_merge(any, ret)
                 return {any}
             elseif #twos >= 4 then
