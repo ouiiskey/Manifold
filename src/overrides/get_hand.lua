@@ -12,12 +12,15 @@ function get_straight(hand, min_length, skip, wrap)
     local any = {}
     local face = {}
     local rankmap = {}
+    local ranked = #hand
     for k, v in ipairs(hand) do
         if MANIF.has_any_rank(v) then
             table.insert(any, v)
         elseif proso and v:is_face() then
             table.insert(face, v)
-        elseif not SMODS.has_no_rank(v) then
+        elseif SMODS.has_no_rank(v) then
+            ranked = ranked - 1
+        else
             local id = v:get_id()
             if not rankmap[id] then
                 rankmap[id] = {}
@@ -25,15 +28,16 @@ function get_straight(hand, min_length, skip, wrap)
             table.insert(rankmap[id], v)
         end
     end
-    local order
+    if ranked < min_length then return {} end
+    local order = {14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 14}
     if wrap then
+        local extend = ranked - 1
         if skip then
-            order = {14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 14, 13, 12, 11, 10, 9, 8, 7}
-        else
-            order = {14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 14, 13, 12, 11}
+            extend = 2 * extend
         end
-    else
-        order = {14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 14}
+        for i = 2, extend do
+            table.insert(order, order[i])
+        end
     end
     local function recursive_straight(straight, length, face_count, any_count, i)
         local skipped = false
@@ -60,7 +64,6 @@ function get_straight(hand, min_length, skip, wrap)
                     return ret, true
                 end
             end
-            valid = length >= min_length
             if valid then
                 quick_merge(straight, any)
                 if face_count < #face then
@@ -75,6 +78,14 @@ function get_straight(hand, min_length, skip, wrap)
             skipped = false
             ::continue::
             i = i + 1
+            valid = length >= min_length
+        end
+        if valid then
+            quick_merge(straight, any)
+            if face_count < #face then
+                quick_merge(straight, face)
+            end
+            return {straight}, true
         end
         return {}, false
     end
@@ -86,6 +97,7 @@ function get_X_same(num, hand)
     local proso = next(SMODS.find_card("j_manifold_prosopagnosia"))
     local any = {}
     local rankmap = {}
+    local ranked = #hand
     for k, v in ipairs(hand) do
         if MANIF.has_any_rank(v) then
             table.insert(any, v)
@@ -94,7 +106,9 @@ function get_X_same(num, hand)
                 rankmap[13] = {}
             end
             table.insert(rankmap[13], v)
-        elseif not SMODS.has_no_rank(v) then
+        elseif SMODS.has_no_rank(v) then
+            ranked = ranked - 1
+        else
             local id = v:get_id()
             if not rankmap[id] then
                 rankmap[id] = {}
@@ -102,6 +116,7 @@ function get_X_same(num, hand)
             table.insert(rankmap[id], v)
         end
     end
+    if ranked < num then return {} end
     local argmax = 14
     if not rankmap[argmax] then
         rankmap[argmax] = {}
@@ -123,14 +138,14 @@ SMODS.PokerHandPart {
         local any = {}
         local face = {}
         local rankmap = {}
-        local no_rank = 0
+        local ranked = #hand
         for k, v in ipairs(hand) do
-            if SMODS.has_no_rank(v) then
-                no_rank = no_rank + 1
-            elseif MANIF.has_any_rank(v) then
+            if MANIF.has_any_rank(v) then
                 table.insert(any, v)
             elseif proso and v:is_face() then
                 table.insert(face, v)
+            elseif SMODS.has_no_rank(v) then
+                ranked = ranked - 1
             else
                 local id = v:get_id()
                 if not rankmap[id] then
@@ -139,8 +154,14 @@ SMODS.PokerHandPart {
                 table.insert(rankmap[id], v)
             end
         end
-        if #hand - no_rank < 5 then return {} end
-        if #face == 5 then
+        if ranked < 5 then return {} end
+        if #face >= 5 then
+            for k, v in pairs(rankmap) do
+                if #v >= 2 or #any >= 1 then
+                    quick_merge(face, v)
+                end
+            end
+            quick_merge(face, any)
             return {face}
         elseif #face == 4 then
             rankmap[11] = {face[1], face[2], face[3]}
@@ -148,49 +169,55 @@ SMODS.PokerHandPart {
         elseif #face >= 1 then
             rankmap[11] = face
         end
-        if #any == 5 then
-            return {any}
-        elseif #any >= 3 then
+        if #any >= 3 then
             for k, v in pairs(rankmap) do
                 quick_merge(any, v)
             end
             return {any}
         elseif #any == 2 then
-            local two = false
+            local valid = false
             for k, v in pairs(rankmap) do
                 quick_merge(any, v)
-                if #v == 3 then
-                    return {any}
-                elseif #v == 2 then
-                    two = true
+                if #v >= 2 then
+                    valid = true
                 end
             end
-            if two then return {any} end
+            if valid then return {any} end
         elseif #any == 1 then
+            local ret = {}
             local three = false
-            local two = 0
+            local twos = {}
+            local single = false
             for k, v in pairs(rankmap) do
-                quick_merge(any, v)
-                if #v == 3 then
+                quick_merge(ret, v)
+                if #v >= 3 then
                     three = true
-                    break
                 elseif #v == 2 then
-                    two = two + 1
+                    quick_merge(twos, v)
+                else
+                    single = true
                 end
             end
-            if three or two == 2 then return {any} end
+            if three and single then
+                quick_merge(any, ret)
+                return {any}
+            elseif #twos >= 4 then
+                quick_merge(any, twos)
+                return {any}
+            end
         else
-            local three = false
-            local two = false
+            local threes = 0
+            local twos = 0
             for k, v in pairs(rankmap) do
-                if #v == 3 then
-                    three = true
+                if #v >= 3 then
+                    threes = threes + 1
+                    quick_merge(any, v)
                 elseif #v == 2 then
-                    two = true
+                    twos = twos + 1
+                    quick_merge(any, v)
                 end
-                quick_merge(any, v)
             end
-            if three and two then return {any} end
+            if threes >= 2 or threes >= 1 and twos >= 1 then return {any} end
         end
         return {}
     end
@@ -204,14 +231,14 @@ SMODS.PokerHandPart {
         local any = {}
         local face = {}
         local rankmap = {}
-        local no_rank = 0
+        local ranked = #hand
         for k, v in ipairs(hand) do
-            if SMODS.has_no_rank(v) then
-                no_rank = no_rank + 1
-            elseif MANIF.has_any_rank(v) then
+            if MANIF.has_any_rank(v) then
                 table.insert(any, v)
             elseif proso and v:is_face() then
                 table.insert(face, v)
+            elseif SMODS.has_no_rank(v) then
+                ranked = ranked - 1
             else
                 local id = v:get_id()
                 if not rankmap[id] then
@@ -220,37 +247,46 @@ SMODS.PokerHandPart {
                 table.insert(rankmap[id], v)
             end
         end
-        if #hand - no_rank < 4 then return {} end
-        if #face == 5 then
+        if ranked < 4 then return {} end
+        if #face >= 4 then
+            for k, v in pairs(rankmap) do
+                if #v >= 2 or #any >= 1 then
+                    quick_merge(face, v)
+                end
+            end
+            quick_merge(face, any)
             return {face}
-        elseif #face == 4 then
-            rankmap[11] = {face[1], face[2]}
-            rankmap[12] = {face[3], face[4]}
-        elseif #face == 3 and #any == 1 then
-            rankmap[11] = {face[1], face[2]}
-            rankmap[12] = {face[3]}
+        elseif #face == 3 then
+            local valid = #any >= 1
+            for k, v in pairs(rankmap) do
+                if #v >= 2 or #any >= 1 then
+                    valid = true
+                    quick_merge(face, v)
+                end
+            end
+            if valid then
+                quick_merge(face, any)
+                return {face}
+            else
+                return {}
+            end
         elseif #face >= 1 then
             rankmap[11] = face
         end
-        if #any == 5 then
-            return {any}
-        elseif #any >= 2 then
+        if #any >= 2 then
             for k, v in pairs(rankmap) do
                 quick_merge(any, v)
             end
             return {any}
         elseif #any == 1 then
-            local three = false
-            local two = false
+            local valid = false
             for k, v in pairs(rankmap) do
                 quick_merge(any, v)
-                if #v == 3 then
-                    three = true
-                elseif #v == 2 then
-                    two = true
+                if #v >= 2 then
+                    valid = true
                 end
             end
-            if two or three and #hand - no_rank == 5 then return {any} end
+            if valid then return {any} end
         else
             for k, v in pairs(rankmap) do
                 if #v >= 2 then
