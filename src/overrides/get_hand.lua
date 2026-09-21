@@ -279,7 +279,7 @@ SMODS.PokerHandPart {
             local valid = false
             for k, v in pairs(rankmap) do
                 quick_merge(any, v)
-                if #v == 2 or #v >= 3 and ranked > #v + 1 then
+                if #v >= 2 and ranked > #v + 1 then
                     valid = true
                 end
             end
