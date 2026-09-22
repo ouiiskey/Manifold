@@ -1,4 +1,4 @@
--- Propaganda, see also propaganda.toml
+-- Propaganda, see also debuff.toml
 -- debuff_card context is not used because it is only triggered when called via Blind:debuff_card
 SMODS.Joker {
     key = "propaganda",

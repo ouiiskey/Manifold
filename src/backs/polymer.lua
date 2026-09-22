@@ -1,4 +1,4 @@
--- Polymer Deck, see also polymer.toml
+-- Polymer Deck, see also debuff.toml
 local prev = "b_manifold_holographic"
 
 SMODS.Back {

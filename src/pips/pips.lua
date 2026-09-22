@@ -29,6 +29,7 @@ SMODS.Atlas {
 local pips = {
     -- Ranks
     "none",
+    "deity",
     -- Suits
     "nothing",
     "wild"

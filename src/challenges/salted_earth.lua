@@ -1,4 +1,4 @@
--- Salted Earth
+-- Salted Earth, see also debuff.toml
 SMODS.Challenge {
     key = "salted_earth",
     rules = {
