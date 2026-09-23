@@ -1,0 +1,26 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# reset_castle_card
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "if not SMODS.has_no_suit(v) then"
+position = "at"
+match_indent = true
+payload = '''
+if not SMODS.has_no_suit(v) and not SMODS.has_any_suit(v) then
+'''
+
+# reset_mail_rank
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "if not SMODS.has_no_rank(v) then"
+position = "at"
+match_indent = true
+payload = '''
+if not SMODS.has_no_rank(v) and not MANIF.has_any_rank(v) then
+'''

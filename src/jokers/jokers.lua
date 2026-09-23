@@ -66,7 +66,7 @@ SMODS.current_mod.reset_game_globals = function()
     G.GAME.current_round.hot_card = {rank = "Ace"}
     local heatable_cards = {}
     for k, v in ipairs(G.playing_cards) do
-        if v.ability.effect ~= "Stone Card" then
+        if not SMODS.has_no_rank(v) and not MANIF.has_any_rank(v) then
             table.insert(heatable_cards, v)
         end
     end
