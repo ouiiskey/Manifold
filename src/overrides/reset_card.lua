@@ -1,4 +1,4 @@
--- See also reset_card.toml
+-- See also pips.toml
 function reset_idol_card()
     local rank
     local suit

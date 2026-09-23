@@ -31,5 +31,6 @@ SMODS.Rank {
     next = {"manifold_none"},
     straight_edge = true,
     suit_map = {Hearts = 0, Clubs = 1, Diamonds = 2, Spades = 3, manifold_nothing = 4, manifold_wild = 5},
-    in_pool = function(self, args) return false end
+    in_pool = function(self, args) return false end,
+    hidden = true
 }

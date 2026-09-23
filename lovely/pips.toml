@@ -68,6 +68,17 @@ if not (self.replace_base_card or specific_vars.debuffed) then
 end
 '''
 
+# G.UIDEF.view_deck
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/overrides.lua"]'
+pattern = "if rank_tallies[rank_name_mapping[i]] ~= 0 or SMODS.add_to_pool(SMODS.Ranks[rank_name_mapping[i]], { suit = '' }) then"
+position = "at"
+match_indent = true
+payload = '''
+if (rank_tallies[rank_name_mapping[i]] ~= 0 or SMODS.add_to_pool(SMODS.Ranks[rank_name_mapping[i]], {suit = ""})) and not SMODS.Ranks[rank_name_mapping[i]].hidden then
+'''
+
 # Move suits to end of suit list (deck views)
 [[patches]]
 [patches.pattern]
@@ -90,4 +101,26 @@ for k, v in ipairs(buffer) do
     end
 end
 for i = #buffer, 1, -1 do
+'''
+
+# reset_castle_card
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "if not SMODS.has_no_suit(v) then"
+position = "at"
+match_indent = true
+payload = '''
+if not SMODS.has_no_suit(v) and not SMODS.has_any_suit(v) then
+'''
+
+# reset_mail_rank
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "if not SMODS.has_no_rank(v) then"
+position = "at"
+match_indent = true
+payload = '''
+if not SMODS.has_no_rank(v) and not MANIF.has_any_rank(v) then
 '''
