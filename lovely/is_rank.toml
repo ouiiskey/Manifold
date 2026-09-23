@@ -207,6 +207,24 @@ payload = '''
 context.other_card:is_odd()
 '''
 
+# Raised Fist
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+if temp_ID >= G.hand.cards[i].base.id and not SMODS.has_no_rank(G.hand.cards[i]) then
+    temp_Mult = G.hand.cards[i].base.nominal
+    temp_ID = G.hand.cards[i].base.id
+'''
+position = "at"
+match_indent = true
+payload = '''
+local id = G.hand.cards[i]:get_lowest_id()
+if temp_ID >= id and not SMODS.has_no_rank(G.hand.cards[i]) then
+    temp_Mult = G.hand.cards[i].base.nominal
+    temp_ID = id
+'''
+
 # G.UIDEF.view_deck
 [[patches]]
 [patches.pattern]

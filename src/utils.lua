@@ -39,6 +39,15 @@ function Card:is_number(check_debuff)
     return not SMODS.has_no_rank(self) and not self:is_face() and not self:is_rank(14) or MANIF.has_any_rank(self)
 end
 
+function Card:get_lowest_id()
+    if MANIF.has_any_rank(self) then
+        return 2
+    elseif self:is_face() and next(SMODS.find_card("j_manifold_prosopagnosia")) then
+        return 11
+    end
+    return self.base.id
+end
+
 function Card:eat()
     SMODS.destroy_cards(self, {pinch_anim = true})
 end
