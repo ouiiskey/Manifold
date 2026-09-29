@@ -1029,6 +1029,14 @@ return {
             }
         },
         Spectral = {
+            c_manifold_ascend = {
+                name = "Ascend",
+                text = {
+                    "Converts {C:attention}#1#{}",
+                    "selected card",
+                    "to {C:attention}#2#"
+                }
+            },
             c_manifold_mind = {
               name = "The Mind",
               text = {

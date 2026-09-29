@@ -1,0 +1,99 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# create_card
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''
+if (_type == 'Tarot' or _type == 'Spectral' or _type == 'Tarot_Planet') and
+not (G.GAME.used_jokers['c_soul'] and not SMODS.showman('c_soul')) then
+    if pseudorandom('soul_'.._type..G.GAME.round_resets.ante) > 0.997 then
+        forced_key = 'c_soul'
+    end
+end
+if (_type == 'Planet' or _type == 'Spectral') and
+not (G.GAME.used_jokers['c_black_hole'] and not SMODS.showman('c_black_hole')) then
+    if pseudorandom('soul_'.._type..G.GAME.round_resets.ante) > 0.997 then
+        forced_key = 'c_black_hole'
+    end
+end
+'''
+position = "at"
+match_indent = true
+payload = '''
+forced_key = MANIF.forced_key(_type) or forced_key
+'''
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "if _type == 'Base' then "
+position = "at"
+match_indent = true
+payload = '''
+if _type == "Base" and not forced_key then
+'''
+
+# get_current_pool
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "_starting_pool, _pool_key = G.P_JOKER_RARITY_POOLS[rarity], 'Joker'..rarity..((not _legendary and _append) or '')"
+position = "after"
+match_indent = true
+payload = '''
+if _legendary then
+    _starting_pool = MANIF[_append] or _starting_pool
+end
+'''
+
+# get_first_legendary
+[[patches]]
+[patches.pattern]
+target = "functions/misc_functions.lua"
+pattern = "local _t, key = pseudorandom_element(G.P_JOKER_RARITY_POOLS[4], pseudoseed('Joker4', _key))"
+position = "at"
+match_indent = true
+payload = '''
+local _t, key
+if pseudorandom(pseudoseed("soul_or_mind", _key)) > 0.5 then
+    _t, key = pseudorandom_element(MANIF.sou, pseudoseed("Joker4", _key))
+else
+    _t, key = pseudorandom_element(MANIF.manifold_mind, pseudoseed("Joker4", _key))
+end
+'''
+
+# loadAPIs
+# Standard Pack
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/game_object.lua"]'
+pattern = '''
+local _edition = poll_edition('standard_edition'..G.GAME.round_resets.ante, 2, true)
+local _seal = SMODS.poll_seal({mod = 10})
+return {set = (pseudorandom(pseudoseed('stdset'..G.GAME.round_resets.ante)) > 0.6) and "Enhanced" or "Base", edition = _edition, seal = _seal, area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "sta", front = false}
+'''
+position = "at"
+match_indent = true
+payload = '''
+card = create_card(pseudorandom(pseudoseed("stdset" .. G.GAME.round_resets.ante)) > 0.6 and "Enhanced" or "Base", G.pack_cards, nil, nil, true, true, nil, "sta")
+if card.ability.set ~= "Spectral" then
+    card:set_edition(poll_edition("standard_edition" .. G.GAME.round_resets.ante, 2, true))
+    card:set_seal(SMODS.poll_seal{mod = 10}, true, true)
+end
+return card
+'''
+
+# Collection
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/game_object.lua"]'
+pattern = "collection_rows = { 4, 5 },"
+position = "at"
+match_indent = true
+payload = '''
+collection_rows = {4, 4},
+'''
