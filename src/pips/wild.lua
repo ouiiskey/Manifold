@@ -70,7 +70,7 @@ SMODS.Suit {
             if args.initial_deck then
                 return false
             end
-            return not args.rank == ""
+            return args.rank ~= ""
         end
         return true
     end
