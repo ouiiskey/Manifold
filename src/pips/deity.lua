@@ -6,7 +6,8 @@ SMODS.Atlas {
     py = 95,
     atlas_table = "ANIMATION_ATLAS",
     frames = 13,
-    fps = 6
+    fps = 6,
+    start_pos = {x = 0}
 }
 
 SMODS.Atlas {
@@ -16,13 +17,14 @@ SMODS.Atlas {
     py = 95,
     atlas_table = "ANIMATION_ATLAS",
     frames = 13,
-    fps = 6
+    fps = 6,
+    start_pos = {x = 0}
 }
 
 SMODS.Rank {
     key = "deity",
     card_key = "R",
-    pos = {x = 14},
+    pos = {x = 14}, -- For wild overlay
     nominal = 95,
     face = true,
     lc_atlas = "deity",
