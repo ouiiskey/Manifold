@@ -7,6 +7,7 @@ SMODS.Joker {
     atlas = "jokers",
     pos = {x = 9, y = 2},
     cost = 8,
+    blueprint_compat = true,
     unlocked = false,
     locked_loc_vars = function(self, info_queue, card)
         return {vars = {limit}}
@@ -18,7 +19,7 @@ SMODS.Joker {
         info_queue[#info_queue + 1] = {key = "manifold_perishable", set = "Other", vars = {G.GAME.perishable_rounds or 1}}
     end,
     calculate = function(self, card, context)
-        if context.selling_self and not context.blueprint then
+        if context.selling_self then
             local targets = {}
             for k, v in ipairs(G.jokers.cards) do
                 if v ~= card then

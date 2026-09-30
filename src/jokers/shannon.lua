@@ -5,6 +5,7 @@ SMODS.Joker {
     atlas = "jokers",
     pos = {x = 4, y = 4},
     cost = 20,
+    blueprint_compat = false,
     soul_pos = {x = 9, y = 4},
     unlocked = false,
     locked_loc_vars = function(self, info_queue, card)
@@ -56,45 +57,43 @@ SMODS.Joker {
             return true end})
     end,
     calculate = function(self, card, context)
-        if not context.blueprint then
-            if context.setting_blind then
-                for k, v in ipairs(G.jokers.cards) do
-                    v.ability.shannon_recent = false
-                end
+        if context.setting_blind then
+            for k, v in ipairs(G.jokers.cards) do
+                v.ability.shannon_recent = false
             end
-            if context.setting_blind or context.after and context.cardarea == G.jokers then
-                -- Nested events required in case of more than one Shannon
+        end
+        if context.setting_blind or context.after and context.cardarea == G.jokers then
+            -- Nested events required in case of more than one Shannon
+            G.E_MANAGER:add_event(Event{func = function()
+                local jokers = {}
+                for k, v in ipairs(G.jokers.cards) do
+                    if v ~= card and (not v.debuff and not v.ability.shannon_recent or #G.jokers.cards - #SMODS.find_card("j_manifold_shannon") < 2) then table.insert(jokers, v) end
+                    if v.ability.shannon_recent then
+                        v:set_debuff(false)
+                        v.ability.shannon_recent = false
+                    end
+                end
                 G.E_MANAGER:add_event(Event{func = function()
-                    local jokers = {}
-                    for k, v in ipairs(G.jokers.cards) do
-                        if v ~= card and (not v.debuff and not v.ability.shannon_recent or #G.jokers.cards - #SMODS.find_card("j_manifold_shannon") < 2) then table.insert(jokers, v) end
-                        if v.ability.shannon_recent then
-                            v:set_debuff(false)
-                            v.ability.shannon_recent = false
+                    if not card.debuff then
+                        local targets = {}
+                        for k, v in ipairs(jokers) do
+                            if not v.debuff then table.insert(targets, v) end
+                        end
+                        local target = pseudorandom_element(targets, pseudoseed("manifold_shannon"))
+                        if target then
+                            target:set_debuff(true)
+                            target.ability.shannon_recent = true
+                            target:juice_up()
                         end
                     end
-                    G.E_MANAGER:add_event(Event{func = function()
-                        if not card.debuff then
-                            local targets = {}
-                            for k, v in ipairs(jokers) do
-                                if not v.debuff then table.insert(targets, v) end
-                            end
-                            local target = pseudorandom_element(targets, pseudoseed("manifold_shannon"))
-                            if target then
-                                target:set_debuff(true)
-                                target.ability.shannon_recent = true
-                                target:juice_up()
-                            end
-                        end
-                        return true end})
                     return true end})
-            end
-            local effects = {}
-            for k, v in ipairs(G.jokers.cards) do
-                local effect = SMODS.blueprint_effect(card, v, context)
-                if effect then table.insert(effects, effect) end
-            end
-            return SMODS.merge_effects(effects)
+                return true end})
         end
+        local effects = {}
+        for k, v in ipairs(G.jokers.cards) do
+            local effect = SMODS.blueprint_effect(card, v, context)
+            if effect then table.insert(effects, effect) end
+        end
+        return SMODS.merge_effects(effects)
     end
 }

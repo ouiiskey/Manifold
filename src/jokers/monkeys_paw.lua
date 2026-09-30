@@ -16,6 +16,7 @@ SMODS.Joker {
     atlas = "jokers",
     pos = {x = 9, y = 1},
     cost = 0,
+    blueprint_compat = true,
     set_sprites = function(self, card, front)
         if self.discovered or card.bypass_discovery_center then
             card.children.floating_sprite = SMODS.create_sprite(card.T.x, card.T.y, card.T.w, card.T.h, G.ASSET_ATLAS.manifold_monkeys_paw, {x = G.GAME.fingers or 0, y = 0})
@@ -45,7 +46,6 @@ SMODS.Joker {
     check_for_unlock = function(self, args)
         return args.type == "lose" and G.GAME.dollars >= threshold
     end,
-    blueprint_compat = true,
     no_pool_flag = "ceased",
     config = {extra = {mult = 25, chips = 1, demult = -20, hands = 10}},
     loc_vars = function(self, info_queue, card)

@@ -5,6 +5,7 @@ SMODS.Joker {
     atlas = "jokers",
     pos = {x = 2, y = 4},
     cost = 20,
+    blueprint_compat = false,
     soul_pos = {x = 7, y = 4},
     unlocked = false,
     locked_loc_vars = function(self, info_queue, card)

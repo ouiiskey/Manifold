@@ -5,6 +5,7 @@ SMODS.Joker {
     atlas = "jokers",
     pos = {x = 2, y = 0},
     cost = 7,
+    blueprint_compat = false,
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = SMODS.Seals.manifold_black
         return {vars = {colours = {G.C.BLACK}}}
@@ -18,7 +19,7 @@ SMODS.Joker {
         return false
     end,
     calculate = function(self, card, context)
-        if context.before and context.cardarea == G.jokers and not context.blueprint then
+        if context.before and context.cardarea == G.jokers then
             local sealed = false
             for k, v in ipairs(context.scoring_hand) do
                 if SMODS.has_enhancement(v, "m_steel") then

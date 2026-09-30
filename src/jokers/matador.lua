@@ -1,5 +1,6 @@
 -- Matador
 SMODS.Joker:take_ownership("matador", {
+    blueprint_compat = false,
     calculate = function(self, card, context)
         if context.debuffed_hand or context.joker_main then
             return {} -- To remove vanilla trigger

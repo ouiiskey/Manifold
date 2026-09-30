@@ -5,6 +5,7 @@ SMODS.Joker {
     atlas = "jokers",
     pos = {x = 8, y = 3},
     cost = 5,
+    blueprint_compat = true,
     in_pool = function(self, args)
         for k, v in ipairs(G.playing_cards) do
             if SMODS.has_enhancement(v, "m_wild") then

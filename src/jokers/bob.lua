@@ -5,11 +5,11 @@ SMODS.Joker {
     atlas = "jokers",
     pos = {x = 3, y = 0},
     cost = 4,
+    blueprint_compat = false,
     config = {extra = {x_mult = 3}},
     loc_vars = function(self, info_queue, card)
         return {vars = {card.ability.extra.x_mult}}
     end,
-    blueprint_compat = false,
     calculate = function(self, card, context)
         if context.other_consumeable and not context.other_consumeable.getting_sliced and context.other_consumeable.area == G.consumeables then
             G.GAME.consumeable_buffer = G.GAME.consumeable_buffer - 1

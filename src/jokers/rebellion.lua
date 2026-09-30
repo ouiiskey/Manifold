@@ -4,7 +4,8 @@ SMODS.Joker {
     rarity = 3,
     atlas = "jokers",
     pos = {x = 2, y = 3},
-    cost = 2
+    cost = 2,
+    blueprint_compat = false
 }
 
 function Blind:get_type()

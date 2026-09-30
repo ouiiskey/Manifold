@@ -28,11 +28,12 @@ SMODS.Joker {
     atlas = "jokers",
     pos = {x = 3, y = 2},
     cost = 5,
+    blueprint_compat = false,
     loc_vars = function(self, info_queue, card)
         return {vars = {localize(MANIF.get_common(), "ranks")}}
     end,
     calculate = function(self, card, context)
-        if context.selling_self and not context.blueprint and next(G.hand.cards) then
+        if context.selling_self and next(G.hand.cards) then
             local rank = SMODS.Ranks[MANIF.get_common()].id
             local faces = {}
             for k, v in ipairs(G.deck.cards) do

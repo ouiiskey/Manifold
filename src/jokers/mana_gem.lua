@@ -5,27 +5,26 @@ SMODS.Joker {
     atlas = "jokers",
     pos = {x = 1, y = 2},
     cost = 9,
+    blueprint_compat = true,
     unlocked = false,
     check_for_unlock = function(self, args)
         return args.type == "exit_run"
     end,
     calculate = function(self, card, context)
-        if not context.blueprint then
-            if context.selling_self and G.GAME.blind:get_type() == "Boss" then
-                G.GAME.gem = true
-                G.E_MANAGER:add_event(Event{func = function()
-                    G.hand_text_area.blind_chips:juice_up()
-                    G.hand_text_area.game_chips:juice_up()
-                    play_sound("tarot1")
-                    return true end})
-                G.STATE = G.STATES.HAND_PLAYED
-                G.STATE_COMPLETE = true
-                end_round()
-                return {
-                    message = localize("manifold_escaped"),
-                    colour = G.C.SECONDARY_SET.Spectral
-                }
-            end
+        if context.selling_self and G.GAME.blind:get_type() == "Boss" then
+            G.GAME.gem = true
+            G.E_MANAGER:add_event(Event{func = function()
+                G.hand_text_area.blind_chips:juice_up()
+                G.hand_text_area.game_chips:juice_up()
+                play_sound("tarot1")
+                return true end})
+            G.STATE = G.STATES.HAND_PLAYED
+            G.STATE_COMPLETE = true
+            end_round()
+            return {
+                message = localize("manifold_escaped"),
+                colour = G.C.SECONDARY_SET.Spectral
+            }
         end
     end,
     eternal_compat = false

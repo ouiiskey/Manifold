@@ -8,6 +8,7 @@ SMODS.Joker {
     atlas = "jokers",
     pos = {x = 6, y = 2},
     cost = 6,
+    blueprint_compat = false,
     unlocked = false,
     locked_loc_vars = function(self, info_queue, card)
         if G.P_CENTERS[splash].discovered then info_queue[#info_queue + 1] = G.P_CENTERS[splash] end

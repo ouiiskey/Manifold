@@ -5,6 +5,7 @@ SMODS.Joker {
     atlas = "jokers",
     pos = {x = 5, y = 0},
     cost = 4,
+    blueprint_compat = false,
     config = {extra = {p_size = 2}},
     loc_vars = function(self, info_queue, card)
         return {vars = {card.ability.extra.p_size}}

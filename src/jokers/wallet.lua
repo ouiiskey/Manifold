@@ -18,8 +18,9 @@ SMODS.Joker {
     atlas = "jokers",
     pos = {x = 2, y = 2},
     cost = 1,
+    blueprint_compat = true,
     calculate = function(self, card, context)
-        if context.selling_self and not context.blueprint then
+        if context.selling_self then
             local retrieved = false
             for i = 1, #G.wallet.cards do
                 retrieved = true

@@ -7,6 +7,7 @@ SMODS.Joker {
     atlas = "jokers",
     pos = {x = 7, y = 2},
     cost = 5,
+    blueprint_compat = false,
     unlocked = false,
     locked_loc_vars = function(self, info_queue, card)
         if G.P_CENTERS[joker].discovered then info_queue[#info_queue + 1] = G.P_CENTERS[joker] end
@@ -16,7 +17,7 @@ SMODS.Joker {
         return next(SMODS.find_card(joker)) and args.type == "lose"
     end,
     calculate = function(self, card, context)
-        if (context.hand_drawn or context.no_hand_drawn) and not context.blueprint and G.GAME.current_round.hands_left == 1 and not G.GAME.current_round.final_wave then
+        if (context.hand_drawn or context.no_hand_drawn) and G.GAME.current_round.hands_left == 1 and not G.GAME.current_round.final_wave then
             G.GAME.current_round.final_wave = true
             local faces = {}
             for k, v in ipairs(G.discard.cards) do
