@@ -48,14 +48,13 @@ local jokers = {
     "proud",
     "envious",
     "slothful",
-    -- "gold_bug",
     "weierstrass",
     "pareto",
     "peano",
     "escher",
     "shannon",
     -- Vanilla
-    "matador"
+    "vanilla/matador"
 }
 for k, v in ipairs(jokers) do
     assert(SMODS.load_file("src/jokers/" .. v .. ".lua"), MANIF.install .. "src/jokers/" .. v .. ".lua")()
