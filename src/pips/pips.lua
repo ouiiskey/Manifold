@@ -28,11 +28,11 @@ SMODS.Atlas {
 
 local pips = {
     -- Ranks
-    "none",
-    "deity",
+    "ranks/none",
+    "ranks/deity",
     -- Suits
-    "nothing",
-    "wild"
+    "suits/nothing",
+    "suits/wild"
 }
 for k, v in ipairs(pips) do
     assert(SMODS.load_file("src/pips/" .. v .. ".lua"), MANIF.install .. "src/pips/" .. v .. ".lua")()
