@@ -631,8 +631,7 @@ return {
                 name = "UFO",
                 text = {
                     "Create a random",
-                    "{C:planet}Planet{} card",
-                    "each hand"
+                    "{C:planet}Planet{} card"
                 },
                 unlock = {
                     "Discover {E:1,C:planet}#1#"
