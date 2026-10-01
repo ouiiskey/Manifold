@@ -1,0 +1,114 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# CardArea:handle_card_limit
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = "self.config.card_count = #self.cards + self.config.card_limits.extra_slots_used"
+position = "at"
+match_indent = true
+payload = '''
+self.config.card_count = #self.cards + self.config.card_limits.extra_slots_used - (self.premade_count or 0)
+'''
+
+# Card:calculate_joker
+# 8 Ball
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+return {
+    extra = {focus = self, message = localize('k_plus_tarot'), func = function()
+        G.E_MANAGER:add_event(Event({
+            trigger = 'before',
+            delay = 0.0,
+            func = (function()
+                    local card = create_card('Tarot',G.consumeables, nil, nil, nil, nil, nil, '8ba')
+                    card:add_to_deck()
+                    G.consumeables:emplace(card)
+                    G.GAME.consumeable_buffer = 0
+                return true
+            end)}))
+    end},
+'''
+position = "at"
+match_indent = true
+payload = '''
+MANIF.premake_card{set = "Tarot", area = G.consumeables, key_append = "8ba"}
+return {
+    extra = {focus = self, message = localize("k_plus_tarot")},
+'''
+
+# Superposition
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+local card_type = 'Tarot'
+G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+G.E_MANAGER:add_event(Event({
+    trigger = 'before',
+    delay = 0.0,
+    func = (function()
+            local card = create_card(card_type,G.consumeables, nil, nil, nil, nil, nil, 'sup')
+            card:add_to_deck()
+            G.consumeables:emplace(card)
+            G.GAME.consumeable_buffer = 0
+        return true
+    end)}))
+'''
+position = "at"
+match_indent = true
+payload = '''
+MANIF.premake_card{set = "Tarot", area = G.consumeables, key_append = "sup"}
+'''
+
+# Seance
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+G.E_MANAGER:add_event(Event({
+    trigger = 'before',
+    delay = 0.0,
+    func = (function()
+            local card = create_card('Spectral',G.consumeables, nil, nil, nil, nil, nil, 'sea')
+            card:add_to_deck()
+            G.consumeables:emplace(card)
+            G.GAME.consumeable_buffer = 0
+        return true
+    end)}))
+'''
+position = "at"
+match_indent = true
+payload = '''
+MANIF.premake_card{set = "Spectral", area = G.consumeables, key_append = "sea"}
+'''
+
+# Vagabond
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+G.E_MANAGER:add_event(Event({
+    trigger = 'before',
+    delay = 0.0,
+    func = (function()
+            local card = create_card('Tarot',G.consumeables, nil, nil, nil, nil, nil, 'vag')
+            card:add_to_deck()
+            G.consumeables:emplace(card)
+            G.GAME.consumeable_buffer = 0
+        return true
+    end)}))
+'''
+position = "at"
+match_indent = true
+payload = '''
+MANIF.premake_card{set = "Tarot", area = G.consumeables, key_append = "vag"}
+'''
