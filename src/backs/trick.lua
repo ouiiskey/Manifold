@@ -14,12 +14,12 @@ SMODS.Back {
     apply = function(self, back)
         G.E_MANAGER:add_event(Event{func = function()
             -- Tarots
-            local enhance = function(enhancement)
+            local function enhance(enhancement)
                 return function(card)
                     card:set_ability(G.P_CENTERS[enhancement])
                 end
             end
-            local suit_conv = function(suit)
+            local function suit_conv(suit)
                 return function(card)
                     assert(SMODS.change_base(card, suit))
                 end

@@ -6,7 +6,7 @@ SMODS.Shader {
     path = "e_paper.fs"
 }
 
-local should_update = function(side, template)
+local function should_update(side, template)
     return not side or side.atlas.name ~= template.atlas.name or side.sprite_pos.x ~= template.sprite_pos.x or side.sprite_pos.y ~= template.sprite_pos.y
 end
 

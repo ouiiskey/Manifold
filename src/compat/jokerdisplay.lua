@@ -373,10 +373,6 @@ JokerDisplay.Definitions.j_manifold_carte_blanche = {
         card.joker_display_values.rank = localize(rank, "ranks")
     end
 }
-local could_flip = function(card)
-    -- Check for Wheel first to not step RNG
-    return G.GAME.blind.name == "The Wheel" or G.GAME.blind:stay_flipped(G.hand, card)
-end
 JokerDisplay.Definitions.j_manifold_harpoon_gun = {
     text = {
         {ref_table = "card.joker_display_values", ref_value = "name"}
@@ -401,7 +397,9 @@ JokerDisplay.Definitions.j_manifold_harpoon_gun = {
         local name = ""
         local base = ""
         if target then
-            if not could_flip(target) then
+            if G.GAME.blind.name == "The Wheel" or G.GAME.blind:stay_flipped(G.hand, target) then -- Check for Wheel first to not step RNG
+                name = localize("manifold_unknown_total")
+            else
                 if target.edition and target.edition.key then
                     edition = edition .. localize{type = "name_text", set = "Edition", key = target.edition.key}
                 end
@@ -420,8 +418,6 @@ JokerDisplay.Definitions.j_manifold_harpoon_gun = {
                 if target.config.center.key ~= "c_base" then
                     base = base .. localize{type = "name_text", set = "Enhanced", key = target.config.center.key}
                 end
-            else
-                name = localize("manifold_unknown_total")
             end
         end
         card.joker_display_values.edition = edition

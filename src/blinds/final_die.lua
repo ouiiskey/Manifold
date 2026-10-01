@@ -2,14 +2,14 @@
 local base_num = 1
 local base_denom = 3
 
-local idemrandom = function(id)
+local function idemrandom(id)
     local hash = pseudohash("manifold_final_die_" .. id .. "_" .. G.GAME.round .. (G.GAME.pseudorandom.seed or ""))
     local seed = (hash + (G.GAME.pseudorandom.hashed_seed or 0)) / 2
     math.randomseed(seed)
     return math.random()
 end
 
-local idemrandom_check = function(id)
+local function idemrandom_check(id)
     local numerator, denominator = SMODS.get_probability_vars(G.GAME.blind, base_num, base_denom, "manifold_final_die")
     local result = idemrandom(id) < numerator / denominator
     SMODS.post_prob = SMODS.post_prob or {}

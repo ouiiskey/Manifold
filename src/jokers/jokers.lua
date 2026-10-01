@@ -61,7 +61,7 @@ for k, v in ipairs(jokers) do
     assert(SMODS.load_file("src/jokers/" .. v .. ".lua"), MANIF.install .. "src/jokers/" .. v .. ".lua")()
 end
 
-SMODS.current_mod.reset_game_globals = function()
+function SMODS.current_mod.reset_game_globals()
     -- Hot Potato
     G.GAME.current_round.hot_card = {rank = "Ace"}
     local heatable_cards = {}

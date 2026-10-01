@@ -1,5 +1,5 @@
 -- Escher Ordered Deck View
-local ordered = function()
+local function ordered()
     local deck_tables = {}
     remove_nils(G.deck.cards)
     G.VIEWING_DECK = true
@@ -196,7 +196,7 @@ local ordered = function()
 end
 
 -- E-Paper Copied Joker View
-local copied = function()
+local function copied()
     local deck_tables = {}
     remove_nils(G.deck.cards)
     G.VIEWING_DECK = true
@@ -388,7 +388,7 @@ local copied = function()
             }}}}}
 end
 
-G.UIDEF.deck_info = function(show_remaining)
+function G.UIDEF.deck_info(show_remaining)
     local views = {{label = localize("b_full_deck"), tab_definition_function = G.UIDEF.view_deck}}
     if show_remaining then
         table.insert(views, 1, {label = localize("b_remaining"), tab_definition_function = G.UIDEF.view_deck, tab_definition_function_args = true})

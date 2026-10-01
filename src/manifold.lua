@@ -7,7 +7,7 @@ SMODS.current_mod.optional_features = {
     retrigger_joker = true
 }
 
-SMODS.current_mod.custom_card_areas = function(game)
+function SMODS.current_mod.custom_card_areas(game)
     game.wallet = CardArea(
         G.TILE_W + 2.45 * G.CARD_W - 6 * G.CARD_W - 2.95, 0,
         G.discard.T.w, G.discard.T.h,
@@ -127,7 +127,7 @@ SMODS.current_mod.calculate = function(self, context)
 end
 
 -- Credits
-SMODS.current_mod.extra_tabs = function()
+function SMODS.current_mod.extra_tabs()
     return {
         label = localize("b_credits"),
         tab_definition_function = function()

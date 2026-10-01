@@ -1,7 +1,7 @@
 -- Azure Aether, see also final_aether.toml
 local max_hands = 5
 
-MANIF.aether_hands = function()
+function MANIF.aether_hands()
     local out = math.min(G.GAME.round_resets.hands, max_hands)
     return out > 1 and out or 0
 end

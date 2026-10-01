@@ -1,10 +1,10 @@
 -- Argent Adamant, see also final_adamant.toml
 local blind_mult = 3
-local get_min = function()
+local function get_min()
     return math.floor(get_blind_amount(G.GAME.round_resets.ante) * blind_mult * G.GAME.starting_params.ante_scaling / 2)
 end
 
-MANIF.adamant = function()
+function MANIF.adamant()
     if G.GAME.round_resets.blind == G.P_BLINDS.bl_manifold_final_adamant and not G.GAME.blind.disabled and mult * hand_chips < get_min() then
         mult = mod_mult(0)
         hand_chips = mod_chips(0)

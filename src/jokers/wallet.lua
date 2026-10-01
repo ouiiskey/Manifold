@@ -1,6 +1,6 @@
 -- Wallet, see also wallet.toml
 -- Wallet should only store when in a CardArea it can be sold from
-MANIF.find_wallet = function()
+function MANIF.find_wallet()
     for _, area in ipairs(SMODS.get_card_areas("jokers")) do
         if area.cards and area.config.type == "joker" then
             for k, v in ipairs(area.cards) do
