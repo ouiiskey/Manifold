@@ -86,6 +86,7 @@ match_indent = true
 payload = '''
 if not MANIF.skip_sticker_poll then
 '''
+
 [[patches]]
 [patches.pattern]
 target = "functions/common_events.lua"
