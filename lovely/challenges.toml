@@ -94,6 +94,7 @@ if G.GAME.modifiers.all_perishable then
 end
 '''
 
+# Banlists
 # G.CHALLENGES
 [[patches]]
 [patches.pattern]
@@ -128,6 +129,16 @@ position = "before"
 match_indent = true
 payload = '''
 {id = "bl_manifold_final_aether", type = "blind"},
+'''
+
+[[patches]]
+[patches.pattern]
+target = "challenges.lua"
+pattern = "{id = 'c_soul'},"
+position = "after"
+match_indent = true
+payload = '''
+{id = "c_manifold_mind"},
 '''
 
 # Blind:set_blind
