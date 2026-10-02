@@ -742,7 +742,7 @@ return {
                 }
             },
             j_manifold_blank = {
-                name = "Blank Joker",
+                name = "Blank",
                 text = {
                     "{C:inactive}Does nothing?"
                 }

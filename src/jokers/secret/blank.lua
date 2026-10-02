@@ -1,4 +1,4 @@
--- Blank Joker
+-- Blank
 local boost = 100 -- +100 weight => 10% boost
 
 SMODS.Joker {
