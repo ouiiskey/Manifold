@@ -30,7 +30,7 @@ SMODS.Joker {
         if context.before and context.cardarea == G.jokers then
             local foiled = false
             for i = 2, #context.full_hand do
-                if not context.full_hand[i].edition and SMODS.has_enhancement(context.full_hand[i], "m_stone") and context.full_hand[i-1]:is_rank(6) then
+                if not context.full_hand[i].edition and not context.full_hand[i].debuff and SMODS.has_enhancement(context.full_hand[i], "m_stone") and context.full_hand[i-1]:is_rank(6) then
                     context.full_hand[i]:set_edition({foil = true}, true, foiled)
                     if foiled then
                         G.E_MANAGER:add_event(Event{trigger = "after", blockable = false, func = function()

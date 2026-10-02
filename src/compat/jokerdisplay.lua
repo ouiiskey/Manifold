@@ -81,7 +81,7 @@ JokerDisplay.Definitions.j_manifold_clay_tablet = {
     calc_function = function(card)
         card.joker_display_values.is_active = false
         for i = 2, #JokerDisplay.current_hand do
-            if not JokerDisplay.current_hand[i].edition and SMODS.has_enhancement(JokerDisplay.current_hand[i], "m_stone") and JokerDisplay.current_hand[i-1]:is_rank(6) then
+            if not JokerDisplay.current_hand[i].edition and not JokderDisplay.current_hand[i].debuff and SMODS.has_enhancement(JokerDisplay.current_hand[i], "m_stone") and JokerDisplay.current_hand[i-1]:is_rank(6) then
                 card.joker_display_values.is_active = true
                 break
             end
@@ -104,7 +104,7 @@ JokerDisplay.Definitions.j_manifold_orange_juice = {
         card.joker_display_values.will_drink = false
         local _, _, scoring_hand = JokerDisplay.evaluate_hand()
         for k, v in ipairs(scoring_hand) do
-            if SMODS.has_enhancement(v, "m_lucky") then
+            if not v.debuff and SMODS.has_enhancement(v, "m_lucky") then
                 card.joker_display_values.will_drink = true
                 break
             end
@@ -134,7 +134,7 @@ JokerDisplay.Definitions.j_manifold_pudding = {
         local text, _, scoring_hand = JokerDisplay.evaluate_hand()
         if text ~= "Unknown" then
             for _, scoring_card in pairs(scoring_hand) do
-                if SMODS.has_enhancement(scoring_card, "m_bonus") then
+                if not scoring_card.debuff and SMODS.has_enhancement(scoring_card, "m_bonus") then
                     triggers = triggers + 1
                     mult = mult + card.ability.extra.mult * JokerDisplay.calculate_card_triggers(scoring_card, scoring_hand)
                     if triggers >= card.ability.extra.count then

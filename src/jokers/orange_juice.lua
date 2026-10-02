@@ -11,7 +11,7 @@ SMODS.Joker {
         info_queue[#info_queue + 1] = G.P_CENTERS.m_lucky
     end,
     calculate = function(self, card, context)
-        if context.individual and context.cardarea == G.play and SMODS.has_enhancement(context.other_card, "m_lucky") and not card.getting_sliced then
+        if context.individual and context.cardarea == G.play and not context.other_card.debuff and SMODS.has_enhancement(context.other_card, "m_lucky") and not card.getting_sliced then
             card.getting_sliced = true
             return {
                 message = localize("k_drank_ex"),

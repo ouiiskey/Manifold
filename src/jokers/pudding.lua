@@ -28,7 +28,7 @@ SMODS.Joker {
                 colour = G.C.PURPLE,
                 func = function() card:eat() end
             }
-        elseif context.individual and context.cardarea == G.play and card.ability.extra.count > 0 and SMODS.has_enhancement(context.other_card, "m_bonus") then
+        elseif context.individual and context.cardarea == G.play and card.ability.extra.count > 0 and not context.other_card.debuff and SMODS.has_enhancement(context.other_card, "m_bonus") then
             if not context.blueprint then
                 card.ability.extra.count = card.ability.extra.count - 1
             end

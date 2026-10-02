@@ -22,7 +22,7 @@ SMODS.Joker {
         if context.before and context.cardarea == G.jokers then
             local sealed = false
             for k, v in ipairs(context.scoring_hand) do
-                if SMODS.has_enhancement(v, "m_steel") then
+                if not v.debuff and SMODS.has_enhancement(v, "m_steel") then
                     sealed = true
                     v:set_seal("manifold_black", true)
                     G.E_MANAGER:add_event(Event{func = function()
