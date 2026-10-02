@@ -45,6 +45,7 @@ local source = {
     "challenges/challenges",
     "blinds/blinds",
     "stakes",
+    "editions",
     "seals",
     "stickers",
     "pips/pips",

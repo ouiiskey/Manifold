@@ -5,6 +5,13 @@ SMODS.Atlas {
     py = 95
 }
 
+SMODS.Atlas {
+    key = "secret",
+    path = "secret.png",
+    px = 71,
+    py = 95
+}
+
 MANIF.home = "c_planet_x" -- Aliens' homeworld
 
 local jokers = {
@@ -53,6 +60,8 @@ local jokers = {
     "peano",
     "escher",
     "shannon",
+    -- Secret
+    "secret/blank",
     -- Vanilla
     "vanilla/matador"
 }

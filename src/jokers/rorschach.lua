@@ -22,32 +22,35 @@ SMODS.Joker {
         if context.selling_self then
             local targets = {}
             for k, v in ipairs(G.jokers.cards) do
-                if v ~= card then
+                if v ~= (context.blueprint_card or card) then
                     table.insert(targets, v)
                 end
             end
-            if #targets > 0 then
-                if #G.jokers.cards <= G.jokers.config.card_limit then
-                    local chosen_joker = pseudorandom_element(targets, pseudoseed("manifold_rorschach"))
-                    local copy = copy_card(chosen_joker)
-                    if copy.ability.invis_rounds then copy.ability.invis_rounds = 0 end
-                    copy:set_eternal(false)
-                    copy:add_sticker("perishable", true)
-                    copy:add_to_deck()
-                    G.jokers:emplace(copy)
-                    return {
-                        message = localize("k_duplicated_ex")
-                    }
-                else
-                    return {
-                        message = localize("k_no_room_ex")
-                    }
-                end
-            else
+            if #targets == 0 then
                 return {
                     message = localize("k_no_other_jokers")
                 }
+            elseif #G.jokers.cards > G.jokers.config.card_limit then
+                return {
+                    message = localize("k_no_room_ex")
+                }
+            elseif G.GAME.rorschach_count and G.GAME.rorschach_count >= 25 then
+                SMODS.add_card{set = "Joker", area = G.jokers, key = "j_manifold_blank", no_edition = true, force_stickers = {"perishable"}}
+                return {
+                    message = localize("manifold_no_ink")
+                }
             end
+            G.GAME.rorschach_count = (G.GAME.rorschach_count or 0) + 1
+            local chosen_joker = pseudorandom_element(targets, pseudoseed("manifold_rorschach"))
+            local copy = copy_card(chosen_joker)
+            if copy.ability.invis_rounds then copy.ability.invis_rounds = 0 end
+            copy:set_eternal(false)
+            copy:add_sticker("perishable", true)
+            copy:add_to_deck()
+            G.jokers:emplace(copy)
+            return {
+                message = localize("k_duplicated_ex")
+            }
         end
     end,
     eternal_compat = false

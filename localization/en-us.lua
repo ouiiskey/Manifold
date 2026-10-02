@@ -740,6 +740,12 @@ return {
                 unlock = {
                     "{E:1,s:1.3}?????"
                 }
+            },
+            j_manifold_blank = {
+                name = "Blank Joker",
+                text = {
+                    "{C:inactive}Does nothing?"
+                }
             }
         },
         manifold_reverse_tarot = {
@@ -1173,6 +1179,7 @@ return {
             manifold_freeze = "ICE",
             manifold_hand_minus = "-1 Hand",
             manifold_hit = "Hit!",
+            manifold_no_ink = "No Ink!",
             manifold_no_space_1 = "No",
             manifold_no_space_2 = "Space!",
             manifold_oom = "Out of mana...",
