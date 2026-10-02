@@ -94,8 +94,6 @@ end
 -- Disable vanilla Wild
 SMODS.Enhancement:take_ownership("wild", {
     pools = {},
-    in_pool = function(self, args)
-        return false
-    end,
+    in_pool = function(self, args) return false end,
     no_collection = true
 }, true)
