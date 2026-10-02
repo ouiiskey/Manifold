@@ -9,7 +9,7 @@ SMODS.Joker {
     config = {extra = {numerator = 1, denominator = 7}},
     in_pool = function(self, args)
         for k, v in ipairs(G.playing_cards) do
-            if SMODS.has_enhancement(v, "m_wild") then
+            if v:is_suit("manifold_wild", true) then
                 return true
             end
         end
@@ -26,7 +26,7 @@ SMODS.Joker {
             local wild = false
             local chromed = false
             for k, v in ipairs(context.scoring_hand) do
-                if not v.edition and SMODS.has_enhancement(v, "m_wild") then
+                if not v.edition and v:is_suit("manifold_wild") then
                     wild = true
                     if SMODS.pseudorandom_probability(card, "manifold_proud", card.ability.extra.numerator, card.ability.extra.denominator) then
                         v:set_edition({polychrome = true}, true, chromed)

@@ -536,7 +536,7 @@ JokerDisplay.Definitions.j_manifold_slothful = {
     calc_function = function(card)
         local wilds = 0
         for k, v in ipairs(G.hand.cards) do
-            if SMODS.has_enhancement(v, "m_wild") then
+            if v:is_suit("manifold_wild") then
                 wilds = wilds + 1
             end
         end

@@ -9,7 +9,7 @@ SMODS.Joker {
     config = {extra = {hand_cost = 1, x_mult = 2}},
     in_pool = function(self, args)
         for k, v in ipairs(G.playing_cards) do
-            if SMODS.has_enhancement(v, "m_wild") then
+            if v:is_suit("manifold_wild", true) then
                 return true
             end
         end
@@ -20,7 +20,7 @@ SMODS.Joker {
         return {vars = {card.ability.extra.hand_cost, card.ability.extra.x_mult, colours = {G.C.SUITS.manifold_wild}}}
     end,
     calculate = function(self, card, context)
-        if context.individual and context.cardarea == G.hand and not context.end_of_round and SMODS.has_enhancement(context.other_card, "m_wild") then
+        if context.individual and context.cardarea == G.hand and not context.end_of_round and context.other_card:is_suit("manifold_wild") then
             ease_hands_played(-card.ability.extra.hand_cost)
             return {
                 x_mult = card.ability.extra.x_mult,

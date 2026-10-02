@@ -8,7 +8,7 @@ SMODS.Joker {
     blueprint_compat = true,
     in_pool = function(self, args)
         for k, v in ipairs(G.playing_cards) do
-            if SMODS.has_enhancement(v, "m_wild") then
+            if v:is_suit("manifold_wild", true) then
                 return true
             end
         end
