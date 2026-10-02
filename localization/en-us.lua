@@ -802,7 +802,7 @@ return {
                 name = "{f:manifold_reverse}srevoL ehT",
                 text = {
                     "Destroys {C:attention}1",
-                    "selected {V:1}Wild{} card"
+                    "selected {V:1}#1#{} card"
                 }
             },
             c_manifold_chariot = {

@@ -19,7 +19,7 @@ SMODS.Consumable {
         G.E_MANAGER:add_event(Event{trigger = "after", delay = 0.2, func = function()
             local marked = {}
             for k, v in ipairs(G.hand.highlighted) do
-                if v:is_suit(card.ability.extra.suit) then
+                if v:is_suit(card.ability.extra.suit, nil, true) then
                     table.insert(marked, v)
                     if #marked == card.ability.extra.max then break end
                 end
@@ -31,7 +31,7 @@ SMODS.Consumable {
     can_use = function(self, card)
         local count = 0
         for k, v in ipairs(G.hand.highlighted) do
-            if v:is_suit(card.ability.extra.suit) then
+            if v:is_suit(card.ability.extra.suit, nil, true) then
                 count = count + 1
             end
         end

@@ -7,10 +7,10 @@ SMODS.Consumable {
         card.children.center.reverse = true
     end,
     cost = 3,
-    config = {extra = {enhancement = "m_wild"}},
+    config = {extra = {suit = "manifold_wild"}},
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = {key = "wild", set = "Other"}
-        return {vars = {colours = {G.C.SUITS.manifold_wild}}}
+        return {vars = {localize(card.ability.extra.suit, "suits_singular"), colours = {G.C.SUITS[card.ability.extra.suit]}}}
     end,
     use = function(self, card, area, copier)
         G.E_MANAGER:add_event(Event{trigger = "after", delay = 0.4, func = function()
@@ -20,7 +20,7 @@ SMODS.Consumable {
         G.E_MANAGER:add_event(Event{trigger = "after", delay = 0.2, func = function()
             local target
             for k, v in ipairs(G.hand.highlighted) do
-                if SMODS.has_enhancement(v, card.ability.extra.enhancement) then
+                if v:is_suit(card.ability.extra.suit, nil, true) then
                     target = v
                     break
                 end
@@ -32,7 +32,7 @@ SMODS.Consumable {
     can_use = function(self, card)
         local count = 0
         for k, v in ipairs(G.hand.highlighted) do
-            if SMODS.has_enhancement(v, card.ability.extra.enhancement) then
+            if v:is_suit(card.ability.extra.suit, nil, true) then
                 count = count + 1
             end
         end
