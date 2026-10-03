@@ -3,13 +3,13 @@ SMODS.Back {
     key = "trick",
     atlas = "backs",
     pos = {x = 1, y = 1},
-    config = {extra = {c_size = -2, p_size = -1}},
+    config = {extra = {c_size = -2}},
     unlocked = false,
     check_for_unlock = function(self, args)
         return args.type == "win_stake" and get_deck_win_stake() >= 6
     end,
     loc_vars = function(self, info_queue, back)
-        return {vars = {self.config.extra.c_size, self.config.extra.p_size}}
+        return {vars = {self.config.extra.c_size}}
     end,
     apply = function(self, back)
         G.E_MANAGER:add_event(Event{func = function()
@@ -63,7 +63,6 @@ SMODS.Back {
             end
             -- Minus slots
             G.consumeables.config.card_limit = G.consumeables.config.card_limit + self.config.extra.c_size
-            G.planets.config.card_limit = G.planets.config.card_limit + self.config.extra.p_size
             -- Prevent destroyed cards from reappearing on exit
             G.E_MANAGER:add_event(Event{trigger = "after", func = function()
                 G.E_MANAGER:add_event(Event{trigger = "after", func = function()

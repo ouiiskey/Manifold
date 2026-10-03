@@ -187,8 +187,7 @@ return {
                 text = {
                     "Apply a random {C:tarot}Tarot",
                     "to each card in deck",
-                    "{C:attention}#1#{} consumable slots",
-                    "{C:attention}#2#{C:planet} Planet{} slot"
+                    "{C:attention}#1#{} consumable slots"
                 },
                 unlock = {
                     "Win a run with any",
