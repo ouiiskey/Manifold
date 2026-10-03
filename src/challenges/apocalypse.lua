@@ -12,7 +12,8 @@ SMODS.Challenge {
         }
     },
     jokers = {
-        {id = "j_manifold_rebellion", perishable = true}
+        {id = "j_manifold_rebellion", perishable = true},
+        {id = "j_manifold_rorschach", edition = "negative", perishable = true}
     },
     restrictions = {
         banned_cards = {
