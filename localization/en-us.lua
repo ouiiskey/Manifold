@@ -138,7 +138,8 @@ return {
             b_manifold_ring = {
                 name = "Ring Deck",
                 text = {
-                    "{C:attention}Straights{} can wrap"
+                    "{C:attention}Straights{} can wrap and",
+                    "give {C:blue}+#1#{} hand when played"
                 },
                 unlock = {
                     "Win a run with",
