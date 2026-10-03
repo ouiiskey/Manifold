@@ -10,7 +10,7 @@ SMODS.Challenge {
         }
     },
     jokers = {
-        {id = "j_manifold_tsunami", eternal = true},
+        {id = "j_manifold_tsunami", edition = "negative", eternal = true},
         {id = "j_manifold_railgun", eternal = true}
     },
     restrictions = {
