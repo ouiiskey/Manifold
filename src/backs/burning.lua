@@ -19,8 +19,10 @@ SMODS.Back {
             return true end})
     end,
     calculate = function(self, back, context)
-        if context.ante_change and context.ante_end and G.GAME.round_resets.ante % 2 == 1 and G.jokers.config.card_limit > 0 then
-            G.jokers.config.card_limit = G.jokers.config.card_limit + self.config.extra.joker_mod
+        if context.ante_change and context.ante_end and G.GAME.round_resets.ante % 2 == 0 and G.jokers.config.card_limit > 0 then
+            G.E_MANAGER:add_event(Event{func = function()
+                G.jokers.config.card_limit = G.jokers.config.card_limit + self.config.extra.joker_mod
+                return true end})
             return {
                 message = localize("manifold_burn")
             }

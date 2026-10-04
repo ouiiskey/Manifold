@@ -202,7 +202,7 @@ return {
                     "Start run with {C:attention}#1#",
                     "copies of {C:spectral,T:c_immolate}Immolate",
                     "{C:attention}#2#{} Joker slot after",
-                    "every odd ante"
+                    "every even ante"
                 },
                 unlock = {
                     "Win a run with any",
