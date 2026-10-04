@@ -1,0 +1,10 @@
+{
+    "name": "Manifold",
+    "description": "A Balatro mod.",
+    "version_number": "1.2.2",
+    "dependencies": [
+        "Steamodded-Steamodded-26.1002.0",
+        "Thunderstore-lovely-0.10.0"
+    ],
+    "website_url": "https://github.com/ouiiskey/Manifold"
+}
