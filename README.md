@@ -18,10 +18,7 @@ This mod is intended to preserve the base game's balance while adding new gamepl
 2. Download the [latest release](https://github.com/ouiiskey/Manifold/releases/latest/download/Manifold.zip).
 3. Place `Manifold.zip` in your `Mods` folder.
 
-### Method 2: [JokerDeck](https://github.com/Ch3rryC0d3r/JokerDeck)
-Note: Windows only.
-
-### Method 3: [balatro-imm](https://codeberg.org/frostice482/balatro-imm)
+### Method 2: [balatro-imm](https://codeberg.org/frostice482/balatro-imm)
 
 ## Compatibility
 Because this mod contains bespoke code, you may encounter compatibility issues with other mods.
