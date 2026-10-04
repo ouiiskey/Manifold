@@ -420,8 +420,9 @@ return {
             j_manifold_extraterrestrial = {
                 name = "Extraterrestrial",
                 text = {
-                    "Retrigger base",
-                    "{C:chips}Chips{} and {C:mult}Mult"
+                    "Adds {C:attention}lvl.1{} base",
+                    "{C:chips}Chips{} and {C:mult}Mult",
+                    "of played hand"
                 },
                 unlock = {
                     "Discover {E:1,C:planet}#1#"

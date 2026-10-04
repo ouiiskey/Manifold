@@ -4,7 +4,7 @@ SMODS.Joker {
     rarity = 1,
     atlas = "jokers",
     pos = {x = 4, y = 1},
-    cost = 6,
+    cost = 4,
     blueprint_compat = true,
     unlocked = false,
     locked_loc_vars = function(self, info_queue, card)
@@ -16,8 +16,8 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.joker_main then
             return {
-                chips = G.GAME.hands[context.scoring_name].chips,
-                mult = G.GAME.hands[context.scoring_name].mult
+                chips = G.GAME.hands[context.scoring_name].s_chips,
+                mult = G.GAME.hands[context.scoring_name].s_mult
             }
         end
     end
