@@ -40,6 +40,7 @@ Because this mod contains bespoke code, you may encounter compatibility issues w
 * [DebugPlus](https://github.com/WilsontheWolf/DebugPlus)
   * Copied planets emplace in the consumable slots, spawn the planets instead.
   * Spawning planets requires empty consumable slots.
+  * Cannot cycle enhancements past wild.
 * [DebugPlusPlus](https://github.com/jogla-the-wizard/DebugPlusPlus)
   * Using "Win blind" crashes the game unless you have DebugPlus installed.
 * [Multiplayer](https://github.com/Balatro-Multiplayer/BalatroMultiplayer)
