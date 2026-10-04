@@ -7,30 +7,18 @@ SMODS.Consumable {
         card.children.center.reverse = true
     end,
     cost = 3,
-    config = {extra = {payout = 10}},
     loc_vars = function(self, info_queue, card)
-        return {vars = {card.ability.extra.payout}}
+        info_queue[#info_queue + 1] = {key = "tag_meteor", set = "Tag"}
     end,
     use = function(self, card, area, copier)
-        local pool = {}
-        for k, v in ipairs(G.consumeables.cards) do
-            if v.ability.set == "Tarot" or v ~= card and v.ability.set == "manifold_reverse_tarot" then
-                table.insert(pool, v)
-            end
-        end
-        G.E_MANAGER:add_event(Event{trigger = "after", delay = 0.4, func = function()
-            play_sound("tarot1")
-            card:juice_up(0.3, 0.5)
+        G.E_MANAGER:add_event(Event{func = function()
+            add_tag(Tag("tag_meteor"))
+            play_sound("generic1", 0.9 + math.random() * 0.1, 0.8)
+            play_sound("holo1", 1.2 + math.random() * 0.1, 0.4)
             return true end})
-        SMODS.destroy_cards(pseudorandom_element(pool, pseudoseed("manifold_emperor")))
-        delay(0.5)
-        ease_dollars(card.ability.extra.payout)
-        delay(0.3)
+        delay(0.6)
     end,
     can_use = function(self, card)
-        for k, v in ipairs(G.consumeables.cards) do
-            if v.ability.set == "Tarot" or v ~= card and v.ability.set == "manifold_reverse_tarot" then return true end
-        end
-        return false
+        return true
     end
 }

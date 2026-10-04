@@ -785,10 +785,8 @@ return {
             c_manifold_emperor = {
                 name = "{f:manifold_reverse}rorepmE ehT",
                 text = {
-                    "Destroys {C:attention}1{} random",
-                    "{C:tarot}Tarot{} card in",
-                    "{C:attention}consumable{} area,",
-                    "gain {C:money}$#1#"
+                    "Creates a",
+                    "{C:planet}Meteor Tag"
                 }
             },
             c_manifold_heirophant = {
