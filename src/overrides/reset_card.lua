@@ -5,7 +5,7 @@ function reset_idol_card()
     local id
     local targets = {}
     for k, v in ipairs(G.playing_cards) do
-        if not (SMODS.has_no_rank(v) and SMODS.has_no_suit(v) or MANIF.has_any_rank(v) and SMODS.has_any_suit(v)) then
+        if not (SMODS.has_no_rank(v) or SMODS.has_no_suit(v) or MANIF.has_any_rank(v) and SMODS.has_any_suit(v)) then
             table.insert(targets, v)
         end
     end
