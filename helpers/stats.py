@@ -73,7 +73,7 @@ for i in range(0, top_code):
     out += f"    * {sorted_code[i][0]} ({sorted_code[i][1]:,} lines)\n"
 out += f'''</details>
 <details>
-    <summary><b>{2 * len(textures) + 1 + lua_count + len(lovely) + len(shaders) + len(json) + len(sounds) + font_count + 1} game files</b></summary>
+    <summary><b>{2 * len(textures) + 1 + lua_count + len(lovely) + len(shaders) + len(json) + len(sounds) + font_count + 2} game files</b></summary>
 
 * **PNG:** {2 * len(textures) + 1} files
 * **Lua:** {lua_count} files
@@ -82,7 +82,7 @@ out += f'''</details>
 * **JSON:** {len(json)} files
 * **Ogg:** {len(sounds)} file
 * **TrueType:** {font_count} files
-* **Markdown:** 1 file (You're reading it now)
+* **Markdown:** 2 files
 </details>
 <details>
     <summary><b>{sum(features.values())} feature additions</b></summary>
