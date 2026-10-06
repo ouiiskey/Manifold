@@ -11,11 +11,11 @@ function reset_idol_card()
     end
     if next(targets) then
         local idol_card = pseudorandom_element(targets, pseudoseed("idol" .. G.GAME.round_resets.ante))
-        if not SMODS.has_no_rank(idol_card) and not MANIF.has_any_rank(idol_card) then
+        if not MANIF.has_any_rank(idol_card) then
             rank = idol_card.base.value
             id = idol_card.base.id
         end
-        if not SMODS.has_no_suit(idol_card) and not SMODS.has_any_suit(idol_card) then
+        if not SMODS.has_any_suit(idol_card) then
             suit = idol_card.base.suit
         end
         if not rank then

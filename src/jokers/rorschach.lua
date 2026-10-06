@@ -20,6 +20,11 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.selling_self then
+            if #G.jokers.cards > G.jokers.config.card_limit then
+                return {
+                    message = localize("k_no_room_ex")
+                }
+            end
             local targets = {}
             for k, v in ipairs(G.jokers.cards) do
                 if v ~= (context.blueprint_card or card) then
@@ -29,10 +34,6 @@ SMODS.Joker {
             if #targets == 0 then
                 return {
                     message = localize("k_no_other_jokers")
-                }
-            elseif #G.jokers.cards > G.jokers.config.card_limit then
-                return {
-                    message = localize("k_no_room_ex")
                 }
             elseif G.GAME.rorschach_count and G.GAME.rorschach_count >= 25 then
                 SMODS.add_card{set = "Joker", area = G.jokers, key = "j_manifold_blank", no_edition = true, force_stickers = {"perishable"}}
