@@ -20,6 +20,10 @@ This mod is intended to preserve the base game's balance while adding new gamepl
 
 ### Method 2: [balatro-imm](https://codeberg.org/frostice482/balatro-imm)
 
+### Method 3: [GaleModManager](https://github.com/Kesomannen/gale)
+
+### Method 4: [r2modman](https://github.com/ebkr/r2modmanPlus)
+
 ## Compatibility
 Because this mod contains bespoke code, you may encounter compatibility issues with other mods.
 
