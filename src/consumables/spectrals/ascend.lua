@@ -36,7 +36,6 @@ SMODS.Consumable {
         delay(0.5)
     end,
     select_card = function(self, card, pack)
-        ---@diagnostic disable-next-line: return-type-mismatch
         return pack.kind == "Standard" and "consumeables"
     end
 }
