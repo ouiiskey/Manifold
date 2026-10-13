@@ -11,10 +11,13 @@ features = {
     "Ranks": 2,
     "Suits": 2,
     "Seals": 1,
-    "Stickers": 3,
+    "Stickers": 3
 }
 top_code = 5
 top_art = 5
+font_count = 2
+md_count = 2
+txt_count = 1
 
 textures = os.listdir("assets/1x")
 art = {}
@@ -48,8 +51,6 @@ count_files(json)
 
 sounds = os.listdir("assets/sounds")
 
-font_count = 2
-
 sorted_code = sorted(code.items(), key=lambda item: item[1])
 
 out = f'''<details>
@@ -73,7 +74,7 @@ for i in range(0, top_code):
     out += f"    * {sorted_code[i][0]} ({sorted_code[i][1]:,} lines)\n"
 out += f'''</details>
 <details>
-    <summary><b>{2 * len(textures) + 1 + lua_count + len(lovely) + len(shaders) + len(json) + len(sounds) + font_count + 2} game files</b></summary>
+    <summary><b>{2 * len(textures) + 1 + lua_count + len(lovely) + len(shaders) + len(json) + len(sounds) + font_count + md_count + txt_count} game files</b></summary>
 
 * **PNG:** {2 * len(textures) + 1} files
 * **Lua:** {lua_count} files
@@ -82,7 +83,8 @@ out += f'''</details>
 * **JSON:** {len(json)} files
 * **Ogg:** {len(sounds)} file
 * **TrueType:** {font_count} files
-* **Markdown:** 2 files
+* **Markdown:** {md_count} files
+* **Text:** {txt_count} file
 </details>
 <details>
     <summary><b>{sum(features.values())} feature additions</b></summary>
