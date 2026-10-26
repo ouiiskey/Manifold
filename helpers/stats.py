@@ -11,7 +11,8 @@ features = {
     "Ranks": 2,
     "Suits": 2,
     "Seals": 1,
-    "Stickers": 3
+    "Stickers": 3,
+    "Other Card Modifiers": 1
 }
 top_code = 5
 top_art = 5
