@@ -24,13 +24,12 @@ SMODS.Atlas {
 SMODS.Rank {
     key = "deity",
     card_key = "R",
-    pos = {x = 14}, -- For wild overlay
+    pos = {},
     nominal = 95,
     face = true,
     lc_atlas = "deity",
     hc_atlas = "deity_hc",
     shorthand = "R",
-    next = {"manifold_none"},
     straight_edge = true,
     suit_map = {Hearts = 0, Clubs = 1, Diamonds = 2, Spades = 3, manifold_nothing = 4, manifold_wild = 5},
     in_pool = function(self, args) return false end,

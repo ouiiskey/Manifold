@@ -28,11 +28,11 @@ SMODS.DrawStep {
     order = 21, -- Prevent editions from covering
     func = function(card, layer)
         if card.base.suit == "manifold_wild" and (card.ability.delayed or not card:should_hide_front()) then
-            if not card.children.wild or card.children.wild.sprite_pos.x ~= SMODS.Ranks[card.base.value].pos.x then
+            if not card.children.wild or card.children.wild.sprite_pos.x ~= (SMODS.Ranks[card.base.value].pos.x or 14) then
                 if card.children.wild then
                     card.children.wild:remove()
                 end
-                card.children.wild = SMODS.create_sprite(card.T.x, card.T.y, card.T.w, card.T.h, G.ASSET_ATLAS.manifold_wild, {x = SMODS.Ranks[card.base.value].pos.x, y = 0})
+                card.children.wild = SMODS.create_sprite(card.T.x, card.T.y, card.T.w, card.T.h, G.ASSET_ATLAS.manifold_wild, {x = SMODS.Ranks[card.base.value].pos.x or 14, y = 0})
                 card.children.wild.states.hover = card.states.hover
                 card.children.wild.states.click = card.states.click
                 card.children.wild.states.drag = card.states.drag
