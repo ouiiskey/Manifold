@@ -9,5 +9,6 @@ SMODS.Rank {
     shorthand = "0",
     next = {"Ace"},
     straight_edge = true,
-    in_pool = function(self, args) return false end
+    in_pool = function(self, args) return false end,
+    not_prev = true
 }

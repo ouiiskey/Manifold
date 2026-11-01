@@ -124,3 +124,14 @@ match_indent = true
 payload = '''
 if not SMODS.has_no_rank(v) and not MANIF.has_any_rank(v) then
 '''
+
+# loadAPIs()
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/game_object.lua"]'
+pattern = "if other then"
+position = "at"
+match_indent = true
+payload = '''
+if other and not self.not_prev then
+'''
