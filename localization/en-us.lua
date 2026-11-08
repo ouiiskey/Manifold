@@ -1158,6 +1158,7 @@ return {
         dictionary = {
             b_manifold_reverse_tarot_cards = "sdraC toraT",
             k_manifold_reverse_tarot = "toraT",
+            k_manifold_secret = "Secret",
             manifold_ace = "A",
             manifold_adamant_floor = "half of Blind size",
             manifold_baked = "Baked!",
@@ -1200,6 +1201,7 @@ return {
         labels = {
             manifold_black_seal = "Black Seal",
             manifold_premium = "Premium",
+            manifold_secret = "Secret",
             pinned_left = "Leftmost",
             pinned_right = "Rightmost"
         },

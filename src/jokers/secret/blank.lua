@@ -3,7 +3,7 @@ local boost = 100 -- +100 weight => 10% boost
 
 SMODS.Joker {
     key = "blank",
-    rarity = 1,
+    rarity = "manifold_secret",
     atlas = "secret",
     pos = {x = 0, y = 0},
     cost = 1,

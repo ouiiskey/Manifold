@@ -39,6 +39,7 @@ local source = {
     "overrides/overrides",
     "utils/utils",
     "fonts",
+    "rarities",
     "jokers/jokers",
     "consumables/consumables",
     "backs/backs",
