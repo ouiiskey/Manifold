@@ -10,14 +10,7 @@ SMODS.Joker {
         info_queue[#info_queue + 1] = SMODS.Seals.manifold_black
         return {vars = {colours = {G.C.BLACK}}}
     end,
-    in_pool = function(self, args)
-        for k, v in ipairs(G.playing_cards) do
-            if SMODS.has_enhancement(v, "m_steel") then
-                return true
-            end
-        end
-        return false
-    end,
+    enhancement_gate = "m_steel",
     calculate = function(self, card, context)
         if context.before and context.cardarea == G.jokers then
             local sealed = false

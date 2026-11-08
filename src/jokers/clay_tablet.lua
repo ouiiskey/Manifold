@@ -15,14 +15,7 @@ SMODS.Joker {
     check_for_unlock = function(self, args)
         return args.type == "ease_ante" and args.ante == ante
     end,
-    in_pool = function(self, args)
-        for k, v in ipairs(G.playing_cards or {}) do
-            if SMODS.has_enhancement(v, "m_stone") then
-                return true
-            end
-        end
-        return false
-    end,
+    enhancement_gate = "m_stone",
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.m_stone
     end,

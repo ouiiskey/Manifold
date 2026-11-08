@@ -11,14 +11,7 @@ SMODS.Joker {
         info_queue[#info_queue + 1] = G.P_CENTERS.m_bonus
         return {vars = {card.ability.extra.mult, card.ability.extra.count}}
     end,
-    in_pool = function(self, args)
-        for k, v in ipairs(G.playing_cards) do
-            if SMODS.has_enhancement(v, "m_bonus") then
-                return true
-            end
-        end
-        return false
-    end,
+    enhancement_gate = "m_bonus",
     calculate = function(self, card, context)
         if context.post_trigger and not context.blueprint and card.ability.extra.count <= 0 and not card.getting_sliced then
             card.getting_sliced = true
