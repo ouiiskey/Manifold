@@ -125,7 +125,7 @@ payload = '''
 if not SMODS.has_no_rank(v) and not MANIF.has_any_rank(v) then
 '''
 
-# loadAPIs()
+# loadAPIs
 [[patches]]
 [patches.pattern]
 target = '=[SMODS _ "src/game_object.lua"]'
@@ -134,4 +134,16 @@ position = "at"
 match_indent = true
 payload = '''
 if other and not self.not_prev then
+'''
+
+# G.FUNCS.wipe_on
+# Prevent wild from showing up on wipe card
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "G.screenwipecard = Card(1, 1, G.CARD_W, G.CARD_H, pseudorandom_element(G.P_CARDS), G.P_CENTERS.c_base)"
+position = "at"
+match_indent = true
+payload = '''
+G.screenwipecard = Card(1, 1, G.CARD_W, G.CARD_H, pseudorandom_element(G.P_CARDS, nil, {starting_deck = true}), G.P_CENTERS.c_base)
 '''
